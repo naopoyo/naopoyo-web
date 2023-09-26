@@ -11,7 +11,7 @@ export default async function DocumentList() {
   const df = createDateFormat('yyyy-MM-dd')
 
   return (
-    <div className='p-8 grid grid-cols-3 gap-8'>
+    <div className='grid grid-cols-3 gap-8'>
       {documents.map((document) => (
         <Link
           key={document.id}
