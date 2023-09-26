@@ -19,7 +19,7 @@
         "alphabetize": { "order": "asc", "caseInsensitive": true }
       }
     ],
-    "no-restricted-imports": ["error", { "patterns": ["../"] }],
+    "no-restricted-imports": ["error", { "patterns": ["..", "../"] }],
     "semi": ["error", "never", { "beforeStatementContinuationChars": "never" }],
     "semi-spacing": ["error", { "after": true, "before": false }],
     "semi-style": ["error", "first"],
