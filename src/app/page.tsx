@@ -1,9 +1,13 @@
+import { NavBar } from '@/components/nav-bar'
 import { DocumentList } from '@/features/document'
 
 export default function Home() {
   return (
-    <div className='p-8'>
-      <DocumentList />
-    </div>
+    <>
+      <NavBar />
+      <section className='p-8'>
+        <DocumentList />
+      </section>
+    </>
   )
 }
