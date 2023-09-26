@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core'
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
@@ -56,15 +57,25 @@ export type AssetEdge = {
   node?: Maybe<Asset>
 }
 
+export type ConnectionSort = {
+  by?: InputMaybe<Scalars['String']['input']>
+  order?: InputMaybe<Scalars['String']['input']>
+}
+
 export type Document = {
   __typename?: 'Document'
   assets?: Maybe<AssetConnection>
   content: Scalars['String']['output']
   createdAt: Scalars['DateTime']['output']
+  draft: Scalars['Boolean']['output']
+  emoji: Scalars['String']['output']
   id: Scalars['ID']['output']
   inboundLinkDocuments?: Maybe<DocumentConnection>
+  modifiedAt: Scalars['DateTime']['output']
   outboundLinkDocuments?: Maybe<DocumentConnection>
   path?: Maybe<Scalars['String']['output']>
+  preview?: Maybe<Asset>
+  publishedAt: Scalars['DateTime']['output']
   rawContent: Scalars['String']['output']
   slug: Scalars['String']['output']
   tags?: Maybe<TagConnection>
@@ -111,6 +122,21 @@ export type DocumentConnection = {
   pageInfo: PageInfo
   /** Total count of nodes. */
   totalCount: Scalars['Int']['output']
+}
+
+export type DocumentConnectionFilter = {
+  createdAtEnd?: InputMaybe<Scalars['DateTime']['input']>
+  createdAtStart?: InputMaybe<Scalars['DateTime']['input']>
+  draft?: InputMaybe<Scalars['Boolean']['input']>
+  excludeTags?: InputMaybe<Array<Scalars['String']['input']>>
+  modifiedAtEnd?: InputMaybe<Scalars['DateTime']['input']>
+  modifiedAtStart?: InputMaybe<Scalars['DateTime']['input']>
+  publishedAtEnd?: InputMaybe<Scalars['DateTime']['input']>
+  publishedAtStart?: InputMaybe<Scalars['DateTime']['input']>
+  tags?: InputMaybe<Array<Scalars['String']['input']>>
+  tagsNone?: InputMaybe<Scalars['Boolean']['input']>
+  updatedAtEnd?: InputMaybe<Scalars['DateTime']['input']>
+  updatedAtStart?: InputMaybe<Scalars['DateTime']['input']>
 }
 
 /** An edge in a connection. */
@@ -161,6 +187,7 @@ export type QueryAssetsArgs = {
   before?: InputMaybe<Scalars['String']['input']>
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<ConnectionSort>
 }
 
 export type QueryDocumentArgs = {
@@ -172,8 +199,10 @@ export type QueryDocumentArgs = {
 export type QueryDocumentsArgs = {
   after?: InputMaybe<Scalars['String']['input']>
   before?: InputMaybe<Scalars['String']['input']>
+  filter?: InputMaybe<DocumentConnectionFilter>
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<ConnectionSort>
 }
 
 export type QueryTagArgs = {
@@ -218,3 +247,178 @@ export type TagEdge = {
   /** The item at the end of the edge. */
   node?: Maybe<Tag>
 }
+
+export type DocumentsQueryVariables = Exact<{
+  after?: InputMaybe<Scalars['String']['input']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  filter?: InputMaybe<DocumentConnectionFilter>
+  sort?: InputMaybe<ConnectionSort>
+}>
+
+export type DocumentsQuery = {
+  __typename?: 'Query'
+  documents?: {
+    __typename?: 'DocumentConnection'
+    totalCount: number
+    edges?: Array<{
+      __typename?: 'DocumentEdge'
+      node?: {
+        __typename?: 'Document'
+        id: string
+        slug: string
+        emoji: string
+        title: string
+        draft: boolean
+        rawContent: string
+        content: string
+        path?: string | null
+        publishedAt: any
+        modifiedAt: any
+        createdAt: any
+        updatedAt: any
+        tags?: {
+          __typename?: 'TagConnection'
+          edges?: Array<{
+            __typename?: 'TagEdge'
+            node?: { __typename?: 'Tag'; id: string; name: string } | null
+          } | null> | null
+        } | null
+      } | null
+    } | null> | null
+  } | null
+}
+
+export const DocumentsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'documents' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'first' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'filter' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'DocumentConnectionFilter' } },
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'sort' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'ConnectionSort' } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'documents' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'after' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'after' } },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'first' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'first' } },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filter' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'filter' } },
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'sort' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'sort' } },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'totalCount' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'edges' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'node' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'emoji' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'draft' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'rawContent' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'content' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'path' } },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'tags' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'edges' },
+                                    selectionSet: {
+                                      kind: 'SelectionSet',
+                                      selections: [
+                                        {
+                                          kind: 'Field',
+                                          name: { kind: 'Name', value: 'node' },
+                                          selectionSet: {
+                                            kind: 'SelectionSet',
+                                            selections: [
+                                              {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'id' },
+                                              },
+                                              {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'name' },
+                                              },
+                                            ],
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                            { kind: 'Field', name: { kind: 'Name', value: 'publishedAt' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'modifiedAt' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<DocumentsQuery, DocumentsQueryVariables>

@@ -1,9 +1,9 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { M_PLUS_1 } from 'next/font/google'
 
 import type { Metadata } from 'next'
 
-const inter = Inter({ subsets: ['latin'] })
+const mPlus1 = M_PLUS_1({ subsets: ['latin'], weight: ['200'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>{children}</body>
+    <html lang='ja'>
+      <body className={mPlus1.className}>{children}</body>
     </html>
   )
 }
