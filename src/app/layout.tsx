@@ -3,7 +3,7 @@ import { M_PLUS_1 } from 'next/font/google'
 
 import type { Metadata } from 'next'
 
-const mPlus1 = M_PLUS_1({ subsets: ['latin'], weight: ['200'] })
+const mPlus1 = M_PLUS_1({ subsets: ['latin'], weight: ['200', '400', '700'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
