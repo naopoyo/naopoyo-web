@@ -6,18 +6,7 @@ export type DocumentListItemTagList = DocumentListItemTag[]
 
 export type DocumentListItem = Pick<
   GqlDocument,
-  | 'id'
-  | 'slug'
-  | 'emoji'
-  | 'title'
-  | 'draft'
-  | 'rawContent'
-  | 'content'
-  | 'path'
-  | 'publishedAt'
-  | 'modifiedAt'
-  | 'createdAt'
-  | 'updatedAt'
+  'id' | 'slug' | 'emoji' | 'title' | 'draft' | 'path' | 'publishedAt' | 'modifiedAt'
 > & {
   tags?: DocumentListItemTagList
 }

@@ -19,8 +19,6 @@ graphql(`
           emoji
           title
           draft
-          rawContent
-          content
           path
           tags {
             edges {
@@ -32,8 +30,6 @@ graphql(`
           }
           publishedAt
           modifiedAt
-          createdAt
-          updatedAt
         }
       }
     }

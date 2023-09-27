@@ -248,6 +248,33 @@ export type TagEdge = {
   node?: Maybe<Tag>
 }
 
+export type DocumentQueryVariables = Exact<{
+  slug?: InputMaybe<Scalars['String']['input']>
+}>
+
+export type DocumentQuery = {
+  __typename?: 'Query'
+  document?: {
+    __typename?: 'Document'
+    id: string
+    slug: string
+    emoji: string
+    title: string
+    draft: boolean
+    content: string
+    path?: string | null
+    publishedAt: any
+    modifiedAt: any
+    tags?: {
+      __typename?: 'TagConnection'
+      edges?: Array<{
+        __typename?: 'TagEdge'
+        node?: { __typename?: 'Tag'; id: string; name: string } | null
+      } | null> | null
+    } | null
+  } | null
+}
+
 export type DocumentsQueryVariables = Exact<{
   after?: InputMaybe<Scalars['String']['input']>
   first?: InputMaybe<Scalars['Int']['input']>
@@ -269,13 +296,9 @@ export type DocumentsQuery = {
         emoji: string
         title: string
         draft: boolean
-        rawContent: string
-        content: string
         path?: string | null
         publishedAt: any
         modifiedAt: any
-        createdAt: any
-        updatedAt: any
         tags?: {
           __typename?: 'TagConnection'
           edges?: Array<{
@@ -302,6 +325,82 @@ export type TagsQuery = {
   } | null
 }
 
+export const DocumentDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'document' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'slug' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'document' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'slug' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'slug' } },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'emoji' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'draft' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'content' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'path' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'tags' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'edges' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'node' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'publishedAt' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'modifiedAt' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<DocumentQuery, DocumentQueryVariables>
 export const DocumentsDocument = {
   kind: 'Document',
   definitions: [
@@ -380,8 +479,6 @@ export const DocumentsDocument = {
                             { kind: 'Field', name: { kind: 'Name', value: 'emoji' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'title' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'draft' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'rawContent' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'content' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'path' } },
                             {
                               kind: 'Field',
@@ -420,8 +517,6 @@ export const DocumentsDocument = {
                             },
                             { kind: 'Field', name: { kind: 'Name', value: 'publishedAt' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'modifiedAt' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'updatedAt' } },
                           ],
                         },
                       },
