@@ -40,19 +40,14 @@ graphql(`
   }
 `)
 
-export interface useWorkspaceDocumentsProps {
+export interface GetDocumentsArgs {
   after?: string
   first?: number
   filter?: DocumentConnectionFilter
   sort?: ConnectionSort
 }
 
-export default async function getDocuments({
-  after,
-  first,
-  filter,
-  sort,
-}: useWorkspaceDocumentsProps) {
+export default async function getDocuments({ after, first, filter, sort }: GetDocumentsArgs) {
   const { data, error } = await getClient().query(DocumentsDocument, {
     after: after,
     first: first,
