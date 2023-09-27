@@ -15,7 +15,7 @@ export default async function DocumentList() {
       {documents.map((document) => (
         <Link
           key={document.id}
-          href='/'
+          href={`/docs/${document.slug}`}
           className='p-8 rounded-xl bg-cyan-950 flex flex-col gap-4 hover:transform hover:duration-500 hover:scale-105'
         >
           <div className='text-center text-7xl'>
