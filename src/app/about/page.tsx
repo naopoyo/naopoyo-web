@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import { NavBar } from '@/components/nav-bar'
+import Paragraph from '@/components/paragraph/paragraph'
 
 export default function Abount() {
   return (
@@ -21,13 +22,13 @@ export default function Abount() {
         <div className='flex flex-col items-center gap-8'>
           <section className='text-center'>
             <h2 className='text-xl font-bold'>naopoyo</h2>
-            <p>個人でWEBサービスの開発などをやっています。</p>
-            <p>このサイトでは個人開発で得た知識を整理して公開しています。</p>
+            <Paragraph>個人でWEBサービスの開発などをやっています。</Paragraph>
+            <Paragraph>このサイトでは個人開発で得た知識を整理して公開しています。</Paragraph>
           </section>
 
           <section className='text-center'>
             <h2 className='text-xl font-bold'>つくったもの</h2>
-            <p>Hacker Sheet</p>
+            <Paragraph>Hacker Sheet</Paragraph>
           </section>
         </div>
       </section>
