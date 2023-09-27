@@ -288,6 +288,20 @@ export type DocumentsQuery = {
   } | null
 }
 
+export type TagsQueryVariables = Exact<{ [key: string]: never }>
+
+export type TagsQuery = {
+  __typename?: 'Query'
+  tags?: {
+    __typename?: 'TagConnection'
+    totalCount: number
+    edges?: Array<{
+      __typename?: 'TagEdge'
+      node?: { __typename?: 'Tag'; id: string; name: string; documentCount: number } | null
+    } | null> | null
+  } | null
+}
+
 export const DocumentsDocument = {
   kind: 'Document',
   definitions: [
@@ -422,3 +436,49 @@ export const DocumentsDocument = {
     },
   ],
 } as unknown as DocumentNode<DocumentsQuery, DocumentsQueryVariables>
+export const TagsDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'tags' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'tags' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'totalCount' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'edges' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'node' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'documentCount' } },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<TagsQuery, TagsQueryVariables>
