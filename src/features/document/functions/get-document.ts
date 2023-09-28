@@ -23,6 +23,28 @@ graphql(`
       }
       publishedAt
       modifiedAt
+      outboundLinkDocuments {
+        edges {
+          node {
+            id
+            slug
+            emoji
+            title
+            draft
+            path
+            tags {
+              edges {
+                node {
+                  id
+                  name
+                }
+              }
+            }
+            publishedAt
+            modifiedAt
+          }
+        }
+      }
     }
   }
 `)
@@ -39,8 +61,16 @@ export default async function getDocument({ slug }: GetDocumentArgs) {
   const document =
     (data?.document && {
       ...data.document,
-      tags: data.document.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) || [],
-    }) ||
+      tags: data.document.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
+      outboundLinkDocuments:
+        data.document.outboundLinkDocuments?.edges
+          ?.map((doc) => doc?.node)
+          .filter(nonNullableFilter)
+          .map((doc) => ({
+            ...doc,
+            tags: doc.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
+          })) ?? [],
+    }) ??
     null
 
   return { document, error }

@@ -2,7 +2,7 @@ import { Noto_Color_Emoji } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
 import { NavBar } from '@/components/nav-bar'
-import { getDocument } from '@/features/document'
+import { DocumentContent, DocumentToc, getDocument } from '@/features/document'
 import { createDateFormat, timeAgo } from '@/utils'
 
 const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: ['400'] })
@@ -49,6 +49,18 @@ export default async function Document({
           ))}
         </ul>
       </header>
+      <div className='flex flex-row max-w-max gap-12 mx-auto'>
+        <div className='w-[768px]'>
+          <main>
+            <DocumentContent document={document} permaLinkFormat='/docs/{{slug}}' />
+          </main>
+        </div>
+        <aside className='w-[300px]'>
+          <nav className='sticky top-[64px] p-2'>
+            <DocumentToc document={document} />
+          </nav>
+        </aside>
+      </div>
     </>
   )
 }

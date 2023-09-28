@@ -272,6 +272,30 @@ export type DocumentQuery = {
         node?: { __typename?: 'Tag'; id: string; name: string } | null
       } | null> | null
     } | null
+    outboundLinkDocuments?: {
+      __typename?: 'DocumentConnection'
+      edges?: Array<{
+        __typename?: 'DocumentEdge'
+        node?: {
+          __typename?: 'Document'
+          id: string
+          slug: string
+          emoji: string
+          title: string
+          draft: boolean
+          path?: string | null
+          publishedAt: any
+          modifiedAt: any
+          tags?: {
+            __typename?: 'TagConnection'
+            edges?: Array<{
+              __typename?: 'TagEdge'
+              node?: { __typename?: 'Tag'; id: string; name: string } | null
+            } | null> | null
+          } | null
+        } | null
+      } | null> | null
+    } | null
   } | null
 }
 
@@ -393,6 +417,76 @@ export const DocumentDocument = {
                 },
                 { kind: 'Field', name: { kind: 'Name', value: 'publishedAt' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'modifiedAt' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'outboundLinkDocuments' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'edges' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'node' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'emoji' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'draft' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'path' } },
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'tags' },
+                                    selectionSet: {
+                                      kind: 'SelectionSet',
+                                      selections: [
+                                        {
+                                          kind: 'Field',
+                                          name: { kind: 'Name', value: 'edges' },
+                                          selectionSet: {
+                                            kind: 'SelectionSet',
+                                            selections: [
+                                              {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'node' },
+                                                selectionSet: {
+                                                  kind: 'SelectionSet',
+                                                  selections: [
+                                                    {
+                                                      kind: 'Field',
+                                                      name: { kind: 'Name', value: 'id' },
+                                                    },
+                                                    {
+                                                      kind: 'Field',
+                                                      name: { kind: 'Name', value: 'name' },
+                                                    },
+                                                  ],
+                                                },
+                                              },
+                                            ],
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'publishedAt' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'modifiedAt' } },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
               ],
             },
           },

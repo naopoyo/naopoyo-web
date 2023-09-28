@@ -8,7 +8,15 @@ export type DocumentListItem = Pick<
   GqlDocument,
   'id' | 'slug' | 'emoji' | 'title' | 'draft' | 'path' | 'publishedAt' | 'modifiedAt'
 > & {
-  tags?: DocumentListItemTagList
+  tags: DocumentListItemTagList
 }
 
 export type DocumentList = DocumentListItem[]
+
+export type Document = Pick<
+  GqlDocument,
+  'id' | 'slug' | 'emoji' | 'title' | 'draft' | 'path' | 'content' | 'publishedAt' | 'modifiedAt'
+> & {
+  tags: DocumentListItemTagList
+  outboundLinkDocuments: DocumentListItem[]
+}
