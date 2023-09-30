@@ -1,7 +1,6 @@
 import { Noto_Color_Emoji } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
-import { NavBar } from '@/components/nav-bar'
 import { DocumentContent, DocumentToc, getDocument } from '@/features/document'
 import { createDateFormat, timeAgo } from '@/utils'
 
@@ -21,7 +20,6 @@ export default async function Document({
 
   return (
     <>
-      <NavBar />
       <header className='py-16 flex flex-col gap-10'>
         <div className='text-center text-7xl'>
           <span className={notoColorEmoji.className}>{document.emoji}</span>

@@ -1,13 +1,10 @@
 import Image from 'next/image'
 
-import { NavBar } from '@/components/nav-bar'
 import Paragraph from '@/components/paragraph/paragraph'
 
 export default function Abount() {
   return (
     <>
-      <NavBar />
-
       <h1 className='py-16 text-4xl text-center font-bold'>About</h1>
 
       <section className='p-8 flex flex-col items-center gap-4'>
