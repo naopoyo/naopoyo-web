@@ -22,8 +22,8 @@ export default function Abount() {
         <div className='flex flex-col items-center gap-8'>
           <section className='text-center'>
             <h2 className='text-xl font-bold'>naopoyo</h2>
-            <Paragraph>個人でWEBサービスの開発などをやっています。</Paragraph>
-            <Paragraph>このサイトでは個人開発で得た知識を整理して公開しています。</Paragraph>
+            <Paragraph>個人でWEBサービスの開発をやっています。</Paragraph>
+            <Paragraph>このサイトでは個人開発で学んだことなどを整理して公開しています。</Paragraph>
           </section>
 
           <section className='text-center'>
