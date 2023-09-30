@@ -215,6 +215,7 @@ export type QueryTagsArgs = {
   before?: InputMaybe<Scalars['String']['input']>
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<ConnectionSort>
 }
 
 export type Tag = {
@@ -335,7 +336,9 @@ export type DocumentsQuery = {
   } | null
 }
 
-export type TagsQueryVariables = Exact<{ [key: string]: never }>
+export type TagsQueryVariables = Exact<{
+  sort?: InputMaybe<ConnectionSort>
+}>
 
 export type TagsQuery = {
   __typename?: 'Query'
@@ -632,12 +635,26 @@ export const TagsDocument = {
       kind: 'OperationDefinition',
       operation: 'query',
       name: { kind: 'Name', value: 'tags' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'sort' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'ConnectionSort' } },
+        },
+      ],
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
           {
             kind: 'Field',
             name: { kind: 'Name', value: 'tags' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'sort' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'sort' } },
+              },
+            ],
             selectionSet: {
               kind: 'SelectionSet',
               selections: [

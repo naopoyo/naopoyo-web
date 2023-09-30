@@ -1,11 +1,11 @@
 import { graphql } from '@/gql'
-import { TagsDocument } from '@/gql/graphql'
+import { ConnectionSort, TagsDocument } from '@/gql/graphql'
 import { getClient } from '@/urql/client'
 import { nonNullableFilter } from '@/utils'
 
 graphql(`
-  query tags {
-    tags {
+  query tags($sort: ConnectionSort) {
+    tags(sort: $sort) {
       totalCount
       edges {
         node {
@@ -18,8 +18,12 @@ graphql(`
   }
 `)
 
-export default async function getTags() {
-  const { data, error } = await getClient().query(TagsDocument, {})
+export interface GetTagsArgs {
+  sort: ConnectionSort
+}
+
+export default async function getTags(args?: GetTagsArgs) {
+  const { data, error } = await getClient().query(TagsDocument, { sort: args?.sort })
 
   const tags = data?.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) || []
 
