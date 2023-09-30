@@ -14,7 +14,7 @@ const config: Config = {
           bg: '#1D2127',
           bg2: '#17223B',
           bg3: '#263859',
-          text: '#AEB8C3',
+          text: '#CCCCCC',
           accent: '#FF6768',
         },
       },
