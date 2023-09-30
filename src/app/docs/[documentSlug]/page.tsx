@@ -18,6 +18,8 @@ export default async function Document({
     return notFound()
   }
 
+  const showModified = document.publishedAt !== document.modifiedAt
+
   return (
     <>
       <header className='py-16 flex flex-col gap-10'>
@@ -27,21 +29,23 @@ export default async function Document({
         <h1 className='text-4xl text-center font-bold'>{document.title}</h1>
         <div className='flex flex-row gap-10 justify-center'>
           <div>
-            <div>Modified</div>
-            <div className='text-gray-400'>
-              {timeAgo(document.modifiedAt)} - {df(document.modifiedAt)}
-            </div>
-          </div>
-          <div>
             <div>Published</div>
             <div className='text-gray-400'>
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
             </div>
           </div>
+          {showModified && (
+            <div>
+              <div>Modified</div>
+              <div className='text-gray-400'>
+                {timeAgo(document.modifiedAt)} - {df(document.modifiedAt)}
+              </div>
+            </div>
+          )}
         </div>
         <ul className='flex flex-row justify-center gap-4'>
           {document.tags.map((tag) => (
-            <li key={tag.id} className='px-3 py-1 rounded bg-cyan-900'>
+            <li key={tag.id} className='px-3 py-1 rounded bg-app-bg3'>
               {tag.name}
             </li>
           ))}
