@@ -58,9 +58,9 @@ export default async function Document({
           </main>
         </div>
         <aside className='w-[300px]'>
-          <nav className='sticky top-[64px] p-2'>
-            <DocumentToc document={document} />
-          </nav>
+          <div className='sticky top-[64px] p-2'>
+            <DocumentToc />
+          </div>
         </aside>
       </div>
     </>

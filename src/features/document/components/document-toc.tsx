@@ -1,41 +1,22 @@
-import { toc } from 'mdast-util-toc'
-import Markdown, { Options } from 'react-markdown'
+'use client'
 
-import { Document } from '@/features/document/types'
+import { useEffect } from 'react'
+import tocbot from 'tocbot'
+
 import styles from '@/styles/markdown.module.scss'
 
-import type { Root } from 'mdast'
-import type { Plugin } from 'unified'
+export default function DocumentToc() {
+  useEffect(() => {
+    tocbot.init({
+      tocSelector: `.${styles.toc}`,
+      contentSelector: `.${styles.markdown}`,
+      headingSelector: 'h2, h3, h4, h5, h6',
+      scrollSmooth: false,
+      headingsOffset: 65,
+    })
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      customComponent: { test: string }
-    }
-  }
-}
+    return () => tocbot.destroy()
+  }, [])
 
-export interface DocumentTocProps {
-  document: Document
-}
-
-export default function DocumentToc({ document }: DocumentTocProps) {
-  const options: Options = {
-    children: document.content,
-    remarkPlugins: [mdToToc],
-  }
-
-  return <Markdown className={styles.toc} {...options} />
-}
-
-const mdToToc: Plugin<void[], Root, Root> = () => {
-  return (tree) => {
-    const tocMap = toc(tree, { ordered: false, tight: true }).map
-    if (tocMap) {
-      tree.children = [tocMap]
-    } else {
-      tree.children = []
-    }
-    return tree
-  }
+  return <nav className={styles.toc} />
 }

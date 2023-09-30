@@ -99,6 +99,13 @@
 .toc {
   font-size: 14px;
 
+  :global {
+    .is-active-link {
+      font-weight: bold;
+      color: #ddffbb;
+    }
+  }
+
   ol,
   ul {
     padding-left: 1.5em;
@@ -115,11 +122,11 @@
     }
   }
 
-  ul {
+  ol {
     list-style-type: disc;
-    ul {
+    ol {
       list-style-type: circle;
-      ul {
+      ol {
         list-style-type: square;
       }
     }
