@@ -43,12 +43,12 @@ export interface GetDocumentsArgs {
   sort?: ConnectionSort
 }
 
-export default async function getDocuments({ after, first, filter, sort }: GetDocumentsArgs) {
+export default async function getDocuments(args?: GetDocumentsArgs) {
   const { data, error } = await getClient().query(DocumentsDocument, {
-    after: after,
-    first: first,
-    filter: filter,
-    sort: sort,
+    after: args?.after,
+    first: args?.first,
+    filter: args?.filter,
+    sort: args?.sort,
   })
 
   const documents =

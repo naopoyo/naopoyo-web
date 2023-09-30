@@ -10,7 +10,7 @@ export default async function TagList() {
       {tags.map((tag) => (
         <Link
           key={tag.id}
-          href='/'
+          href={`/tags/${tag.name}`}
           className='p-4 rounded-xl bg-cyan-950/50 flex flex-col gap-4 hover:transform hover:duration-500 hover:scale-105'
         >
           <div className='flex flex-row gap-2'>
