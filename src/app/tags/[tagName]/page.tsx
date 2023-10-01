@@ -1,9 +1,25 @@
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { DocumentList, getDocuments } from '@/features/document'
 import getTag from '@/features/tag/functions/get-tag'
 
-export default async function TagDetail({ params: { tagName } }: { params: { tagName: string } }) {
+interface TagDetailProps {
+  params: { tagName: string }
+}
+
+export async function generateMetadata({ params: { tagName } }: TagDetailProps): Promise<Metadata> {
+  const decodedTagName = decodeURI(tagName)
+  const { tag } = await getTag({ name: decodedTagName })
+
+  if (!tag) return {}
+
+  return {
+    title: `${tag.name} - Tags`,
+  }
+}
+
+export default async function TagDetail({ params: { tagName } }: TagDetailProps) {
   const decodedTagName = decodeURI(tagName)
   const { tag } = await getTag({ name: decodedTagName })
 

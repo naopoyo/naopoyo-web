@@ -1,7 +1,11 @@
+import { Metadata } from 'next'
 import Image from 'next/image'
 
 import Paragraph from '@/components/paragraph/paragraph'
 
+export const metadata: Metadata = {
+  title: 'About',
+}
 export default function Abount() {
   return (
     <>

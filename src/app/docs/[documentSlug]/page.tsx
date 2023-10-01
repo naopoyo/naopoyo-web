@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import { Noto_Color_Emoji } from 'next/font/google'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -7,11 +8,23 @@ import { createDateFormat, timeAgo } from '@/utils'
 
 const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: ['400'] })
 
-export default async function Document({
-  params: { documentSlug },
-}: {
+interface DocumentProps {
   params: { documentSlug: string }
-}) {
+}
+
+export async function generateMetadata({
+  params: { documentSlug },
+}: DocumentProps): Promise<Metadata> {
+  const { document } = await getDocument({ slug: documentSlug })
+
+  if (!document) return {}
+
+  return {
+    title: document.title,
+  }
+}
+
+export default async function Document({ params: { documentSlug } }: DocumentProps) {
   const { document } = await getDocument({ slug: documentSlug })
   const df = createDateFormat('yyyy-MM-dd')
 

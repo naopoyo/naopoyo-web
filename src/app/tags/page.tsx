@@ -1,4 +1,10 @@
+import { Metadata } from 'next'
+
 import { TagList } from '@/features/tag'
+
+export const metadata: Metadata = {
+  title: 'Tags',
+}
 
 export default function Tags() {
   return (
