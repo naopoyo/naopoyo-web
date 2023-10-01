@@ -1,9 +1,9 @@
 import { cacheExchange, createClient, fetchExchange } from '@urql/core'
 import { registerUrql } from '@urql/next/rsc'
 
-const makeClient = () => {
+function makeClient() {
   return createClient({
-    url: `${process.env.HACKERSHEET_API_ENDPOINT}`,
+    url: makeUrl(),
     exchanges: [cacheExchange, fetchExchange],
     fetchOptions: {
       headers: {
@@ -11,6 +11,14 @@ const makeClient = () => {
       },
     },
   })
+}
+
+function makeUrl() {
+  const timestamp = Date.now()
+  const cacheRefreshInterval = 5 * 60 * 1000
+  const roundedTimeStamp = Math.floor(timestamp / cacheRefreshInterval) * cacheRefreshInterval
+
+  return `${process.env.HACKERSHEET_API_ENDPOINT}?${roundedTimeStamp}`
 }
 
 export const { getClient } = registerUrql(makeClient)
