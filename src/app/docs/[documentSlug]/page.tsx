@@ -1,4 +1,5 @@
 import { Noto_Color_Emoji } from 'next/font/google'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { DocumentList, DocumentContent, DocumentToc, getDocument } from '@/features/document'
@@ -19,6 +20,7 @@ export default async function Document({
   }
 
   const showModified = document.publishedAt !== document.modifiedAt
+  const showTags = document.tags.length > 0
   const showInboundLinkDocuments = document.inboundLinkDocuments.length > 0
 
   return (
@@ -44,13 +46,19 @@ export default async function Document({
             </div>
           )}
         </div>
-        <ul className='flex flex-row justify-center gap-4'>
-          {document.tags.map((tag) => (
-            <li key={tag.id} className='px-3 py-1 rounded bg-app-bg3'>
-              {tag.name}
-            </li>
-          ))}
-        </ul>
+        {showTags && (
+          <ul className='flex flex-row justify-center gap-4'>
+            {document.tags.map((tag) => (
+              <Link
+                key={tag.id}
+                href={`/tags/${tag.name}`}
+                className='px-3 py-1 rounded bg-app-bg3 hover:transform hover:duration-500 hover:scale-110'
+              >
+                <li>{tag.name}</li>
+              </Link>
+            ))}
+          </ul>
+        )}
       </header>
       <div className='flex flex-row max-w-max gap-12 mx-auto'>
         <div className='w-[768px]'>
