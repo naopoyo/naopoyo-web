@@ -12,6 +12,7 @@ graphql(`
           id
           name
           documentCount
+          documentCountInPublished
         }
       }
     }

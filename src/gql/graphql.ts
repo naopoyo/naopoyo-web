@@ -222,6 +222,7 @@ export type Tag = {
   __typename?: 'Tag'
   createdAt: Scalars['DateTime']['output']
   documentCount: Scalars['Int']['output']
+  documentCountInPublished: Scalars['Int']['output']
   id: Scalars['ID']['output']
   name: Scalars['String']['output']
   updatedAt: Scalars['DateTime']['output']
@@ -336,6 +337,21 @@ export type DocumentsQuery = {
   } | null
 }
 
+export type TagQueryVariables = Exact<{
+  name?: InputMaybe<Scalars['String']['input']>
+}>
+
+export type TagQuery = {
+  __typename?: 'Query'
+  tag?: {
+    __typename?: 'Tag'
+    id: string
+    name: string
+    documentCount: number
+    documentCountInPublished: number
+  } | null
+}
+
 export type TagsQueryVariables = Exact<{
   sort?: InputMaybe<ConnectionSort>
 }>
@@ -347,7 +363,13 @@ export type TagsQuery = {
     totalCount: number
     edges?: Array<{
       __typename?: 'TagEdge'
-      node?: { __typename?: 'Tag'; id: string; name: string; documentCount: number } | null
+      node?: {
+        __typename?: 'Tag'
+        id: string
+        name: string
+        documentCount: number
+        documentCountInPublished: number
+      } | null
     } | null> | null
   } | null
 }
@@ -628,6 +650,48 @@ export const DocumentsDocument = {
     },
   ],
 } as unknown as DocumentNode<DocumentsQuery, DocumentsQueryVariables>
+export const TagDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'tag' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'name' } },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'tag' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'name' },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'name' } },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'documentCount' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'documentCountInPublished' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<TagQuery, TagQueryVariables>
 export const TagsDocument = {
   kind: 'Document',
   definitions: [
@@ -674,6 +738,10 @@ export const TagsDocument = {
                             { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'documentCount' } },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'documentCountInPublished' },
+                            },
                           ],
                         },
                       },

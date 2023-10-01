@@ -17,7 +17,9 @@ const documents = {
     types.DocumentDocument,
   '\n  query documents(\n    $after: String\n    $first: Int\n    $filter: DocumentConnectionFilter\n    $sort: ConnectionSort\n  ) {\n    documents(after: $after, first: $first, filter: $filter, sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          slug\n          emoji\n          title\n          draft\n          path\n          tags {\n            edges {\n              node {\n                id\n                name\n              }\n            }\n          }\n          publishedAt\n          modifiedAt\n        }\n      }\n    }\n  }\n':
     types.DocumentsDocument,
-  '\n  query tags($sort: ConnectionSort) {\n    tags(sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          name\n          documentCount\n        }\n      }\n    }\n  }\n':
+  '\n  query tag($name: String) {\n    tag(name: $name) {\n      id\n      name\n      documentCount\n      documentCountInPublished\n    }\n  }\n':
+    types.TagDocument,
+  '\n  query tags($sort: ConnectionSort) {\n    tags(sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          name\n          documentCount\n          documentCountInPublished\n        }\n      }\n    }\n  }\n':
     types.TagsDocument,
 }
 
@@ -51,8 +53,14 @@ export function graphql(
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(
-  source: '\n  query tags($sort: ConnectionSort) {\n    tags(sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          name\n          documentCount\n        }\n      }\n    }\n  }\n'
-): (typeof documents)['\n  query tags($sort: ConnectionSort) {\n    tags(sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          name\n          documentCount\n        }\n      }\n    }\n  }\n']
+  source: '\n  query tag($name: String) {\n    tag(name: $name) {\n      id\n      name\n      documentCount\n      documentCountInPublished\n    }\n  }\n'
+): (typeof documents)['\n  query tag($name: String) {\n    tag(name: $name) {\n      id\n      name\n      documentCount\n      documentCountInPublished\n    }\n  }\n']
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: '\n  query tags($sort: ConnectionSort) {\n    tags(sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          name\n          documentCount\n          documentCountInPublished\n        }\n      }\n    }\n  }\n'
+): (typeof documents)['\n  query tags($sort: ConnectionSort) {\n    tags(sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          name\n          documentCount\n          documentCountInPublished\n        }\n      }\n    }\n  }\n']
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {}
