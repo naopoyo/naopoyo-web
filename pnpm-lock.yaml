@@ -23,9 +23,6 @@ dependencies:
   graphql:
     specifier: 16.8.1
     version: 16.8.1
-  mdast-util-toc:
-    specifier: 7.0.0
-    version: 7.0.0
   mustache:
     specifier: 4.2.0
     version: 4.2.0
@@ -53,9 +50,6 @@ dependencies:
   tocbot:
     specifier: 4.21.1
     version: 4.21.1
-  unified:
-    specifier: 11.0.3
-    version: 11.0.3
   unist-util-visit:
     specifier: 5.0.0
     version: 5.0.0
@@ -70,9 +64,6 @@ devDependencies:
   '@types/hast':
     specifier: 3.0.1
     version: 3.0.1
-  '@types/mdast':
-    specifier: 4.0.1
-    version: 4.0.1
   '@types/mustache':
     specifier: 4.2.3
     version: 4.2.3
@@ -1595,6 +1586,7 @@ packages:
     resolution: {integrity: sha512-IlKct1rUTJ1T81d8OHzyop15kGv9A/ff7Gz7IJgrk6jDb4Udw77pCJ+vq8oxZf4Ghpm+616+i1s/LNg/Vh7d+g==}
     dependencies:
       '@types/unist': 3.0.0
+    dev: false
 
   /@types/ms@0.7.32:
     resolution: {integrity: sha512-xPSg0jm4mqgEkNhowKgZFBNtwoEwF6gJ4Dhww+GFpm3IgtNseHQZ5IqdNwnquZEoANxyDAKDRAdVo4Z72VvD/g==}
@@ -1632,10 +1624,6 @@ packages:
 
   /@types/scheduler@0.16.3:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
-
-  /@types/ungap__structured-clone@0.3.0:
-    resolution: {integrity: sha512-eBWREUhVUGPze+bUW22AgUr05k8u+vETzuYdLYSvWqGTUe0KOf+zVnOB1qER5wMcw8V6D9Ar4DfJmVvD1yu0kQ==}
-    dev: false
 
   /@types/unist@2.0.8:
     resolution: {integrity: sha512-d0XxK3YTObnWVp6rZuev3c49+j4Lo8g4L1ZRm9z5L0xpoZycUPshHgczK5gsUMaZOstjVYYi09p5gYvUtfChYw==}
@@ -4217,18 +4205,6 @@ packages:
     resolution: {integrity: sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg==}
     dependencies:
       '@types/mdast': 4.0.1
-    dev: false
-
-  /mdast-util-toc@7.0.0:
-    resolution: {integrity: sha512-C28UcSqjmnWuvgT8d97qpaItHKvySqVPAECUzqQ51xuMyNFFJwcFoKW77KoMjtXrclTidLQFDzLUmTmrshRweA==}
-    dependencies:
-      '@types/mdast': 4.0.1
-      '@types/ungap__structured-clone': 0.3.0
-      '@ungap/structured-clone': 1.2.0
-      github-slugger: 2.0.0
-      mdast-util-to-string: 4.0.0
-      unist-util-is: 6.0.0
-      unist-util-visit: 5.0.0
     dev: false
 
   /merge2@1.4.1:
