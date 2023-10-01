@@ -6,7 +6,7 @@ export default function TagDetail({ params: { tagName } }: { params: { tagName: 
     <>
       <h1 className='py-16 text-4xl text-center font-bold'>{decodedTagName}</h1>
       <section className='p-8'>
-        <DocumentList filter={{ tags: [decodedTagName] }} />
+        <DocumentList filter={{ tags: [decodedTagName], draft: false }} />
       </section>
     </>
   )

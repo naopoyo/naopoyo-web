@@ -14,7 +14,7 @@ export default async function Document({
   const { document } = await getDocument({ slug: documentSlug })
   const df = createDateFormat('yyyy-MM-dd')
 
-  if (!document) {
+  if (!document || document.draft) {
     return notFound()
   }
 
