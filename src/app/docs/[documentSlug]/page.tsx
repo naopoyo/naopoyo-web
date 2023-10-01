@@ -91,6 +91,9 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
           <DocumentList documents={document.inboundLinkDocuments} />
         </section>
       )}
+      <footer className='h-96 p-8 flex flex-col items-center justify-end'>
+        <p>&copy; naopoyo</p>
+      </footer>
     </>
   )
 }
