@@ -87,6 +87,68 @@
     }
   }
 
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #efefef;
+
+    thead {
+      tr th {
+        background: #efefef;
+      }
+      border-bottom: 2px solid #ccc;
+    }
+
+    tbody {
+      tr th {
+        background: #efefef;
+        border-bottom: 1px solid #efefef;
+      }
+      tr:nth-child(odd) td {
+        background: #f1f1f1;
+      }
+    }
+
+    th,
+    td {
+      padding: 8px;
+      font-size: 0.875rem;
+      &.left {
+        text-align: left;
+      }
+      &.center {
+        text-align: center;
+      }
+      &.right {
+        text-align: right;
+      }
+    }
+  }
+
+  p > code,
+  td > code {
+    border-radius: 4px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 8px;
+    font-family: 'Source Code Pro', monospace;
+    border: 1px solid rgb(55, 59, 63);
+    background-color: rgb(29, 31, 33);
+  }
+
+  blockquote {
+    border-left: 8px solid #f0f0f0;
+    color: #999;
+
+    margin: 0 -16px;
+    padding: 0 8px;
+
+    blockquote {
+      margin: 0 12px;
+    }
+  }
+
   a {
     color: #6499e9;
 
