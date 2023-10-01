@@ -45,6 +45,28 @@ graphql(`
           }
         }
       }
+      inboundLinkDocuments {
+        edges {
+          node {
+            id
+            slug
+            emoji
+            title
+            draft
+            path
+            tags {
+              edges {
+                node {
+                  id
+                  name
+                }
+              }
+            }
+            publishedAt
+            modifiedAt
+          }
+        }
+      }
     }
   }
 `)
@@ -64,6 +86,14 @@ export default async function getDocument({ slug }: GetDocumentArgs) {
       tags: data.document.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
       outboundLinkDocuments:
         data.document.outboundLinkDocuments?.edges
+          ?.map((doc) => doc?.node)
+          .filter(nonNullableFilter)
+          .map((doc) => ({
+            ...doc,
+            tags: doc.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
+          })) ?? [],
+      inboundLinkDocuments:
+        data.document.inboundLinkDocuments?.edges
           ?.map((doc) => doc?.node)
           .filter(nonNullableFilter)
           .map((doc) => ({

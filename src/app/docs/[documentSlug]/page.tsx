@@ -1,7 +1,7 @@
 import { Noto_Color_Emoji } from 'next/font/google'
 import { notFound } from 'next/navigation'
 
-import { DocumentContent, DocumentToc, getDocument } from '@/features/document'
+import { DocumentList, DocumentContent, DocumentToc, getDocument } from '@/features/document'
 import { createDateFormat, timeAgo } from '@/utils'
 
 const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: ['400'] })
@@ -19,6 +19,7 @@ export default async function Document({
   }
 
   const showModified = document.publishedAt !== document.modifiedAt
+  const showInboundLinkDocuments = document.inboundLinkDocuments.length > 0
 
   return (
     <>
@@ -63,6 +64,12 @@ export default async function Document({
           </div>
         </aside>
       </div>
+      {showInboundLinkDocuments && (
+        <section className='p-8 text-center'>
+          <h2 className='mb-8 text-xl font-bold'>この記事にリンクしている記事</h2>
+          <DocumentList documents={document.inboundLinkDocuments} />
+        </section>
+      )}
     </>
   )
 }

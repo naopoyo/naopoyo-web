@@ -1,19 +1,16 @@
 import { Noto_Color_Emoji } from 'next/font/google'
 import Link from 'next/link'
 
-import { getDocuments } from '@/features/document'
-import { ConnectionSort, DocumentConnectionFilter } from '@/gql/graphql'
+import { DocumentList } from '@/features/document/types'
 import { createDateFormat, timeAgo } from '@/utils'
 
 const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: ['400'] })
 
 export interface DocumentListProps {
-  filter?: DocumentConnectionFilter
-  sort?: ConnectionSort
+  documents: DocumentList
 }
 
-export default async function DocumentList(props?: DocumentListProps) {
-  const { documents } = await getDocuments(props)
+export default async function DocumentList({ documents }: DocumentListProps) {
   const df = createDateFormat('yyyy-MM-dd')
 
   return (
