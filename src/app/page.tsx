@@ -1,7 +1,10 @@
 import { DocumentList, getDocuments } from '@/features/document'
 
 export default async function Home() {
-  const { documents } = await getDocuments({ filter: { draft: false } })
+  const { documents } = await getDocuments({
+    filter: { draft: false },
+    sort: { by: 'modifyed_at', order: 'desc' },
+  })
 
   return (
     <section className='p-8'>
