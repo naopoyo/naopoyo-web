@@ -20,8 +20,22 @@
     line-height: 1.6;
   }
 
-  pre {
-    margin: 1.5rem 0 !important;
+  :global .code-block {
+    margin: 1.5rem 0;
+    border: 1px solid rgb(55, 59, 63);
+    border-radius: 8px;
+
+    pre {
+      font-size: 14px;
+      padding: 16px;
+      overflow: auto;
+    }
+
+    .code-block-header {
+      font-size: 12px;
+      padding: 16px;
+      border-bottom: 1px solid rgb(55, 59, 63);
+    }
   }
 
   h1 {
@@ -138,11 +152,11 @@
   }
 
   blockquote {
-    border-left: 8px solid #f0f0f0;
+    border-left: 8px solid rgba(230, 230, 230, 0.5);
     color: #999;
 
-    margin: 0 -16px;
-    padding: 0 8px;
+    margin: 0;
+    padding: 0 16px;
 
     blockquote {
       margin: 0 12px;

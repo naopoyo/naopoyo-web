@@ -60,8 +60,9 @@ function customPre(props: JSX.IntrinsicElements['pre'] & ExtraProps) {
   const className = code.properties.className as string
   const codeValue = text.value as string
 
-  const match = /language-(\w+)/.exec(className || '')
-  const language = match && match[1] ? (match[1] as string) : 'plain'
+  const match = /language-(.+)/.exec(className || '')
+  const tmpLanguage = match && match[1] ? (match[1] as string) : ''
+  const [language, filename] = tmpLanguage.split(':')
 
-  return <CodeBlock code={codeValue} language={language} />
+  return <CodeBlock code={codeValue} language={language} filename={filename} />
 }

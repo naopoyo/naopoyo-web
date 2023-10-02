@@ -1,10 +1,34 @@
-import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism'
-import { atomDark as style } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import shiki, { BUNDLED_LANGUAGES } from 'shiki'
 
-export default function CodeBlock({ code, language }: { code: string; language: string }) {
+export interface CodeBlockProps {
+  code: string
+  language: string
+  filename: string
+}
+
+export default async function CodeBlock({ code, language, filename }: CodeBlockProps) {
+  const highlighter = await shiki.getHighlighter({
+    theme: 'github-dark-dimmed',
+  })
+
+  const showFilename = !!filename
+  const shikiLang = BUNDLED_LANGUAGES.find((lang) => lang.id === language)
+  const tokens = shikiLang ? highlighter.codeToThemedTokens(code, shikiLang.id) : null
+  const html =
+    tokens &&
+    shiki.renderToHtml(tokens, {
+      elements: {
+        pre({ children }) {
+          return children
+        },
+      },
+    })
+
   return (
-    <SyntaxHighlighter style={style} language={language} PreTag='pre'>
-      {code}
-    </SyntaxHighlighter>
+    <div className='code-block'>
+      {showFilename && <div className='code-block-header'>{filename}</div>}
+      {html && <pre dangerouslySetInnerHTML={{ __html: html }} />}
+      {!html && <pre>{code}</pre>}
+    </div>
   )
 }
