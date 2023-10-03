@@ -19,7 +19,7 @@ export default async function DocumentList({ documents }: DocumentListProps) {
         <Link
           key={document.id}
           href={`/docs/${document.slug}`}
-          className='p-8 rounded-xl bg-app-bg2 border border-app-bg3/80 flex flex-col gap-4 hover:transform hover:duration-500 hover:scale-110'
+          className='p-8 rounded-xl bg-app-bg2 border border-app-bg3/80 flex flex-col gap-4 hover:transform hover:duration-500 hover:scale-105'
         >
           <div className='text-center text-7xl'>
             <span className={notoColorEmoji.className}>{document.emoji}</span>
