@@ -86,7 +86,7 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
         </aside>
       </div>
       {showInboundLinkDocuments && (
-        <section className='p-8 text-center'>
+        <section className='mt-8 p-8 text-center'>
           <h2 className='mb-8 text-xl font-bold'>この記事にリンクしている記事</h2>
           <DocumentList documents={document.inboundLinkDocuments} />
         </section>
