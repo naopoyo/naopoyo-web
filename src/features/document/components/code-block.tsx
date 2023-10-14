@@ -1,4 +1,11 @@
+import * as fs from 'fs/promises'
+import { join as pathJoin } from 'path'
+
 import shiki, { BUNDLED_LANGUAGES } from 'shiki'
+
+const getShikiPath = (): string => {
+  return pathJoin(process.cwd(), 'src/shiki')
+}
 
 export interface CodeBlockProps {
   code: string
@@ -6,10 +13,28 @@ export interface CodeBlockProps {
   filename: string
 }
 
+const touched = { current: false }
+
+const touchShikiPath = (): void => {
+  if (touched.current) return
+  fs.readdir(getShikiPath())
+  touched.current = true
+}
+
+let highlighter: shiki.Highlighter | null = null
+
 export default async function CodeBlock({ code, language, filename }: CodeBlockProps) {
-  const highlighter = await shiki.getHighlighter({
-    theme: 'github-dark-dimmed',
-  })
+  if (highlighter === null) {
+    touchShikiPath()
+
+    highlighter = await shiki.getHighlighter({
+      theme: 'github-dark-dimmed',
+      paths: {
+        languages: `${getShikiPath()}/languages/`,
+        themes: `${getShikiPath()}/themes/`,
+      },
+    })
+  }
 
   const showFilename = !!filename
   const shikiLang = BUNDLED_LANGUAGES.find((lang) => lang.id === language)
