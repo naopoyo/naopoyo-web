@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises'
 import { join as pathJoin } from 'path'
 
-import shiki, { BUNDLED_LANGUAGES } from 'shiki'
+import { Highlighter, BUNDLED_LANGUAGES, getHighlighter, renderToHtml } from 'shiki'
 
 const getShikiPath = (): string => {
   return pathJoin(process.cwd(), 'src/shiki')
@@ -21,13 +21,13 @@ const touchShikiPath = (): void => {
   touched.current = true
 }
 
-let highlighter: shiki.Highlighter | null = null
+let highlighter: Highlighter | null = null
 
 export default async function CodeBlock({ code, language, filename }: CodeBlockProps) {
   if (highlighter === null) {
     touchShikiPath()
 
-    highlighter = await shiki.getHighlighter({
+    highlighter = await getHighlighter({
       theme: 'github-dark-dimmed',
       paths: {
         languages: `${getShikiPath()}/languages/`,
@@ -41,7 +41,7 @@ export default async function CodeBlock({ code, language, filename }: CodeBlockP
   const tokens = shikiLang ? highlighter.codeToThemedTokens(code, shikiLang.id) : null
   const html =
     tokens &&
-    shiki.renderToHtml(tokens, {
+    renderToHtml(tokens, {
       elements: {
         pre({ children }) {
           return children
