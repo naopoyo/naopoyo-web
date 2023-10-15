@@ -1,12 +1,15 @@
 import { Metadata } from 'next'
-import { Noto_Color_Emoji } from 'next/font/google'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { DocumentList, DocumentContent, DocumentToc, getDocument } from '@/features/document'
+import {
+  DocumentList,
+  DocumentContent,
+  DocumentToc,
+  getDocument,
+  DocumentEmoji,
+} from '@/features/document'
 import { createDateFormat, timeAgo } from '@/utils'
-
-const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: ['400'] })
 
 interface DocumentProps {
   params: { documentSlug: string }
@@ -40,7 +43,7 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
     <>
       <header className='py-16 flex flex-col gap-10'>
         <div className='text-center text-7xl'>
-          <span className={notoColorEmoji.className}>{document.emoji}</span>
+          <DocumentEmoji emoji={document.emoji} />
         </div>
         <h1 className='text-4xl text-center font-bold'>{document.title}</h1>
         <div className='flex flex-row gap-10 justify-center'>

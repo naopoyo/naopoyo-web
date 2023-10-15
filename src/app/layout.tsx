@@ -1,4 +1,4 @@
-import './globals.css'
+import './globals.scss'
 
 import { GoogleAnalytics } from '@/components/google-analytics'
 import NabBar from '@/components/nav-bar/nav-bar'
