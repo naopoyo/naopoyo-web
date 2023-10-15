@@ -1,10 +1,12 @@
 import Link from 'next/link'
 
-import { getTags } from '@/features/tag'
+import { TagList } from '@/features/tag/types'
 
-export default async function TagList() {
-  const { tags } = await getTags({ sort: { by: 'document_count', order: 'desc' } })
+export interface TagListProps {
+  tags: TagList
+}
 
+export default async function TagList({ tags }: TagListProps) {
   return (
     <div className='grid md:grid-cols-6 grid-cols-2 gap-8'>
       {tags.map(
