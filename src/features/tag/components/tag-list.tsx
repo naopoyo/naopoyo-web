@@ -6,7 +6,7 @@ export default async function TagList() {
   const { tags } = await getTags({ sort: { by: 'document_count', order: 'desc' } })
 
   return (
-    <div className='grid grid-cols-6 gap-8'>
+    <div className='grid md:grid-cols-6 grid-cols-2 gap-8'>
       {tags.map(
         (tag) =>
           tag.documentCountInPublished > 0 && (
