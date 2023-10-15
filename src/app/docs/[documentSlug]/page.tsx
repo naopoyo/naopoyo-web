@@ -41,7 +41,7 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
 
   return (
     <>
-      <header className='py-16 flex flex-col gap-10'>
+      <header className='py-16 flex flex-col gap-10 md:px-0 w-full px-4'>
         <div className='text-center text-7xl'>
           <DocumentEmoji emoji={document.emoji} />
         </div>
@@ -77,19 +77,19 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
         )}
       </header>
       <div className='flex flex-row max-w-max gap-12 mx-auto'>
-        <div className='w-[768px]'>
+        <div className='md:w-[768px] md:px-0 w-full px-4'>
           <main>
             <DocumentContent document={document} permaLinkFormat='/docs/{{slug}}' />
           </main>
         </div>
-        <aside className='w-[300px]'>
+        <aside className='hidden md:inline-block w-[300px]'>
           <div className='sticky top-[64px] p-2'>
             <DocumentToc />
           </div>
         </aside>
       </div>
       {showInboundLinkDocuments && (
-        <section className='mt-8 p-8 text-center'>
+        <section className='mt-16 p-8 text-center'>
           <h2 className='mb-8 text-xl font-bold'>この記事にリンクしている記事</h2>
           <DocumentList documents={document.inboundLinkDocuments} />
         </section>
