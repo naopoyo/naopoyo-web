@@ -14,6 +14,7 @@ export interface CodeBlockProps {
 }
 
 const touched = { current: false }
+let highlighterPromise: Promise<Highlighter> | null = null
 
 const touchShikiPath = (): void => {
   if (touched.current) return
@@ -21,21 +22,26 @@ const touchShikiPath = (): void => {
   touched.current = true
 }
 
-let highlighter: Highlighter | null = null
-
-export default async function CodeBlock({ code, language, filename }: CodeBlockProps) {
-  if (highlighter === null) {
-    touchShikiPath()
-
-    highlighter = await getHighlighter({
-      theme: 'github-dark-dimmed',
-      paths: {
-        languages: `${getShikiPath()}/languages/`,
-        themes: `${getShikiPath()}/themes/`,
-      },
-    })
+const getShikiHighlighter = async () => {
+  if (highlighterPromise) {
+    return highlighterPromise
   }
 
+  touchShikiPath()
+
+  highlighterPromise = getHighlighter({
+    theme: 'github-dark-dimmed',
+    paths: {
+      languages: `${getShikiPath()}/languages/`,
+      themes: `${getShikiPath()}/themes/`,
+    },
+  })
+
+  return highlighterPromise
+}
+
+export default async function CodeBlock({ code, language, filename }: CodeBlockProps) {
+  const highlighter = await getShikiHighlighter()
   const showFilename = !!filename
   const shikiLang = BUNDLED_LANGUAGES.find((lang) => lang.id === language)
   const tokens = shikiLang ? highlighter.codeToThemedTokens(code, shikiLang.id) : null
