@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         app: {
           // https://colorhunt.co/palette/17223b2638596b778dff6768
-          bg: '#1D2127',
+          bg: '#10151c',
           bg2: '#17223B',
           bg3: '#263859',
           text: '#CCCCCC',
