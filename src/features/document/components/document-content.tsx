@@ -1,4 +1,5 @@
 import { Element, Text } from 'hast'
+import Link from 'next/link'
 import Markdown, { ExtraProps, Options } from 'react-markdown'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
@@ -31,11 +32,26 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
       [processInternalLinks, { document: document, permaLinkFormat: permaLinkFormat }],
     ],
     components: {
+      a: customLink,
       pre: customPre,
     },
   }
 
   return <Markdown className={styles.markdown} {...options} />
+}
+
+function customLink(props: JSX.IntrinsicElements['a'] & ExtraProps) {
+  const { href, children } = props
+
+  if (!href) {
+    return <>{children}</>
+  }
+
+  return href.startsWith('/') || href === '' ? (
+    <Link href={href}>{children}</Link>
+  ) : (
+    <a href={href}>{children}</a>
+  )
 }
 
 function customPre(props: JSX.IntrinsicElements['pre'] & ExtraProps) {
