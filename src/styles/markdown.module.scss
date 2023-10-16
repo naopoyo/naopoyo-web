@@ -175,11 +175,19 @@
 
 .toc {
   font-size: 14px;
+  a {
+    color: rgb(170, 170, 170);
+  }
+  li {
+    color: rgb(170, 170, 170);
+  }
 
   :global {
+    li:has(> .is-active-link) {
+      color: #ff0090;
+    }
     .is-active-link {
-      font-weight: bold;
-      color: #ddffbb;
+      color: rgb(255, 255, 255);
     }
   }
 
