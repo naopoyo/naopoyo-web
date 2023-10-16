@@ -8,6 +8,9 @@ interface TagDetailProps {
   params: { tagName: string }
 }
 
+export const dynamic = 'force-static'
+export const revalidate = 60
+
 export async function generateMetadata({ params: { tagName } }: TagDetailProps): Promise<Metadata> {
   const decodedTagName = decodeURI(tagName)
   const { tag } = await getTag({ name: decodedTagName })
