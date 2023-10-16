@@ -48,14 +48,14 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
         <h1 className='text-4xl text-center font-bold'>{document.title}</h1>
         <div className='flex flex-row gap-10 justify-center'>
           <div>
-            <div>Published</div>
+            <div className='text-center'>Published</div>
             <div className='text-gray-400'>
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
             </div>
           </div>
           {showModified && (
             <div>
-              <div>Modified</div>
+              <div className='text-center'>Modified</div>
               <div className='text-gray-400'>
                 {timeAgo(document.modifiedAt)} - {df(document.modifiedAt)}
               </div>
