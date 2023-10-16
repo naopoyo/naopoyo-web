@@ -105,23 +105,22 @@
   table {
     width: 100%;
     table-layout: fixed;
-    border-collapse: collapse;
-    border: 1px solid #efefef;
+    border-collapse: separate;
+    border-radius: 8px;
+    border-spacing: 0;
+    border: 1px solid rgb(55, 59, 63);
+    overflow: hidden;
 
     thead {
-      tr th {
-        background: #efefef;
-      }
-      border-bottom: 2px solid #ccc;
+      background-color: rgb(55, 59, 63);
     }
 
     tbody {
-      tr th {
-        background: #efefef;
-        border-bottom: 1px solid #efefef;
-      }
-      tr:nth-child(odd) td {
-        background: #f1f1f1;
+      // tr th {
+      //   background: #efefef;
+      // }
+      td {
+        border-top: 1px solid rgb(55, 59, 63);
       }
     }
 
@@ -129,6 +128,7 @@
     td {
       padding: 8px;
       font-size: 0.875rem;
+      // border: 1px solid rgb(55, 59, 63);
       &.left {
         text-align: left;
       }
