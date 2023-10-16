@@ -65,13 +65,14 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
         {showTags && (
           <ul className='flex flex-row justify-center gap-4'>
             {document.tags.map((tag) => (
-              <Link
-                key={tag.id}
-                href={`/tags/${tag.name}`}
-                className='px-3 py-1 rounded bg-app-bg3 hover:transform hover:duration-500 hover:scale-110'
-              >
-                <li>{tag.name}</li>
-              </Link>
+              <li key={tag.id}>
+                <Link
+                  href={`/tags/${tag.name}`}
+                  className='block px-3 py-1 rounded bg-app-bg3 hover:transform hover:duration-500 hover:scale-110'
+                >
+                  {tag.name}
+                </Link>
+              </li>
             ))}
           </ul>
         )}
