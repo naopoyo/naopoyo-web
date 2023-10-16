@@ -9,8 +9,11 @@ export default async function Home() {
   })
 
   return (
-    <section className='p-8'>
-      <DocumentList documents={documents} />
-    </section>
+    <>
+      <h1 className='py-16 text-4xl text-center font-bold'>Documents</h1>
+      <section className='p-8'>
+        <DocumentList documents={documents} />
+      </section>
+    </>
   )
 }
