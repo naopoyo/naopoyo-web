@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: 'Tags',
 }
 
+export const revalidate = 60
+
 export default async function Tags() {
   const { tags } = await getTags({ sort: { by: 'document_count', order: 'desc' } })
 

@@ -10,7 +10,7 @@ function makeClient() {
         Authorization: `bearer ${process.env.HACKERSHEET_API_ACCESS_KEY}`,
       },
       next: {
-        revalidate: 30,
+        revalidate: 60,
       },
     },
   })
