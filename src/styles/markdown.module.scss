@@ -184,7 +184,7 @@
 
   :global {
     li:has(> .is-active-link) {
-      color: #ff0090;
+      color: rgb(255, 255, 255);
     }
     .is-active-link {
       color: rgb(255, 255, 255);
