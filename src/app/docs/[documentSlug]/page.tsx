@@ -15,6 +15,8 @@ interface DocumentProps {
   params: { documentSlug: string }
 }
 
+export const dynamic = 'force-static'
+
 export async function generateMetadata({
   params: { documentSlug },
 }: DocumentProps): Promise<Metadata> {
