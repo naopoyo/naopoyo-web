@@ -141,13 +141,13 @@
     }
   }
 
-  p > code,
-  td > code {
+  code:not(pre code) {
     border-radius: 4px;
     display: inline-block;
     box-sizing: border-box;
-    padding: 0 8px;
+    padding: 2px 8px;
     font-family: 'Source Code Pro', monospace;
+    line-height: 1.2;
     border: 1px solid rgb(55, 59, 63);
     background-color: rgb(29, 31, 33);
   }
