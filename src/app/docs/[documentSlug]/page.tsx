@@ -87,6 +87,7 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
           </main>
         </div>
         <aside className='hidden md:inline-block w-[300px]'>
+          <div className='text-gray-300 font-bold'>目次</div>
           <div className='sticky top-[64px] p-2'>
             <DocumentToc />
           </div>
