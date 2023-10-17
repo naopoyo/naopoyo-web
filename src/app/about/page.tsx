@@ -13,7 +13,7 @@ export default function Abount() {
 
       <section className='p-8 flex flex-col items-center gap-4'>
         <Image
-          src='/naopoyo.png'
+          src='/naopoyo2.png'
           width={160}
           height={160}
           alt='logo'
