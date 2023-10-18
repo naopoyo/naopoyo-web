@@ -39,6 +39,7 @@ export default function GoogleAnalytics() {
       <Script
         strategy='afterInteractive'
         src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
+        async={true}
       />
       <Script
         id='gtag-init'
