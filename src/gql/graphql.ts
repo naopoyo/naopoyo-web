@@ -274,6 +274,14 @@ export type DocumentQuery = {
         node?: { __typename?: 'Tag'; id: string; name: string } | null
       } | null> | null
     } | null
+    preview?: {
+      __typename?: 'Asset'
+      id: string
+      width: number
+      height: number
+      path?: string | null
+      fileUrl: string
+    } | null
     outboundLinkDocuments?: {
       __typename?: 'DocumentConnection'
       edges?: Array<{
@@ -355,6 +363,14 @@ export type DocumentsQuery = {
             __typename?: 'TagEdge'
             node?: { __typename?: 'Tag'; id: string; name: string } | null
           } | null> | null
+        } | null
+        preview?: {
+          __typename?: 'Asset'
+          id: string
+          width: number
+          height: number
+          path?: string | null
+          fileUrl: string
         } | null
       } | null
     } | null> | null
@@ -461,6 +477,20 @@ export const DocumentDocument = {
                           ],
                         },
                       },
+                    ],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'preview' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'path' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'fileUrl' } },
                     ],
                   },
                 },
@@ -725,6 +755,20 @@ export const DocumentsDocument = {
                                       ],
                                     },
                                   },
+                                ],
+                              },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'preview' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'path' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'fileUrl' } },
                                 ],
                               },
                             },

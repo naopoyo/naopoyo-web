@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .grid-template-rows-subgrid {
+    grid-template-rows: subgrid;
+  }
+}
+
 :root {
   font-family: 'Helvetica', 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Meiryo',
     'Hiragino Sans', sans-serif;

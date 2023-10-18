@@ -21,6 +21,13 @@ graphql(`
           }
         }
       }
+      preview {
+        id
+        width
+        height
+        path
+        fileUrl
+      }
       publishedAt
       modifiedAt
       outboundLinkDocuments {

@@ -44,7 +44,7 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
 
   return (
     <>
-      <header className='py-16 flex flex-col gap-10 md:px-0 w-full px-4'>
+      <header className='my-16 flex flex-col gap-10 md:px-0 w-full px-4'>
         <div className='text-center text-7xl'>
           <DocumentEmoji emoji={document.emoji} />
         </div>
@@ -80,6 +80,18 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
           </ul>
         )}
       </header>
+      {document.preview && (
+        <div className='my-16'>
+          <picture>
+            <img
+              src={document.preview.fileUrl}
+              width={document.preview.width}
+              height={document.preview.height}
+              alt='preview'
+            />
+          </picture>
+        </div>
+      )}
       <div className='flex flex-row max-w-max gap-12 mx-auto'>
         <div className='md:w-[768px] md:px-0 w-full px-4'>
           <main>
