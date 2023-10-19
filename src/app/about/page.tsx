@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
 
-import Paragraph from '@/components/paragraph/paragraph'
+import { Link } from '@/components/link'
+import { Paragraph } from '@/components/paragraph'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -24,12 +25,26 @@ export default function Abount() {
           <section className='text-center'>
             <h2 className='text-xl font-bold'>naopoyo</h2>
             <Paragraph>個人でWEBサービスの開発をやっています。</Paragraph>
-            <Paragraph>このサイトでは個人開発で学んだことなどを整理して公開しています。</Paragraph>
+            <Paragraph>
+              このサイトでは個人開発で学んだことなどをまとめた記事を公開しています。
+            </Paragraph>
           </section>
 
           <section className='text-center'>
             <h2 className='text-xl font-bold'>つくったもの</h2>
-            <Paragraph>Hacker Sheet</Paragraph>
+            <Paragraph>
+              <Link href='https://hackersheet.com'>Hacker Sheet</Link>
+            </Paragraph>
+          </section>
+
+          <section className='text-center'>
+            <h2 className='text-xl font-bold'>SNS</h2>
+            <Paragraph>
+              <Link href='https://github.com/naopoyo'>GitHub</Link>
+            </Paragraph>
+            <Paragraph>
+              <Link href='https://twitter.com/naopoyo_tw'>X</Link>
+            </Paragraph>
           </section>
         </div>
       </section>

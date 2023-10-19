@@ -16,6 +16,7 @@ const config: Config = {
           bg3: '#263859',
           text: '#CCCCCC',
           accent: '#FF6768',
+          link: '#96d0ff',
         },
       },
     },
