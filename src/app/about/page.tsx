@@ -4,9 +4,12 @@ import Image from 'next/image'
 import { Link } from '@/components/link'
 import { Paragraph } from '@/components/paragraph'
 
+export const runtime = 'edge'
+
 export const metadata: Metadata = {
   title: 'About',
 }
+
 export default function Abount() {
   return (
     <>
