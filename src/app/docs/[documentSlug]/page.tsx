@@ -8,6 +8,7 @@ import {
   DocumentToc,
   getDocument,
   DocumentEmoji,
+  getDocuments,
 } from '@/features/document'
 import { createDateFormat, timeAgo } from '@/utils'
 
@@ -38,9 +39,16 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
     return notFound()
   }
 
+  const { documents: resentDocuments } = await getDocuments({
+    first: 3,
+    filter: { draft: false, excludeSlugs: [document.slug] },
+    sort: { by: 'published_at', order: 'desc' },
+  })
+
   const showModified = document.publishedAt !== document.modifiedAt
   const showTags = document.tags.length > 0
   const showInboundLinkDocuments = document.inboundLinkDocuments.length > 0
+  const showRecentDocuments = resentDocuments.length > 0
 
   return (
     <>
@@ -109,6 +117,12 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
         <section className='mt-16 p-8 text-center'>
           <h2 className='mb-8 text-xl font-bold'>この記事にリンクしている記事</h2>
           <DocumentList documents={document.inboundLinkDocuments} />
+        </section>
+      )}
+      {showRecentDocuments && (
+        <section className='mt-16 p-8 text-center'>
+          <h2 className='mb-8 text-xl font-bold'>最近公開された記事</h2>
+          <DocumentList documents={resentDocuments} />
         </section>
       )}
       <footer className='h-96 p-8 flex flex-col items-center justify-end'>
