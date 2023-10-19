@@ -1,6 +1,5 @@
 import { DocumentList, getDocuments } from '@/features/document'
 
-export const runtime = 'edge'
 export const revalidate = 60
 
 export default async function Home() {
