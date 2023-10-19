@@ -5,7 +5,7 @@ export const revalidate = 60
 export default async function Home() {
   const { documents } = await getDocuments({
     filter: { draft: false },
-    sort: { by: 'modifyed_at', order: 'desc' },
+    sort: { by: 'published_at', order: 'desc' },
   })
 
   return (

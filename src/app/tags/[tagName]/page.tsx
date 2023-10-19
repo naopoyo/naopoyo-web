@@ -30,7 +30,10 @@ export default async function TagDetail({ params: { tagName } }: TagDetailProps)
     return notFound()
   }
 
-  const { documents } = await getDocuments({ filter: { tags: [tag.name], draft: false } })
+  const { documents } = await getDocuments({
+    filter: { tags: [tag.name], draft: false },
+    sort: { by: 'published_at', order: 'desc' },
+  })
 
   return (
     <>
