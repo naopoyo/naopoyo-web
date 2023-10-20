@@ -96,6 +96,7 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
               width={document.preview.width}
               height={document.preview.height}
               alt='preview'
+              loading='lazy'
             />
           </picture>
         </div>

@@ -27,6 +27,7 @@ export default async function DocumentList({ documents }: DocumentListProps) {
                   width={document.preview.width}
                   height={document.preview.height}
                   alt='preview'
+                  loading='lazy'
                 />
               </picture>
             ) : (
