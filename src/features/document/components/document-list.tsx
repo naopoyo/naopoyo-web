@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { DocumentEmoji } from '@/features/document'
@@ -22,7 +23,7 @@ export default async function DocumentList({ documents }: DocumentListProps) {
           <div className='flex items-center justify-center'>
             {document.preview ? (
               <picture>
-                <img
+                <Image
                   src={document.preview.fileUrl}
                   width={document.preview.width}
                   height={document.preview.height}

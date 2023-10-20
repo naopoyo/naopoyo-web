@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -91,7 +92,7 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
       {document.preview && (
         <div className='my-16'>
           <picture>
-            <img
+            <Image
               src={document.preview.fileUrl}
               width={document.preview.width}
               height={document.preview.height}
