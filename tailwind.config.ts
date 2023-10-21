@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin'
+
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -21,6 +23,14 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.grid-template-rows-subgrid': {
+          'grid-template-rows': 'subgrid',
+        },
+      })
+    }),
+  ],
 }
 export default config

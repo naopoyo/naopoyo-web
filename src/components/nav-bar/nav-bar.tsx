@@ -2,12 +2,12 @@ import Link from 'next/link'
 
 export default function NabBar() {
   return (
-    <nav className='h-[64px] sticky top-0 z-10 px-8 bg-app-bg/50 backdrop-blur-xl flex flex-row justify-center'>
+    <nav className='sticky top-0 z-10 flex h-[64px] flex-row justify-center bg-app-bg/50 px-8 backdrop-blur-xl'>
       <div className='flex flex-auto items-center gap-4'>
-        <div className='font-bold text-2xl'>
+        <div className='text-2xl font-bold'>
           <Link href='/'>naopoyo</Link>
         </div>
-        <ul className='flex-auto flex flex-row gap-6 items-center justify-end'>
+        <ul className='flex flex-auto flex-row items-center justify-end gap-6'>
           <li className='text-sm'>
             <Link href='/'>Docs</Link>
           </li>

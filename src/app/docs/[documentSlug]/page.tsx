@@ -53,12 +53,12 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
 
   return (
     <>
-      <header className='my-16 flex flex-col gap-10 md:px-0 w-full px-4'>
+      <header className='my-16 flex w-full flex-col gap-10 px-4 md:px-0'>
         <div className='text-center text-7xl'>
           <DocumentEmoji emoji={document.emoji} />
         </div>
-        <h1 className='text-4xl text-center font-bold'>{document.title}</h1>
-        <div className='flex flex-row gap-10 justify-center'>
+        <h1 className='text-center text-4xl font-bold'>{document.title}</h1>
+        <div className='flex flex-row justify-center gap-10'>
           <div>
             <div className='text-center'>Published</div>
             <div className='text-gray-400'>
@@ -80,7 +80,7 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
               <li key={tag.id}>
                 <Link
                   href={`/tags/${tag.name}`}
-                  className='block px-3 py-1 rounded bg-app-bg3 hover:transform hover:duration-500 hover:scale-110'
+                  className='block rounded bg-app-bg3 px-3 py-1 hover:scale-110 hover:duration-500'
                 >
                   {tag.name}
                 </Link>
@@ -102,14 +102,14 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
           </picture>
         </div>
       )}
-      <div className='flex flex-row max-w-max gap-12 mx-auto'>
-        <div className='md:w-[768px] md:px-0 w-full px-4'>
+      <div className='mx-auto flex max-w-max flex-row gap-12'>
+        <div className='w-full px-4 md:w-[768px] md:px-0'>
           <main>
             <DocumentContent document={document} permaLinkFormat='/docs/{{slug}}' />
           </main>
         </div>
-        <aside className='hidden md:inline-block w-[300px]'>
-          <div className='text-gray-300 font-bold'>目次</div>
+        <aside className='hidden w-[300px] md:inline-block'>
+          <div className='font-bold text-gray-300'>目次</div>
           <div className='sticky top-[64px] p-2'>
             <DocumentToc />
           </div>
@@ -127,7 +127,7 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
           <DocumentList documents={resentDocuments} />
         </section>
       )}
-      <footer className='h-96 p-8 flex flex-col items-center justify-end'>
+      <footer className='flex h-96 flex-col items-center justify-end p-8'>
         <p>&copy; naopoyo</p>
       </footer>
     </>

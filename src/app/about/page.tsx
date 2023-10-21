@@ -11,15 +11,15 @@ export const metadata: Metadata = {
 export default function Abount() {
   return (
     <>
-      <h1 className='py-16 text-4xl text-center font-bold'>About</h1>
+      <h1 className='py-16 text-center text-4xl font-bold'>About</h1>
 
-      <section className='p-8 flex flex-col items-center gap-4'>
+      <section className='flex flex-col items-center gap-4 p-8'>
         <Image
           src='/naopoyo2.png'
           width={160}
           height={160}
           alt='logo'
-          className='object-cover rounded-full'
+          className='rounded-full object-cover'
         />
 
         <div className='flex flex-col items-center gap-8'>

@@ -13,12 +13,12 @@ export default async function DocumentList({ documents }: DocumentListProps) {
   const df = createDateFormat('yyyy-MM-dd')
 
   return (
-    <div className='grid md:grid-cols-3 grid-cols-1 gap-8'>
+    <div className='grid grid-cols-1 gap-8 md:grid-cols-3'>
       {documents.map((document) => (
         <Link
           key={document.id}
           href={`/docs/${document.slug}`}
-          className='grid gap-y-4 grid-template-rows-subgrid row-span-3 p-8 rounded-xl bg-app-bg2 border border-app-bg3/80 hover:transform hover:duration-500 hover:scale-105'
+          className='row-span-3 grid gap-y-4 rounded-xl border border-app-bg3/80 bg-app-bg2 p-8 grid-template-rows-subgrid hover:scale-105 hover:duration-500'
         >
           <div className='flex items-center justify-center'>
             {document.preview ? (
@@ -38,14 +38,14 @@ export default async function DocumentList({ documents }: DocumentListProps) {
             )}
           </div>
           <div className='text-lg'>{document.title}</div>
-          <div className='flex flex-col gap-4 text-center text-gray-300 text-xs'>
+          <div className='flex flex-col gap-4 text-center text-xs text-gray-300'>
             <div>
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
             </div>
             {document.tags.length > 0 && (
               <ul className='flex flex-row justify-end gap-2'>
                 {document.tags.map((tag) => (
-                  <li key={tag.id} className='px-2 py-1 text-xs rounded bg-app-bg3'>
+                  <li key={tag.id} className='rounded bg-app-bg3 px-2 py-1 text-xs'>
                     {tag.name}
                   </li>
                 ))}

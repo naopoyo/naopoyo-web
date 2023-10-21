@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
+  "extends": ["next/core-web-vitals", "prettier", "plugin:tailwindcss/recommended"],
   "plugins": ["import", "unused-imports"],
   "rules": {
     "unused-imports/no-unused-imports": "error",
