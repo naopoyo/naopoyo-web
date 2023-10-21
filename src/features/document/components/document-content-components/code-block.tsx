@@ -6,6 +6,7 @@ import { Highlighter, BUNDLED_LANGUAGES, getHighlighter, renderToHtml } from 'sh
 import styles from '@/styles/document-content.module.scss'
 
 import CodeBlockCopyButton from './code-block-copy-button'
+import CodeBlockIcon from './code-block-icon'
 
 const getShikiPath = (): string => {
   return pathJoin(process.cwd(), 'src/shiki')
@@ -62,7 +63,10 @@ export default async function CodeBlock({ code, language, filename }: CodeBlockP
   return (
     <div className={styles['code-block']}>
       <div className={styles['code-block-header']}>
-        <div className={styles['code-block-filename']}>{showFilename ? filename : language}</div>
+        <div>
+          <CodeBlockIcon language={language} />
+        </div>
+        <div className={styles['code-block-filename']}>{filename}</div>
         <div>
           <CodeBlockCopyButton code={code} />
         </div>
