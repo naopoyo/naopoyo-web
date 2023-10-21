@@ -7,7 +7,7 @@ import remarkGfm from 'remark-gfm'
 import { Document } from '@/features/document/types'
 import styles from '@/styles/markdown.module.scss'
 
-import CodeBlock from './code-block'
+import CodeBlock from './document-content-components/code-block'
 import processInternalLinks from './rehype-plugins/process-internal-links'
 
 declare global {
