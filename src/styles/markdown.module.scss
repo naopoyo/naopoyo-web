@@ -25,6 +25,7 @@
     border: 1px solid rgb(55, 59, 63);
     background-color: rgb(29, 31, 33);
     border-radius: 8px;
+    font-family: var(--font-source-code-pro);
 
     pre {
       font-size: 14px;
@@ -146,7 +147,7 @@
     display: inline-block;
     box-sizing: border-box;
     padding: 2px 8px;
-    font-family: 'Source Code Pro', monospace;
+    font-family: var(--font-source-code-pro);
     line-height: 1.2;
     border: 1px solid rgb(55, 59, 63);
     background-color: rgb(29, 31, 33);

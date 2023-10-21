@@ -1,9 +1,17 @@
 import './globals.scss'
 
+import { Source_Code_Pro } from 'next/font/google'
+
 import { GoogleAnalytics } from '@/components/google-analytics'
 import NabBar from '@/components/nav-bar/nav-bar'
 
 import type { Metadata } from 'next'
+
+const sourceCodePro = Source_Code_Pro({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-source-code-pro',
+})
 
 const baseUrl = process.env.NEXT_PUBLIC_DOMAIN
   ? `https://${process.env.NEXT_PUBLIC_DOMAIN}`
@@ -20,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='ja'>
+    <html lang='ja' className={sourceCodePro.variable}>
       <body className='bg-app-bg text-app-text'>
         <GoogleAnalytics />
         <NabBar />
