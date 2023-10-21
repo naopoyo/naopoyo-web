@@ -3,6 +3,8 @@ import { join as pathJoin } from 'path'
 
 import { Highlighter, BUNDLED_LANGUAGES, getHighlighter, renderToHtml } from 'shiki'
 
+import styles from '@/styles/document-content.module.scss'
+
 import CodeBlockCopyButton from './code-block-copy-button'
 
 const getShikiPath = (): string => {
@@ -58,11 +60,10 @@ export default async function CodeBlock({ code, language, filename }: CodeBlockP
     })
 
   return (
-    /* eslint-disable tailwindcss/no-custom-classname */
-    <div className='code-block'>
-      <div className='code-block-header'>
-        <div className='code-block-filename'>{showFilename ? filename : language}</div>
-        <div className='code-block-copy-button-wrapper'>
+    <div className={styles['code-block']}>
+      <div className={styles['code-block-header']}>
+        <div className={styles['code-block-filename']}>{showFilename ? filename : language}</div>
+        <div>
           <CodeBlockCopyButton code={code} />
         </div>
       </div>

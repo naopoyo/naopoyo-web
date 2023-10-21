@@ -5,7 +5,7 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 
 import { Document } from '@/features/document/types'
-import styles from '@/styles/markdown.module.scss'
+import styles from '@/styles/document-content.module.scss'
 
 import CodeBlock from './document-content-components/code-block'
 import processInternalLinks from './rehype-plugins/process-internal-links'
@@ -37,7 +37,7 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
     },
   }
 
-  return <Markdown className={styles.markdown} {...options} />
+  return <Markdown className={styles['document-content']} {...options} />
 }
 
 function customLink(props: JSX.IntrinsicElements['a'] & ExtraProps) {

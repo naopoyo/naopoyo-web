@@ -1,4 +1,4 @@
-.markdown {
+.document-content {
   :first-child {
     margin-top: 0;
   }
@@ -18,32 +18,6 @@
   p {
     margin: 1.5rem 0;
     line-height: 1.6;
-  }
-
-  :global .code-block {
-    margin: 1.5rem 0;
-    border: 1px solid rgb(55, 59, 63);
-    background-color: rgb(29, 31, 33);
-    border-radius: 8px;
-
-    pre {
-      font-family: var(--font-source-code-pro);
-      font-size: 14px;
-      padding: 16px;
-      overflow: auto;
-    }
-
-    .code-block-header {
-      display: flex;
-      flex-direction: row;
-      font-size: 14px;
-      padding: 16px;
-      border-bottom: 1px solid rgb(55, 59, 63);
-
-      .code-block-filename {
-        flex: 1 1 auto;
-      }
-    }
   }
 
   h1 {
@@ -178,6 +152,32 @@
       text-decoration: underline;
     }
   }
+}
+
+.code-block {
+  margin: 1.5rem 0;
+  border: 1px solid rgb(55, 59, 63);
+  background-color: rgb(29, 31, 33);
+  border-radius: 8px;
+
+  pre {
+    font-family: var(--font-source-code-pro);
+    font-size: 14px;
+    padding: 16px;
+    overflow: auto;
+  }
+}
+
+.code-block-header {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  padding: 16px;
+  border-bottom: 1px solid rgb(55, 59, 63);
+}
+
+.code-block-filename {
+  flex: 1 1 auto;
 }
 
 .toc {
