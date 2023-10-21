@@ -2,6 +2,7 @@ import * as fs from 'fs/promises'
 import { join as pathJoin } from 'path'
 
 import { Highlighter, BUNDLED_LANGUAGES, getHighlighter, renderToHtml } from 'shiki'
+import CodeBlockCopyButton from './code-block-copy-button'
 
 const getShikiPath = (): string => {
   return pathJoin(process.cwd(), 'src/shiki')
@@ -57,7 +58,12 @@ export default async function CodeBlock({ code, language, filename }: CodeBlockP
 
   return (
     <div className='code-block'>
-      {showFilename && <div className='code-block-header'>{filename}</div>}
+      <div className='code-block-header'>
+        <div className='code-block-filename'>{showFilename && filename}</div>
+        <div className='code-block-copy-button-wrapper'>
+          <CodeBlockCopyButton code={code} />
+        </div>
+      </div>
       {html && <pre dangerouslySetInnerHTML={{ __html: html }} />}
       {!html && <pre>{code}</pre>}
     </div>
