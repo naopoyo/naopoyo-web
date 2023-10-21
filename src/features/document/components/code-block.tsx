@@ -59,7 +59,7 @@ export default async function CodeBlock({ code, language, filename }: CodeBlockP
   return (
     <div className='code-block'>
       <div className='code-block-header'>
-        <div className='code-block-filename'>{showFilename && filename}</div>
+        <div className='code-block-filename'>{showFilename ? filename : language}</div>
         <div className='code-block-copy-button-wrapper'>
           <CodeBlockCopyButton code={code} />
         </div>
