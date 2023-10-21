@@ -9,6 +9,9 @@ export default function NabBar() {
         </div>
         <ul className='flex-auto flex flex-row gap-6 items-center justify-end'>
           <li className='text-sm'>
+            <Link href='/'>Docs</Link>
+          </li>
+          <li className='text-sm'>
             <Link href='/tags'>Tags</Link>
           </li>
           <li className='text-sm'>
