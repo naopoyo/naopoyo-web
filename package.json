@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "prettier": "pnpx prettier --write '{src,test}/**/{*.ts,*.tsx}'",
+    "prettier": "prettier --write '{src,test}/**/{*.ts,*.tsx}'",
     "format": "pnpm prettier && pnpm lint:fix",
     "codegen": "gql-gen --config codegen.ts",
     "shiki": "mkdir -p src/shiki && cp -r node_modules/shiki/{languages,themes} src/shiki/"
