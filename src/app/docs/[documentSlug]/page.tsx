@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import { notFound } from 'next/navigation'
 
+import { Link } from '@/components/link'
 import {
   DocumentList,
   DocumentContent,
@@ -50,6 +51,9 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
   const showTags = document.tags.length > 0
   const showInboundLinkDocuments = document.inboundLinkDocuments.length > 0
   const showRecentDocuments = resentDocuments.length > 0
+  const historyUrl = process.env.HACKERSHEET_GITHUB_REPO_URL
+    ? process.env.HACKERSHEET_GITHUB_REPO_URL + '/commits/main/' + document.path
+    : undefined
 
   return (
     <>
@@ -74,16 +78,21 @@ export default async function Document({ params: { documentSlug } }: DocumentPro
             </div>
           )}
         </div>
+        {historyUrl && (
+          <div className='text-center'>
+            <Link href={historyUrl}>更新履歴</Link>
+          </div>
+        )}
         {showTags && (
           <ul className='flex flex-row justify-center gap-4'>
             {document.tags.map((tag) => (
               <li key={tag.id}>
-                <Link
+                <NextLink
                   href={`/tags/${tag.name}`}
                   className='block rounded bg-app-bg3 px-3 py-1 hover:scale-110 hover:duration-500'
                 >
                   {tag.name}
-                </Link>
+                </NextLink>
               </li>
             ))}
           </ul>
