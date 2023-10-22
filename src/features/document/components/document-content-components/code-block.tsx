@@ -1,12 +1,14 @@
 import * as fs from 'fs/promises'
 import { join as pathJoin } from 'path'
 
+import React from 'react'
 import { Highlighter, BUNDLED_LANGUAGES, getHighlighter, renderToHtml } from 'shiki'
 
 import styles from '@/styles/document-content.module.scss'
 
 import CodeBlockCopyButton from './code-block-copy-button'
 import CodeBlockIcon from './code-block-icon'
+import CodeBlockMermaid from './code-block-mermaid'
 
 const getShikiPath = (): string => {
   return pathJoin(process.cwd(), 'src/shiki')
@@ -47,7 +49,6 @@ const getShikiHighlighter = async () => {
 
 export default async function CodeBlock({ code, language, filename }: CodeBlockProps) {
   const highlighter = await getShikiHighlighter()
-  const showFilename = !!filename
   const shikiLang = BUNDLED_LANGUAGES.find((lang) => lang.id === language)
   const tokens = shikiLang ? highlighter.codeToThemedTokens(code, shikiLang.id) : null
   const html =
@@ -59,6 +60,9 @@ export default async function CodeBlock({ code, language, filename }: CodeBlockP
         },
       },
     })
+  const isMermaid = language === 'mermaid'
+
+  if (isMermaid) return <CodeBlockMermaid code={code} />
 
   return (
     <div className={styles['code-block']}>
