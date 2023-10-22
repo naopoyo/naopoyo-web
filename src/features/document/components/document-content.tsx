@@ -1,11 +1,14 @@
 import { Element, Text } from 'hast'
 import Link from 'next/link'
 import Markdown, { ExtraProps, Options } from 'react-markdown'
+import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
 
 import { Document } from '@/features/document/types'
 import styles from '@/styles/document-content.module.scss'
+import 'katex/dist/katex.min.css'
 
 import CodeBlock from './document-content-components/code-block'
 import processInternalLinks from './rehype-plugins/process-internal-links'
@@ -26,10 +29,11 @@ export interface DocumentContentProps {
 export default function DocumentContent({ document, permaLinkFormat }: DocumentContentProps) {
   const options: Options = {
     children: document.content,
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [
       rehypeSlug,
       [processInternalLinks, { document: document, permaLinkFormat: permaLinkFormat }],
+      rehypeKatex,
     ],
     components: {
       a: customLink,
