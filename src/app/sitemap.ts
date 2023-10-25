@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-import { getDocuments } from '@/features/document'
+import { getDocuments } from '@/lib/hackersheet'
 
 type Route = {
   url: string

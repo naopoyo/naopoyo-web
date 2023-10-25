@@ -1,10 +1,10 @@
 import { ImageResponse } from 'next/server'
 
-export const createOgImage = async (
+export default async function DocumentOpengraphImage(
   size: { width: number; height: number },
   emoji: string,
   title: string
-) => {
+) {
   return new ImageResponse(
     (
       <div

@@ -1,4 +1,5 @@
-import { DocumentList, getDocuments } from '@/features/document'
+import { DocumentList } from '@/components/document'
+import { getDocuments } from '@/lib/hackersheet'
 
 export const dynamic = 'force-static'
 export const revalidate = 60

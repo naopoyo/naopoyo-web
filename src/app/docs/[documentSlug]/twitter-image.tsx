@@ -1,8 +1,7 @@
 import { notFound } from 'next/navigation'
 
-import getDocument from '@/features/document/functions/get-document'
-
-import { createOgImage } from './_og-image/create-og-image'
+import { DocumentOpengraphImage } from '@/components/opengraph-image'
+import { getDocument } from '@/lib/hackersheet'
 
 export const runtime = 'edge'
 export const alt = 'naopoyo'
@@ -21,5 +20,5 @@ export default async function TwitterImage({ params: { documentSlug } }: Twitter
 
   if (!document || document.draft) notFound()
 
-  return createOgImage(size, document.emoji, document.title)
+  return DocumentOpengraphImage(size, document.emoji, document.title)
 }

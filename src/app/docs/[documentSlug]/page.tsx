@@ -3,15 +3,9 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { notFound } from 'next/navigation'
 
+import { DocumentList, DocumentContent, DocumentToc, DocumentEmoji } from '@/components/document'
 import { Link } from '@/components/link'
-import {
-  DocumentList,
-  DocumentContent,
-  DocumentToc,
-  getDocument,
-  DocumentEmoji,
-  getDocuments,
-} from '@/features/document'
+import { getDocument, getDocuments } from '@/lib/hackersheet'
 import { createDateFormat, timeAgo } from '@/utils'
 
 interface DocumentProps {

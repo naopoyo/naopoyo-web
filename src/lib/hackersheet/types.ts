@@ -1,4 +1,4 @@
-import { Document as GqlDocument, Tag as GqlTag, Asset as GqlAsset } from '@/gql/graphql'
+import { Document as GqlDocument, Tag as GqlTag, Asset as GqlAsset } from '@/lib/gql/graphql'
 
 export type DocumentPreview = Pick<GqlAsset, 'id' | 'width' | 'height' | 'path' | 'fileUrl'>
 
@@ -24,3 +24,7 @@ export type Document = Pick<
   outboundLinkDocuments: DocumentListItem[]
   preview?: DocumentPreview | null
 }
+
+export type TagListItem = Pick<GqlTag, 'id' | 'name' | 'documentCountInPublished'>
+
+export type TagList = TagListItem[]

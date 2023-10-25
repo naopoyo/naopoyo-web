@@ -34,5 +34,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/src/shiki/languages
-/src/shiki/themes
+/src/lib/shiki/languages/*
+/src/lib/shiki/themes/*
+!/src/lib/shiki/languages/.keep
+!/src/lib/shiki/themes/.keep

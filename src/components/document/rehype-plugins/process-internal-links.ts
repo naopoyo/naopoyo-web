@@ -5,8 +5,9 @@ import Mustache from 'mustache'
 import { Parent } from 'unist'
 import { visit } from 'unist-util-visit'
 
-import { Document } from '@/features/document/types'
 import { isUrl } from '@/utils'
+
+import type { Document } from '@/lib/hackersheet/types'
 
 export interface ProcessInternalLinksArgs {
   document: Document

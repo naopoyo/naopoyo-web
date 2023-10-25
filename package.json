@@ -12,7 +12,7 @@
     "prettier": "prettier --write '{src,test}/**/{*.ts,*.tsx}'",
     "format": "pnpm prettier && pnpm lint:fix",
     "codegen": "gql-gen --config codegen.ts",
-    "shiki": "mkdir -p src/shiki && cp -r node_modules/shiki/{languages,themes} src/shiki/"
+    "shiki": "mkdir -p src/lib/shiki && cp -r node_modules/shiki/{languages,themes} src/lib/shiki/"
   },
   "dependencies": {
     "@graphql-typed-document-node/core": "3.2.0",

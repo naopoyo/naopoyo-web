@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { TagList } from '@/features/tag/types'
+import type { TagList } from '@/lib/hackersheet/types'
 
 export interface TagListProps {
   tags: TagList

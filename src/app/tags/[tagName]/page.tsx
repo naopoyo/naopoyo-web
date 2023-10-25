@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { DocumentList, getDocuments } from '@/features/document'
-import getTag from '@/features/tag/functions/get-tag'
+import { DocumentList } from '@/components/document'
+import { getDocuments, getTag } from '@/lib/hackersheet'
 
 interface TagDetailProps {
   params: { tagName: string }

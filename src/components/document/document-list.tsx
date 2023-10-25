@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { DocumentEmoji } from '@/features/document'
-import { DocumentList } from '@/features/document/types'
+import { DocumentEmoji } from '@/components/document'
 import { createDateFormat, timeAgo } from '@/utils'
+
+import type { DocumentList } from '@/lib/hackersheet/types'
 
 export interface DocumentListProps {
   documents: DocumentList

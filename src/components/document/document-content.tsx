@@ -6,12 +6,13 @@ import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
-import { Document } from '@/features/document/types'
 import styles from '@/styles/document-content.module.scss'
 import 'katex/dist/katex.min.css'
 
-import CodeBlock from './document-content-components/code-block'
+import CodeBlock from './document-content/code-block'
 import processInternalLinks from './rehype-plugins/process-internal-links'
+
+import type { Document } from '@/lib/hackersheet/types'
 
 declare global {
   namespace JSX {

@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
-import { TagList, getTags } from '@/features/tag'
+import { TagList } from '@/components/tag'
+import { getTags } from '@/lib/hackersheet'
 
 export const metadata: Metadata = {
   title: 'Tags',

@@ -1,6 +1,6 @@
-import { graphql } from '@/gql'
-import { ConnectionSort, TagsDocument } from '@/gql/graphql'
-import { getClient } from '@/urql/client'
+import { graphql } from '@/lib/gql'
+import { ConnectionSort, TagsDocument } from '@/lib/gql/graphql'
+import { getClient } from '@/lib/urql/client'
 import { nonNullableFilter } from '@/utils'
 
 graphql(`
