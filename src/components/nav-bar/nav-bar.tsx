@@ -15,6 +15,9 @@ export default function NabBar() {
             <Link href='/tags'>Tags</Link>
           </li>
           <li className='text-sm'>
+            <Link href='/tools'>Tools</Link>
+          </li>
+          <li className='text-sm'>
             <Link href='/about'>About</Link>
           </li>
         </ul>
