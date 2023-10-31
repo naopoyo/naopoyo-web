@@ -3,7 +3,7 @@ import { join as pathJoin } from 'path'
 
 import { BUNDLED_LANGUAGES, Highlighter, getHighlighter, renderToHtml } from 'shiki'
 
-const SHIKI_BASE_PATH = 'src/lib/shiki'
+const SHIKI_BASE_PATH = 'src/shiki'
 const touched = { current: false }
 let highlighterPromise: Promise<Highlighter> | null = null
 
