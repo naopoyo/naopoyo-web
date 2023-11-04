@@ -18,7 +18,7 @@ export default function CodeBlockCopyButton({ code }: CodeBlockCopyButtonProps) 
   }
 
   return (
-    <button className='rounded p-1 hover:bg-white/30' onClick={handleClick}>
+    <button className="rounded p-1 hover:bg-white/30" onClick={handleClick}>
       {copied ? <HiCheck size={18} /> : <HiOutlineClipboardDocumentList size={18} />}
     </button>
   )

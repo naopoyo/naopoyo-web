@@ -42,43 +42,43 @@ export default function RandomEmoji() {
   if (!mounted) return null
 
   return (
-    <div className='flex flex-col gap-4'>
-      <p className='text-center'>
+    <div className="flex flex-col gap-4">
+      <p className="text-center">
         ランダムに選ばれた絵文字をクリップボードにコピーします。コピーした絵文字が表示されます。
       </p>
-      <div className='flex items-center justify-center'>
-        <div className='flex h-32 w-32 items-center justify-center rounded-lg border'>
+      <div className="flex items-center justify-center">
+        <div className="flex h-32 w-32 items-center justify-center rounded-lg border">
           <div
-            className='text-7xl'
+            className="text-7xl"
             style={{ fontFamily: isNotoColorEmoji ? "'Noto Color Emoji" : 'sans-serif' }}
           >
             {emoji}
           </div>
         </div>
       </div>
-      <div className='text-center'>
+      <div className="text-center">
         <input
-          id='is-noto-color-emoji'
-          type='checkbox'
+          id="is-noto-color-emoji"
+          type="checkbox"
           checked={isNotoColorEmoji}
           onChange={handleChange}
         />{' '}
-        <label htmlFor='is-noto-color-emoji'>Noto Color Emoji</label>
+        <label htmlFor="is-noto-color-emoji">Noto Color Emoji</label>
       </div>
-      <div className='text-center'>
+      <div className="text-center">
         <button
-          className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'
+          className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
           onClick={handleClick}
         >
           絵文字をクリップボードにコピー
         </button>
       </div>
 
-      <section className='mt-8 flex flex-col gap-4 text-center'>
-        <h2 className='text-2xl font-bold'>履歴 ({history.length})</h2>
-        <div className='text-center'>
+      <section className="mt-8 flex flex-col gap-4 text-center">
+        <h2 className="text-2xl font-bold">履歴 ({history.length})</h2>
+        <div className="text-center">
           <button
-            className='rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'
+            className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
             onClick={handleAllHistoriesCopyClick}
           >
             履歴をまとめてクリップボードにコピー
@@ -88,7 +88,7 @@ export default function RandomEmoji() {
           履歴の絵文字をクリックするとクリップボードにコピーされます。履歴は画面をリロードするとリセットされます。
         </p>
         {history.length > 0 ? (
-          <ul className='mx-auto grid max-w-sm grid-cols-12 gap-4'>
+          <ul className="mx-auto grid max-w-sm grid-cols-12 gap-4">
             {history.map((item, index) => (
               <li
                 key={index}

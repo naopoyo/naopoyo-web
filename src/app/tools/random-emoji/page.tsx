@@ -12,7 +12,7 @@ export const revalidate = 60
 export default async function RandomEmojiPage() {
   return (
     <>
-      <h1 className='py-16 text-center text-4xl font-bold'>ランダム絵文字コピー</h1>
+      <h1 className="py-16 text-center text-4xl font-bold">ランダム絵文字コピー</h1>
       <RandomEmoji />
     </>
   )

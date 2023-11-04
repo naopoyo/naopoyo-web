@@ -12,8 +12,8 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className='py-16 text-center text-4xl font-bold'>Docs</h1>
-      <section className='p-8'>
+      <h1 className="py-16 text-center text-4xl font-bold">Docs</h1>
+      <section className="p-8">
         <DocumentList documents={documents} />
       </section>
     </>

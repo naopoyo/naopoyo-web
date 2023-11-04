@@ -37,13 +37,13 @@ export default function GoogleAnalytics() {
   return (
     <>
       <Script
-        strategy='afterInteractive'
+        strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
         async={true}
       />
       <Script
-        id='gtag-init'
-        strategy='afterInteractive'
+        id="gtag-init"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
 window.dataLayer = window.dataLayer || [];

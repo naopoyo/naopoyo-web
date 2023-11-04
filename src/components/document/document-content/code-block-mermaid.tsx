@@ -21,14 +21,14 @@ export default function CodeBlockMermaid({ code }: CodeBlockMermaidProps) {
 
   if (!mounted)
     return (
-      <div className='flex h-[400px] items-center justify-center rounded bg-[#1D1F21]'>
+      <div className="flex h-[400px] items-center justify-center rounded bg-[#1D1F21]">
         <div>Loading...</div>
       </div>
     )
 
   return (
-    <div className='flex h-[400px] items-center justify-center overflow-auto rounded bg-[#1D1F21] text-[#1D1F21]'>
-      <div className='max-h-full max-w-full [&>svg]:w-[600px]' ref={ref}>
+    <div className="flex h-[400px] items-center justify-center overflow-auto rounded bg-[#1D1F21] text-[#1D1F21]">
+      <div className="max-h-full max-w-full [&>svg]:w-[600px]" ref={ref}>
         {code}
       </div>
     </div>

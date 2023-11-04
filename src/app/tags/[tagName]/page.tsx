@@ -37,8 +37,8 @@ export default async function TagDetail({ params: { tagName } }: TagDetailProps)
 
   return (
     <>
-      <h1 className='py-16 text-center text-4xl font-bold'>{tag.name}</h1>
-      <section className='p-8'>
+      <h1 className="py-16 text-center text-4xl font-bold">{tag.name}</h1>
+      <section className="p-8">
         <DocumentList documents={documents} />
       </section>
     </>

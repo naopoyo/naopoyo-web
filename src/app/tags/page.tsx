@@ -15,8 +15,8 @@ export default async function Tags() {
 
   return (
     <>
-      <h1 className='py-16 text-center text-4xl font-bold'>Tags</h1>
-      <section className='p-8'>
+      <h1 className="py-16 text-center text-4xl font-bold">Tags</h1>
+      <section className="p-8">
         <TagList tags={tags} />
       </section>
     </>
