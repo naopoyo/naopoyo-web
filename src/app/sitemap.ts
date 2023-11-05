@@ -12,7 +12,7 @@ const baseUrl = process.env.NEXT_PUBLIC_DOMAIN
   : 'http://localhost:3000'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routesMap = ['', '/abount', '/tags'].map((route) => ({
+  const routesMap = ['', '/abount', '/tags', '/tools/random-emoji'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
   }))
