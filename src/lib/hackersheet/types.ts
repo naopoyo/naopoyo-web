@@ -1,30 +1,52 @@
-import { Document as GqlDocument, Tag as GqlTag, Asset as GqlAsset } from '@/lib/gql/graphql'
+export type DocumentPreview = {
+  id: string
+  width: number
+  height: number
+  path?: string | null
+  fileUrl: string
+}
 
-export type DocumentPreview = Pick<GqlAsset, 'id' | 'width' | 'height' | 'path' | 'fileUrl'>
-
-export type DocumentListItemTag = Pick<GqlTag, 'id' | 'name'>
+export type DocumentListItemTag = {
+  id: string
+  name: string
+}
 
 export type DocumentListItemTagList = DocumentListItemTag[]
 
-export type DocumentListItem = Pick<
-  GqlDocument,
-  'id' | 'slug' | 'emoji' | 'title' | 'draft' | 'path' | 'publishedAt' | 'modifiedAt'
-> & {
+export type DocumentListItem = {
+  id: string
+  slug: string
+  emoji: string
+  title: string
+  draft: boolean
+  path?: string | null
+  publishedAt: string
+  modifiedAt: string
   tags: DocumentListItemTagList
   preview?: DocumentPreview | null
 }
 
 export type DocumentList = DocumentListItem[]
 
-export type Document = Pick<
-  GqlDocument,
-  'id' | 'slug' | 'emoji' | 'title' | 'draft' | 'path' | 'content' | 'publishedAt' | 'modifiedAt'
-> & {
+export type Document = {
+  id: string
+  slug: string
+  emoji: string
+  title: string
+  draft: boolean
+  content: string
+  path?: string | null
+  publishedAt: string
+  modifiedAt: string
   tags: DocumentListItemTagList
   outboundLinkDocuments: DocumentListItem[]
   preview?: DocumentPreview | null
 }
 
-export type TagListItem = Pick<GqlTag, 'id' | 'name' | 'documentCountInPublished'>
+export type TagListItem = {
+  id: string
+  name: string
+  documentCountInPublished: number
+}
 
 export type TagList = TagListItem[]
