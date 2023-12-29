@@ -4,14 +4,14 @@ import { notFound } from 'next/navigation'
 import { DocumentList } from '@/components/document'
 import { getDocuments, getTag } from '@/lib/hackersheet'
 
-interface TagDetailProps {
+interface TagPageProps {
   params: { tagName: string }
 }
 
 export const dynamic = 'force-static'
 export const revalidate = 60
 
-export async function generateMetadata({ params: { tagName } }: TagDetailProps): Promise<Metadata> {
+export async function generateMetadata({ params: { tagName } }: TagPageProps): Promise<Metadata> {
   const decodedTagName = decodeURI(tagName)
   const { tag } = await getTag({ name: decodedTagName })
 
@@ -22,7 +22,7 @@ export async function generateMetadata({ params: { tagName } }: TagDetailProps):
   }
 }
 
-export default async function TagDetail({ params: { tagName } }: TagDetailProps) {
+export default async function TagPage({ params: { tagName } }: TagPageProps) {
   const decodedTagName = decodeURI(tagName)
   const { tag } = await getTag({ name: decodedTagName })
 

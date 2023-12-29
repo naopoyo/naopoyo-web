@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static'
 export const revalidate = 60
 
-export default async function RandomEmojiPage() {
+export default async function ToolsPage() {
   return (
     <>
       <h1 className="py-16 text-center text-4xl font-bold">Tools</h1>

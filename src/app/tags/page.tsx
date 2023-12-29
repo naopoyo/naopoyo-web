@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static'
 export const revalidate = 60
 
-export default async function Tags() {
+export default async function TagsPage() {
   const { tags } = await getTags({ sort: { by: 'document_count', order: 'desc' } })
 
   return (

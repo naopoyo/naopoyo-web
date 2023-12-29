@@ -4,7 +4,7 @@ import { getDocuments } from '@/lib/hackersheet'
 export const dynamic = 'force-static'
 export const revalidate = 60
 
-export default async function Home() {
+export default async function HomePage() {
   const { documents } = await getDocuments({
     filter: { draft: false },
     sort: { by: 'published_at', order: 'desc' },

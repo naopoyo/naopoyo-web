@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'About',
 }
 
-export default function Abount() {
+export default function AbountPage() {
   return (
     <>
       <h1 className="py-16 text-center text-4xl font-bold">About</h1>

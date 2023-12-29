@@ -8,7 +8,7 @@ import { Link } from '@/components/link'
 import { getDocument, getDocuments } from '@/lib/hackersheet'
 import { createDateFormat, timeAgo } from '@/utils'
 
-interface DocumentProps {
+interface DocumentPageProps {
   params: { documentSlug: string }
 }
 
@@ -17,7 +17,7 @@ export const revalidate = 60
 
 export async function generateMetadata({
   params: { documentSlug },
-}: DocumentProps): Promise<Metadata> {
+}: DocumentPageProps): Promise<Metadata> {
   const { document } = await getDocument({ slug: documentSlug })
 
   if (!document) return {}
@@ -27,7 +27,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function Document({ params: { documentSlug } }: DocumentProps) {
+export default async function DocumentPage({ params: { documentSlug } }: DocumentPageProps) {
   const { document } = await getDocument({ slug: documentSlug })
   const df = createDateFormat('yyyy-MM-dd')
 
