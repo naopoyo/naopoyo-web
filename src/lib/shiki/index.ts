@@ -1,11 +1,5 @@
-import * as fs from 'fs/promises'
-import { join as pathJoin } from 'path'
-
-import { BUNDLED_LANGUAGES, Highlighter, getHighlighter, renderToHtml } from 'shiki'
-
-const SHIKI_BASE_PATH = 'src/shiki'
-const touched = { current: false }
-let highlighterPromise: Promise<Highlighter> | null = null
+import { cache } from 'react'
+import { BUNDLED_LANGUAGES, getHighlighter, renderToHtml } from 'shiki'
 
 export async function highlighteCode(code: string, language: string) {
   const highlighter = await getShikiHighlighter()
@@ -24,30 +18,8 @@ export async function highlighteCode(code: string, language: string) {
   return html
 }
 
-function touchShikiPath(): void {
-  if (touched.current) return
-  fs.readdir(getShikiPath())
-  touched.current = true
-}
-
-function getShikiPath(): string {
-  return pathJoin(process.cwd(), SHIKI_BASE_PATH)
-}
-
-async function getShikiHighlighter() {
-  if (highlighterPromise !== null) {
-    return highlighterPromise
-  }
-
-  touchShikiPath()
-
-  highlighterPromise = getHighlighter({
+const getShikiHighlighter = cache(async () => {
+  return getHighlighter({
     theme: 'github-dark-dimmed',
-    paths: {
-      languages: `${getShikiPath()}/languages/`,
-      themes: `${getShikiPath()}/themes/`,
-    },
   })
-
-  return highlighterPromise
-}
+})
