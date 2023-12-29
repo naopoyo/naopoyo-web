@@ -3,6 +3,8 @@ import { DocumentDocument } from '@/lib/gql/graphql'
 import { getClient } from '@/lib/urql/client'
 import { nonNullableFilter } from '@/utils'
 
+import { Document } from './types'
+
 graphql(`
   query document($slug: String) {
     document(slug: $slug) {
@@ -88,7 +90,7 @@ export default async function getDocument({ slug }: GetDocumentArgs) {
   })
 
   const document =
-    (data?.document && {
+    ((data?.document && {
       ...data.document,
       tags: data.document.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
       outboundLinkDocuments:
@@ -107,8 +109,7 @@ export default async function getDocument({ slug }: GetDocumentArgs) {
             ...doc,
             tags: doc.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
           })) ?? [],
-    }) ??
-    null
+    }) as Document) ?? null
 
   return { document, error }
 }

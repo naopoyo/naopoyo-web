@@ -40,6 +40,7 @@ export type Document = {
   modifiedAt: string
   tags: DocumentListItemTagList
   outboundLinkDocuments: DocumentListItem[]
+  inboundLinkDocuments: DocumentListItem[]
   preview?: DocumentPreview | null
 }
 
