@@ -58,14 +58,14 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         <h1 className="text-center text-4xl font-bold">{document.title}</h1>
         <div className="flex flex-row justify-center gap-10">
           <div>
-            <div className="text-center">Published</div>
+            <div className="text-center">公開日</div>
             <div className="text-gray-400">
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
             </div>
           </div>
           {showModified && (
             <div>
-              <div className="text-center">Modified</div>
+              <div className="text-center">更新日</div>
               <div className="text-gray-400">
                 {timeAgo(document.modifiedAt)} - {df(document.modifiedAt)}
               </div>
