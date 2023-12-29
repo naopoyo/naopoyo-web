@@ -13,7 +13,7 @@ const config: CodegenConfig = {
   documents: ['src/**/*.{ts,tsx}'],
   ignoreNoDocuments: true,
   generates: {
-    'src/lib/gql/': {
+    'src/lib/hackersheet/gql/': {
       preset: 'client',
       presetConfig: {
         fragmentMasking: { unmaskFunctionName: 'getFragmentData' },

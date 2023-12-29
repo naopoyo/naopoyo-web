@@ -1,8 +1,8 @@
-import { graphql } from '@/lib/gql'
-import { ConnectionSort, TagsDocument } from '@/lib/gql/graphql'
 import { nonNullableFilter } from '@/utils'
 
 import { getClient } from './client'
+import { graphql } from './gql'
+import { ConnectionSort, TagsDocument } from './gql/graphql'
 
 graphql(`
   query tags($sort: ConnectionSort) {

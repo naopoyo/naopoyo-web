@@ -1,8 +1,8 @@
-import { graphql } from '@/lib/gql'
-import { DocumentDocument } from '@/lib/gql/graphql'
 import { nonNullableFilter } from '@/utils'
 
 import { getClient } from './client'
+import { graphql } from './gql'
+import { DocumentDocument } from './gql/graphql'
 import { Document } from './types'
 
 graphql(`

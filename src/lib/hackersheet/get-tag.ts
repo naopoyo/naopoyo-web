@@ -1,7 +1,6 @@
-import { graphql } from '@/lib/gql'
-import { TagDocument } from '@/lib/gql/graphql'
-
 import { getClient } from './client'
+import { graphql } from './gql'
+import { TagDocument } from './gql/graphql'
 
 graphql(`
   query tag($name: String) {
