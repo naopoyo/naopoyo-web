@@ -1,8 +1,12 @@
 import { Element, Text } from 'hast'
+import Image from 'next/image'
 import Link from 'next/link'
+import { ReactNode } from 'react'
 import Markdown, { ExtraProps, Options } from 'react-markdown'
 import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
+import remarkDirective from 'remark-directive'
+import remarkDirectiveRehype from 'remark-directive-rehype'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
@@ -17,7 +21,7 @@ import type { Document } from '@/lib/hackersheet/types'
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      customComponent: { test: string }
+      'link-card': { children: ReactNode } & ExtraProps
     }
   }
 }
@@ -30,7 +34,7 @@ export interface DocumentContentProps {
 export default function DocumentContent({ document, permaLinkFormat }: DocumentContentProps) {
   const options: Options = {
     children: document.content,
-    remarkPlugins: [remarkGfm, remarkMath],
+    remarkPlugins: [remarkGfm, remarkMath, remarkDirective, remarkDirectiveRehype],
     rehypePlugins: [
       rehypeSlug,
       [processInternalLinks, { document: document, permaLinkFormat: permaLinkFormat }],
@@ -39,6 +43,7 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
     components: {
       a: customLink,
       pre: customPre,
+      'link-card': (props) => linkCard(props, document),
     },
   }
 
@@ -86,4 +91,48 @@ function customPre(props: JSX.IntrinsicElements['pre'] & ExtraProps) {
   const [language, filename] = tmpLanguage.split(':')
 
   return <CodeBlock code={codeValue} language={language} filename={filename} />
+}
+
+function linkCard(props: { children: ReactNode } & ExtraProps, document: Document) {
+  const { children, node } = props
+
+  if (!node) {
+    return <p>{children}</p>
+  }
+
+  const href = (node['children'][0] as Element).properties?.href
+
+  if (!href) {
+    return <p>{children}</p>
+  }
+
+  const website = document.websites.find((website) => website.url === href)
+
+  if (!website) {
+    return <p>{children}</p>
+  }
+
+  return (
+    <a
+      href={website.url}
+      className="my-4 flex flex-row rounded-lg border border-gray-500 !no-underline hover:bg-slate-500/10"
+    >
+      <div className="flex flex-auto flex-col overflow-hidden px-4 py-2">
+        <div className="flex-auto">{website.ogTitle || website.url}</div>
+        <div className="mb-2 text-xs text-gray-600">{website.ogDescription}</div>
+        <div className="text-nowrap text-gray-500">{website.domain}</div>
+      </div>
+      {website.ogImage && (
+        <div>
+          <Image
+            alt={website.ogTitle}
+            src={website.ogImage}
+            height={website.ogImageHeight}
+            width={website.ogImageWidth}
+            className="aspect-auto max-h-80 max-w-80 rounded-lg object-cover"
+          />
+        </div>
+      )}
+    </a>
+  )
 }

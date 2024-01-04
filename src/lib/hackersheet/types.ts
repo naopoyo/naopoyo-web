@@ -1,3 +1,18 @@
+type Website = {
+  id: string
+  url: string
+  domain: string
+  ogSiteName: string
+  ogTitle: string
+  ogType: string
+  ogUrl: string
+  ogImage: string
+  ogImageWidth: number
+  ogImageHeight: number
+  ogDescription: string
+  ogLocale: string
+}
+
 export type DocumentPreview = {
   id: string
   width: number
@@ -41,6 +56,7 @@ export type Document = {
   tags: DocumentListItemTagList
   outboundLinkDocuments: DocumentListItem[]
   inboundLinkDocuments: DocumentListItem[]
+  websites: Website[]
   preview?: DocumentPreview | null
 }
 

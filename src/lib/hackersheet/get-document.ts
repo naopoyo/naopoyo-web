@@ -76,6 +76,24 @@ graphql(`
           }
         }
       }
+      websites {
+        edges {
+          node {
+            id
+            url
+            domain
+            ogSiteName
+            ogTitle
+            ogType
+            ogUrl
+            ogImage
+            ogImageWidth
+            ogImageHeight
+            ogDescription
+            ogLocale
+          }
+        }
+      }
     }
   }
 `)
@@ -109,6 +127,9 @@ export default async function getDocument({ slug }: GetDocumentArgs) {
             ...doc,
             tags: doc.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
           })) ?? [],
+      websites: data.document.websites?.edges
+        ?.map((website) => website?.node)
+        .filter(nonNullableFilter),
     }) as Document) ?? null
 
   return { document, error }
