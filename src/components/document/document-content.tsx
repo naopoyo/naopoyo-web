@@ -115,7 +115,7 @@ function linkCard(props: { children: ReactNode } & ExtraProps, document: Documen
   return (
     <a
       href={website.url}
-      className="my-4 flex flex-row rounded-lg border border-gray-500 !no-underline hover:bg-slate-500/10"
+      className="my-4 flex flex-col-reverse rounded-lg border border-gray-500 !no-underline hover:bg-slate-500/10 md:flex-row"
     >
       <div className="flex flex-auto flex-col overflow-hidden px-4 py-2">
         <div className="flex-auto">{website.ogTitle || website.url}</div>
@@ -129,7 +129,7 @@ function linkCard(props: { children: ReactNode } & ExtraProps, document: Documen
             src={website.ogImage}
             height={website.ogImageHeight}
             width={website.ogImageWidth}
-            className="aspect-auto max-h-80 max-w-80 rounded-lg object-cover"
+            className="aspect-auto max-w-full rounded-lg object-cover md:max-h-80 md:max-w-80"
           />
         </div>
       )}
