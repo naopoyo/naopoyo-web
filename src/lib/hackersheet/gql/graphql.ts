@@ -81,6 +81,7 @@ export type Document = {
   tags?: Maybe<TagConnection>
   title: Scalars['String']['output']
   updatedAt: Scalars['DateTime']['output']
+  websites?: Maybe<WebsiteConnection>
 }
 
 export type DocumentAssetsArgs = {
@@ -105,6 +106,13 @@ export type DocumentOutboundLinkDocumentsArgs = {
 }
 
 export type DocumentTagsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>
+  before?: InputMaybe<Scalars['String']['input']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+}
+
+export type DocumentWebsitesArgs = {
   after?: InputMaybe<Scalars['String']['input']>
   before?: InputMaybe<Scalars['String']['input']>
   first?: InputMaybe<Scalars['Int']['input']>
@@ -176,6 +184,10 @@ export type Query = {
   tag?: Maybe<Tag>
   /** タグ一覧. */
   tags?: Maybe<TagConnection>
+  /** ウェブサイト. */
+  website?: Maybe<Website>
+  /** ウェブサイト一覧. */
+  websites?: Maybe<WebsiteConnection>
 }
 
 export type QueryAssetArgs = {
@@ -219,6 +231,17 @@ export type QueryTagsArgs = {
   sort?: InputMaybe<ConnectionSort>
 }
 
+export type QueryWebsiteArgs = {
+  id: Scalars['String']['input']
+}
+
+export type QueryWebsitesArgs = {
+  after?: InputMaybe<Scalars['String']['input']>
+  before?: InputMaybe<Scalars['String']['input']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+}
+
 export type Tag = {
   __typename?: 'Tag'
   createdAt: Scalars['DateTime']['output']
@@ -249,6 +272,48 @@ export type TagEdge = {
   cursor: Scalars['String']['output']
   /** The item at the end of the edge. */
   node?: Maybe<Tag>
+}
+
+export type Website = {
+  __typename?: 'Website'
+  checksum: Scalars['String']['output']
+  createdAt: Scalars['DateTime']['output']
+  id: Scalars['ID']['output']
+  ogDescription: Scalars['String']['output']
+  ogImage: Scalars['String']['output']
+  ogImageFileSize: Scalars['Int']['output']
+  ogImageHeight: Scalars['Int']['output']
+  ogImageOriginal: Scalars['String']['output']
+  ogImageWidth: Scalars['Int']['output']
+  ogLocale: Scalars['String']['output']
+  ogSiteName: Scalars['String']['output']
+  ogTitle: Scalars['String']['output']
+  ogType: Scalars['String']['output']
+  ogUrl: Scalars['String']['output']
+  updatedAt: Scalars['DateTime']['output']
+  url: Scalars['String']['output']
+}
+
+/** The connection type for Website. */
+export type WebsiteConnection = {
+  __typename?: 'WebsiteConnection'
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<WebsiteEdge>>>
+  /** A list of nodes. */
+  nodes?: Maybe<Array<Maybe<Website>>>
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo
+  /** Total count of nodes. */
+  totalCount: Scalars['Int']['output']
+}
+
+/** An edge in a connection. */
+export type WebsiteEdge = {
+  __typename?: 'WebsiteEdge'
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output']
+  /** The item at the end of the edge. */
+  node?: Maybe<Website>
 }
 
 export type DocumentQueryVariables = Exact<{
