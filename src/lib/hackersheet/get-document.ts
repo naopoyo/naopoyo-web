@@ -82,6 +82,8 @@ graphql(`
             id
             url
             domain
+            title
+            description
             ogSiteName
             ogTitle
             ogType

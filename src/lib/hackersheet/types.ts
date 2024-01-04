@@ -2,6 +2,8 @@ type Website = {
   id: string
   url: string
   domain: string
+  title: string
+  description: string
   ogSiteName: string
   ogTitle: string
   ogType: string

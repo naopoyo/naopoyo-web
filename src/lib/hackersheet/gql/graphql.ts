@@ -278,6 +278,7 @@ export type Website = {
   __typename?: 'Website'
   checksum: Scalars['String']['output']
   createdAt: Scalars['DateTime']['output']
+  description: Scalars['String']['output']
   domain: Scalars['String']['output']
   id: Scalars['ID']['output']
   ogDescription: Scalars['String']['output']
@@ -291,6 +292,7 @@ export type Website = {
   ogTitle: Scalars['String']['output']
   ogType: Scalars['String']['output']
   ogUrl: Scalars['String']['output']
+  title: Scalars['String']['output']
   updatedAt: Scalars['DateTime']['output']
   url: Scalars['String']['output']
 }
@@ -406,6 +408,8 @@ export type DocumentQuery = {
           id: string
           url: string
           domain: string
+          title: string
+          description: string
           ogSiteName: string
           ogTitle: string
           ogType: string
@@ -745,6 +749,8 @@ export const DocumentDocument = {
                                   { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'url' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'domain' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'description' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'ogSiteName' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'ogTitle' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'ogType' } },

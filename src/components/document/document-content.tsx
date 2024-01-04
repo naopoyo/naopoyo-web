@@ -118,14 +118,16 @@ function linkCard(props: { children: ReactNode } & ExtraProps, document: Documen
       className="my-4 flex flex-col-reverse rounded-lg border border-gray-500 !no-underline hover:bg-slate-500/10 md:flex-row"
     >
       <div className="flex flex-auto flex-col overflow-hidden px-4 py-2">
-        <div className="flex-auto">{website.ogTitle || website.url}</div>
-        <div className="mb-2 text-xs text-gray-600">{website.ogDescription}</div>
+        <div className="flex-auto">{website.ogTitle || website.title || website.url}</div>
+        <div className="mb-2 text-xs text-gray-600">
+          {website.ogDescription || website.description}
+        </div>
         <div className="text-nowrap text-gray-500">{website.domain}</div>
       </div>
       {website.ogImage && (
         <div>
           <Image
-            alt={website.ogTitle}
+            alt={website.ogTitle || website.title}
             src={website.ogImage}
             height={website.ogImageHeight}
             width={website.ogImageWidth}
