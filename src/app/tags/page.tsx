@@ -11,7 +11,7 @@ export const dynamic = 'force-static'
 export const revalidate = 60
 
 export default async function TagsPage() {
-  const { tags } = await getTags({ sort: { by: 'document_count', order: 'desc' } })
+  const { tags } = await getTags({ sort: { by: 'document_count_in_published', order: 'desc' } })
 
   return (
     <>

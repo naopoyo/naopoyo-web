@@ -38,7 +38,7 @@ export default async function DocumentList({ documents }: DocumentListProps) {
               </div>
             )}
           </div>
-          <div className="text-lg">{document.title}</div>
+          <div className="break-all text-lg">{document.title}</div>
           <div className="flex flex-col gap-4 text-center text-xs text-gray-300">
             <div>
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}

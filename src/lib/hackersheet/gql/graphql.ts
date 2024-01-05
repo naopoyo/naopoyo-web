@@ -138,6 +138,7 @@ export type DocumentConnectionFilter = {
   draft?: InputMaybe<Scalars['Boolean']['input']>
   excludeSlugs?: InputMaybe<Array<Scalars['String']['input']>>
   excludeTags?: InputMaybe<Array<Scalars['String']['input']>>
+  keyword?: InputMaybe<Scalars['String']['input']>
   modifiedAtEnd?: InputMaybe<Scalars['DateTime']['input']>
   modifiedAtStart?: InputMaybe<Scalars['DateTime']['input']>
   publishedAtEnd?: InputMaybe<Scalars['DateTime']['input']>

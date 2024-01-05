@@ -9,6 +9,9 @@ export default function NavBar() {
         </div>
         <ul className="flex flex-auto flex-row items-center justify-end gap-6">
           <li className="text-sm">
+            <Link href="/search">Search</Link>
+          </li>
+          <li className="text-sm">
             <Link href="/">Docs</Link>
           </li>
           <li className="text-sm">
