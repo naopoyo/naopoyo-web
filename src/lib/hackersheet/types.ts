@@ -1,3 +1,10 @@
+type OgImage = {
+  id: string
+  file: string
+  height: number
+  width: number
+}
+
 type Website = {
   id: string
   url: string
@@ -8,9 +15,7 @@ type Website = {
   ogTitle: string
   ogType: string
   ogUrl: string
-  ogImage: string
-  ogImageWidth: number
-  ogImageHeight: number
+  ogImage: OgImage | null
   ogDescription: string
   ogLocale: string
 }

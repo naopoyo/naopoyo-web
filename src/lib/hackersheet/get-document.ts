@@ -88,11 +88,14 @@ graphql(`
             ogTitle
             ogType
             ogUrl
-            ogImage
-            ogImageWidth
-            ogImageHeight
             ogDescription
             ogLocale
+            ogImage {
+              id
+              file
+              width
+              height
+            }
           }
         }
       }

@@ -283,11 +283,7 @@ export type Website = {
   domain: Scalars['String']['output']
   id: Scalars['ID']['output']
   ogDescription: Scalars['String']['output']
-  ogImage?: Maybe<Scalars['String']['output']>
-  ogImageFileSize?: Maybe<Scalars['Int']['output']>
-  ogImageHeight?: Maybe<Scalars['Int']['output']>
-  ogImageOriginal: Scalars['String']['output']
-  ogImageWidth?: Maybe<Scalars['Int']['output']>
+  ogImage?: Maybe<WebsiteOgImage>
   ogLocale: Scalars['String']['output']
   ogSiteName: Scalars['String']['output']
   ogTitle: Scalars['String']['output']
@@ -318,6 +314,18 @@ export type WebsiteEdge = {
   cursor: Scalars['String']['output']
   /** The item at the end of the edge. */
   node?: Maybe<Website>
+}
+
+export type WebsiteOgImage = {
+  __typename?: 'WebsiteOgImage'
+  createdAt: Scalars['DateTime']['output']
+  file?: Maybe<Scalars['String']['output']>
+  fileSize?: Maybe<Scalars['Int']['output']>
+  height?: Maybe<Scalars['Int']['output']>
+  id: Scalars['ID']['output']
+  updatedAt: Scalars['DateTime']['output']
+  url: Scalars['String']['output']
+  width?: Maybe<Scalars['Int']['output']>
 }
 
 export type DocumentQueryVariables = Exact<{
@@ -415,11 +423,15 @@ export type DocumentQuery = {
           ogTitle: string
           ogType: string
           ogUrl: string
-          ogImage?: string | null
-          ogImageWidth?: number | null
-          ogImageHeight?: number | null
           ogDescription: string
           ogLocale: string
+          ogImage?: {
+            __typename?: 'WebsiteOgImage'
+            id: string
+            file?: string | null
+            width?: number | null
+            height?: number | null
+          } | null
         } | null
       } | null> | null
     } | null
@@ -756,11 +768,21 @@ export const DocumentDocument = {
                                   { kind: 'Field', name: { kind: 'Name', value: 'ogTitle' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'ogType' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'ogUrl' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'ogImage' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'ogImageWidth' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'ogImageHeight' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'ogDescription' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'ogLocale' } },
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'ogImage' },
+                                    selectionSet: {
+                                      kind: 'SelectionSet',
+                                      selections: [
+                                        { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                        { kind: 'Field', name: { kind: 'Name', value: 'file' } },
+                                        { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                        { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                      ],
+                                    },
+                                  },
                                 ],
                               },
                             },

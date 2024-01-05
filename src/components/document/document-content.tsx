@@ -128,9 +128,9 @@ function linkCard(props: { children: ReactNode } & ExtraProps, document: Documen
         <div>
           <Image
             alt={website.ogTitle || website.title}
-            src={website.ogImage}
-            height={website.ogImageHeight}
-            width={website.ogImageWidth}
+            src={website.ogImage.file}
+            height={website.ogImage.height}
+            width={website.ogImage.width}
             className="aspect-auto max-w-full rounded-lg object-cover md:max-h-80 md:max-w-80"
           />
         </div>
