@@ -1,5 +1,4 @@
 import { Element, Text } from 'hast'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode } from 'react'
 import Markdown, { ExtraProps, Options } from 'react-markdown'
@@ -10,6 +9,7 @@ import remarkDirectiveRehype from 'remark-directive-rehype'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
+import { LinkCard } from '@/components/link-card'
 import styles from '@/styles/document-content.module.scss'
 import 'katex/dist/katex.min.css'
 
@@ -113,28 +113,14 @@ function linkCard(props: { children: ReactNode } & ExtraProps, document: Documen
   }
 
   return (
-    <a
-      href={website.url}
-      className="my-4 flex flex-col-reverse rounded-lg border border-gray-500 !no-underline hover:bg-slate-500/10 md:flex-row"
-    >
-      <div className="flex flex-auto flex-col overflow-hidden px-4 py-2">
-        <div className="flex-auto">{website.ogTitle || website.title || website.url}</div>
-        <div className="mb-2 text-xs text-gray-600">
-          {website.ogDescription || website.description}
-        </div>
-        <div className="text-nowrap text-gray-500">{website.domain}</div>
-      </div>
-      {website.ogImage && (
-        <div>
-          <Image
-            alt={website.ogTitle || website.title}
-            src={website.ogImage.file}
-            height={website.ogImage.height}
-            width={website.ogImage.width}
-            className="aspect-auto max-w-full rounded-lg object-cover md:max-h-80 md:max-w-80"
-          />
-        </div>
-      )}
-    </a>
+    <LinkCard
+      url={website.url}
+      title={website.ogTitle || website.title || website.url}
+      description={website.ogDescription || website.description}
+      domain={website.domain}
+      imageUrl={website.ogImage?.file}
+      imageHeight={website.ogImage?.height}
+      imageWidth={website.ogImage?.width}
+    />
   )
 }
