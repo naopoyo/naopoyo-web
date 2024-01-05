@@ -519,6 +519,40 @@ export type TagsQuery = {
   } | null
 }
 
+export type WebsitesQueryVariables = Exact<{ [key: string]: never }>
+
+export type WebsitesQuery = {
+  __typename?: 'Query'
+  websites?: {
+    __typename?: 'WebsiteConnection'
+    totalCount: number
+    edges?: Array<{
+      __typename?: 'WebsiteEdge'
+      node?: {
+        __typename?: 'Website'
+        id: string
+        url: string
+        domain: string
+        title: string
+        description: string
+        ogSiteName: string
+        ogTitle: string
+        ogType: string
+        ogUrl: string
+        ogDescription: string
+        ogLocale: string
+        ogImage?: {
+          __typename?: 'WebsiteOgImage'
+          id: string
+          file?: string | null
+          width?: number | null
+          height?: number | null
+        } | null
+      } | null
+    } | null> | null
+  } | null
+}
+
 export const DocumentDocument = {
   kind: 'Document',
   definitions: [
@@ -1050,3 +1084,70 @@ export const TagsDocument = {
     },
   ],
 } as unknown as DocumentNode<TagsQuery, TagsQueryVariables>
+export const WebsitesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'websites' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'websites' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'totalCount' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'edges' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'node' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'url' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'domain' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'ogSiteName' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'ogTitle' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'ogType' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'ogUrl' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'ogDescription' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'ogLocale' } },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'ogImage' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'file' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<WebsitesQuery, WebsitesQueryVariables>

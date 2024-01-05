@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function NavBar() {
   return (
     <nav className="sticky top-0 z-10 flex h-[64px] flex-row justify-center bg-app-bg/50 px-8 backdrop-blur-xl">
-      <div className="flex flex-auto items-center gap-4">
+      <div className="flex flex-auto items-center gap-4 overflow-auto">
         <div className="text-2xl font-bold">
           <Link href="/">naopoyo</Link>
         </div>
@@ -16,6 +16,9 @@ export default function NavBar() {
           </li>
           <li className="text-sm">
             <Link href="/tags">Tags</Link>
+          </li>
+          <li className="text-sm">
+            <Link href="/bookmarks">Bookmarks</Link>
           </li>
           <li className="text-sm">
             <Link href="/tools">Tools</Link>

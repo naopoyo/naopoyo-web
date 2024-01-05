@@ -21,6 +21,8 @@ const documents = {
     types.TagDocument,
   '\n  query tags($sort: ConnectionSort) {\n    tags(sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          name\n          documentCount\n          documentCountInPublished\n        }\n      }\n    }\n  }\n':
     types.TagsDocument,
+  '\n  query websites {\n    websites {\n      totalCount\n      edges {\n        node {\n          id\n          url\n          domain\n          title\n          description\n          ogSiteName\n          ogTitle\n          ogType\n          ogUrl\n          ogDescription\n          ogLocale\n          ogImage {\n            id\n            file\n            width\n            height\n          }\n        }\n      }\n    }\n  }\n':
+    types.WebsitesDocument,
 }
 
 /**
@@ -61,6 +63,12 @@ export function graphql(
 export function graphql(
   source: '\n  query tags($sort: ConnectionSort) {\n    tags(sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          name\n          documentCount\n          documentCountInPublished\n        }\n      }\n    }\n  }\n'
 ): (typeof documents)['\n  query tags($sort: ConnectionSort) {\n    tags(sort: $sort) {\n      totalCount\n      edges {\n        node {\n          id\n          name\n          documentCount\n          documentCountInPublished\n        }\n      }\n    }\n  }\n']
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(
+  source: '\n  query websites {\n    websites {\n      totalCount\n      edges {\n        node {\n          id\n          url\n          domain\n          title\n          description\n          ogSiteName\n          ogTitle\n          ogType\n          ogUrl\n          ogDescription\n          ogLocale\n          ogImage {\n            id\n            file\n            width\n            height\n          }\n        }\n      }\n    }\n  }\n'
+): (typeof documents)['\n  query websites {\n    websites {\n      totalCount\n      edges {\n        node {\n          id\n          url\n          domain\n          title\n          description\n          ogSiteName\n          ogTitle\n          ogType\n          ogUrl\n          ogDescription\n          ogLocale\n          ogImage {\n            id\n            file\n            width\n            height\n          }\n        }\n      }\n    }\n  }\n']
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {}
