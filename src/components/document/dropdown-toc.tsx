@@ -13,14 +13,14 @@ import styles from '@/styles/document-content.module.scss'
 
 export default function DropdownToc() {
   return (
-    <div className="fixed bottom-0 right-0 p-4 md:hidden">
+    <div className="fixed bottom-4 right-4 md:hidden">
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button size="sm" variant="secondary">
             目次
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56" align="start">
+        <DropdownMenuContent className="w-56" align="end">
           <Toc />
         </DropdownMenuContent>
       </DropdownMenu>
