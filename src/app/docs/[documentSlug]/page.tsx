@@ -3,7 +3,8 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { DocumentList, DocumentContent, DocumentToc, DocumentEmoji } from '@/components/document'
+import { DocumentList, DocumentContent, DocumentEmoji, DocumentToc } from '@/components/document'
+import DropdownToc from '@/components/document/dropdown-toc'
 import { Link } from '@/components/link'
 import { getDocument, getDocuments } from '@/lib/hackersheet'
 import { createDateFormat, timeAgo } from '@/utils'
@@ -133,6 +134,8 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
       <footer className="flex h-96 flex-col items-center justify-end p-8">
         <p>&copy; naopoyo</p>
       </footer>
+
+      <DropdownToc />
     </>
   )
 }
