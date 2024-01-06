@@ -16,7 +16,9 @@ export default function DropdownToc() {
     <div className="fixed bottom-0 right-0 p-4 md:hidden">
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button size="sm">目次</Button>
+          <Button size="sm" variant="secondary">
+            目次
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="start">
           <Toc />
