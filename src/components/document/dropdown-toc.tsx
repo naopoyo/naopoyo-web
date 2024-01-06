@@ -20,7 +20,7 @@ export default function DropdownToc() {
             目次
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56" align="end">
+        <DropdownMenuContent className="w-screen overflow-auto p-2" align="end">
           <Toc />
         </DropdownMenuContent>
       </DropdownMenu>
@@ -42,12 +42,12 @@ function Toc() {
   useEffect(() => {
     init()
 
-    window.addEventListener('resize', () => {
-      init()
-      return () => tocbot.destroy()
-    })
+    window.addEventListener('resize', init)
 
-    return () => tocbot.destroy()
+    return () => {
+      window.removeEventListener('resize', init)
+      tocbot.destroy()
+    }
   }, [])
 
   const className = `${styles.toc} dropdown-toc`

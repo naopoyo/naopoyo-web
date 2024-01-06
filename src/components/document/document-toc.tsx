@@ -19,12 +19,12 @@ export default function DocumentToc() {
   useEffect(() => {
     init()
 
-    window.addEventListener('resize', () => {
-      init()
-      return () => tocbot.destroy()
-    })
+    window.addEventListener('resize', init)
 
-    return () => tocbot.destroy()
+    return () => {
+      window.removeEventListener('resize', init)
+      tocbot.destroy()
+    }
   }, [])
 
   return <nav className={styles.toc} />
