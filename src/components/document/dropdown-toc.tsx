@@ -27,13 +27,22 @@ export default function DropdownToc() {
 }
 
 function Toc() {
-  useEffect(() => {
+  const init = () => {
     tocbot.init({
       tocSelector: `.${styles.toc}.dropdown-toc`,
       contentSelector: `.${styles['document-content']}`,
       headingSelector: 'h2, h3, h4, h5, h6',
       scrollSmooth: false,
       headingsOffset: 65,
+    })
+  }
+
+  useEffect(() => {
+    init()
+
+    window.addEventListener('resize', () => {
+      init()
+      return () => tocbot.destroy()
     })
 
     return () => tocbot.destroy()
