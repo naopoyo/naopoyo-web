@@ -84,7 +84,7 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
               <li key={tag.id}>
                 <NextLink
                   href={`/tags/${tag.name}`}
-                  className="block rounded bg-app-bg3 px-3 py-1 hover:scale-110 hover:duration-500"
+                  className="block rounded px-3 py-1 hover:scale-110 hover:duration-500"
                 >
                   {tag.name}
                 </NextLink>

@@ -1,9 +1,9 @@
-import plugin from 'tailwindcss/plugin'
-
 import type { Config } from 'tailwindcss'
 
-const config: Config = {
+const config = {
+  darkMode: ['class'],
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  prefix: '',
   theme: {
     container: {
       center: true,
@@ -13,6 +13,49 @@ const config: Config = {
       },
     },
     extend: {
+      colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        body: 'var(--body-font)',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -31,29 +74,9 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      colors: {
-        app: {
-          // https://colorhunt.co/palette/17223b2638596b778dff6768
-          bg: '#10151c',
-          bg2: '#17223B',
-          bg3: '#263859',
-          text: '#CCCCCC',
-          accent: '#FF6768',
-          link: '#96d0ff',
-        },
-      },
     },
   },
-  plugins: [
-    plugin(function ({ addUtilities }) {
-      addUtilities({
-        '.grid-template-rows-subgrid': {
-          'grid-template-rows': 'subgrid',
-        },
-      })
-    }),
-    require('tailwindcss-animate'),
-  ],
-}
+  plugins: [require('tailwindcss-animate')],
+} satisfies Config
 
 export default config

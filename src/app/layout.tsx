@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" className={sourceCodePro.variable}>
-      <body className="bg-app-bg text-app-text">
+      <body className="font-body">
         <GoogleAnalytics />
         <NavBar />
         {children}
