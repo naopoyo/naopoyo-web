@@ -1,8 +1,9 @@
 import { GithubIcon, XIcon } from 'lucide-react'
 import { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
+import NextLink from 'next/link'
 
+import { Link } from '@/components/link'
 import { PageHeader } from '@/components/page-header'
 import { Paragraph } from '@/components/paragraph'
 import { Button } from '@/components/ui/button'
@@ -18,7 +19,7 @@ export default function AbountPage() {
     <div className="container">
       <PageHeader>{title}</PageHeader>
 
-      <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:items-start">
+      <div className="flex flex-col items-center justify-center gap-8 pb-8 md:flex-row md:items-start">
         <Image
           src="/naopoyo2.png"
           width={160}
@@ -47,14 +48,14 @@ export default function AbountPage() {
             <h2 className="mb-2 text-xl font-bold">SNS</h2>
             <div className="flex flex-row gap-2">
               <Button variant="ghost" size="icon" asChild>
-                <Link href="https://github.com/naopoyo">
+                <NextLink href="https://github.com/naopoyo">
                   <GithubIcon />
-                </Link>
+                </NextLink>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <Link href="https://twitter.com/naopoyo_tw">
+                <NextLink href="https://twitter.com/naopoyo_tw">
                   <XIcon />
-                </Link>
+                </NextLink>
               </Button>
             </div>
           </section>
