@@ -144,7 +144,7 @@
     }
   }
 
-  a {
+  a:not(article a) {
     color: hsl(var(--link));
 
     &:hover {

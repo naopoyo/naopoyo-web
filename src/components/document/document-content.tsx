@@ -1,7 +1,8 @@
 import { Element, Text } from 'hast'
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { ReactNode, Suspense } from 'react'
 import Markdown, { ExtraProps, Options } from 'react-markdown'
+import { TweetSkeleton } from 'react-tweet'
 import rehypeKatex from 'rehype-katex'
 import rehypeSlug from 'rehype-slug'
 import remarkDirective from 'remark-directive'
@@ -14,6 +15,7 @@ import styles from '@/styles/document-content.module.scss'
 import 'katex/dist/katex.min.css'
 
 import CodeBlock from './document-content/code-block'
+import Tweet from './document-content/tweet'
 import processInternalLinks from './rehype-plugins/process-internal-links'
 
 import type { Document } from '@/lib/hackersheet/types'
@@ -22,6 +24,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       'link-card': { children: ReactNode } & ExtraProps
+      tweet: { children: ReactNode } & ExtraProps
     }
   }
 }
@@ -44,6 +47,7 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
       a: customLink,
       pre: customPre,
       'link-card': (props) => linkCard(props, document),
+      tweet: tweet,
     },
   }
 
@@ -122,5 +126,38 @@ function linkCard(props: { children: ReactNode } & ExtraProps, document: Documen
       imageHeight={website.ogImage?.height}
       imageWidth={website.ogImage?.width}
     />
+  )
+}
+
+function tweet(props: { children: ReactNode } & ExtraProps) {
+  const { children, node } = props
+
+  if (!node) {
+    return <p>{children}</p>
+  }
+
+  const href = (node['children'][0] as Element).properties?.href
+
+  if (!href || typeof href !== 'string') {
+    return <p>{children}</p>
+  }
+
+  const getIdFromTwitterUrl = (str: string) => {
+    const url = new URL(str)
+    if (/(^|\.)(twitter|x).com$/.test(url.host)) {
+      return url.pathname.match(/\/status(es)?\/(\d+)/)?.[2]
+    }
+  }
+
+  const id = getIdFromTwitterUrl(href)
+
+  if (!id) {
+    return <p>{children}</p>
+  }
+
+  return (
+    <Suspense fallback={<TweetSkeleton />}>
+      <Tweet id={id} />
+    </Suspense>
   )
 }
