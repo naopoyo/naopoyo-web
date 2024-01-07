@@ -1,8 +1,8 @@
 import './globals.scss'
 
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Source_Code_Pro } from 'next/font/google'
 
-import { GoogleAnalytics } from '@/components/google-analytics'
 import { NavBar } from '@/components/nav-bar'
 import { ThemeProvider } from '@/providers'
 
@@ -17,6 +17,10 @@ const sourceCodePro = Source_Code_Pro({
 const baseUrl = process.env.NEXT_PUBLIC_DOMAIN
   ? `https://${process.env.NEXT_PUBLIC_DOMAIN}`
   : 'http://localhost:3000'
+
+const isProduction = process.env.NODE_ENV === 'production'
+
+const gtmId = process.env.GOOGLE_TAG_ID!
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -37,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem
           disableTransitionOnChange
         >
-          <GoogleAnalytics />
+          {isProduction && <GoogleTagManager gtmId={gtmId} />}
           <NavBar />
 
           {children}
