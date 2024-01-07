@@ -12,10 +12,12 @@ import remarkMath from 'remark-math'
 
 import { LinkCard } from '@/components/link-card'
 import styles from '@/styles/document-content.module.scss'
+
 import 'katex/dist/katex.min.css'
 
 import CodeBlock from './document-content/code-block'
 import Tweet from './document-content/tweet'
+import Youtube from './document-content/youtube'
 import processInternalLinks from './rehype-plugins/process-internal-links'
 
 import type { Document } from '@/lib/hackersheet/types'
@@ -25,6 +27,7 @@ declare global {
     interface IntrinsicElements {
       'link-card': { children: ReactNode } & ExtraProps
       tweet: { children: ReactNode } & ExtraProps
+      youtube: { children: ReactNode } & ExtraProps
     }
   }
 }
@@ -48,6 +51,7 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
       pre: customPre,
       'link-card': (props) => linkCard(props, document),
       tweet: tweet,
+      youtube: youtube,
     },
   }
 
@@ -142,8 +146,8 @@ function tweet(props: { children: ReactNode } & ExtraProps) {
     return <p>{children}</p>
   }
 
-  const getIdFromTwitterUrl = (str: string) => {
-    const url = new URL(str)
+  const getIdFromTwitterUrl = (value: string) => {
+    const url = new URL(value)
     if (/(^|\.)(twitter|x).com$/.test(url.host)) {
       return url.pathname.match(/\/status(es)?\/(\d+)/)?.[2]
     }
@@ -160,4 +164,37 @@ function tweet(props: { children: ReactNode } & ExtraProps) {
       <Tweet id={id} />
     </Suspense>
   )
+}
+
+function youtube(props: { children: ReactNode } & ExtraProps) {
+  const { children, node } = props
+
+  if (!node) {
+    return <p>{children}</p>
+  }
+
+  const href = (node['children'][0] as Element).properties?.href
+
+  if (!href || typeof href !== 'string') {
+    return <p>{children}</p>
+  }
+
+  const getIdFromYoutubeUrl = (value: string) => {
+    const matched =
+      /^https?:\/\/(www\.)?youtube\.com\/watch\?(.*&)?v=(?<videoId>[^&]+)/.exec(value) ??
+      /^https?:\/\/youtu\.be\/(?<videoId>[^?]+)/.exec(value) ??
+      /^https?:\/\/(www\.)?youtube\.com\/embed\/(?<videoId>[^?]+)/.exec(value)
+
+    if (matched?.groups?.videoId) {
+      return matched.groups.videoId
+    }
+  }
+
+  const id = getIdFromYoutubeUrl(href)
+
+  if (!id) {
+    return <p>{children}</p>
+  }
+
+  return <Youtube id={id} />
 }
