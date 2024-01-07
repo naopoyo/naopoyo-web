@@ -147,9 +147,13 @@ function tweet(props: { children: ReactNode } & ExtraProps) {
   }
 
   const getIdFromTwitterUrl = (value: string) => {
-    const url = new URL(value)
-    if (/(^|\.)(twitter|x).com$/.test(url.host)) {
-      return url.pathname.match(/\/status(es)?\/(\d+)/)?.[2]
+    try {
+      const url = new URL(value)
+      if (/(^|\.)(twitter|x).com$/.test(url.host)) {
+        return url.pathname.match(/\/status(es)?\/(\d+)/)?.[2]
+      }
+    } catch {
+      return
     }
   }
 
@@ -196,5 +200,20 @@ function youtube(props: { children: ReactNode } & ExtraProps) {
     return <p>{children}</p>
   }
 
-  return <Youtube id={id} />
+  const getStartFromYoutubeUrl = (value: string) => {
+    try {
+      const url = new URL(value)
+      const t = url.searchParams.get('t')
+
+      if (!t) return
+
+      return Number(t.endsWith('s') ? t.slice(0, -1) : t)
+    } catch {
+      return
+    }
+  }
+
+  const start = getStartFromYoutubeUrl(href)
+
+  return <Youtube id={id} start={start} />
 }
