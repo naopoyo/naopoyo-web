@@ -1,11 +1,14 @@
 import { Metadata } from 'next'
 
 import { DocumentList } from '@/components/document'
+import { PageHeader } from '@/components/page-header'
 import { Input } from '@/components/ui/input'
 import { getDocuments } from '@/lib/hackersheet'
 
+const title = 'Search'
+
 export const metadata: Metadata = {
-  title: 'Search',
+  title: title,
 }
 
 export interface SearchPageProps {
@@ -17,15 +20,15 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   if (!keyword) {
     return (
-      <>
-        <h1 className="py-16 text-center text-4xl font-bold">Search</h1>
-        <section className="px-8">
-          <SearchForm />
+      <div className="container">
+        <PageHeader>{title}</PageHeader>
+        <section className="my-8">
+          <SearchForm keyword={keyword} />
         </section>
-        <section className="p-8 text-center">
-          <p>キーワードを入力してください。</p>
+        <section className="pb-8">
+          <p className="text-center">キーワードを入力してください。</p>
         </section>
-      </>
+      </div>
     )
   }
 
@@ -35,16 +38,16 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   })
 
   return (
-    <>
-      <h1 className="py-16 text-center text-4xl font-bold">Search</h1>
-      <section className="px-8">
+    <div className="container">
+      <PageHeader>{title}</PageHeader>
+      <section className="my-8">
         <SearchForm keyword={keyword} />
       </section>
-      <section className="p-8">
+      <section className="pb-8">
         <DocumentList documents={documents} />
         {documents.length === 0 && <p className="text-center">検索結果がありませんでした。</p>}
       </section>
-    </>
+    </div>
   )
 }
 
@@ -57,7 +60,7 @@ function SearchForm({ keyword }: { keyword?: string }) {
           type="search"
           name="keyword"
           defaultValue={keyword}
-          placeholder="キーワードを入力"
+          placeholder="キーワードを入力して検索"
         />
       </form>
     </div>

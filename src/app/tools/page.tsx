@@ -1,9 +1,12 @@
 import { Metadata } from 'next'
 
 import { Link } from '@/components/link'
+import { PageHeader } from '@/components/page-header'
+
+const title = 'Tools'
 
 export const metadata: Metadata = {
-  title: 'Tools',
+  title: title,
 }
 
 export const dynamic = 'force-static'
@@ -11,13 +14,13 @@ export const revalidate = 60
 
 export default async function ToolsPage() {
   return (
-    <>
-      <h1 className="py-16 text-center text-4xl font-bold">Tools</h1>
+    <div className="container">
+      <PageHeader>{title}</PageHeader>
       <ul className="text-center">
         <li>
           <Link href="/tools/random-emoji">ランダム絵文字コピー</Link>
         </li>
       </ul>
-    </>
+    </div>
   )
 }

@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
+import { PageHeader } from '@/components/page-header'
 import { getDocuments, getTag } from '@/lib/hackersheet'
 
 interface TagPageProps {
@@ -36,11 +37,11 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
   })
 
   return (
-    <>
-      <h1 className="py-16 text-center text-4xl font-bold">{tag.name}</h1>
-      <section className="p-8">
+    <div className="container">
+      <PageHeader>{tag.name}</PageHeader>
+      <section className="pb-8">
         <DocumentList documents={documents} />
       </section>
-    </>
+    </div>
   )
 }

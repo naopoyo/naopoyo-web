@@ -56,7 +56,7 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         <div className="text-center text-7xl">
           <DocumentEmoji emoji={document.emoji} />
         </div>
-        <h1 className="text-center text-4xl font-bold">{document.title}</h1>
+        <h1 className="text-center text-4xl font-bold leading-snug">{document.title}</h1>
         <div className="flex flex-row justify-center gap-10">
           <div>
             <div className="text-center">公開日</div>

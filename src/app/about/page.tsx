@@ -1,19 +1,24 @@
+import { GithubIcon, XIcon } from 'lucide-react'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { Link } from '@/components/link'
+import { PageHeader } from '@/components/page-header'
 import { Paragraph } from '@/components/paragraph'
+import { Button } from '@/components/ui/button'
+
+const title = 'About'
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: title,
 }
 
 export default function AbountPage() {
   return (
-    <>
-      <h1 className="py-16 text-center text-4xl font-bold">About</h1>
+    <div className="container">
+      <PageHeader>{title}</PageHeader>
 
-      <section className="flex flex-col items-center gap-4 p-8">
+      <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:items-start">
         <Image
           src="/naopoyo2.png"
           width={160}
@@ -22,33 +27,39 @@ export default function AbountPage() {
           className="rounded-full object-cover"
         />
 
-        <div className="flex flex-col items-center gap-8">
-          <section className="text-center">
-            <h2 className="text-xl font-bold">naopoyo</h2>
+        <div className="flex max-w-sm flex-col items-start gap-8">
+          <section>
+            <h2 className="mb-2 text-xl font-bold">naopoyo</h2>
             <Paragraph>個人でWEBサービスの開発をやっています。</Paragraph>
             <Paragraph>
               このサイトでは個人開発で学んだことなどをまとめた記事を公開しています。
             </Paragraph>
           </section>
 
-          <section className="text-center">
-            <h2 className="text-xl font-bold">つくったもの</h2>
+          <section>
+            <h2 className="mb-2 text-xl font-bold">つくったもの</h2>
             <Paragraph>
               <Link href="https://hackersheet.com">Hacker Sheet</Link>
             </Paragraph>
           </section>
 
-          <section className="text-center">
-            <h2 className="text-xl font-bold">SNS</h2>
-            <Paragraph>
-              <Link href="https://github.com/naopoyo">GitHub</Link>
-            </Paragraph>
-            <Paragraph>
-              <Link href="https://twitter.com/naopoyo_tw">X</Link>
-            </Paragraph>
+          <section>
+            <h2 className="mb-2 text-xl font-bold">SNS</h2>
+            <div className="flex flex-row gap-2">
+              <Button variant="ghost" size="icon" asChild>
+                <Link href="https://github.com/naopoyo">
+                  <GithubIcon />
+                </Link>
+              </Button>
+              <Button variant="ghost" size="icon" asChild>
+                <Link href="https://twitter.com/naopoyo_tw">
+                  <XIcon />
+                </Link>
+              </Button>
+            </div>
           </section>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   )
 }

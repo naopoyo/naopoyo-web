@@ -1,19 +1,23 @@
 import { Metadata } from 'next'
 
 import { LinkCard } from '@/components/link-card'
+import { PageHeader } from '@/components/page-header'
 import { getWebsites } from '@/lib/hackersheet'
 
+const title = 'Bookmarks'
+
 export const metadata: Metadata = {
-  title: 'Bookmarks',
+  title: title,
 }
 
 export default async function BookmarksPage() {
   const { websites, isEmpty } = await getWebsites()
 
   return (
-    <>
-      <h1 className="py-16 text-center text-4xl font-bold">Bookmarks</h1>
-      <section className="container p-8">
+    <div className="container">
+      <PageHeader>{title}</PageHeader>
+
+      <section className="mx-auto max-w-screen-md">
         {!isEmpty &&
           websites.map((website) => (
             <div key={website.id}>
@@ -29,6 +33,6 @@ export default async function BookmarksPage() {
             </div>
           ))}
       </section>
-    </>
+    </div>
   )
 }

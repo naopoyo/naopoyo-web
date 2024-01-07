@@ -1,5 +1,8 @@
 import { DocumentList } from '@/components/document'
+import { PageHeader } from '@/components/page-header'
 import { getDocuments } from '@/lib/hackersheet'
+
+const title = 'Docs'
 
 export const dynamic = 'force-static'
 export const revalidate = 60
@@ -11,11 +14,11 @@ export default async function HomePage() {
   })
 
   return (
-    <>
-      <h1 className="py-16 text-center text-4xl font-bold">Docs</h1>
-      <section className="p-8">
+    <div className="container">
+      <PageHeader>{title}</PageHeader>
+      <section className="pb-8">
         <DocumentList documents={documents} />
       </section>
-    </>
+    </div>
   )
 }

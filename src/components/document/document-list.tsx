@@ -19,11 +19,11 @@ export default async function DocumentList({ documents }: DocumentListProps) {
         <Link
           key={document.id}
           href={`/docs/${document.slug}`}
-          className="row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl border bg-primary-foreground p-8 hover:scale-105 hover:duration-500"
+          className="row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl border bg-primary-foreground p-6 hover:scale-105 hover:duration-500"
         >
           <div className="flex items-center justify-center">
             {document.preview ? (
-              <picture className="-mx-8 -mt-8">
+              <picture className="-mx-6 -mt-6">
                 <Image
                   src={document.preview.fileUrl}
                   width={document.preview.width}
@@ -33,7 +33,7 @@ export default async function DocumentList({ documents }: DocumentListProps) {
                 />
               </picture>
             ) : (
-              <div className="text-center text-7xl">
+              <div className="py-8 text-center text-7xl">
                 <DocumentEmoji emoji={document.emoji} />
               </div>
             )}
