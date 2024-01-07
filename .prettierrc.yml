@@ -5,4 +5,3 @@ singleQuote: true
 jsxSingleQuote: false
 arrowParens: 'always'
 printWidth: 100
-plugins: ['prettier-plugin-tailwindcss']
