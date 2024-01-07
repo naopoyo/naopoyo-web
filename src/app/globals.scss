@@ -8,7 +8,6 @@
       'Hiragino Sans', sans-serif;
 
     --navbar-height: 64px;
-    scroll-padding-top: var(--navbar-height);
 
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -81,6 +80,9 @@
 }
 
 @layer base {
+  :root {
+    scroll-padding-top: var(--navbar-height);
+  }
   * {
     @apply border-border;
   }

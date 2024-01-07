@@ -39,7 +39,7 @@ export default function NavBar() {
   ]
 
   return (
-    <nav className="sticky top-0 z-10 flex h-[64px] flex-row justify-center px-8 backdrop-blur-xl">
+    <nav className="sticky top-0 z-10 flex h-navbar flex-row justify-center px-8 backdrop-blur-xl">
       <div className="flex flex-auto items-center gap-4">
         <div className="text-2xl font-bold">
           <Link href="/">naopoyo</Link>
