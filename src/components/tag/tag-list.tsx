@@ -15,7 +15,7 @@ export default async function TagList({ tags }: TagListProps) {
             <Link
               key={tag.id}
               href={`/tags/${tag.name}`}
-              className="flex flex-col gap-4 rounded-xl p-4 hover:scale-110 hover:duration-500"
+              className="flex flex-col gap-4 rounded-xl border p-4 hover:scale-110 hover:duration-500"
             >
               <div className="flex flex-row gap-2">
                 <div className="flex-auto">{tag.name}</div>

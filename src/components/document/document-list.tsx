@@ -46,7 +46,7 @@ export default async function DocumentList({ documents }: DocumentListProps) {
             {document.tags.length > 0 && (
               <ul className="flex flex-row justify-end gap-2">
                 {document.tags.map((tag) => (
-                  <li key={tag.id} className="rounded px-2 py-1 text-xs">
+                  <li key={tag.id} className="rounded border px-2 py-1 text-xs">
                     {tag.name}
                   </li>
                 ))}
