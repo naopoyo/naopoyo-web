@@ -4,6 +4,7 @@ import { Source_Code_Pro } from 'next/font/google'
 
 import { GoogleAnalytics } from '@/components/google-analytics'
 import { NavBar } from '@/components/nav-bar'
+import { ThemeProvider } from '@/providers'
 
 import type { Metadata } from 'next'
 
@@ -28,11 +29,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja" className={sourceCodePro.variable}>
+    <html lang="ja" className={sourceCodePro.variable} suppressHydrationWarning>
       <body className="font-body">
-        <GoogleAnalytics />
-        <NavBar />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <GoogleAnalytics />
+          <NavBar />
+
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

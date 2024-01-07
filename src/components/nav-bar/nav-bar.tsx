@@ -1,6 +1,7 @@
 import { Menu } from 'lucide-react'
 import Link from 'next/link'
 
+import { ThemeToggle } from '@/components/theme-toggle'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -8,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+
 export default function NavBar() {
   const menuItems = [
     {
@@ -67,6 +69,8 @@ export default function NavBar() {
             </li>
           ))}
         </ul>
+
+        <ThemeToggle />
       </div>
     </nav>
   )
