@@ -1,9 +1,12 @@
 import { Metadata } from 'next'
 
+import { PageHeader } from '@/components/page-header'
 import { RandomEmoji } from '@/components/tools/random-emoji'
 
+const title = 'ランダム絵文字コピー'
+
 export const metadata: Metadata = {
-  title: 'ランダム絵文字コピー',
+  title: title,
 }
 
 export const dynamic = 'force-static'
@@ -11,9 +14,11 @@ export const revalidate = 60
 
 export default async function RandomEmojiPage() {
   return (
-    <>
-      <h1 className="py-16 text-center text-4xl font-bold">ランダム絵文字コピー</h1>
-      <RandomEmoji />
-    </>
+    <div className="container">
+      <PageHeader>{title}</PageHeader>
+      <section className="pb-8">
+        <RandomEmoji />
+      </section>
+    </div>
   )
 }
