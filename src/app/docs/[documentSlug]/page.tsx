@@ -120,13 +120,13 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         </aside>
       </div>
       {showInboundLinkDocuments && (
-        <section className="mt-16 p-8">
+        <section className="container mt-16 pb-8">
           <h2 className="mb-8 text-center text-xl font-bold">この記事にリンクしている記事</h2>
           <DocumentList documents={document.inboundLinkDocuments} />
         </section>
       )}
       {showRecentDocuments && (
-        <section className="mt-16 p-8">
+        <section className="container mt-16 pb-8">
           <h2 className="mb-8 text-center text-xl font-bold">最近公開された記事</h2>
           <DocumentList documents={resentDocuments} />
         </section>
