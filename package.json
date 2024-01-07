@@ -26,6 +26,7 @@
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
     "graphql": "16.8.1",
+    "kifu-for-js": "^5.4.0",
     "lucide-react": "^0.304.0",
     "mermaid": "10.6.1",
     "mustache": "4.2.0",
