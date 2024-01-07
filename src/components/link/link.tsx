@@ -5,7 +5,7 @@ export interface LinkProps extends PropsWithChildren, NextLinkProps {}
 
 export default function Link(props: LinkProps) {
   return (
-    <NextLink href={props.href} className="hover:underline">
+    <NextLink href={props.href} className="text-link hover:underline">
       {props.children}
     </NextLink>
   )

@@ -60,14 +60,14 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         <div className="flex flex-row justify-center gap-10">
           <div>
             <div className="text-center">公開日</div>
-            <div className="text-gray-400">
+            <div className="text-muted-foreground">
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
             </div>
           </div>
           {showModified && (
             <div>
               <div className="text-center">更新日</div>
-              <div className="text-gray-400">
+              <div className="text-muted-foreground">
                 {timeAgo(document.modifiedAt)} - {df(document.modifiedAt)}
               </div>
             </div>
@@ -84,7 +84,7 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
               <li key={tag.id}>
                 <NextLink
                   href={`/tags/${tag.name}`}
-                  className="block rounded border bg-card px-3 py-1 hover:scale-110 hover:duration-500"
+                  className="block rounded border bg-primary-foreground px-3 py-1 hover:scale-110 hover:duration-500"
                 >
                   {tag.name}
                 </NextLink>
@@ -113,7 +113,7 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
           </main>
         </div>
         <aside className="hidden w-[300px] md:inline-block">
-          <div className="font-bold text-gray-300">目次</div>
+          <div className="font-bold text-muted-foreground">目次</div>
           <div className="sticky top-[64px] p-2">
             <DocumentToc />
           </div>

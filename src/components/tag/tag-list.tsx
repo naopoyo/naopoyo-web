@@ -19,7 +19,7 @@ export default async function TagList({ tags }: TagListProps) {
             >
               <div className="flex flex-row gap-2">
                 <div className="flex-auto">{tag.name}</div>
-                <div className="text-gray-400">{tag.documentCountInPublished}</div>
+                <div className="text-muted-foreground">{tag.documentCountInPublished}</div>
               </div>
             </Link>
           )

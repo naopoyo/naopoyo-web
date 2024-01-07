@@ -19,7 +19,7 @@ export default async function DocumentList({ documents }: DocumentListProps) {
         <Link
           key={document.id}
           href={`/docs/${document.slug}`}
-          className="row-span-3 grid grid-cols-subgrid gap-y-4 rounded-xl border p-8 hover:scale-105 hover:duration-500"
+          className="row-span-3 grid grid-rows-subgrid gap-y-4 rounded-xl border bg-primary-foreground p-8 hover:scale-105 hover:duration-500"
         >
           <div className="flex items-center justify-center">
             {document.preview ? (
@@ -39,14 +39,14 @@ export default async function DocumentList({ documents }: DocumentListProps) {
             )}
           </div>
           <div className="break-all text-lg">{document.title}</div>
-          <div className="flex flex-col gap-4 text-center text-xs text-gray-300">
+          <div className="flex flex-col gap-4 text-center text-xs text-muted-foreground">
             <div>
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
             </div>
             {document.tags.length > 0 && (
               <ul className="flex flex-row justify-end gap-2">
                 {document.tags.map((tag) => (
-                  <li key={tag.id} className="rounded border px-2 py-1 text-xs">
+                  <li key={tag.id} className="rounded border bg-secondary px-2 py-1 text-xs">
                     {tag.name}
                   </li>
                 ))}

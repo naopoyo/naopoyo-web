@@ -47,7 +47,7 @@ export default function NavBar() {
         <div className="flex flex-auto justify-end md:hidden">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="outline" size="icon">
                 <Menu />
               </Button>
             </DropdownMenuTrigger>
@@ -64,7 +64,7 @@ export default function NavBar() {
         </div>
         <ul className="hidden flex-auto flex-row items-center justify-end gap-6 md:flex">
           {menuItems.map((menuItem, i) => (
-            <li key={`menu-item-${i}`} className="text-sm">
+            <li key={`menu-item-${i}`} className="text-sm text-muted-foreground hover:text-primary">
               <Link href={menuItem.href}>{menuItem.label}</Link>
             </li>
           ))}

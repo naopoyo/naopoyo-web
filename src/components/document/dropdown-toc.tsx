@@ -16,7 +16,7 @@ export default function DropdownToc() {
     <div className="fixed bottom-4 right-4 md:hidden">
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button size="sm" variant="secondary">
+          <Button size="sm" variant="outline">
             目次
           </Button>
         </DropdownMenuTrigger>
@@ -31,7 +31,7 @@ export default function DropdownToc() {
 function Toc() {
   const init = () => {
     tocbot.init({
-      tocSelector: `.${styles.toc}.dropdown-toc`,
+      tocSelector: `.${styles['dropdown-toc']}`,
       contentSelector: `.${styles['document-content']}`,
       headingSelector: 'h2, h3, h4, h5, h6',
       scrollSmooth: false,
@@ -50,7 +50,5 @@ function Toc() {
     }
   }, [])
 
-  const className = `${styles.toc} dropdown-toc`
-
-  return <nav className={className} />
+  return <nav className={styles['dropdown-toc']} />
 }

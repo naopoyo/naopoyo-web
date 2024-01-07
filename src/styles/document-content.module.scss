@@ -14,7 +14,7 @@
     margin: 4rem 0 1.5rem 0;
     padding: 0.5rem 0;
     font-weight: 700;
-    border-bottom: 1px solid rgba(125, 125, 125, 0.4);
+    border-bottom: 1px solid hsl(var(--border));
   }
 
   p {
@@ -91,19 +91,16 @@
     border-collapse: separate;
     border-radius: 8px;
     border-spacing: 0;
-    border: 1px solid rgb(55, 59, 63);
+    border: 1px solid hsl(var(--border));
     overflow: hidden;
 
     thead {
-      background-color: rgb(55, 59, 63);
+      background-color: hsl(var(--primary-foreground));
     }
 
     tbody {
-      // tr th {
-      //   background: #efefef;
-      // }
       td {
-        border-top: 1px solid rgb(55, 59, 63);
+        border-top: 1px solid hsl(var(--border));
       }
     }
 
@@ -111,7 +108,7 @@
     td {
       padding: 8px;
       font-size: 0.875rem;
-      // border: 1px solid rgb(55, 59, 63);
+
       &.left {
         text-align: left;
       }
@@ -131,14 +128,12 @@
     padding: 2px 8px;
     font-family: var(--font-source-code-pro);
     line-height: 1.2;
-    border: 1px solid rgb(55, 59, 63);
-    background-color: rgb(29, 31, 33);
-    color: rgb(255, 255, 255);
+    border: 1px solid hsl(var(--border));
+    background-color: hsl(var(--primary-foreground));
   }
 
   blockquote {
-    border-left: 8px solid rgba(230, 230, 230, 0.5);
-    color: #999;
+    border-left: 8px solid hsl(var(--border));
 
     margin: 0;
     padding: 0 16px;
@@ -149,7 +144,7 @@
   }
 
   a {
-    color: #96d0ff;
+    color: hsl(var(--link));
 
     &:hover {
       text-decoration-line: underline;
@@ -159,15 +154,17 @@
 
 .code-block {
   margin: 1.5rem 0;
-  border: 1px solid rgb(55, 59, 63);
-  background-color: rgb(29, 31, 33);
+  border: 1px solid hsl(var(--border));
   border-radius: 8px;
+  overflow: hidden;
 
   pre {
     font-family: var(--font-source-code-pro);
     font-size: 14px;
     padding: 16px;
     overflow: auto;
+    color: #fff;
+    background-color: hsl(var(--code-block));
   }
 }
 
@@ -178,28 +175,28 @@
   gap: 8px;
   font-size: 14px;
   padding: 8px 16px;
-  border-bottom: 1px solid rgb(55, 59, 63);
+  background-color: hsl(var(--primary-foreground));
+  border-bottom: 1px solid hsl(var(--border));
 }
 
 .code-block-filename {
   flex: 1 1 auto;
 }
 
-.toc {
+.toc,
+.dropdown-toc {
   font-size: 14px;
-  a {
-    color: rgb(170, 170, 170);
-  }
+  a,
   li {
-    color: rgb(170, 170, 170);
+    color: hsl(var(--muted-foreground));
   }
 
   :global {
     li:has(> .is-active-link) {
-      color: rgb(255, 255, 255);
+      color: hsl(var(--accent-foreground));
     }
     .is-active-link {
-      color: rgb(255, 255, 255);
+      color: hsl(var(--accent-foreground));
     }
   }
 
