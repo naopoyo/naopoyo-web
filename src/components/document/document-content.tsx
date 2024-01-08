@@ -16,7 +16,6 @@ import styles from '@/styles/document-content.module.scss'
 import 'katex/dist/katex.min.css'
 
 import CodeBlock from './document-content/code-block'
-import Kifu from './document-content/kifu'
 import Tweet from './document-content/tweet'
 import Youtube from './document-content/youtube'
 import processInternalLinks from './rehype-plugins/process-internal-links'
@@ -54,7 +53,6 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
       'link-card': (props) => linkCard(props, document),
       tweet: tweet,
       youtube: youtube,
-      kifu: kifu,
     },
   }
 
@@ -219,20 +217,4 @@ function youtube(props: { children: ReactNode } & ExtraProps) {
   const start = getStartFromYoutubeUrl(href)
 
   return <Youtube id={id} start={start} />
-}
-
-function kifu(props: { children: ReactNode } & ExtraProps) {
-  const { children, node } = props
-
-  if (!node) {
-    return <>{children}</>
-  }
-
-  const kifu = ((node?.['children'][0] as Element)?.['children']?.[0] as any).value
-
-  if (!kifu) {
-    return <>{children}</>
-  }
-
-  return <Kifu kifu={kifu} />
 }

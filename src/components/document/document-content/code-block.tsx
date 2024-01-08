@@ -6,6 +6,7 @@ import styles from '@/styles/document-content.module.scss'
 import CodeBlockCopyButton from './code-block-copy-button'
 import CodeBlockIcon from './code-block-icon'
 import CodeBlockMermaid from './code-block-mermaid'
+import Kifu from './kifu'
 
 export interface CodeBlockProps {
   code: string
@@ -15,8 +16,11 @@ export interface CodeBlockProps {
 
 export default async function CodeBlock({ code, language, filename }: CodeBlockProps) {
   const isMermaid = language === 'mermaid'
+  const isKifu = language === 'kifu'
 
   if (isMermaid) return <CodeBlockMermaid code={code} />
+
+  if (isKifu) return <Kifu kifu={code} />
 
   const html = await highlighteCode(code, language)
 
