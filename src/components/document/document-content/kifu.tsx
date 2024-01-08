@@ -8,8 +8,8 @@ export interface KifuProps {
 
 export default function Kifu({ kifu }: KifuProps) {
   return (
-    <div className="my-6 min-h-[400px]">
-      <KifuLite>{kifu}</KifuLite>
+    <div className="my-6">
+      <KifuLite kifu={kifu} />
     </div>
   )
 }
