@@ -360,6 +360,21 @@ export type DocumentQuery = {
       path?: string | null
       fileUrl: string
     } | null
+    assets?: {
+      __typename?: 'AssetConnection'
+      edges?: Array<{
+        __typename?: 'AssetEdge'
+        node?: {
+          __typename?: 'Asset'
+          id: string
+          path?: string | null
+          name: string
+          fileUrl: string
+          height: number
+          width: number
+        } | null
+      } | null> | null
+    } | null
     outboundLinkDocuments?: {
       __typename?: 'DocumentConnection'
       edges?: Array<{
@@ -635,6 +650,39 @@ export const DocumentDocument = {
                 },
                 { kind: 'Field', name: { kind: 'Name', value: 'publishedAt' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'modifiedAt' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'assets' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'edges' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'node' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'path' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'fileUrl' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'width' } },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
                 {
                   kind: 'Field',
                   name: { kind: 'Name', value: 'outboundLinkDocuments' },

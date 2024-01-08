@@ -20,6 +20,15 @@ type Website = {
   ogLocale: string
 }
 
+type Asset = {
+  id: string
+  path: string
+  name: string
+  fileUrl: string
+  height: number
+  width: number
+}
+
 export type DocumentPreview = {
   id: string
   width: number
@@ -61,6 +70,7 @@ export type Document = {
   publishedAt: string
   modifiedAt: string
   tags: DocumentListItemTagList
+  assets: Asset[]
   outboundLinkDocuments: DocumentListItem[]
   inboundLinkDocuments: DocumentListItem[]
   websites: Website[]

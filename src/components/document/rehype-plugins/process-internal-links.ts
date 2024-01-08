@@ -36,6 +36,16 @@ export default function processInternalLinks({
           element.properties.href = Mustache.render(permaLinkFormat, doc)
         }
       }
+
+      if (tagName === 'img') {
+        const asset = document.assets.find((asset) => asset.path === fullPath)
+        if (asset) {
+          element.properties.src = asset.fileUrl
+          element.properties.height = asset.height
+          element.properties.width = asset.width
+          element.properties.alt = element.properties.alt || asset.name
+        }
+      }
     })
   }
 }

@@ -32,6 +32,18 @@ graphql(`
       }
       publishedAt
       modifiedAt
+      assets {
+        edges {
+          node {
+            id
+            path
+            name
+            fileUrl
+            height
+            width
+          }
+        }
+      }
       outboundLinkDocuments {
         edges {
           node {
@@ -116,6 +128,8 @@ export default async function getDocument({ slug }: GetDocumentArgs) {
     ((data?.document && {
       ...data.document,
       tags: data.document.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
+      assets:
+        data.document.assets?.edges?.map((asset) => asset?.node).filter(nonNullableFilter) ?? [],
       outboundLinkDocuments:
         data.document.outboundLinkDocuments?.edges
           ?.map((doc) => doc?.node)

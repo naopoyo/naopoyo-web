@@ -1,4 +1,5 @@
 import { Element, Text } from 'hast'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode, Suspense } from 'react'
 import Markdown, { ExtraProps, Options } from 'react-markdown'
@@ -42,13 +43,10 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
   const options: Options = {
     children: document.content,
     remarkPlugins: [remarkGfm, remarkMath, remarkDirective, remarkDirectiveRehype],
-    rehypePlugins: [
-      rehypeSlug,
-      [processInternalLinks, { document: document, permaLinkFormat: permaLinkFormat }],
-      rehypeKatex,
-    ],
+    rehypePlugins: [rehypeSlug, [processInternalLinks, { document, permaLinkFormat }], rehypeKatex],
     components: {
       a: customLink,
+      img: customImg,
       pre: customPre,
       'link-card': (props) => linkCard(props, document),
       tweet: tweet,
@@ -71,6 +69,16 @@ function customLink(props: JSX.IntrinsicElements['a'] & ExtraProps) {
   ) : (
     <a href={href}>{children}</a>
   )
+}
+
+function customImg(props: JSX.IntrinsicElements['img'] & ExtraProps) {
+  const { children, src, width, height, alt } = props
+
+  if (src && width && height && alt) {
+    return <Image src={src} width={Number(width)} height={Number(height)} alt={alt} />
+  }
+
+  return <>{children}</>
 }
 
 function customPre(props: JSX.IntrinsicElements['pre'] & ExtraProps) {
