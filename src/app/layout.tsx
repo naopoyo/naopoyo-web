@@ -41,12 +41,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem
           disableTransitionOnChange
         >
-          {isProduction && <GoogleTagManager gtmId={gtmId} />}
           <NavBar />
-
           {children}
         </ThemeProvider>
       </body>
+      {isProduction && <GoogleTagManager gtmId={gtmId} />}
     </html>
   )
 }
