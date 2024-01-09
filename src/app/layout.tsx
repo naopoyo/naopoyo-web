@@ -1,4 +1,4 @@
-import './globals.scss'
+import '@/styles/globals.scss'
 
 import { GoogleTagManager } from '@next/third-parties/google'
 import { Source_Code_Pro } from 'next/font/google'
