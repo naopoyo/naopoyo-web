@@ -80,9 +80,6 @@
 }
 
 @layer base {
-  :root {
-    scroll-padding-top: var(--navbar-height);
-  }
   * {
     @apply border-border;
   }
