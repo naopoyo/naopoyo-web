@@ -7,59 +7,11 @@ export default async function DocumentOpengraphImage(
 ) {
   return new ImageResponse(
     (
-      <div
-        style={{
-          background: '#000000',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <div
-          style={{
-            background: '#10151c',
-            width: '90%',
-            height: '80%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            flexDirection: 'column',
-            borderRadius: 64,
-            padding: 64,
-            gap: '24px',
-          }}
-        >
-          <div
-            style={{
-              width: '72px',
-              height: '72px',
-              fontSize: '72px',
-              lineHeight: '1.0',
-            }}
-          >
-            {emoji}
-          </div>
-          <p
-            style={{
-              fontSize: '40px',
-              color: '#CCCCCC',
-              textAlign: 'center',
-              flex: 'auto',
-            }}
-          >
-            {title}
-          </p>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              fontSize: '24px',
-              color: '#CCCCCC',
-              textAlign: 'center',
-            }}
-          >
+      <div tw="bg-[#020817] h-full w-full flex items-center justify-center py-8 px-16">
+        <div tw="flex items-center justify-center flex-col w-full h-full gap-6">
+          <div tw="w-24 h-24 text-[92px] leading-none">{emoji}</div>
+          <p tw="flex-auto text-7xl font-black text-center text-[#FFF]">{title}</p>
+          <div tw="flex items-center text-4xl text-center text-[#FFF]">
             <div
               style={{
                 background: 'url(https://naopoyo.com/naopoyo2.png)',
