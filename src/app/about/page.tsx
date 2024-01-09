@@ -25,7 +25,7 @@ export default function AbountPage() {
           width={160}
           height={160}
           alt="logo"
-          className="rounded-full object-cover"
+          className="rounded-full border object-cover"
         />
 
         <div className="flex max-w-sm flex-col items-start gap-8">
