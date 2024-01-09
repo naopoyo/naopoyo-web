@@ -35,6 +35,11 @@ export default function AbountPage() {
             <Paragraph>
               このサイトでは個人開発で学んだことなどをまとめた記事を公開しています。
             </Paragraph>
+            <Paragraph>
+              また、このサイトのソースコードを
+              <Link href="https://github.com/naopoyo/naopoyo-web">GitHub</Link>
+              で公開しているので、Next.jsでブログサイトを作成したい方はぜひ参考にしてみてください。
+            </Paragraph>
           </section>
 
           <section>
