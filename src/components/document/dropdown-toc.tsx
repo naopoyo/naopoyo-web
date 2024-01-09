@@ -20,7 +20,7 @@ export default function DropdownToc() {
             目次
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-screen overflow-auto p-2" align="end">
+        <DropdownMenuContent className="max-h-[70vh] w-screen overflow-auto p-2" align="end">
           <Toc />
         </DropdownMenuContent>
       </DropdownMenu>
