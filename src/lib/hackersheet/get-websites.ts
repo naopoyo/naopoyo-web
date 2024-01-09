@@ -1,4 +1,4 @@
-import { nonNullableFilter } from '@/utils'
+import { toArrayFromEdges } from '@/utils'
 
 import { getClient } from './client'
 import { graphql } from './gql'
@@ -36,9 +36,7 @@ graphql(`
 export default async function getWebsites() {
   const { data, error } = await getClient().query(WebsitesDocument, {})
 
-  const websites =
-    data?.websites?.edges?.map((website) => website?.node).filter(nonNullableFilter) || []
-
+  const websites = toArrayFromEdges(data?.websites?.edges)
   const totalCount = data?.websites?.totalCount || 0
   const isEmpty = totalCount === 0
 

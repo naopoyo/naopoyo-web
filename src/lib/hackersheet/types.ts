@@ -42,8 +42,6 @@ export type DocumentListItemTag = {
   name: string
 }
 
-export type DocumentListItemTagList = DocumentListItemTag[]
-
 export type DocumentListItem = {
   id: string
   slug: string
@@ -53,7 +51,7 @@ export type DocumentListItem = {
   path?: string | null
   publishedAt: string
   modifiedAt: string
-  tags: DocumentListItemTagList
+  tags: DocumentListItemTag[]
   preview?: DocumentPreview | null
 }
 
@@ -69,7 +67,7 @@ export type Document = {
   path?: string | null
   publishedAt: string
   modifiedAt: string
-  tags: DocumentListItemTagList
+  tags: DocumentListItemTag[]
   assets: Asset[]
   outboundLinkDocuments: DocumentListItem[]
   inboundLinkDocuments: DocumentListItem[]

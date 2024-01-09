@@ -1,8 +1,8 @@
-import { nonNullableFilter } from '@/utils'
+import { toArrayFromEdges } from '@/utils'
 
 import { getClient } from './client'
 import { graphql } from './gql'
-import { DocumentDocument } from './gql/graphql'
+import { DocumentDocument, DocumentQuery } from './gql/graphql'
 import { Document } from './types'
 
 graphql(`
@@ -124,32 +124,30 @@ export default async function getDocument({ slug }: GetDocumentArgs) {
     slug: slug,
   })
 
-  const document =
-    ((data?.document && {
-      ...data.document,
-      tags: data.document.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
-      assets:
-        data.document.assets?.edges?.map((asset) => asset?.node).filter(nonNullableFilter) ?? [],
-      outboundLinkDocuments:
-        data.document.outboundLinkDocuments?.edges
-          ?.map((doc) => doc?.node)
-          .filter(nonNullableFilter)
-          .map((doc) => ({
-            ...doc,
-            tags: doc.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
-          })) ?? [],
-      inboundLinkDocuments:
-        data.document.inboundLinkDocuments?.edges
-          ?.map((doc) => doc?.node)
-          .filter(nonNullableFilter)
-          .map((doc) => ({
-            ...doc,
-            tags: doc.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) ?? [],
-          })) ?? [],
-      websites: data.document.websites?.edges
-        ?.map((website) => website?.node)
-        .filter(nonNullableFilter),
-    }) as Document) ?? null
+  const document = toModel(data)
 
   return { document, error }
+}
+
+function toModel(data?: DocumentQuery): Document | null {
+  if (!data || !data.document) {
+    return null
+  }
+
+  const document = data.document
+
+  return {
+    ...document,
+    tags: toArrayFromEdges(document.tags?.edges),
+    assets: toArrayFromEdges(document.assets?.edges),
+    outboundLinkDocuments: toArrayFromEdges(document.outboundLinkDocuments?.edges).map((doc) => ({
+      ...doc,
+      tags: toArrayFromEdges(doc.tags?.edges),
+    })),
+    inboundLinkDocuments: toArrayFromEdges(document.inboundLinkDocuments?.edges).map((doc) => ({
+      ...doc,
+      tags: toArrayFromEdges(doc.tags?.edges),
+    })),
+    websites: toArrayFromEdges(document.websites?.edges),
+  } as Document
 }

@@ -1,8 +1,14 @@
-import { nonNullableFilter } from '@/utils'
+import { toArrayFromEdges } from '@/utils'
 
 import { getClient } from './client'
 import { graphql } from './gql'
-import { ConnectionSort, DocumentConnectionFilter, DocumentsDocument } from './gql/graphql'
+import {
+  ConnectionSort,
+  DocumentConnectionFilter,
+  DocumentsDocument,
+  DocumentsQuery,
+} from './gql/graphql'
+import { DocumentList } from './types'
 
 graphql(`
   query documents(
@@ -52,24 +58,25 @@ export interface GetDocumentsArgs {
 }
 
 export default async function getDocuments(args?: GetDocumentsArgs) {
-  const { data, error } = await getClient().query(DocumentsDocument, {
-    after: args?.after,
-    first: args?.first,
-    filter: args?.filter,
-    sort: args?.sort,
-  })
+  const { data, error } = await getClient().query(DocumentsDocument, args ?? {})
 
-  const documents =
-    data?.documents?.edges
-      ?.map((document) => document?.node)
-      .filter(nonNullableFilter)
-      .map((document) => ({
-        ...document,
-        tags: document.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) || [],
-      })) || []
+  const documents = toModel(data)
 
   const totalCount = data?.documents?.totalCount || 0
   const isEmpty = totalCount === 0
 
   return { documents, totalCount, isEmpty, error }
+}
+
+function toModel(data?: DocumentsQuery): DocumentList {
+  if (!data || !data.documents) {
+    return []
+  }
+
+  const documents = data?.documents
+
+  return toArrayFromEdges(documents?.edges).map((document) => ({
+    ...document,
+    tags: toArrayFromEdges(document.tags?.edges),
+  }))
 }

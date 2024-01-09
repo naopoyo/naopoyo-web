@@ -1,4 +1,4 @@
-import { nonNullableFilter } from '@/utils'
+import { toArrayFromEdges } from '@/utils'
 
 import { getClient } from './client'
 import { graphql } from './gql'
@@ -25,10 +25,9 @@ export interface GetTagsArgs {
 }
 
 export default async function getTags(args?: GetTagsArgs) {
-  const { data, error } = await getClient().query(TagsDocument, { sort: args?.sort })
+  const { data, error } = await getClient().query(TagsDocument, args ?? {})
 
-  const tags = data?.tags?.edges?.map((tag) => tag?.node).filter(nonNullableFilter) || []
-
+  const tags = toArrayFromEdges(data?.tags?.edges)
   const totalCount = data?.tags?.totalCount || 0
   const isEmpty = totalCount === 0
 
