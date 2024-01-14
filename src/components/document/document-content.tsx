@@ -1,6 +1,8 @@
 import { ReactNode } from 'react'
 import Markdown, { ExtraProps, Options } from 'react-markdown'
 import rehypeKatex from 'rehype-katex'
+import rehypeRaw from 'rehype-raw'
+import rehypeSanitize from 'rehype-sanitize'
 import rehypeSlug from 'rehype-slug'
 import remarkDirective from 'remark-directive'
 import remarkDirectiveRehype from 'remark-directive-rehype'
@@ -40,7 +42,13 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
   const options: Options = {
     children: document.content,
     remarkPlugins: [remarkGfm, remarkMath, remarkDirective, remarkDirectiveRehype],
-    rehypePlugins: [rehypeSlug, [processInternalLinks, { document, permaLinkFormat }], rehypeKatex],
+    rehypePlugins: [
+      rehypeRaw,
+      rehypeSlug,
+      [processInternalLinks, { document, permaLinkFormat }],
+      rehypeKatex,
+      rehypeSanitize,
+    ],
     components: {
       a: CustomLink,
       img: CustomImg,
