@@ -1,3 +1,5 @@
+import deepmerge from 'deepmerge'
+import { defaultSchema } from 'hast-util-sanitize'
 import { ReactNode } from 'react'
 import Markdown, { ExtraProps, Options } from 'react-markdown'
 import rehypeKatex from 'rehype-katex'
@@ -20,6 +22,8 @@ import { LinkCardDirective } from './document-content/link-card-directive'
 import XPostDirective from './document-content/x-post-directive'
 import YoutubeDirective from './document-content/youtube-directive'
 import processInternalLinks from './rehype-plugins/process-internal-links'
+import rehypeClobberUrlDecode from './rehype-plugins/rehype-clobber-url-decode'
+import rehypeFootnoteLinks from './rehype-plugins/rehype-footnote-links'
 
 import type { Document } from '@/lib/hackersheet/types'
 
@@ -39,17 +43,24 @@ export interface DocumentContentProps {
 }
 
 export default function DocumentContent({ document, permaLinkFormat }: DocumentContentProps) {
+  const sanitizeSchema = deepmerge(defaultSchema, {
+    attributes: { div: [['className', /^sr-only$/]] },
+  })
+
   const options: Options = {
-    children: document.content,
+    remarkRehypeOptions: { footnoteLabelTagName: 'div', clobberPrefix: '' },
     remarkPlugins: [remarkGfm, remarkMath, remarkDirective, remarkDirectiveRehype],
     rehypePlugins: [
       rehypeRaw,
+      [rehypeSanitize, { attributes: sanitizeSchema.attributes }],
       rehypeSlug,
-      [processInternalLinks, { document, permaLinkFormat }],
       rehypeKatex,
-      rehypeSanitize,
+      [processInternalLinks, { document, permaLinkFormat }],
+      rehypeFootnoteLinks,
+      rehypeClobberUrlDecode,
     ],
     components: {
+      h1: 'h2',
       a: CustomLink,
       img: CustomImg,
       pre: CustomPre,
@@ -59,5 +70,9 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
     },
   }
 
-  return <Markdown className={styles['document-content']} {...options} />
+  return (
+    <Markdown className={styles['document-content']} {...options}>
+      {document.content}
+    </Markdown>
+  )
 }

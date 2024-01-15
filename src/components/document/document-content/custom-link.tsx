@@ -1,10 +1,18 @@
 import Link from 'next/link'
 import { ExtraProps } from 'react-markdown'
 
-export default function CustomLink({ href, children }: JSX.IntrinsicElements['a'] & ExtraProps) {
+export default function CustomLink({
+  href,
+  id,
+  children,
+}: JSX.IntrinsicElements['a'] & ExtraProps) {
   if (!href) {
     return <>{children}</>
   }
 
-  return <Link href={href}>{children}</Link>
+  return (
+    <Link href={href} id={id}>
+      {children}
+    </Link>
+  )
 }
