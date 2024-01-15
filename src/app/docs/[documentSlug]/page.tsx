@@ -131,10 +131,6 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
           <DocumentList documents={resentDocuments} />
         </section>
       )}
-      <footer className="flex h-96 flex-col items-center justify-end p-8">
-        <p>&copy; naopoyo</p>
-      </footer>
-
       <DropdownToc />
     </>
   )

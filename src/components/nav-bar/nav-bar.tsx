@@ -9,40 +9,41 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { siteName } from '@/constants'
+
+const menuItems = [
+  {
+    label: 'Search',
+    href: '/search',
+  },
+  {
+    label: 'Docs',
+    href: '/',
+  },
+  {
+    label: 'Tags',
+    href: '/tags',
+  },
+  {
+    label: 'Bookmarks',
+    href: '/bookmarks',
+  },
+  {
+    label: 'Tools',
+    href: '/tools',
+  },
+  {
+    label: 'About',
+    href: '/about',
+  },
+]
 
 export default function NavBar() {
-  const menuItems = [
-    {
-      label: 'Search',
-      href: '/search',
-    },
-    {
-      label: 'Docs',
-      href: '/',
-    },
-    {
-      label: 'Tags',
-      href: '/tags',
-    },
-    {
-      label: 'Bookmarks',
-      href: '/bookmarks',
-    },
-    {
-      label: 'Tools',
-      href: '/tools',
-    },
-    {
-      label: 'About',
-      href: '/about',
-    },
-  ]
-
   return (
-    <nav className="container sticky top-0 z-10 flex h-navbar flex-row justify-center backdrop-blur-xl">
+    <header className="container sticky top-0 z-10 flex h-navbar flex-row justify-center backdrop-blur-xl">
       <div className="flex flex-auto items-center gap-4">
         <div className="text-2xl font-bold hover:text-link">
-          <Link href="/">naopoyo</Link>
+          <Link href="/">{siteName}</Link>
         </div>
         <div className="flex flex-auto justify-end md:hidden">
           <DropdownMenu>
@@ -72,6 +73,6 @@ export default function NavBar() {
 
         <ThemeToggle />
       </div>
-    </nav>
+    </header>
   )
 }

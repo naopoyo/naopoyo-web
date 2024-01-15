@@ -3,7 +3,17 @@
     margin-top: 0;
   }
 
+  :global(.footnotes) {
+    p {
+      margin: 0;
+    }
+  }
+
   word-break: break-word;
+
+  * {
+    scroll-margin-top: calc(var(--navbar-height) + 16px);
+  }
 
   h1,
   h2,
@@ -11,7 +21,6 @@
   h4,
   h5,
   h6 {
-    scroll-margin-top: var(--navbar-height);
     margin: 4rem 0 1.5rem 0;
     padding: 0.5rem 0;
     font-weight: 700;

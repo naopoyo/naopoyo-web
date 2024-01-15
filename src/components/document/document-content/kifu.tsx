@@ -13,7 +13,7 @@ export default function Kifu({ kifu }: KifuProps) {
   }, [])
 
   return (
-    <div className="my-6">
+    <div className="my-4 flex justify-center">
       <KifuLite kifu={kifu} />
     </div>
   )

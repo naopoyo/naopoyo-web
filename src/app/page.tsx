@@ -14,11 +14,11 @@ export default async function HomePage() {
   })
 
   return (
-    <div className="container">
+    <main className="container">
       <PageHeader>{title}</PageHeader>
       <section className="pb-8">
         <DocumentList documents={documents} />
       </section>
-    </div>
+    </main>
   )
 }
