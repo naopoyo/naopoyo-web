@@ -1,10 +1,9 @@
 import deepmerge from 'deepmerge'
-import { defaultSchema } from 'hast-util-sanitize'
 import { ReactNode } from 'react'
 import Markdown, { ExtraProps, Options } from 'react-markdown'
 import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
-import rehypeSanitize from 'rehype-sanitize'
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
 import rehypeSlug from 'rehype-slug'
 import remarkDirective from 'remark-directive'
 import remarkDirectiveRehype from 'remark-directive-rehype'
@@ -45,6 +44,7 @@ export interface DocumentContentProps {
 export default function DocumentContent({ document, permaLinkFormat }: DocumentContentProps) {
   const sanitizeSchema = deepmerge(defaultSchema, {
     attributes: { div: [['className', /^sr-only$/]] },
+    tagNames: ['link-card', 'x-post', 'youtube'],
   })
 
   const options: Options = {
@@ -52,7 +52,7 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
     remarkPlugins: [remarkGfm, remarkMath, remarkDirective, remarkDirectiveRehype],
     rehypePlugins: [
       rehypeRaw,
-      [rehypeSanitize, { attributes: sanitizeSchema.attributes }],
+      [rehypeSanitize, sanitizeSchema],
       rehypeSlug,
       rehypeKatex,
       [processInternalLinks, { document, permaLinkFormat }],
