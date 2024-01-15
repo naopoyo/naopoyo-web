@@ -3,7 +3,7 @@ import { ReactNode, Suspense } from 'react'
 import { ExtraProps } from 'react-markdown'
 import { TweetSkeleton } from 'react-tweet'
 
-import Tweet from './tweet'
+import Tweet from '@/components/document-content/tweet'
 
 export default function XPostDirective({ children, node }: { children: ReactNode } & ExtraProps) {
   const childrenElm = <p>{children}</p>

@@ -1,7 +1,7 @@
 import { Element, Text } from 'hast'
 import { ExtraProps } from 'react-markdown'
 
-import CodeBlock from './code-block'
+import { CodeBlock } from '@/components/document-content/code-block'
 
 export default function CustomPre({ children, node }: JSX.IntrinsicElements['pre'] & ExtraProps) {
   const childrenElm = <>{children}</>

@@ -2,7 +2,7 @@ import { Element } from 'hast'
 import { ReactNode } from 'react'
 import { ExtraProps } from 'react-markdown'
 
-import Youtube from './youtube'
+import Youtube from '@/components/document-content/youtube'
 
 export default function YoutubeDirective({ children, node }: { children: ReactNode } & ExtraProps) {
   const childrenElm = <p>{children}</p>

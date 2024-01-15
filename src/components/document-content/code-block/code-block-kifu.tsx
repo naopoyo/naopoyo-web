@@ -7,7 +7,7 @@ export interface KifuProps {
   kifu: string
 }
 
-export default function Kifu({ kifu }: KifuProps) {
+export default function CodeBlockKifu({ kifu }: KifuProps) {
   useEffect(() => {
     initKifuUserSettings()
   }, [])
