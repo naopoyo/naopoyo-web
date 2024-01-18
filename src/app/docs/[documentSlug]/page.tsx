@@ -116,7 +116,9 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         <aside className="hidden w-[300px] md:inline-block">
           <div className="font-bold text-muted-foreground">目次</div>
           <div className="sticky top-[64px] p-2">
-            <DocumentToc />
+            <div className="relative max-h-[calc(100vh-var(--navbar-height)-8px)] overflow-auto">
+              <DocumentToc />
+            </div>
           </div>
         </aside>
       </div>
