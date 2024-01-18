@@ -1,0 +1,49 @@
+.main,
+.dropdown {
+  font-size: 14px;
+  a,
+  li {
+    color: hsl(var(--muted-foreground));
+  }
+
+  :global {
+    li:has(> .is-active-link) {
+      color: hsl(var(--accent-foreground));
+    }
+    .is-active-link {
+      color: hsl(var(--accent-foreground));
+    }
+  }
+
+  ol,
+  ul {
+    padding-left: 1.5em;
+
+    ol,
+    ul {
+      padding-left: 1em;
+    }
+
+    li {
+      margin: 0.5rem 0;
+      line-height: 1.5rem;
+      padding-left: 0.5rem;
+    }
+  }
+
+  ol {
+    list-style-type: disc;
+    ol {
+      list-style-type: circle;
+      ol {
+        list-style-type: square;
+      }
+    }
+  }
+
+  a {
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+}

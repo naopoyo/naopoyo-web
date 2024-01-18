@@ -10,7 +10,7 @@ import remarkDirectiveRehype from 'remark-directive-rehype'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 
-import styles from '@/styles/document-content.module.scss'
+import docContentStyles from '@/styles/document-content.module.scss'
 
 import 'katex/dist/katex.min.css'
 
@@ -71,7 +71,7 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
   }
 
   return (
-    <Markdown className={styles['document-content']} {...options}>
+    <Markdown className={docContentStyles['main']} {...options}>
       {document.content}
     </Markdown>
   )

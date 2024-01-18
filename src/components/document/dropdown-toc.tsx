@@ -10,7 +10,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { tocbotHeadingOffset } from '@/constants'
-import styles from '@/styles/document-content.module.scss'
+import docContentStyles from '@/styles/document-content.module.scss'
+import tocStyles from '@/styles/document-toc.module.scss'
 
 export default function DropdownToc() {
   return (
@@ -32,8 +33,8 @@ export default function DropdownToc() {
 function Toc() {
   const init = () => {
     tocbot.init({
-      tocSelector: `.${styles['dropdown-toc']}`,
-      contentSelector: `.${styles['document-content']}`,
+      tocSelector: `.${tocStyles['dropdown']}`,
+      contentSelector: `.${docContentStyles['main']}`,
       headingSelector: 'h2, h3, h4, h5, h6',
       scrollSmooth: false,
       headingsOffset: tocbotHeadingOffset,
@@ -51,5 +52,5 @@ function Toc() {
     }
   }, [])
 
-  return <nav className={styles['dropdown-toc']} />
+  return <nav className={tocStyles['dropdown']} />
 }
