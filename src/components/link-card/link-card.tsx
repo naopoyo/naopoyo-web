@@ -22,7 +22,7 @@ export default function LinkCard(props: LinkCardProps) {
         <div className="line-clamp-1 text-nowrap text-muted-foreground">{props.domain}</div>
       </div>
       {props.imageUrl && (
-        <div>
+        <div className="md:max-w-[50%]">
           <Image
             alt={props.title}
             src={props.imageUrl}
