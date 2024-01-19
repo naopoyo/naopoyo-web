@@ -1,5 +1,5 @@
 import { HiCodeBracket } from 'react-icons/hi2'
-import { SiGnubash, SiTypescript, SiTerraform, SiMarkdown, SiPhp } from 'react-icons/si'
+import { SiGnubash, SiTypescript, SiTerraform, SiMarkdown, SiPhp, SiRuby } from 'react-icons/si'
 
 export interface CodeBlockIconProps {
   language: string
@@ -18,6 +18,8 @@ export default function CodeBlockIcon({ language }: CodeBlockIconProps) {
       return <SiMarkdown />
     case 'php':
       return <SiPhp />
+    case 'ruby':
+      return <SiRuby />
     default:
       return <HiCodeBracket />
   }
