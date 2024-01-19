@@ -1,4 +1,4 @@
-import { nonNullableFilter } from '.'
+import { nonNullableFilter } from './non-nullable-filter'
 
 type Edges<T> =
   | ({

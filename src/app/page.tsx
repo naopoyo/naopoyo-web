@@ -1,6 +1,6 @@
 import { DocumentList } from '@/components/document'
 import { PageHeader } from '@/components/page-header'
-import { getDocuments } from '@/lib/hackersheet'
+import { client } from '@/lib/hackersheet'
 
 const title = 'Docs'
 
@@ -8,7 +8,7 @@ export const dynamic = 'force-static'
 export const revalidate = 60
 
 export default async function HomePage() {
-  const { documents } = await getDocuments({
+  const { documents } = await client.getDocuments({
     filter: { draft: false },
     sort: { by: 'published_at', order: 'desc' },
   })

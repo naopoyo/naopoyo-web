@@ -1,8 +1,8 @@
-import { toArrayFromEdges } from '@/utils'
+import { OperationResult } from '@urql/core'
 
-import { getClient } from './client'
 import { graphql } from './gql'
-import { ConnectionSort, TagsDocument } from './gql/graphql'
+import { ConnectionSort, TagsQuery } from './gql/graphql'
+import { toArrayFromEdges } from './utils'
 
 graphql(`
   query tags($sort: ConnectionSort) {
@@ -21,15 +21,14 @@ graphql(`
 `)
 
 export interface GetTagsArgs {
-  sort: ConnectionSort
+  sort?: ConnectionSort
 }
 
-export default async function getTags(args?: GetTagsArgs) {
-  const { data, error } = await getClient().query(TagsDocument, args ?? {})
-
-  const tags = toArrayFromEdges(data?.tags?.edges)
-  const totalCount = data?.tags?.totalCount || 0
+export function createGetTagsResponse(result: OperationResult<TagsQuery, GetTagsArgs>) {
+  const tags = toArrayFromEdges(result.data?.tags?.edges)
+  const totalCount = result.data?.tags?.totalCount || 0
   const isEmpty = totalCount === 0
+  const error = result.error
 
-  return { tags, totalCount, isEmpty, error }
+  return { tags, totalCount, isEmpty, error } as const
 }

@@ -1,14 +1,9 @@
-import { toArrayFromEdges } from '@/utils'
+import { OperationResult } from '@urql/core'
 
-import { getClient } from './client'
 import { graphql } from './gql'
-import {
-  ConnectionSort,
-  DocumentConnectionFilter,
-  DocumentsDocument,
-  DocumentsQuery,
-} from './gql/graphql'
+import { ConnectionSort, DocumentConnectionFilter, DocumentsQuery } from './gql/graphql'
 import { DocumentList } from './types'
+import { toArrayFromEdges } from './utils'
 
 graphql(`
   query documents(
@@ -57,26 +52,22 @@ export interface GetDocumentsArgs {
   sort?: ConnectionSort
 }
 
-export default async function getDocuments(args?: GetDocumentsArgs) {
-  const { data, error } = await getClient().query(DocumentsDocument, args ?? {})
-
-  const documents = toModel(data)
-
-  const totalCount = data?.documents?.totalCount || 0
-  const isEmpty = totalCount === 0
-
-  return { documents, totalCount, isEmpty, error }
-}
-
-function toModel(data?: DocumentsQuery): DocumentList {
-  if (!data || !data.documents) {
-    return []
+export function createDocumentListResponse(
+  result: OperationResult<DocumentsQuery, GetDocumentsArgs>
+) {
+  if (!result.data || !result.data.documents) {
+    return { documents: [], totalCount: 0, isEmpty: true, error: result.error }
   }
 
-  const documents = data?.documents
+  const tmpDocs = result.data.documents
 
-  return toArrayFromEdges(documents?.edges).map((document) => ({
+  const documents = toArrayFromEdges(tmpDocs?.edges).map((document) => ({
     ...document,
     tags: toArrayFromEdges(document.tags?.edges),
-  }))
+  })) as DocumentList
+  const totalCount = result.data?.documents?.totalCount || 0
+  const isEmpty = totalCount === 0
+  const error = result.error
+
+  return { documents, totalCount, isEmpty, error } as const
 }

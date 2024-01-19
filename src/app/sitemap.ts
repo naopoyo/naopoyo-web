@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-import { getDocuments } from '@/lib/hackersheet'
+import { client } from '@/lib/hackersheet'
 
 type Route = {
   url: string
@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date().toISOString(),
   }))
 
-  const docsPromise = getDocuments().then(({ documents }) =>
+  const docsPromise = client.getDocuments().then(({ documents }) =>
     documents.map((doc) => ({
       url: `${baseUrl}/docs/${doc.slug}`,
       lastModified: doc.modifiedAt,

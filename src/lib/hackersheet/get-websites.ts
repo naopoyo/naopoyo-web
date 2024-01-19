@@ -1,8 +1,8 @@
-import { toArrayFromEdges } from '@/utils'
+import { OperationResult } from '@urql/core'
 
-import { getClient } from './client'
 import { graphql } from './gql'
-import { WebsitesDocument } from './gql/graphql'
+import { WebsitesQuery } from './gql/graphql'
+import { toArrayFromEdges } from './utils'
 
 graphql(`
   query websites {
@@ -33,12 +33,11 @@ graphql(`
   }
 `)
 
-export default async function getWebsites() {
-  const { data, error } = await getClient().query(WebsitesDocument, {})
-
-  const websites = toArrayFromEdges(data?.websites?.edges)
-  const totalCount = data?.websites?.totalCount || 0
+export function createGetWebsitesResponse(result: OperationResult<WebsitesQuery>) {
+  const websites = toArrayFromEdges(result.data?.websites?.edges)
+  const totalCount = result.data?.websites?.totalCount || 0
   const isEmpty = totalCount === 0
+  const error = result.error
 
-  return { websites, totalCount, isEmpty, error }
+  return { websites, totalCount, isEmpty, error } as const
 }

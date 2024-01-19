@@ -1,6 +1,8 @@
-import { getClient } from './client'
+import { OperationResult } from '@urql/core'
+
 import { graphql } from './gql'
-import { TagDocument } from './gql/graphql'
+import { TagQuery } from './gql/graphql'
+import { TagListItem } from './types'
 
 graphql(`
   query tag($name: String) {
@@ -17,10 +19,9 @@ export interface GetTagArgs {
   name: string
 }
 
-export default async function getTag({ name }: GetTagArgs) {
-  const { data, error } = await getClient().query(TagDocument, { name: name })
+export function createGetTagResponse(result: OperationResult<TagQuery, GetTagArgs>) {
+  const tag = (result.data?.tag as TagListItem) ?? null
+  const error = result.error
 
-  const tag = data?.tag ?? null
-
-  return { tag, error }
+  return { tag, error } as const
 }

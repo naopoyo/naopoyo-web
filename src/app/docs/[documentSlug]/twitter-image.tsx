@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import { DocumentOpengraphImage } from '@/components/opengraph-image'
-import { getDocument } from '@/lib/hackersheet'
+import { client } from '@/lib/hackersheet'
 
 export const runtime = 'edge'
 export const alt = 'naopoyo'
@@ -16,7 +16,7 @@ interface TwitterImageProps {
 }
 
 export default async function TwitterImage({ params: { documentSlug } }: TwitterImageProps) {
-  const { document } = await getDocument({ slug: documentSlug })
+  const { document } = await client.getDocument({ slug: documentSlug })
 
   if (!document || document.draft) notFound()
 

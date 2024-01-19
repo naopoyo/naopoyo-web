@@ -7,7 +7,7 @@ import { DocumentList, DocumentEmoji, DocumentToc } from '@/components/document'
 import DropdownToc from '@/components/document/dropdown-toc'
 import { DocumentContent } from '@/components/document-content'
 import { Link } from '@/components/link'
-import { getDocument, getDocuments } from '@/lib/hackersheet'
+import { client } from '@/lib/hackersheet'
 import { createDateFormat, timeAgo } from '@/utils'
 
 interface DocumentPageProps {
@@ -20,7 +20,7 @@ export const revalidate = 60
 export async function generateMetadata({
   params: { documentSlug },
 }: DocumentPageProps): Promise<Metadata> {
-  const { document } = await getDocument({ slug: documentSlug })
+  const { document } = await client.getDocument({ slug: documentSlug })
 
   if (!document) return {}
 
@@ -30,14 +30,14 @@ export async function generateMetadata({
 }
 
 export default async function DocumentPage({ params: { documentSlug } }: DocumentPageProps) {
-  const { document } = await getDocument({ slug: documentSlug })
+  const { document } = await client.getDocument({ slug: documentSlug })
   const df = createDateFormat('yyyy-MM-dd')
 
   if (!document || document.draft) {
     return notFound()
   }
 
-  const { documents: resentDocuments } = await getDocuments({
+  const { documents: resentDocuments } = await client.getDocuments({
     first: 3,
     filter: { draft: false, excludeSlugs: [document.slug] },
     sort: { by: 'published_at', order: 'desc' },

@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { DocumentList } from '@/components/document'
 import { PageHeader } from '@/components/page-header'
 import { Input } from '@/components/ui/input'
-import { getDocuments } from '@/lib/hackersheet'
+import { client } from '@/lib/hackersheet'
 
 const title = 'Search'
 
@@ -32,7 +32,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     )
   }
 
-  const { documents } = await getDocuments({
+  const { documents } = await client.getDocuments({
     filter: { draft: false, keyword: keyword },
     sort: { by: 'published_at', order: 'desc' },
   })

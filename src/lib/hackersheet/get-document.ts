@@ -1,9 +1,9 @@
-import { toArrayFromEdges } from '@/utils'
+import { OperationResult } from '@urql/core'
 
-import { getClient } from './client'
 import { graphql } from './gql'
-import { DocumentDocument, DocumentQuery } from './gql/graphql'
+import { DocumentQuery } from './gql/graphql'
 import { Document } from './types'
+import { toArrayFromEdges } from './utils'
 
 graphql(`
   query document($slug: String) {
@@ -119,35 +119,28 @@ export interface GetDocumentArgs {
   slug: string
 }
 
-export default async function getDocument({ slug }: GetDocumentArgs) {
-  const { data, error } = await getClient().query(DocumentDocument, {
-    slug: slug,
-  })
-
-  const document = toModel(data)
-
-  return { document, error }
-}
-
-function toModel(data?: DocumentQuery): Document | null {
-  if (!data || !data.document) {
-    return null
+export function createGetDocumentResponse(result: OperationResult<DocumentQuery, GetDocumentArgs>) {
+  if (!result.data?.document) {
+    return { document: null, error: result.error }
   }
 
-  const document = data.document
+  const tmpDoc = result.data?.document
 
-  return {
-    ...document,
-    tags: toArrayFromEdges(document.tags?.edges),
-    assets: toArrayFromEdges(document.assets?.edges),
-    outboundLinkDocuments: toArrayFromEdges(document.outboundLinkDocuments?.edges).map((doc) => ({
+  const document = {
+    ...tmpDoc,
+    tags: toArrayFromEdges(tmpDoc.tags?.edges),
+    assets: toArrayFromEdges(tmpDoc.assets?.edges),
+    outboundLinkDocuments: toArrayFromEdges(tmpDoc.outboundLinkDocuments?.edges).map((doc) => ({
       ...doc,
       tags: toArrayFromEdges(doc.tags?.edges),
     })),
-    inboundLinkDocuments: toArrayFromEdges(document.inboundLinkDocuments?.edges).map((doc) => ({
+    inboundLinkDocuments: toArrayFromEdges(tmpDoc.inboundLinkDocuments?.edges).map((doc) => ({
       ...doc,
       tags: toArrayFromEdges(doc.tags?.edges),
     })),
-    websites: toArrayFromEdges(document.websites?.edges),
+    websites: toArrayFromEdges(tmpDoc.websites?.edges),
   } as Document
+  const error = result.error
+
+  return { document, error } as const
 }

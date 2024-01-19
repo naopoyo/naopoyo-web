@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import { LinkCard } from '@/components/link-card'
 import { PageHeader } from '@/components/page-header'
-import { getWebsites } from '@/lib/hackersheet'
+import { client } from '@/lib/hackersheet'
 
 const title = 'Bookmarks'
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 export default async function BookmarksPage() {
-  const { websites, isEmpty } = await getWebsites()
+  const { websites, isEmpty } = await client.getWebsites()
 
   return (
     <div className="container">

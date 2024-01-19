@@ -78,6 +78,7 @@ export type Document = {
 export type TagListItem = {
   id: string
   name: string
+  documentCount: number
   documentCountInPublished: number
 }
 
