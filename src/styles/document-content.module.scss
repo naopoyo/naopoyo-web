@@ -4,14 +4,23 @@
   }
 
   :global(.footnotes) {
+    margin: 4rem 0 1.5rem 0;
+    color: hsl(var(--muted-foreground));
     p {
       margin: 0;
     }
   }
 
-  word-break: break-word;
+  :global(.contains-task-list) {
+    list-style-type: none;
+    padding-left: 0;
+    input {
+      margin-right: 0.5rem;
+    }
+  }
 
   * {
+    word-break: break-word;
     scroll-margin-top: calc(var(--navbar-height) + 16px);
   }
 
@@ -30,6 +39,10 @@
   p {
     margin: 1.5rem 0;
     line-height: 1.6;
+  }
+
+  hr {
+    margin: 4rem 0;
   }
 
   h1 {
