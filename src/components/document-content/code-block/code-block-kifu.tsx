@@ -2,7 +2,7 @@
 
 import { KifuLite, KifuStore } from 'kifu-for-js'
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export interface KifuProps {
   kifu: string
@@ -10,13 +10,8 @@ export interface KifuProps {
 }
 
 export default function CodeBlockKifu({ kifu, filename }: KifuProps) {
-  const getCurrentHash = useMemo(
-    () => () => (typeof window !== 'undefined' ? window.location.hash.replace(/^#!?/, '') : ''),
-    []
-  )
   const searchParams = useSearchParams()
   const id = filename ? `user-content-${filename}` : undefined
-  const [hash, setHash] = useState<string>(getCurrentHash())
   const [kifuStore] = useState(() => new KifuStore({ kifu: kifu }))
 
   useEffect(() => {
@@ -25,26 +20,11 @@ export default function CodeBlockKifu({ kifu, filename }: KifuProps) {
 
   useEffect(() => {
     const newPly = Number(searchParams.get('ply') ?? 0)
+    const hash = typeof window !== 'undefined' ? window.location.hash.replace(/^#!?/, '') : ''
     if (hash === id) {
       kifuStore.player.goto(newPly)
     }
-  }, [searchParams, kifuStore, hash, id])
-
-  const handleHashChange = useMemo(
-    () => () => {
-      const currentHash = getCurrentHash()
-      setHash(currentHash)
-    },
-    [getCurrentHash]
-  )
-
-  useEffect(() => {
-    window.addEventListener('hashchange', handleHashChange)
-
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange)
-    }
-  }, [handleHashChange])
+  }, [searchParams, kifuStore, id])
 
   if (!kifuStore) {
     return null
