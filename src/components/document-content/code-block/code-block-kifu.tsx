@@ -32,7 +32,7 @@ export default function CodeBlockKifu({ kifu, filename }: KifuProps) {
 
   return (
     <div className="my-4 flex justify-center" id={id}>
-      <KifuLite kifuStore={kifuStore} />
+      <KifuLite style={{ width: '100%' }} kifuStore={kifuStore} />
     </div>
   )
 }
