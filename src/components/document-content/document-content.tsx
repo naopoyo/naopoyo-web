@@ -17,6 +17,7 @@ import 'katex/dist/katex.min.css'
 import CustomImg from './custom-components/custom-img'
 import CustomLink from './custom-components/custom-link'
 import CustomPre from './custom-components/custom-pre'
+import KifuToDirective from './directives/kifu-to-directive'
 import { LinkCardDirective } from './directives/link-card-directive'
 import XPostDirective from './directives/x-post-directive'
 import YoutubeDirective from './directives/youtube-directive'
@@ -26,12 +27,15 @@ import rehypeFootnoteLinks from './rehype-plugins/rehype-footnote-links'
 
 import type { Document } from '@/lib/hackersheet/types'
 
+type DirectiveProps = { children: ReactNode } & ExtraProps
+
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'link-card': { children: ReactNode } & ExtraProps
-      'x-post': { children: ReactNode } & ExtraProps
-      youtube: { children: ReactNode } & ExtraProps
+      'link-card': DirectiveProps
+      'x-post': DirectiveProps
+      youtube: DirectiveProps
+      'kifu-to': DirectiveProps
     }
   }
 }
@@ -44,7 +48,7 @@ export interface DocumentContentProps {
 export default function DocumentContent({ document, permaLinkFormat }: DocumentContentProps) {
   const sanitizeSchema = deepmerge(defaultSchema, {
     attributes: { div: [['className', /^sr-only$/]] },
-    tagNames: ['link-card', 'x-post', 'youtube'],
+    tagNames: ['link-card', 'x-post', 'youtube', 'kifu-to'],
   })
 
   const options: Options = {
@@ -67,6 +71,7 @@ export default function DocumentContent({ document, permaLinkFormat }: DocumentC
       'link-card': (props) => LinkCardDirective(props, document),
       'x-post': XPostDirective,
       youtube: YoutubeDirective,
+      'kifu-to': KifuToDirective,
     },
   }
 

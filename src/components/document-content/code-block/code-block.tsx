@@ -19,7 +19,7 @@ export default async function CodeBlock({ code, language, filename }: CodeBlockP
   const isKifu = language === 'kifu'
 
   if (isMermaid) return <CodeBlockMermaid code={code} />
-  if (isKifu) return <CodeBlockKifu kifu={code} />
+  if (isKifu) return <CodeBlockKifu kifu={code} filename={filename} />
 
   const html = await highlighteCode(code, language)
 
