@@ -104,7 +104,7 @@ graphql(`
             ogLocale
             ogImage {
               id
-              file
+              fileUrl
               width
               height
             }
