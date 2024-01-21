@@ -172,6 +172,8 @@ export type DocumentConnectionFilter = {
   excludeSlugs?: InputMaybe<Array<Scalars['String']['input']>>
   /** Tags excluded in the document. */
   excludeTags?: InputMaybe<Array<Scalars['String']['input']>>
+  /** The keyword inclued in the document. */
+  keyword?: InputMaybe<Scalars['String']['input']>
   /** End of date and time the document was modified. */
   modifiedAtEnd?: InputMaybe<Scalars['DateTime']['input']>
   /** Start of date and time the document was modified. */

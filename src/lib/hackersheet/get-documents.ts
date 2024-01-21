@@ -1,7 +1,7 @@
 import { OperationResult } from '@urql/core'
 
 import { graphql } from './gql'
-import { ConnectionSort, DocumentConnectionFilter, DocumentsQuery } from './gql/graphql'
+import { DocumentsQuery, QueryDocumentsArgs } from './gql/graphql'
 import { DocumentList } from './types'
 import { toArrayFromEdges } from './utils'
 
@@ -45,15 +45,8 @@ graphql(`
   }
 `)
 
-export interface GetDocumentsArgs {
-  after?: string
-  first?: number
-  filter?: DocumentConnectionFilter
-  sort?: ConnectionSort
-}
-
 export function createDocumentListResponse(
-  result: OperationResult<DocumentsQuery, GetDocumentsArgs>
+  result: OperationResult<DocumentsQuery, QueryDocumentsArgs>
 ) {
   if (!result.data || !result.data.documents) {
     return { documents: [], totalCount: 0, isEmpty: true, error: result.error }

@@ -26,7 +26,7 @@ export default async function BookmarksPage() {
                 title={website.ogTitle || website.title || website.url}
                 description={website.ogDescription || website.description}
                 domain={website.domain}
-                imageUrl={website.ogImage?.file ?? undefined}
+                imageUrl={website.ogImage?.fileUrl ?? undefined}
                 imageHeight={website.ogImage?.height ?? undefined}
                 imageWidth={website.ogImage?.width ?? undefined}
               />

@@ -6,13 +6,14 @@ import {
 } from '@urql/core'
 
 import { GetDocumentArgs, createGetDocumentResponse } from './get-document'
-import { GetDocumentsArgs, createDocumentListResponse } from './get-documents'
+import { createDocumentListResponse } from './get-documents'
 import { createGetTagResponse, GetTagArgs } from './get-tag'
 import { createGetTagsResponse, GetTagsArgs } from './get-tags'
 import { createGetWebsitesResponse } from './get-websites'
 import {
   DocumentDocument,
   DocumentsDocument,
+  QueryDocumentsArgs,
   TagDocument,
   TagsDocument,
   WebsitesDocument,
@@ -40,7 +41,7 @@ export class Client {
     return createGetDocumentResponse(result)
   }
 
-  async getDocuments(args?: GetDocumentsArgs) {
+  async getDocuments(args?: QueryDocumentsArgs) {
     const result = await this.urqlClient.query(DocumentsDocument, args ?? {})
     return createDocumentListResponse(result)
   }
