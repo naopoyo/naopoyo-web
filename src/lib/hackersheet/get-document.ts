@@ -1,7 +1,7 @@
 import { OperationResult } from '@urql/core'
 
 import { graphql } from './gql'
-import { DocumentQuery } from './gql/graphql'
+import { DocumentQuery, QueryDocumentArgs } from './gql/graphql'
 import { Document } from './types'
 import { toArrayFromEdges } from './utils'
 
@@ -115,11 +115,9 @@ graphql(`
   }
 `)
 
-export interface GetDocumentArgs {
-  slug: string
-}
-
-export function createGetDocumentResponse(result: OperationResult<DocumentQuery, GetDocumentArgs>) {
+export function createGetDocumentResponse(
+  result: OperationResult<DocumentQuery, QueryDocumentArgs>
+) {
   if (!result.data?.document) {
     return { document: null, error: result.error }
   }

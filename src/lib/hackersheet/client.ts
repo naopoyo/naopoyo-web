@@ -5,15 +5,18 @@ import {
   type Client as UrqlClient,
 } from '@urql/core'
 
-import { GetDocumentArgs, createGetDocumentResponse } from './get-document'
+import { createGetDocumentResponse } from './get-document'
 import { createDocumentListResponse } from './get-documents'
-import { createGetTagResponse, GetTagArgs } from './get-tag'
-import { createGetTagsResponse, GetTagsArgs } from './get-tags'
+import { createGetTagResponse } from './get-tag'
+import { createGetTagsResponse } from './get-tags'
 import { createGetWebsitesResponse } from './get-websites'
 import {
   DocumentDocument,
   DocumentsDocument,
+  QueryDocumentArgs,
   QueryDocumentsArgs,
+  QueryTagArgs,
+  QueryTagsArgs,
   TagDocument,
   TagsDocument,
   WebsitesDocument,
@@ -36,7 +39,7 @@ export class Client {
     this.urqlClient = options.urqlClient ?? this.createUrqlClient()
   }
 
-  async getDocument(args: GetDocumentArgs) {
+  async getDocument(args: QueryDocumentArgs) {
     const result = await this.urqlClient.query(DocumentDocument, args)
     return createGetDocumentResponse(result)
   }
@@ -46,12 +49,12 @@ export class Client {
     return createDocumentListResponse(result)
   }
 
-  async getTag(args: GetTagArgs) {
+  async getTag(args: QueryTagArgs) {
     const result = await this.urqlClient.query(TagDocument, args)
     return createGetTagResponse(result)
   }
 
-  async getTags(args?: GetTagsArgs) {
+  async getTags(args?: QueryTagsArgs) {
     const result = await this.urqlClient.query(TagsDocument, args ?? {})
     return createGetTagsResponse(result)
   }

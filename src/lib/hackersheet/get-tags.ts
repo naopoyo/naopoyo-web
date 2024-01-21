@@ -1,7 +1,7 @@
 import { OperationResult } from '@urql/core'
 
 import { graphql } from './gql'
-import { ConnectionSort, TagsQuery } from './gql/graphql'
+import { QueryTagsArgs, TagsQuery } from './gql/graphql'
 import { toArrayFromEdges } from './utils'
 
 graphql(`
@@ -20,11 +20,7 @@ graphql(`
   }
 `)
 
-export interface GetTagsArgs {
-  sort?: ConnectionSort
-}
-
-export function createGetTagsResponse(result: OperationResult<TagsQuery, GetTagsArgs>) {
+export function createGetTagsResponse(result: OperationResult<TagsQuery, QueryTagsArgs>) {
   const tags = toArrayFromEdges(result.data?.tags?.edges)
   const totalCount = result.data?.tags?.totalCount || 0
   const isEmpty = totalCount === 0

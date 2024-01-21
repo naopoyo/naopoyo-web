@@ -1,7 +1,7 @@
 import { OperationResult } from '@urql/core'
 
 import { graphql } from './gql'
-import { WebsitesQuery } from './gql/graphql'
+import { QueryWebsitesArgs, WebsitesQuery } from './gql/graphql'
 import { toArrayFromEdges } from './utils'
 
 graphql(`
@@ -33,7 +33,9 @@ graphql(`
   }
 `)
 
-export function createGetWebsitesResponse(result: OperationResult<WebsitesQuery>) {
+export function createGetWebsitesResponse(
+  result: OperationResult<WebsitesQuery, QueryWebsitesArgs>
+) {
   const websites = toArrayFromEdges(result.data?.websites?.edges)
   const totalCount = result.data?.websites?.totalCount || 0
   const isEmpty = totalCount === 0

@@ -1,7 +1,7 @@
 import { OperationResult } from '@urql/core'
 
 import { graphql } from './gql'
-import { TagQuery } from './gql/graphql'
+import { QueryTagArgs, TagQuery } from './gql/graphql'
 import { TagListItem } from './types'
 
 graphql(`
@@ -15,11 +15,7 @@ graphql(`
   }
 `)
 
-export interface GetTagArgs {
-  name: string
-}
-
-export function createGetTagResponse(result: OperationResult<TagQuery, GetTagArgs>) {
+export function createGetTagResponse(result: OperationResult<TagQuery, QueryTagArgs>) {
   const tag = (result.data?.tag as TagListItem) ?? null
   const error = result.error
 
