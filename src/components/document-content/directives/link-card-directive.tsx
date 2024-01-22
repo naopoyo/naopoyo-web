@@ -30,7 +30,7 @@ export function LinkCardDirective(props: { children: ReactNode } & ExtraProps, d
       title={website.ogTitle || website.title || website.url}
       description={website.ogDescription || website.description}
       domain={website.domain}
-      imageUrl={website.ogImage?.file}
+      imageUrl={website.ogImage?.fileUrl}
       imageHeight={website.ogImage?.height}
       imageWidth={website.ogImage?.width}
     />

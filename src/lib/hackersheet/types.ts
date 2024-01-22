@@ -1,6 +1,6 @@
 type OgImage = {
   id: string
-  file: string
+  fileUrl: string
   height: number
   width: number
 }
