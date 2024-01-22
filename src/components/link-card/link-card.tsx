@@ -16,7 +16,7 @@ export default function LinkCard(props: LinkCardProps) {
       href={props.url}
       className="my-4 flex flex-col-reverse overflow-hidden rounded-lg border !no-underline hover:bg-primary/5 md:h-36 md:flex-row"
     >
-      <div className="flex flex-auto flex-col overflow-hidden px-4 py-2">
+      <div className="flex flex-auto flex-col overflow-hidden p-4">
         <div className="line-clamp-2 flex-auto text-primary">{props.title}</div>
         <div className="mb-2 line-clamp-2 text-xs text-muted-foreground">{props.description}</div>
         <div className="line-clamp-1 text-nowrap text-muted-foreground">{props.domain}</div>
