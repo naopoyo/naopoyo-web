@@ -52,7 +52,7 @@ export default function NavBarMenu() {
       <div className="flex flex-auto justify-end md:hidden">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" aria-label="Menu Button">
               <Menu />
             </Button>
           </DropdownMenuTrigger>
