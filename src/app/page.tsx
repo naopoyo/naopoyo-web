@@ -1,11 +1,18 @@
+import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { DocumentList } from '@/components/document'
 import { PageHeader } from '@/components/page-header'
 import { Skeleton } from '@/components/ui/skeleton'
+import { siteDesc, siteName } from '@/constants'
 import { client } from '@/lib/hackersheet'
 
 const title = 'Docs'
+
+export const metadata: Metadata = {
+  title: siteName,
+  description: siteDesc,
+}
 
 export const dynamic = 'force-static'
 export const revalidate = 60

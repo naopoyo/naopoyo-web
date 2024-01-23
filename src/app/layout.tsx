@@ -4,7 +4,7 @@ import { GoogleTagManager } from '@next/third-parties/google'
 
 import { Footer } from '@/components/footer'
 import { NavBar } from '@/components/nav-bar'
-import { baseUrl, gtmId, isProduction, siteName } from '@/constants'
+import { baseUrl, gtmId, isProduction } from '@/constants'
 import { GoogleFontLinks, sourceCodePro } from '@/fonts'
 import { Providers } from '@/providers'
 
@@ -12,7 +12,6 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: siteName,
   robots: {
     follow: true,
     index: true,
