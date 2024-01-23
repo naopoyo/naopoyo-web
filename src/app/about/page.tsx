@@ -53,12 +53,12 @@ export default function AbountPage() {
             <h2 className="mb-2 text-xl font-bold">SNS</h2>
             <div className="flex flex-row gap-2">
               <Button variant="ghost" size="icon" asChild>
-                <NextLink href="https://github.com/naopoyo">
+                <NextLink href="https://github.com/naopoyo" aria-label="GitHub Link">
                   <GithubIcon />
                 </NextLink>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <NextLink href="https://twitter.com/naopoyo_tw">
+                <NextLink href="https://twitter.com/naopoyo_tw" aria-label="X Link">
                   <XIcon />
                 </NextLink>
               </Button>
