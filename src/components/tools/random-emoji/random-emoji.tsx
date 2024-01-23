@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 
@@ -13,12 +13,12 @@ export default function RandomEmoji() {
   const [history, setHistory] = useState<string[]>([])
   const [isNotoColorEmoji, setIsNotoColorEmoji] = useState(true)
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     const emoji = makeRandomEmoji()
     setEmoji(emoji)
     setHistory([emoji, ...history])
     copyToClipBoard(emoji)
-  }
+  }, [makeRandomEmoji, history])
 
   const handleHistoryClick = (emoji: string) => {
     setEmoji(emoji)
