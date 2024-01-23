@@ -3,5 +3,5 @@ export interface DocumentEmojiProps {
 }
 
 export default function DocumentEmoji({ emoji }: DocumentEmojiProps) {
-  return <span style={{ fontFamily: "'Noto Color Emoji" }}>{emoji}</span>
+  return <span className="font-noto-color-emoji">{emoji}</span>
 }

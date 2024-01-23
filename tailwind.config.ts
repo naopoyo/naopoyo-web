@@ -56,6 +56,7 @@ const config = {
       },
       fontFamily: {
         body: 'var(--body-font)',
+        'noto-color-emoji': 'var(--noto-color-emoji-font)',
       },
       keyframes: {
         'accordion-down': {

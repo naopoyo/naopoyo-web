@@ -1,11 +1,3 @@
-import { Source_Code_Pro } from 'next/font/google'
-
-export const sourceCodePro = Source_Code_Pro({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-source-code-pro',
-})
-
 export const baseUrl = process.env.NEXT_PUBLIC_DOMAIN
   ? `https://${process.env.NEXT_PUBLIC_DOMAIN}`
   : 'http://localhost:3000'
