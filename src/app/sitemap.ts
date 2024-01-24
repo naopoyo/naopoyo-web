@@ -12,16 +12,18 @@ const baseUrl = process.env.NEXT_PUBLIC_DOMAIN
   : 'http://localhost:3000'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routesMap = ['', '/abount', '/tags', '/tools/random-emoji'].map((route) => ({
-    url: `${baseUrl}${route}`,
+  const routesMap = ['', 'abount', 'tags', 'tools/random-emoji'].map((route) => ({
+    url: `${baseUrl}/${route}`,
     lastModified: new Date().toISOString(),
   }))
 
   const docsPromise = client.getDocuments().then(({ documents }) =>
-    documents.map((doc) => ({
-      url: `${baseUrl}/docs/${doc.slug}`,
-      lastModified: doc.modifiedAt,
-    }))
+    documents
+      .filter((doc) => !doc.draft)
+      .map((doc) => ({
+        url: `${baseUrl}/docs/${doc.slug}`,
+        lastModified: doc.modifiedAt,
+      }))
   )
 
   let fetchedRoutes: Route[] = []
