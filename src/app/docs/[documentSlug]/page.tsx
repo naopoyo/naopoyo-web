@@ -1,14 +1,12 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
-import NextLink from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { DocumentList, DocumentEmoji, DocumentToc } from '@/components/document'
+import { DocumentList, DocumentToc } from '@/components/document'
 import DropdownToc from '@/components/document/dropdown-toc'
 import { DocumentContent } from '@/components/document-content'
-import { Link } from '@/components/link'
 import { client } from '@/lib/hackersheet'
-import { createDateFormat, timeAgo } from '@/utils'
+
+import { DocumentHeader } from './_components'
 
 interface DocumentPageProps {
   params: { documentSlug: string }
@@ -22,7 +20,7 @@ export async function generateMetadata({
 }: DocumentPageProps): Promise<Metadata> {
   const { document } = await client.getDocument({ slug: documentSlug })
 
-  if (!document) return {}
+  if (!document) notFound()
 
   return {
     title: document.title,
@@ -31,7 +29,6 @@ export async function generateMetadata({
 
 export default async function DocumentPage({ params: { documentSlug } }: DocumentPageProps) {
   const { document } = await client.getDocument({ slug: documentSlug })
-  const df = createDateFormat('yyyy-MM-dd')
 
   if (!document || document.draft) {
     return notFound()
@@ -43,78 +40,20 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
     sort: { by: 'published_at', order: 'desc' },
   })
 
-  const showModified = document.publishedAt !== document.modifiedAt
-  const showTags = document.tags.length > 0
   const showInboundLinkDocuments = document.inboundLinkDocuments.length > 0
   const showRecentDocuments = resentDocuments.length > 0
-  const historyUrl = process.env.HACKERSHEET_GITHUB_REPO_URL
-    ? process.env.HACKERSHEET_GITHUB_REPO_URL + '/commits/main/' + document.path
-    : undefined
 
   return (
-    <>
-      <header className="my-16 flex w-full flex-col gap-10 px-4 md:px-0">
-        <div className="text-center text-7xl">
-          <DocumentEmoji emoji={document.emoji} />
-        </div>
-        <h1 className="text-center text-4xl font-bold leading-snug">{document.title}</h1>
-        <div className="flex flex-row justify-center gap-10">
-          <div>
-            <div className="text-center">公開日</div>
-            <div className="text-muted-foreground">
-              {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
-            </div>
-          </div>
-          {showModified && (
-            <div>
-              <div className="text-center">更新日</div>
-              <div className="text-muted-foreground">
-                {timeAgo(document.modifiedAt)} - {df(document.modifiedAt)}
-              </div>
-            </div>
-          )}
-        </div>
-        {historyUrl && (
-          <div className="text-center">
-            <Link href={historyUrl}>更新履歴</Link>
-          </div>
-        )}
-        {showTags && (
-          <ul className="flex flex-row justify-center gap-4">
-            {document.tags.map((tag) => (
-              <li key={tag.id}>
-                <NextLink
-                  href={`/tags/${tag.name}`}
-                  className="block rounded border bg-primary-foreground px-3 py-1 hover:scale-110 hover:duration-500"
-                >
-                  {tag.name}
-                </NextLink>
-              </li>
-            ))}
-          </ul>
-        )}
-      </header>
-      {document.preview && (
-        <div className="my-16">
-          <picture>
-            <Image
-              src={document.preview.fileUrl}
-              width={document.preview.width}
-              height={document.preview.height}
-              alt="preview"
-              loading="lazy"
-            />
-          </picture>
-        </div>
-      )}
-      <div className="mx-auto flex max-w-max flex-row gap-12">
-        <div className="w-full px-4 md:w-[768px] md:px-0">
+    <div className="flex flex-col gap-24 pt-10">
+      <div className="mx-auto flex max-w-full flex-row gap-14">
+        <div className="flex w-full flex-col gap-14 px-4 md:w-[768px]">
+          <DocumentHeader document={document} />
           <main>
             <DocumentContent document={document} permaLinkFormat="/docs/{{slug}}" />
           </main>
         </div>
         <aside className="hidden w-[300px] md:inline-block">
-          <div className="font-bold text-muted-foreground">目次</div>
+          <h2 className="font-bold text-muted-foreground">目次</h2>
           <div className="sticky top-[64px] p-2">
             <div className="relative max-h-[calc(100vh-var(--navbar-height)-8px)] overflow-auto">
               <DocumentToc />
@@ -123,18 +62,20 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         </aside>
       </div>
       {showInboundLinkDocuments && (
-        <section className="container mt-16 pb-8">
-          <h2 className="mb-8 text-center text-xl font-bold">この記事にリンクしている記事</h2>
+        <section className="container flex flex-col gap-5">
+          <h2 className="text-center text-xl font-bold">この記事にリンクしている記事</h2>
           <DocumentList documents={document.inboundLinkDocuments} />
         </section>
       )}
       {showRecentDocuments && (
-        <section className="container mt-16 pb-8">
-          <h2 className="mb-8 text-center text-xl font-bold">最近公開された記事</h2>
+        <section className="container flex flex-col gap-5">
+          <h2 className="text-center text-xl font-bold">最近公開された記事</h2>
           <DocumentList documents={resentDocuments} />
         </section>
       )}
-      <DropdownToc />
-    </>
+      <div className="fixed bottom-4 right-4 md:hidden">
+        <DropdownToc />
+      </div>
+    </div>
   )
 }

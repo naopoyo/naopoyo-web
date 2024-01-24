@@ -11,6 +11,8 @@ export interface LinkCardProps {
 }
 
 export default function LinkCard(props: LinkCardProps) {
+  const faviconUrl = `http://www.google.com/s2/favicons?domain=${props.domain}`
+
   return (
     <a
       href={props.url}
@@ -19,7 +21,14 @@ export default function LinkCard(props: LinkCardProps) {
       <div className="flex flex-auto flex-col overflow-hidden p-4">
         <div className="line-clamp-2 flex-auto text-primary">{props.title}</div>
         <div className="mb-2 line-clamp-2 text-xs text-muted-foreground">{props.description}</div>
-        <div className="line-clamp-1 text-nowrap text-muted-foreground">{props.domain}</div>
+        <div className="flex items-center gap-2">
+          <picture className="rounded-full dark:bg-foreground">
+            <img src={faviconUrl} alt={`${props.domain} favicon`} width={16} height={16} />
+          </picture>
+          <div className="line-clamp-1 text-nowrap text-sm text-muted-foreground">
+            {props.domain}
+          </div>
+        </div>
       </div>
       {props.imageUrl && (
         <div className="md:max-w-[50%]">

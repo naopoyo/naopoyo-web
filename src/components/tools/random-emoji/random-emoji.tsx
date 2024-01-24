@@ -13,29 +13,32 @@ export default function RandomEmoji() {
   const [history, setHistory] = useState<string[]>([])
   const [isNotoColorEmoji, setIsNotoColorEmoji] = useState(true)
 
-  const handleClick = useCallback(() => {
+  const copyToClipBoard = useCallback((value: string) => {
+    navigator.clipboard && navigator.clipboard.writeText(value)
+  }, [])
+
+  const handleCopyButtonClick = useCallback(() => {
     const emoji = makeRandomEmoji()
     setEmoji(emoji)
     setHistory([emoji, ...history])
     copyToClipBoard(emoji)
-  }, [makeRandomEmoji, history])
+  }, [makeRandomEmoji, history, copyToClipBoard])
 
-  const handleHistoryClick = (emoji: string) => {
-    setEmoji(emoji)
-    copyToClipBoard(emoji)
-  }
+  const handleHistoryClick = useCallback(
+    (emoji: string) => {
+      setEmoji(emoji)
+      copyToClipBoard(emoji)
+    },
+    [copyToClipBoard]
+  )
 
-  const handleAllHistoriesCopyClick = () => {
+  const handleAllHistoriesCopyClick = useCallback(() => {
     copyToClipBoard(history.join(''))
-  }
+  }, [copyToClipBoard, history])
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setIsNotoColorEmoji(event.target.checked)
-  }
-
-  const copyToClipBoard = (value: string) => {
-    navigator.clipboard && navigator.clipboard.writeText(value)
-  }
+  }, [])
 
   useEffect(() => {
     setMounted(true)
@@ -63,7 +66,7 @@ export default function RandomEmoji() {
             <label htmlFor="is-noto-color-emoji">Noto Color Emoji</label>
           </div>
 
-          <Button onClick={handleClick}>絵文字をクリップボードにコピー</Button>
+          <Button onClick={handleCopyButtonClick}>絵文字をクリップボードにコピー</Button>
 
           <Button variant="outline" onClick={handleAllHistoriesCopyClick}>
             履歴をまとめてクリップボードにコピー

@@ -3,18 +3,16 @@
 import { useEffect } from 'react'
 import tocbot from 'tocbot'
 
-import { tocbotHeadingOffset } from '@/constants'
+import { tocbotBaseOptions } from '@/constants'
 import docContentStyles from '@/styles/document-content.module.scss'
 import tocStyles from '@/styles/document-toc.module.scss'
 
 export default function DocumentToc() {
   const init = () => {
     tocbot.init({
+      ...tocbotBaseOptions,
       tocSelector: `.${tocStyles.main}`,
       contentSelector: `.${docContentStyles['main']}`,
-      headingSelector: 'h2, h3, h4, h5, h6',
-      scrollSmooth: false,
-      headingsOffset: tocbotHeadingOffset,
     })
   }
 

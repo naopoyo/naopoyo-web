@@ -1,3 +1,5 @@
+import { IStaticOptions } from 'tocbot'
+
 export const baseUrl = process.env.NEXT_PUBLIC_DOMAIN
   ? `https://${process.env.NEXT_PUBLIC_DOMAIN}`
   : 'http://localhost:3000'
@@ -16,3 +18,11 @@ export const tocbotHeadingOffset = 64 + 1 + 16
 export const hackersheetApiEndpoint = process.env.HACKERSHEET_API_ENDPOINT!
 
 export const hackersheetApiAccessKey = process.env.HACKERSHEET_API_ACCESS_KEY!
+
+export const hackersheetGithubRepoUrl = process.env.HACKERSHEET_GITHUB_REPO_URL!
+
+export const tocbotBaseOptions: IStaticOptions = {
+  headingSelector: 'h2, h3, h4, h5, h6',
+  scrollSmooth: false,
+  headingsOffset: tocbotHeadingOffset,
+}
