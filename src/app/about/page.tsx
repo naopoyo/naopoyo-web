@@ -5,8 +5,9 @@ import NextLink from 'next/link'
 
 import { Link } from '@/components/link'
 import { PageHeader } from '@/components/page-header'
-import { Paragraph } from '@/components/paragraph'
+import { Paragraph as P } from '@/components/paragraph'
 import { Button } from '@/components/ui/button'
+import { siteDesc } from '@/constants'
 
 const title = 'About'
 
@@ -31,22 +32,21 @@ export default function AbountPage() {
         <div className="flex max-w-sm flex-col items-start gap-8">
           <section>
             <h2 className="mb-2 text-xl font-bold">naopoyo</h2>
-            <Paragraph>個人でWEBサービスの開発をやっています。</Paragraph>
-            <Paragraph>
-              このサイトでは個人開発で学んだことなどをまとめた記事を公開しています。
-            </Paragraph>
-            <Paragraph>
-              また、このサイトのソースコードを
-              <Link href="https://github.com/naopoyo/naopoyo-web">GitHub</Link>
-              で公開しているので、Next.jsでブログサイトを作成したい方はぜひ参考にしてみてください。
-            </Paragraph>
+            <div className="text-muted-foreground">
+              <P>{siteDesc}</P>
+              <P>
+                このサイトのソースコードを
+                <Link href="https://github.com/naopoyo/naopoyo-web">GitHub</Link>
+                で公開しているので、Next.jsでブログサイトを作成したい方はぜひ参考にしてみてください。
+              </P>
+            </div>
           </section>
 
           <section>
             <h2 className="mb-2 text-xl font-bold">つくったもの</h2>
-            <Paragraph>
+            <P>
               <Link href="https://hackersheet.com">Hacker Sheet</Link>
-            </Paragraph>
+            </P>
           </section>
 
           <section>

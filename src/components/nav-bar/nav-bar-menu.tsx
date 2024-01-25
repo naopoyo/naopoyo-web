@@ -15,12 +15,8 @@ import { cn } from '@/lib/shadcn-utils'
 
 const menuItems = [
   {
-    label: 'Search',
-    href: '/search',
-  },
-  {
     label: 'Docs',
-    href: '/',
+    href: '/docs',
   },
   {
     label: 'Tags',

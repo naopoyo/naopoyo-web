@@ -1,7 +1,10 @@
+import { ClassProp } from 'class-variance-authority/types'
 import { PropsWithChildren } from 'react'
 
-export interface ParagraphProps extends PropsWithChildren {}
+import { cn } from '@/lib/shadcn-utils'
 
-export default function Paragraph({ children }: ParagraphProps) {
-  return <p className="leading-8">{children}</p>
+export type ParagraphProps = PropsWithChildren & ClassProp
+
+export default function Paragraph({ className, children }: ParagraphProps) {
+  return <p className={cn('my-4 leading-8', className)}>{children}</p>
 }

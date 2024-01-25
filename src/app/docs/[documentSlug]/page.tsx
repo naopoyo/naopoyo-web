@@ -1,12 +1,11 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { DocumentList, DocumentToc } from '@/components/document'
-import DropdownToc from '@/components/document/dropdown-toc'
+import { DocumentList } from '@/components/document'
 import { DocumentContent } from '@/components/document-content'
 import { client } from '@/lib/hackersheet'
 
-import { DocumentHeader } from './_components'
+import { DocumentHeader, DocumentToc, DropdownToc } from './_components'
 
 interface DocumentPageProps {
   params: { documentSlug: string }
@@ -44,9 +43,9 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
   const showRecentDocuments = resentDocuments.length > 0
 
   return (
-    <div className="flex flex-col gap-24 pt-10">
+    <div className="container flex flex-col gap-24 pt-10">
       <div className="mx-auto flex max-w-full flex-row gap-14">
-        <div className="flex w-full flex-col gap-14 px-4 md:w-[768px]">
+        <div className="flex w-full flex-col gap-14 md:w-[768px]">
           <DocumentHeader document={document} />
           <main>
             <DocumentContent document={document} permaLinkFormat="/docs/{{slug}}" />

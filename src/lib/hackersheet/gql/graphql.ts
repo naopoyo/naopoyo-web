@@ -182,6 +182,8 @@ export type DocumentConnectionFilter = {
   publishedAtEnd?: InputMaybe<Scalars['DateTime']['input']>
   /** Start of date and time the document was published. */
   publishedAtStart?: InputMaybe<Scalars['DateTime']['input']>
+  /** Slugs included in the document. */
+  slugs?: InputMaybe<Array<Scalars['String']['input']>>
   /** Tags included in the document. */
   tags?: InputMaybe<Array<Scalars['String']['input']>>
   /** Indicates that the tag is not included. */

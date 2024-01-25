@@ -1,3 +1,4 @@
+import { ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
@@ -25,26 +26,29 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
         <div className="text-7xl">
           <DocumentEmoji emoji={document.emoji} />
         </div>
-        <h1 className="text-3xl font-semibold leading-relaxed">{document.title}</h1>
+        <h1 className="text-3xl font-semibold leading-relaxed auto-phrase">{document.title}</h1>
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-8 text-xs md:gap-16">
             <div className="flex flex-col gap-1">
-              <div>公開日</div>
-              <div className="text-muted-foreground">{timeAgo(document.publishedAt)}</div>
+              <div className="text-muted-foreground">公開日</div>
+              <div>{timeAgo(document.publishedAt)}</div>
               <div className="text-muted-foreground">{df(document.publishedAt)}</div>
             </div>
             {showModified && (
               <div className="flex flex-col gap-1">
-                <div>更新日</div>
-                <div className="text-muted-foreground">{timeAgo(document.modifiedAt)}</div>
+                <div className="text-muted-foreground">更新日</div>
+                <div>{timeAgo(document.modifiedAt)}</div>
                 <div className="text-muted-foreground">{df(document.modifiedAt)}</div>
               </div>
             )}
             {historyUrl && (
               <div className="flex flex-col gap-1">
-                <div>更新履歴</div>
+                <div className="text-muted-foreground">更新履歴</div>
                 <div>
-                  <Link href={historyUrl}>GitHubで見る</Link>
+                  <Link href={historyUrl} className="flex items-center gap-1">
+                    <span>GitHubで見る</span>
+                    <ExternalLink fontSize={12} size={12} />
+                  </Link>
                 </div>
               </div>
             )}

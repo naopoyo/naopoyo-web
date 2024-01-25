@@ -8,10 +8,19 @@ export const isProduction = process.env.NODE_ENV === 'production'
 
 export const gtmId = process.env.GOOGLE_TAG_ID!
 
-export const siteName = 'naopoyo'
+export const siteName = 'naopoyo.com'
 
 export const siteDesc =
-  'Ruby、TypeScriptなどの技術記事や便利ツールの公開をおこなっている個人のウェブサイトです。'
+  '個人でWEBサービスの開発をやっています。このサイトでは個人開発で学んだことを公開しています。'
+
+export const pickupDocumentSlugs = [
+  'creating-a-headless-cms-for-developers',
+  'embed-kifu-player-in-markdown',
+  'shogi-log-2024-01',
+]
+
+export const pickupDocsCount = 3
+export const recentDocsCount = 6
 
 export const tocbotHeadingOffset = 64 + 1 + 16
 
@@ -19,7 +28,9 @@ export const hackersheetApiEndpoint = process.env.HACKERSHEET_API_ENDPOINT!
 
 export const hackersheetApiAccessKey = process.env.HACKERSHEET_API_ACCESS_KEY!
 
-export const hackersheetGithubRepoUrl = process.env.HACKERSHEET_GITHUB_REPO_URL!
+export const hackersheetGithubRepoFullName = process.env.HACKERSHEET_GITHUB_REPO_FULL_NAME!
+
+export const hackersheetGithubRepoUrl = `https://github.com/${hackersheetGithubRepoFullName}`
 
 export const tocbotBaseOptions: IStaticOptions = {
   headingSelector: 'h2, h3, h4, h5, h6',

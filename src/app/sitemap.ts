@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 
+import { baseUrl } from '@/constants'
 import { client } from '@/lib/hackersheet'
 
 type Route = {
@@ -7,12 +8,8 @@ type Route = {
   lastModified: string
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_DOMAIN
-  ? `https://${process.env.NEXT_PUBLIC_DOMAIN}`
-  : 'http://localhost:3000'
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routesMap = ['', 'abount', 'tags', 'tools/random-emoji'].map((route) => ({
+  const routesMap = ['', 'docs', 'about', 'tags', 'tools/random-emoji'].map((route) => ({
     url: `${baseUrl}/${route}`,
     lastModified: new Date().toISOString(),
   }))
