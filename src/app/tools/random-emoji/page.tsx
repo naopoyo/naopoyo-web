@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 
 import { PageHeader } from '@/components/page-header'
-import { RandomEmoji } from '@/components/tools/random-emoji'
+
+import { RandomEmoji } from './_components'
 
 const title = 'ランダム絵文字コピー'
 

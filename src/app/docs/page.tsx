@@ -2,10 +2,9 @@ import { ArrowRight } from 'lucide-react'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
-import { DocumentList } from '@/components/document'
+import { DocumentList, DocumentListSkeleton } from '@/components/document'
 import { Link } from '@/components/link'
 import { PageHeader } from '@/components/page-header'
-import { DocumentListSkeleton } from '@/components/skeleton'
 import { Input } from '@/components/ui/input'
 import { client } from '@/lib/hackersheet'
 

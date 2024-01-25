@@ -3,10 +3,9 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import { Suspense } from 'react'
 
-import { DocumentList } from '@/components/document'
+import { DocumentList, DocumentListSkeleton } from '@/components/document'
 import { Link } from '@/components/link'
 import { Paragraph as P } from '@/components/paragraph'
-import { DocumentListSkeleton } from '@/components/skeleton'
 import {
   siteDesc,
   siteName,
