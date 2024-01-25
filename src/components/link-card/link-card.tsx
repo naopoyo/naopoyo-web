@@ -11,7 +11,7 @@ export interface LinkCardProps {
 }
 
 export default function LinkCard(props: LinkCardProps) {
-  const faviconUrl = `http://www.google.com/s2/favicons?domain=${props.domain}`
+  const faviconUrl = `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${props.domain}&size=16`
 
   return (
     <a
