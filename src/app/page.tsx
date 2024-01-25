@@ -1,8 +1,8 @@
 import { ArrowRight } from 'lucide-react'
 import { Metadata } from 'next'
-import Image from 'next/image'
 import { Suspense } from 'react'
 
+import { Avater } from '@/components/avatar'
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
 import { Link } from '@/components/link'
 import { Paragraph as P } from '@/components/paragraph'
@@ -50,13 +50,7 @@ export default async function HomePage() {
 function ProfileSection() {
   return (
     <section className="mx-auto flex max-w-sm items-start justify-center gap-4 py-10">
-      <Image
-        src="/naopoyo2.png"
-        width={128}
-        height={128}
-        alt="logo"
-        className="rounded-full border object-cover"
-      />
+      <Avater size="base" />
       <div className="text-sm text-muted-foreground">
         <h1 className="text-lg font-bold text-foreground">naopoyo</h1>
         <P>{SITE_DESC}</P>

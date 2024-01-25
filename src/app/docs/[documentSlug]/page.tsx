@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
 import { DocumentContent } from '@/components/document-content'
+import { FlexCol, FlexRow } from '@/components/layout'
 import { client } from '@/lib/hackersheet'
 
 import { DocumentHeader, DocumentToc, DropdownToc } from './_components'
@@ -43,14 +44,14 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
   const showRecentDocuments = resentDocuments.length > 0
 
   return (
-    <div className="container flex flex-col gap-24 pt-10">
-      <div className="mx-auto flex max-w-full flex-row gap-14">
-        <div className="flex w-full flex-col gap-14 md:w-[768px]">
+    <FlexCol className="container gap-24 pt-10">
+      <FlexRow className="mx-auto max-w-full gap-14">
+        <FlexCol className="w-full gap-14 md:w-[768px]">
           <DocumentHeader document={document} />
           <main>
             <DocumentContent document={document} permaLinkFormat="/docs/{{slug}}" />
           </main>
-        </div>
+        </FlexCol>
         <aside className="hidden w-[300px] md:inline-block">
           <h2 className="font-bold text-muted-foreground">目次</h2>
           <div className="sticky top-[64px] p-2">
@@ -59,22 +60,22 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
             </div>
           </div>
         </aside>
-      </div>
+      </FlexRow>
       {showInboundLinkDocuments && (
-        <section className="container flex flex-col gap-5">
+        <FlexCol className="container gap-5">
           <h2 className="text-center text-xl font-bold">この記事にリンクしている記事</h2>
           <DocumentList documents={document.inboundLinkDocuments} />
-        </section>
+        </FlexCol>
       )}
       {showRecentDocuments && (
-        <section className="container flex flex-col gap-5">
+        <FlexCol className="container gap-5">
           <h2 className="text-center text-xl font-bold">最近公開された記事</h2>
           <DocumentList documents={resentDocuments} />
-        </section>
+        </FlexCol>
       )}
       <div className="fixed bottom-4 right-4 md:hidden">
         <DropdownToc />
       </div>
-    </div>
+    </FlexCol>
   )
 }
