@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin'
+
 import type { Config } from 'tailwindcss'
 
 const config = {
@@ -81,7 +83,16 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.auto-phrase': {
+          'word-break': 'auto-phrase',
+        },
+      })
+    }),
+  ],
 } satisfies Config
 
 export default config
