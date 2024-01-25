@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-import { baseUrl } from '@/constants'
+import { BASE_URL } from '@/constants'
 import { client } from '@/lib/hackersheet'
 
 type Route = {
@@ -10,7 +10,7 @@ type Route = {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routesMap = ['', 'docs', 'about', 'tags', 'tools/random-emoji'].map((route) => ({
-    url: `${baseUrl}/${route}`,
+    url: `${BASE_URL}/${route}`,
     lastModified: new Date().toISOString(),
   }))
 
@@ -18,7 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     documents
       .filter((doc) => !doc.draft)
       .map((doc) => ({
-        url: `${baseUrl}/docs/${doc.slug}`,
+        url: `${BASE_URL}/docs/${doc.slug}`,
         lastModified: doc.modifiedAt,
       }))
   )

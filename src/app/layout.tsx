@@ -4,14 +4,14 @@ import { GoogleTagManager } from '@next/third-parties/google'
 
 import { Footer } from '@/components/footer'
 import { NavBar } from '@/components/nav-bar'
-import { baseUrl, gtmId, isProduction } from '@/constants'
+import { BASE_URL, GTM_ID, isProduction } from '@/constants'
 import { GoogleFontLinks, sourceCodePro } from '@/fonts'
 import { Providers } from '@/providers'
 
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(BASE_URL),
   robots: {
     follow: true,
     index: true,
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </Providers>
       </body>
-      {isProduction && <GoogleTagManager gtmId={gtmId} />}
+      {isProduction && <GoogleTagManager gtmId={GTM_ID} />}
     </html>
   )
 }

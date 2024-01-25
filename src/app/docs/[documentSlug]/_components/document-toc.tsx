@@ -3,14 +3,14 @@
 import { useEffect } from 'react'
 import tocbot from 'tocbot'
 
-import { tocbotBaseOptions } from '@/constants'
+import { TOCBOT_BASE_OPTIONS } from '@/constants'
 import docContentStyles from '@/styles/document-content.module.scss'
 import tocStyles from '@/styles/document-toc.module.scss'
 
 export default function DocumentToc() {
   const init = () => {
     tocbot.init({
-      ...tocbotBaseOptions,
+      ...TOCBOT_BASE_OPTIONS,
       tocSelector: `.${tocStyles.main}`,
       contentSelector: `.${docContentStyles['main']}`,
     })

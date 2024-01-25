@@ -7,17 +7,17 @@ import { DocumentList, DocumentListSkeleton } from '@/components/document'
 import { Link } from '@/components/link'
 import { Paragraph as P } from '@/components/paragraph'
 import {
-  siteDesc,
-  siteName,
-  pickupDocsCount,
-  recentDocsCount,
-  pickupDocumentSlugs,
+  SITE_DESC,
+  SITE_NAME,
+  PICKUP_DOCS_COUNT,
+  RECENT_DOCS_COUNT,
+  PICKUP_DOC_SLUGS,
 } from '@/constants'
 import { client } from '@/lib/hackersheet'
 
 export const metadata: Metadata = {
-  title: siteName,
-  description: siteDesc,
+  title: SITE_NAME,
+  description: SITE_DESC,
 }
 
 export const dynamic = 'force-static'
@@ -29,13 +29,13 @@ export default async function HomePage() {
       <ProfileSection />
       <section>
         <h2 className="my-4 text-center text-xl font-bold">おすすめの記事</h2>
-        <Suspense fallback={<DocumentListSkeleton length={pickupDocsCount} />}>
+        <Suspense fallback={<DocumentListSkeleton length={PICKUP_DOCS_COUNT} />}>
           <PickupDocumentList />
         </Suspense>
       </section>
       <section>
         <h2 className="my-4 text-center text-xl font-bold">最近書いた記事</h2>
-        <Suspense fallback={<DocumentListSkeleton length={recentDocsCount} />}>
+        <Suspense fallback={<DocumentListSkeleton length={RECENT_DOCS_COUNT} />}>
           <RecentDocumentList />
         </Suspense>
         <Link href="/docs" className="my-20 flex items-center justify-center gap-1">
@@ -59,7 +59,7 @@ function ProfileSection() {
       />
       <div className="text-sm text-muted-foreground">
         <h1 className="text-lg font-bold text-foreground">naopoyo</h1>
-        <P>{siteDesc}</P>
+        <P>{SITE_DESC}</P>
         <P>
           <Link href="/about" className="flex items-center gap-1">
             <span>プロフィールをもっと見る</span>
@@ -73,9 +73,9 @@ function ProfileSection() {
 
 async function PickupDocumentList() {
   const { documents } = await client.getDocuments({
-    filter: { draft: false, slugs: pickupDocumentSlugs },
+    filter: { draft: false, slugs: PICKUP_DOC_SLUGS },
     sort: { by: 'published_at', order: 'desc' },
-    first: pickupDocsCount,
+    first: PICKUP_DOCS_COUNT,
   })
 
   return <DocumentList documents={documents} />
@@ -83,9 +83,9 @@ async function PickupDocumentList() {
 
 async function RecentDocumentList() {
   const { documents } = await client.getDocuments({
-    filter: { draft: false, excludeSlugs: pickupDocumentSlugs },
+    filter: { draft: false, excludeSlugs: PICKUP_DOC_SLUGS },
     sort: { by: 'published_at', order: 'desc' },
-    first: recentDocsCount,
+    first: RECENT_DOCS_COUNT,
   })
 
   return <DocumentList documents={documents} />

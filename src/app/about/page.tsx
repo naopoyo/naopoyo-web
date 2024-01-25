@@ -7,7 +7,7 @@ import { Link } from '@/components/link'
 import { PageHeader } from '@/components/page-header'
 import { Paragraph as P } from '@/components/paragraph'
 import { Button } from '@/components/ui/button'
-import { siteDesc } from '@/constants'
+import { SITE_DESC } from '@/constants'
 
 const title = 'About'
 
@@ -33,7 +33,7 @@ export default function AbountPage() {
           <section>
             <h2 className="mb-2 text-xl font-bold">naopoyo</h2>
             <div className="text-muted-foreground">
-              <P>{siteDesc}</P>
+              <P>{SITE_DESC}</P>
               <P>
                 このサイトのソースコードを
                 <Link href="https://github.com/naopoyo/naopoyo-web">GitHub</Link>

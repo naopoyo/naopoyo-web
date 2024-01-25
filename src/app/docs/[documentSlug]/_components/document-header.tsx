@@ -4,7 +4,7 @@ import NextLink from 'next/link'
 
 import { DocumentEmoji } from '@/components/document'
 import { Link } from '@/components/link'
-import { hackersheetGithubRepoUrl } from '@/constants'
+import { HACKERSHEET_GITHUB_REPO_URL } from '@/constants'
 import { Document } from '@/lib/hackersheet/types'
 import { createDateFormat, timeAgo } from '@/utils'
 
@@ -15,8 +15,8 @@ export interface DocumentHeaderProps {
 export default function DocumentHeader({ document }: DocumentHeaderProps) {
   const showModified = document.publishedAt !== document.modifiedAt
   const showTags = document.tags.length > 0
-  const historyUrl = hackersheetGithubRepoUrl
-    ? hackersheetGithubRepoUrl + '/commits/main/' + document.path
+  const historyUrl = HACKERSHEET_GITHUB_REPO_URL
+    ? HACKERSHEET_GITHUB_REPO_URL + '/commits/main/' + document.path
     : undefined
   const df = createDateFormat('yyyy-MM-dd')
 
