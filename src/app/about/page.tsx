@@ -48,13 +48,20 @@ export default function AbountPage() {
             <h2 className="mb-2 text-xl font-bold">SNS</h2>
             <FlexRow className="gap-2">
               <Button variant="ghost" size="icon" asChild>
-                <NextLink href="https://github.com/naopoyo" aria-label="GitHub Link">
+                <NextLink href="https://github.com/naopoyo" aria-label="GitHubのLink">
                   <GithubIcon />
                 </NextLink>
               </Button>
               <Button variant="ghost" size="icon" asChild>
-                <NextLink href="https://twitter.com/naopoyo_tw" aria-label="X Link">
+                <NextLink href="https://twitter.com/naopoyo_tw" aria-label="XのLink">
                   <XIcon />
+                </NextLink>
+              </Button>
+              <Button variant="ghost" size="icon" asChild>
+                <NextLink href="https://sizu.me/naopoyo" aria-label="しずかなインターネットのLink">
+                  <svg className="h-[24px] w-[24px] fill-foreground">
+                    <use xlinkHref="/sizu-me-logo.svg#a"></use>
+                  </svg>
                 </NextLink>
               </Button>
             </FlexRow>
