@@ -83,11 +83,14 @@ function BookmarkItem({ website }: { website: WebsiteListeItem }) {
       </a>
       {website.documents.length > 0 && (
         <div className="px-2 py-1">
-          {website.documents.map((doc) => (
-            <div key={doc.id} className="line-clamp-1 text-nowrap text-xs">
-              <Link href={`/docs/${doc.slug}`}>↪︎ {doc.title}</Link>
-            </div>
-          ))}
+          {website.documents.map(
+            (doc) =>
+              !doc.draft && (
+                <div key={doc.id} className="line-clamp-1 text-nowrap text-xs">
+                  <Link href={`/docs/${doc.slug}`}>↪︎ {doc.title}</Link>
+                </div>
+              )
+          )}
         </div>
       )}
     </div>

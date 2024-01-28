@@ -678,7 +678,13 @@ export type WebsitesQuery = {
           __typename?: 'DocumentConnection'
           edges?: Array<{
             __typename?: 'DocumentEdge'
-            node?: { __typename?: 'Document'; id: string; title: string; slug: string } | null
+            node?: {
+              __typename?: 'Document'
+              id: string
+              draft: boolean
+              title: string
+              slug: string
+            } | null
           } | null> | null
         } | null
       } | null
@@ -1348,6 +1354,10 @@ export const WebsitesDocument = {
                                               {
                                                 kind: 'Field',
                                                 name: { kind: 'Name', value: 'id' },
+                                              },
+                                              {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'draft' },
                                               },
                                               {
                                                 kind: 'Field',

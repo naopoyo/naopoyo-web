@@ -23,6 +23,7 @@ type OgImage = {
 
 type Document = {
   id: string
+  draft: boolean
   title: string
   slug: string
 }

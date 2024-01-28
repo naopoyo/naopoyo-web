@@ -32,6 +32,7 @@ graphql(`
             edges {
               node {
                 id
+                draft
                 title
                 slug
               }
