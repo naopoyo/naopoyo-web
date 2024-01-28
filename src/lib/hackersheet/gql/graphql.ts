@@ -26,6 +26,8 @@ export type Asset = {
   __typename?: 'Asset'
   /** Identifies the date and time when the object was created. */
   createdAt: Scalars['DateTime']['output']
+  /** A list of documents associated with the object. */
+  documents?: Maybe<DocumentConnection>
   /** The file size of the asset. */
   fileSize: Scalars['Int']['output']
   /** The HTTP URL listing the asset file. */
@@ -41,6 +43,15 @@ export type Asset = {
   updatedAt: Scalars['DateTime']['output']
   /** The width of the asset file. */
   width: Scalars['Int']['output']
+}
+
+export type AssetDocumentsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>
+  before?: InputMaybe<Scalars['String']['input']>
+  filter?: InputMaybe<DocumentConnectionFilter>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<ConnectionSort>
 }
 
 /** The connection type for Asset. */
@@ -108,8 +119,8 @@ export type Document = {
   title: Scalars['String']['output']
   /** Identifies the date and time when the object was updated. */
   updatedAt: Scalars['DateTime']['output']
-  /** A list of websites associated with the object. */
-  websites?: Maybe<WebsiteConnection>
+  /** A list of workspace websites associated with the object. */
+  websites?: Maybe<WorkspaceWebsiteConnection>
 }
 
 export type DocumentAssetsArgs = {
@@ -231,9 +242,9 @@ export type Query = {
   /** A list of tags associated with the workspace. */
   tags?: Maybe<TagConnection>
   /** Find a website associated with the workspace by `ID`. */
-  website?: Maybe<Website>
+  website?: Maybe<WorkspaceWebsite>
   /** A list of websites associated with the workspace. */
-  websites?: Maybe<WebsiteConnection>
+  websites?: Maybe<WorkspaceWebsiteConnection>
 }
 
 export type QueryAssetArgs = {
@@ -296,11 +307,22 @@ export type Tag = {
   documentCount: Scalars['Int']['output']
   /** Number of documents in published with this tag. */
   documentCountInPublished: Scalars['Int']['output']
+  /** A list of documents associated with the object. */
+  documents?: Maybe<DocumentConnection>
   id: Scalars['ID']['output']
   /** The name of the tag. */
   name: Scalars['String']['output']
   /** Identifies the date and time when the object was updated. */
   updatedAt: Scalars['DateTime']['output']
+}
+
+export type TagDocumentsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>
+  before?: InputMaybe<Scalars['String']['input']>
+  filter?: InputMaybe<DocumentConnectionFilter>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<ConnectionSort>
 }
 
 /** The connection type for Tag. */
@@ -325,17 +347,37 @@ export type TagEdge = {
   node?: Maybe<Tag>
 }
 
-export type Website = {
-  __typename?: 'Website'
+export type WebsiteOgImage = {
+  __typename?: 'WebsiteOgImage'
+  /** Identifies the date and time when the object was created. */
+  createdAt: Scalars['DateTime']['output']
+  /** The file size of the og image. */
+  fileSize: Scalars['Int']['output']
+  /** The HTTP URL listing the og image file. */
+  fileUrl?: Maybe<Scalars['String']['output']>
+  /** The height of the og image file. */
+  height: Scalars['Int']['output']
+  /** The Node ID of the website og image object. */
+  id: Scalars['ID']['output']
+  /** Identifies the date and time when the object was updated. */
+  updatedAt: Scalars['DateTime']['output']
+  /** The width of the og image file. */
+  width: Scalars['Int']['output']
+}
+
+export type WorkspaceWebsite = {
+  __typename?: 'WorkspaceWebsite'
   /** The value obtained by hashing the url with SHA-256. */
   checksum: Scalars['String']['output']
   /** Identifies the date and time when the object was created. */
   createdAt: Scalars['DateTime']['output']
   /** The description of the website. */
   description: Scalars['String']['output']
+  /** A list of documents associated with the object. */
+  documents?: Maybe<DocumentConnection>
   /** The domain of the website. */
   domain: Scalars['String']['output']
-  /** The Node ID of the website object. */
+  /** The Node ID of the workspace website object. */
   id: Scalars['ID']['output']
   /** The og:description of the website. */
   ogDescription: Scalars['String']['output']
@@ -359,15 +401,26 @@ export type Website = {
   updatedAt: Scalars['DateTime']['output']
   /** The HTTP URL listing the website. */
   url: Scalars['String']['output']
+  /** The Node ID of the website object. */
+  websiteId?: Maybe<Scalars['ID']['output']>
 }
 
-/** The connection type for Website. */
-export type WebsiteConnection = {
-  __typename?: 'WebsiteConnection'
+export type WorkspaceWebsiteDocumentsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>
+  before?: InputMaybe<Scalars['String']['input']>
+  filter?: InputMaybe<DocumentConnectionFilter>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<ConnectionSort>
+}
+
+/** The connection type for WorkspaceWebsite. */
+export type WorkspaceWebsiteConnection = {
+  __typename?: 'WorkspaceWebsiteConnection'
   /** A list of edges. */
-  edges?: Maybe<Array<Maybe<WebsiteEdge>>>
+  edges?: Maybe<Array<Maybe<WorkspaceWebsiteEdge>>>
   /** A list of nodes. */
-  nodes?: Maybe<Array<Maybe<Website>>>
+  nodes?: Maybe<Array<Maybe<WorkspaceWebsite>>>
   /** Information to aid in pagination. */
   pageInfo: PageInfo
   /** Total count of nodes. */
@@ -375,30 +428,12 @@ export type WebsiteConnection = {
 }
 
 /** An edge in a connection. */
-export type WebsiteEdge = {
-  __typename?: 'WebsiteEdge'
+export type WorkspaceWebsiteEdge = {
+  __typename?: 'WorkspaceWebsiteEdge'
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output']
   /** The item at the end of the edge. */
-  node?: Maybe<Website>
-}
-
-export type WebsiteOgImage = {
-  __typename?: 'WebsiteOgImage'
-  /** Identifies the date and time when the object was created. */
-  createdAt: Scalars['DateTime']['output']
-  /** The file size of the og image. */
-  fileSize: Scalars['Int']['output']
-  /** The HTTP URL listing the og image file. */
-  fileUrl?: Maybe<Scalars['String']['output']>
-  /** The height of the og image file. */
-  height: Scalars['Int']['output']
-  /** The Node ID of the website og image object. */
-  id: Scalars['ID']['output']
-  /** Identifies the date and time when the object was updated. */
-  updatedAt: Scalars['DateTime']['output']
-  /** The width of the og image file. */
-  width: Scalars['Int']['output']
+  node?: Maybe<WorkspaceWebsite>
 }
 
 export type DocumentQueryVariables = Exact<{
@@ -497,11 +532,11 @@ export type DocumentQuery = {
       } | null> | null
     } | null
     websites?: {
-      __typename?: 'WebsiteConnection'
+      __typename?: 'WorkspaceWebsiteConnection'
       edges?: Array<{
-        __typename?: 'WebsiteEdge'
+        __typename?: 'WorkspaceWebsiteEdge'
         node?: {
-          __typename?: 'Website'
+          __typename?: 'WorkspaceWebsite'
           id: string
           url: string
           domain: string
@@ -612,12 +647,12 @@ export type WebsitesQueryVariables = Exact<{ [key: string]: never }>
 export type WebsitesQuery = {
   __typename?: 'Query'
   websites?: {
-    __typename?: 'WebsiteConnection'
+    __typename?: 'WorkspaceWebsiteConnection'
     totalCount: number
     edges?: Array<{
-      __typename?: 'WebsiteEdge'
+      __typename?: 'WorkspaceWebsiteEdge'
       node?: {
-        __typename?: 'Website'
+        __typename?: 'WorkspaceWebsite'
         id: string
         url: string
         domain: string
