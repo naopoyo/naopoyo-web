@@ -17,6 +17,7 @@ import {
   QueryDocumentsArgs,
   QueryTagArgs,
   QueryTagsArgs,
+  QueryWebsitesArgs,
   TagDocument,
   TagsDocument,
   WebsitesDocument,
@@ -59,8 +60,8 @@ export class Client {
     return createGetTagsResponse(result)
   }
 
-  async getWebsites() {
-    const result = await this.urqlClient.query(WebsitesDocument, {})
+  async getWebsites(args?: QueryWebsitesArgs) {
+    const result = await this.urqlClient.query(WebsitesDocument, args ?? {})
     return createGetWebsitesResponse(result)
   }
 

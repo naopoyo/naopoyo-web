@@ -1,8 +1,10 @@
 import { Metadata } from 'next'
+import { Suspense } from 'react'
 
-import { LinkCard } from '@/components/link-card'
 import { PageHeader } from '@/components/page-header'
-import { client } from '@/lib/hackersheet'
+import { makeWebsiteQuery } from '@/lib/hackersheet'
+
+import { BookmarkList, BookmarkListSkeleton } from './_components'
 
 const title = 'Bookmarks'
 
@@ -10,28 +12,23 @@ export const metadata: Metadata = {
   title: title,
 }
 
-export default async function BookmarksPage() {
-  const { websites, isEmpty } = await client.getWebsites()
+export interface BookmarksPageProps {
+  searchParams: {
+    page?: number
+  }
+}
+
+export default async function BookmarksPage({ searchParams }: BookmarksPageProps) {
+  const { first, after, suspenseKey } = makeWebsiteQuery({ page: searchParams.page })
 
   return (
     <div className="container">
       <PageHeader>{title}</PageHeader>
 
-      <section className="mx-auto max-w-screen-md">
-        {!isEmpty &&
-          websites.map((website) => (
-            <div key={website.id}>
-              <LinkCard
-                url={website.url}
-                title={website.ogTitle || website.title || website.url}
-                description={website.ogDescription || website.description}
-                domain={website.domain}
-                imageUrl={website.ogImage?.fileUrl ?? undefined}
-                imageHeight={website.ogImage?.height ?? undefined}
-                imageWidth={website.ogImage?.width ?? undefined}
-              />
-            </div>
-          ))}
+      <section className="mx-auto flex max-w-screen-md flex-col gap-4">
+        <Suspense key={suspenseKey} fallback={<BookmarkListSkeleton />}>
+          <BookmarkList first={first} after={after} />
+        </Suspense>
       </section>
     </div>
   )
