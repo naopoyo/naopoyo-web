@@ -124,7 +124,7 @@ export function createGetDocumentResponse(
 
   const tmpDoc = result.data?.document
 
-  const document = {
+  const document: Document = {
     ...tmpDoc,
     tags: toArrayFromEdges(tmpDoc.tags?.edges),
     assets: toArrayFromEdges(tmpDoc.assets?.edges),
@@ -137,7 +137,7 @@ export function createGetDocumentResponse(
       tags: toArrayFromEdges(doc.tags?.edges),
     })),
     websites: toArrayFromEdges(tmpDoc.websites?.edges),
-  } as Document
+  }
   const error = result.error
 
   return { document, error } as const

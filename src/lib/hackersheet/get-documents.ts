@@ -53,11 +53,10 @@ export function createDocumentListResponse(
   }
 
   const tmpDocs = result.data.documents
-
-  const documents = toArrayFromEdges(tmpDocs?.edges).map((document) => ({
+  const documents: DocumentList = toArrayFromEdges(tmpDocs?.edges).map((document) => ({
     ...document,
     tags: toArrayFromEdges(document.tags?.edges),
-  })) as DocumentList
+  }))
   const totalCount = result.data?.documents?.totalCount || 0
   const isEmpty = totalCount === 0
   const error = result.error

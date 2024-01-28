@@ -2,6 +2,7 @@ import { OperationResult } from '@urql/core'
 
 import { graphql } from './gql'
 import { QueryWebsitesArgs, WebsitesQuery } from './gql/graphql'
+import { WebsiteListeItem } from './types'
 import { toArrayFromEdges } from './utils'
 
 graphql(`
@@ -27,6 +28,15 @@ graphql(`
             width
             height
           }
+          documents {
+            edges {
+              node {
+                id
+                title
+                slug
+              }
+            }
+          }
         }
       }
     }
@@ -36,7 +46,13 @@ graphql(`
 export function createGetWebsitesResponse(
   result: OperationResult<WebsitesQuery, QueryWebsitesArgs>
 ) {
-  const websites = toArrayFromEdges(result.data?.websites?.edges)
+  const websites: WebsiteListeItem[] = toArrayFromEdges(result.data?.websites?.edges).map(
+    (website) => ({
+      ...website,
+      documents: toArrayFromEdges(website.documents?.edges),
+    })
+  )
+
   const totalCount = result.data?.websites?.totalCount || 0
   const isEmpty = totalCount === 0
   const error = result.error

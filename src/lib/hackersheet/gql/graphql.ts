@@ -671,6 +671,13 @@ export type WebsitesQuery = {
           width: number
           height: number
         } | null
+        documents?: {
+          __typename?: 'DocumentConnection'
+          edges?: Array<{
+            __typename?: 'DocumentEdge'
+            node?: { __typename?: 'Document'; id: string; title: string; slug: string } | null
+          } | null> | null
+        } | null
       } | null
     } | null> | null
   } | null
@@ -1290,6 +1297,45 @@ export const WebsitesDocument = {
                                   { kind: 'Field', name: { kind: 'Name', value: 'fileUrl' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'width' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'height' } },
+                                ],
+                              },
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'documents' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'edges' },
+                                    selectionSet: {
+                                      kind: 'SelectionSet',
+                                      selections: [
+                                        {
+                                          kind: 'Field',
+                                          name: { kind: 'Name', value: 'node' },
+                                          selectionSet: {
+                                            kind: 'SelectionSet',
+                                            selections: [
+                                              {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'id' },
+                                              },
+                                              {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'title' },
+                                              },
+                                              {
+                                                kind: 'Field',
+                                                name: { kind: 'Name', value: 'slug' },
+                                              },
+                                            ],
+                                          },
+                                        },
+                                      ],
+                                    },
+                                  },
                                 ],
                               },
                             },

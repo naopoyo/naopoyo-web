@@ -2,6 +2,7 @@ import { OperationResult } from '@urql/core'
 
 import { graphql } from './gql'
 import { QueryTagsArgs, TagsQuery } from './gql/graphql'
+import { TagList } from './types'
 import { toArrayFromEdges } from './utils'
 
 graphql(`
@@ -21,7 +22,7 @@ graphql(`
 `)
 
 export function createGetTagsResponse(result: OperationResult<TagsQuery, QueryTagsArgs>) {
-  const tags = toArrayFromEdges(result.data?.tags?.edges)
+  const tags: TagList = toArrayFromEdges(result.data?.tags?.edges)
   const totalCount = result.data?.tags?.totalCount || 0
   const isEmpty = totalCount === 0
   const error = result.error
