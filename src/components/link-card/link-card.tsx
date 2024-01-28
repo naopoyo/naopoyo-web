@@ -5,7 +5,7 @@ export interface LinkCardProps {
   title: string
   description: string
   domain: string
-  imageUrl?: string
+  imageUrl?: string | null
   imageHeight?: number
   imageWidth?: number
 }
