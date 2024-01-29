@@ -8,9 +8,6 @@ import { BookmarkList, BookmarkListSkeleton } from './_components'
 
 const title = 'Bookmarks'
 
-export const dynamic = 'force-static'
-export const revalidate = 60
-
 export const metadata: Metadata = {
   title: title,
 }
