@@ -1,6 +1,6 @@
 import '@/styles/globals.scss'
 
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 import { Footer } from '@/components/footer'
 import { NavBar } from '@/components/nav-bar'
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </Providers>
       </body>
-      {isProduction && <GoogleTagManager gtmId={GTM_ID} />}
+      {isProduction && <GoogleAnalytics gaId={GTM_ID} />}
     </html>
   )
 }
