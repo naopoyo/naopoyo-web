@@ -9,8 +9,8 @@ dependencies:
     specifier: 3.2.0
     version: 3.2.0(graphql@16.8.1)
   '@next/third-parties':
-    specifier: ^14.0.4
-    version: 14.0.4(next@14.0.4)(react@18.2.0)
+    specifier: 14.2.3
+    version: 14.2.3(next@14.0.4)(react@18.2.0)
   '@radix-ui/react-dropdown-menu':
     specifier: ^2.0.6
     version: 2.0.6(@types/react-dom@18.2.18)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
@@ -1625,8 +1625,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/third-parties@14.0.4(next@14.0.4)(react@18.2.0):
-    resolution: {integrity: sha512-K17BnacV2QOnI2o5DpeuwW/hnRjIgb8TSSMJC+y36330zh4skERb10FRhdc/0QTVuUc6k8jVJhURxdJu097GOQ==}
+  /@next/third-parties@14.2.3(next@14.0.4)(react@18.2.0):
+    resolution: {integrity: sha512-j4E2xBSsEZq4VX2pVm3LpGltSwCxETic6glJWfHyYQvpoMdplCAYrQKpF+E9Gg3jfsrfmRAIdTE11m+biBCx1Q==}
     peerDependencies:
       next: ^13.0.0 || ^14.0.0
       react: ^18.2.0
