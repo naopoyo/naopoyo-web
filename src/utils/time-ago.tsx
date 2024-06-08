@@ -1,6 +1,6 @@
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { formatDistance } from 'date-fns'
 import { ja } from 'date-fns/locale'
 
 export default function timeAgo(value: string) {
-  return formatDistanceToNow(Date.parse(value), { addSuffix: true, locale: ja })
+  return formatDistance(Date.parse(value), new Date(), { addSuffix: true, locale: ja })
 }

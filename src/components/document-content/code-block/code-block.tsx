@@ -34,7 +34,7 @@ export default async function CodeBlock({ code, language, filename }: CodeBlockP
           <CodeBlockCopyButton code={code} />
         </div>
       </div>
-      {html && <pre dangerouslySetInnerHTML={{ __html: html }} />}
+      {html && <div dangerouslySetInnerHTML={{ __html: html }} />}
       {!html && <pre>{code}</pre>}
     </div>
   )
