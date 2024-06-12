@@ -51,7 +51,7 @@ export default function RandomEmoji() {
       <div className="flex flex-col justify-center gap-8 md:flex-row">
         <section className="flex flex-col gap-4">
           <div className="flex flex-col items-center">
-            <div className="flex h-32 w-32 items-center justify-center rounded-lg border text-7xl">
+            <div className="flex size-32 items-center justify-center rounded-lg border text-7xl">
               <div className={isNotoColorEmoji ? 'font-noto-color-emoji' : ''}>{emoji}</div>
             </div>
           </div>

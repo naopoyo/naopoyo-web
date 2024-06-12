@@ -59,7 +59,7 @@ export default function AbountPage() {
               </Button>
               <Button variant="ghost" size="icon" asChild>
                 <NextLink href="https://sizu.me/naopoyo" aria-label="しずかなインターネットのLink">
-                  <svg className="h-[24px] w-[24px] fill-foreground">
+                  <svg className="size-[24px] fill-foreground">
                     <use xlinkHref="/sizu-me-logo.svg#a"></use>
                   </svg>
                 </NextLink>
