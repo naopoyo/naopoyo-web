@@ -2,7 +2,7 @@
 
 import { Menu } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useSelectedLayoutSegment } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -16,31 +16,32 @@ import { cn } from '@/lib/shadcn-utils'
 const menuItems = [
   {
     label: 'Docs',
-    href: '/docs',
+    segment: 'docs',
   },
   {
     label: 'Tags',
-    href: '/tags',
+    segment: 'tags',
   },
   {
     label: 'Bookmarks',
-    href: '/bookmarks',
+    segment: 'bookmarks',
   },
   {
     label: 'Tools',
-    href: '/tools',
+    segment: 'tools',
   },
   {
     label: 'About',
-    href: '/about',
+    segment: 'about',
   },
 ]
 
 export default function NavBarMenu() {
-  const pathname = usePathname()
+  const segment = useSelectedLayoutSegment()
+
   const items = menuItems.map((item) => ({
     ...item,
-    isActive: pathname === item.href,
+    isActive: segment === item.segment,
   }))
 
   return (
@@ -55,7 +56,7 @@ export default function NavBarMenu() {
           <DropdownMenuContent className="w-56" align="end">
             {items.map((item, i) => (
               <DropdownMenuItem key={`menu-item-${i}`} asChild>
-                <Link className="hover:cursor-pointer" href={item.href}>
+                <Link className="hover:cursor-pointer" href={`/${item.segment}`}>
                   {item.label}
                 </Link>
               </DropdownMenuItem>
@@ -72,7 +73,7 @@ export default function NavBarMenu() {
               item.isActive ? 'border-b' : ''
             )}
           >
-            <Link href={item.href}>{item.label}</Link>
+            <Link href={`/${item.segment}`}>{item.label}</Link>
           </li>
         ))}
       </ul>
