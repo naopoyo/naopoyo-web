@@ -21,7 +21,7 @@ const config: CodegenConfig = {
       plugins: [],
     },
   },
-  hooks: { afterAllFileWrite: ['pnpx prettier --write', 'pnpx eslint --fix'] },
+  hooks: { afterAllFileWrite: ['pnpm prettier --write', 'pnpm eslint --fix'] },
 }
 
 export default config
