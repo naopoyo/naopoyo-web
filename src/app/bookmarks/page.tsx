@@ -18,6 +18,8 @@ export interface BookmarksPageProps {
   }
 }
 
+export const revalidate = 60
+
 export default async function BookmarksPage({ searchParams }: BookmarksPageProps) {
   const { first, after, suspenseKey } = makeWebsiteQuery({ page: searchParams.page })
 
