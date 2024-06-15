@@ -18,6 +18,8 @@ export interface DocsPageProps {
   searchParams: { keyword?: string }
 }
 
+export const revalidate = 60
+
 export default async function DocsPage({ searchParams }: DocsPageProps) {
   const keyword = searchParams.keyword
 
