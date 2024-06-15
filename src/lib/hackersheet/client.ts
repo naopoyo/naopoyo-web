@@ -73,9 +73,7 @@ export class Client {
         headers: {
           Authorization: `bearer ${this.accessKey}`,
         },
-        next: {
-          revalidate: 60,
-        },
+        cache: 'no-store',
       },
     })
   }
