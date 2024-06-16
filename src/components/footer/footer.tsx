@@ -1,4 +1,4 @@
-import { ThemeSwitcher } from '@/components/theme-toggle'
+import { ThemeSwitcher } from '@/components/theme-switcher'
 
 export default function Footer() {
   return (
