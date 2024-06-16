@@ -16,7 +16,7 @@ export const SITE_DESC =
 export const PICKUP_DOC_SLUGS = [
   'introduce-google-analytics-using-third-party-libraries-in-nextjs',
   'embed-kifu-player-in-markdown',
-  'shogi-log-2024-01',
+  'creating-a-headless-cms-for-developers',
 ]
 
 export const PICKUP_DOCS_COUNT = 3
