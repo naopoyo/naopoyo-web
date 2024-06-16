@@ -1,4 +1,4 @@
-import { ThemeToggle } from '@/components/theme-toggle'
+import { ThemeSwitcher } from '@/components/theme-toggle'
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
         <p>&copy; naopoyo</p>
       </div>
 
-      <ThemeToggle />
+      <ThemeSwitcher />
     </footer>
   )
 }

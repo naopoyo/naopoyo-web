@@ -1,3 +1,3 @@
-import ThemeToggle from './theme-toggle'
+import ThemeSwitcher from './theme-switcher'
 
-export { ThemeToggle }
+export { ThemeSwitcher }

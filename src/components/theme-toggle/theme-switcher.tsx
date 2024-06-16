@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
-export default function ThemeToggle() {
+export default function ThemeSwitcher() {
   const [isClient, setIsClient] = useState(false)
 
   const { theme, setTheme } = useTheme()
@@ -21,19 +21,19 @@ export default function ThemeToggle() {
 
   return (
     <ToggleGroup
-      className="rounded-xl border"
+      className="rounded-full border p-1"
       size="sm"
       type="single"
       value={theme}
       onValueChange={(value) => setTheme(value)}
     >
-      <ToggleGroupItem className="rounded-xl" value="dark" aria-label="Toggle dark">
+      <ToggleGroupItem className="rounded-full" value="dark" aria-label="Toggle dark">
         <MoonIcon size={16} />
       </ToggleGroupItem>
-      <ToggleGroupItem className="rounded-xl" value="system" aria-label="Toggle system">
+      <ToggleGroupItem className="rounded-full" value="system" aria-label="Toggle system">
         <ComputerIcon size={16} />
       </ToggleGroupItem>
-      <ToggleGroupItem className="rounded-xl" value="light" aria-label="Toggle light">
+      <ToggleGroupItem className="rounded-full" value="light" aria-label="Toggle light">
         <SunIcon size={16} />
       </ToggleGroupItem>
     </ToggleGroup>
