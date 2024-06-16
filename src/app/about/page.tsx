@@ -1,13 +1,11 @@
-import { GithubIcon, XIcon } from 'lucide-react'
 import { Metadata } from 'next'
-import NextLink from 'next/link'
 
 import { Avater } from '@/components/avatar'
-import { FlexCol, FlexRow } from '@/components/layout'
+import { FlexCol } from '@/components/layout'
 import { Link } from '@/components/link'
 import { PageHeader } from '@/components/page-header'
 import { Paragraph as P } from '@/components/paragraph'
-import { Button } from '@/components/ui/button'
+import { SnsList } from '@/components/sns-list'
 import { SITE_DESC } from '@/constants'
 
 const title = 'About'
@@ -46,25 +44,7 @@ export default function AbountPage() {
 
           <section>
             <h2 className="mb-2 text-xl font-bold">SNS</h2>
-            <FlexRow className="gap-2">
-              <Button variant="ghost" size="icon" asChild>
-                <NextLink href="https://github.com/naopoyo" aria-label="GitHubのLink">
-                  <GithubIcon />
-                </NextLink>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <NextLink href="https://twitter.com/naopoyo_tw" aria-label="XのLink">
-                  <XIcon />
-                </NextLink>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <NextLink href="https://sizu.me/naopoyo" aria-label="しずかなインターネットのLink">
-                  <svg className="size-[24px] fill-foreground">
-                    <use xlinkHref="/sizu-me-logo.svg#a"></use>
-                  </svg>
-                </NextLink>
-              </Button>
-            </FlexRow>
+            <SnsList />
           </section>
         </FlexCol>
       </FlexCol>
