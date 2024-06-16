@@ -14,7 +14,7 @@ export const SITE_DESC =
   '個人でWEBサービスの開発をやっています。このサイトでは個人開発で学んだことを公開しています。'
 
 export const PICKUP_DOC_SLUGS = [
-  'creating-a-headless-cms-for-developers',
+  'introduce-google-analytics-using-third-party-libraries-in-nextjs',
   'embed-kifu-player-in-markdown',
   'shogi-log-2024-01',
 ]
