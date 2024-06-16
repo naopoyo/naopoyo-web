@@ -1,6 +1,5 @@
 import Link from 'next/link'
 
-import { ThemeToggle } from '@/components/theme-toggle'
 import { SITE_NAME } from '@/constants'
 
 import NavBarMenu from './nav-bar-menu'
@@ -14,8 +13,6 @@ export default function NavBar() {
         </div>
 
         <NavBarMenu />
-
-        <ThemeToggle />
       </div>
     </header>
   )

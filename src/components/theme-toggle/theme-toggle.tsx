@@ -1,34 +1,41 @@
 'use client'
 
-import { Moon, Sun } from 'lucide-react'
+import { ComputerIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 export default function ThemeToggle() {
-  const { setTheme } = useTheme()
+  const [isClient, setIsClient] = useState(false)
+
+  const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient || theme === undefined) {
+    return <></>
+  }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="size-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute size-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <ToggleGroup
+      className="rounded-xl border"
+      size="sm"
+      type="single"
+      value={theme}
+      onValueChange={(value) => setTheme(value)}
+    >
+      <ToggleGroupItem className="rounded-xl" value="dark" aria-label="Toggle dark">
+        <MoonIcon size={16} />
+      </ToggleGroupItem>
+      <ToggleGroupItem className="rounded-xl" value="system" aria-label="Toggle system">
+        <ComputerIcon size={16} />
+      </ToggleGroupItem>
+      <ToggleGroupItem className="rounded-xl" value="light" aria-label="Toggle light">
+        <SunIcon size={16} />
+      </ToggleGroupItem>
+    </ToggleGroup>
   )
 }
