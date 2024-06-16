@@ -7,16 +7,15 @@ import { useEffect, useState } from 'react'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 export default function ThemeSwitcher() {
-  const [isClient, setIsClient] = useState(false)
-
+  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
-    setIsClient(true)
+    setMounted(true)
   }, [])
 
-  if (!isClient || theme === undefined) {
-    return <></>
+  if (!mounted || theme === undefined) {
+    return
   }
 
   return (
