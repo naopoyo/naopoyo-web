@@ -19,6 +19,13 @@
     }
   }
 
+  :global(.react-tweet-theme) {
+    p {
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+
   * {
     word-break: break-word;
     scroll-margin-top: calc(var(--navbar-height) + 16px);
