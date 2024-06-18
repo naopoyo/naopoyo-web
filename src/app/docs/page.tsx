@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowRightIcon } from 'lucide-react'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
@@ -22,39 +22,36 @@ export const revalidate = 60
 
 export default async function DocsPage({ searchParams }: DocsPageProps) {
   const keyword = searchParams.keyword
+  const { documents, totalCount } = await getDocuments({ keyword })
+  const isNotFound = keyword && totalCount === 0
 
   return (
     <main className="container">
       <PageHeader>{title}</PageHeader>
       <section className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
+        <div className="text-muted-foreground">全 {totalCount} 件</div>
         <div className="w-[348px]">
           <SearchForm keyword={keyword} />
         </div>
         <Link href="/tags" className="flex items-center gap-1">
           <span>タグで探す</span>
-          <ArrowRight />
+          <ArrowRightIcon />
         </Link>
       </section>
       <Suspense fallback={<DocumentListSkeleton length={9} />}>
-        <DocumentListSection keyword={keyword} />
+        <section>
+          {isNotFound ? <DocumentListNotFound /> : <DocumentList documents={documents} />}
+        </section>
       </Suspense>
     </main>
   )
 }
 
-async function DocumentListSection({ keyword }: { keyword?: string }) {
-  const { documents, totalCount } = await client.getDocuments({
+async function getDocuments({ keyword }: { keyword?: string }) {
+  return await client.getDocuments({
     filter: { draft: false, keyword: keyword },
     sort: { by: 'published_at', order: 'desc' },
   })
-
-  const isNotFound = keyword && totalCount === 0
-
-  return (
-    <section>
-      {isNotFound ? <DocumentListNotFound /> : <DocumentList documents={documents} />}
-    </section>
-  )
 }
 
 function DocumentListNotFound() {

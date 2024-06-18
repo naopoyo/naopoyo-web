@@ -31,14 +31,20 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
     return notFound()
   }
 
-  const { documents } = await client.getDocuments({
+  const { documents, totalCount } = await client.getDocuments({
     filter: { tags: [tag.name], draft: false },
     sort: { by: 'published_at', order: 'desc' },
   })
 
   return (
     <div className="container">
-      <PageHeader>{tag.name}</PageHeader>
+      <PageHeader>
+        <div className="text-lg font-normal text-muted-foreground">Tag</div>
+        <div>{tag.name}</div>
+      </PageHeader>
+      <section className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
+        <div className="text-muted-foreground">全 {totalCount} 件</div>
+      </section>
       <section className="pb-8">
         <DocumentList documents={documents} />
       </section>
