@@ -31,6 +31,8 @@ function getIdFromYoutubeUrl(value: string) {
   if (matched?.groups?.videoId) {
     return matched.groups.videoId
   }
+
+  return null
 }
 
 function getStartFromYoutubeUrl(value: string) {

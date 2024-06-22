@@ -4,5 +4,6 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.tabSize": 2,
-  "tailwindCSS.experimental.classRegex": ["tw=\"([^\"]*)\""]
+  "tailwindCSS.experimental.classRegex": ["tw=\"([^\"]*)\""],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
