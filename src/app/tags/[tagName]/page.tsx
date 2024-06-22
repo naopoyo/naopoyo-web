@@ -38,10 +38,8 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
 
   return (
     <div className="container">
-      <PageHeader>
-        <div className="text-lg font-normal text-muted-foreground">Tag</div>
-        <div>{tag.name}</div>
-      </PageHeader>
+      <div className="text-center text-lg font-bold text-muted-foreground">Tag</div>
+      <PageHeader>{tag.name}</PageHeader>
       <section className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
         <div className="text-muted-foreground">全 {totalCount} 件</div>
       </section>
