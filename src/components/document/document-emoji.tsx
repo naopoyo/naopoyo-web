@@ -7,5 +7,9 @@ export interface DocumentEmojiProps {
 }
 
 export default function DocumentEmoji({ emoji }: DocumentEmojiProps) {
-  return <Twemoji options={{ className: 'twemoji' }}>{emoji}</Twemoji>
+  return (
+    <div className="size-[72px]">
+      <Twemoji options={{ className: 'twemoji' }}>{emoji}</Twemoji>
+    </div>
+  )
 }
