@@ -5,7 +5,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { Footer } from '@/components/footer'
 import { NavBar } from '@/components/nav-bar'
 import { BASE_URL, GTM_ID, isProduction } from '@/constants'
-import { GoogleFontLinks, sourceCodePro } from '@/fonts'
+import { sourceCodePro } from '@/fonts'
 import { Providers } from '@/providers'
 
 import type { Metadata } from 'next'
@@ -21,9 +21,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" className={sourceCodePro.variable} suppressHydrationWarning>
-      <head>
-        <GoogleFontLinks />
-      </head>
       <body className="flex min-h-screen flex-col font-body">
         <Providers>
           <NavBar />
