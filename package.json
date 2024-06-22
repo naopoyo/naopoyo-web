@@ -17,6 +17,7 @@
   "dependencies": {
     "@graphql-typed-document-node/core": "3.2.0",
     "@next/third-parties": "14.2.4",
+    "@radix-ui/react-dialog": "1.1.1",
     "@radix-ui/react-dropdown-menu": "2.1.1",
     "@radix-ui/react-slot": "1.1.0",
     "@radix-ui/react-toggle": "1.1.0",
