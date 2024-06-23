@@ -1,15 +1,23 @@
 'use client'
 
-import Twemoji from 'react-twemoji'
+import twemoji from '@twemoji/api'
 
 export interface DocumentEmojiProps {
   emoji: string
 }
 
 export default function DocumentEmoji({ emoji }: DocumentEmojiProps) {
+  const src = ''.concat(
+    twemoji.base,
+    'svg',
+    '/',
+    twemoji.convert.toCodePoint(emoji).replace('-fe0f', ''),
+    '.svg'
+  )
+
   return (
-    <div className="size-[72px]">
-      <Twemoji options={{ className: 'twemoji' }}>{emoji}</Twemoji>
-    </div>
+    <picture>
+      <img src={src} alt={emoji} width={72} height={72} />
+    </picture>
   )
 }
