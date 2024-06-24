@@ -11,7 +11,7 @@ export default function DocumentEmoji({ emoji }: DocumentEmojiProps) {
     twemoji.base,
     'svg',
     '/',
-    twemoji.convert.toCodePoint(emoji).replace('-fe0f', ''),
+    twemoji.convert.toCodePoint(emoji).replace(/\-.*/, ''),
     '.svg'
   )
 
