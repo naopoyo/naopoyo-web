@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 
@@ -11,7 +11,6 @@ export default function RandomEmoji() {
   const [emoji, setEmoji] = useState('?')
   const [mounted, setMounted] = useState(false)
   const [history, setHistory] = useState<string[]>([])
-  const [isNotoColorEmoji, setIsNotoColorEmoji] = useState(true)
 
   const copyToClipBoard = useCallback((value: string) => {
     navigator.clipboard && navigator.clipboard.writeText(value)
@@ -36,10 +35,6 @@ export default function RandomEmoji() {
     copyToClipBoard(history.join(''))
   }, [copyToClipBoard, history])
 
-  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    setIsNotoColorEmoji(event.target.checked)
-  }, [])
-
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -52,18 +47,8 @@ export default function RandomEmoji() {
         <section className="flex flex-col gap-4">
           <div className="flex flex-col items-center">
             <div className="flex size-32 items-center justify-center rounded-lg border text-7xl">
-              <div className={isNotoColorEmoji ? 'font-noto-color-emoji' : ''}>{emoji}</div>
+              <div>{emoji}</div>
             </div>
-          </div>
-
-          <div>
-            <input
-              id="is-noto-color-emoji"
-              type="checkbox"
-              checked={isNotoColorEmoji}
-              onChange={handleChange}
-            />{' '}
-            <label htmlFor="is-noto-color-emoji">Noto Color Emoji</label>
           </div>
 
           <Button onClick={handleCopyButtonClick}>絵文字をクリップボードにコピー</Button>
@@ -78,7 +63,7 @@ export default function RandomEmoji() {
           {history.length > 0 ? (
             <ul className="grid max-w-sm grid-cols-12 gap-4">
               {history.map((item, index) => (
-                <li key={index} className={isNotoColorEmoji ? 'font-noto-color-emoji' : ''}>
+                <li key={index}>
                   <button onClick={() => handleHistoryClick(item)}>{item}</button>
                 </li>
               ))}
