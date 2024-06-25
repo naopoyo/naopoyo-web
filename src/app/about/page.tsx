@@ -27,6 +27,7 @@ export default function AbountPage() {
             <h2 className="mb-2 text-xl font-bold">naopoyo</h2>
             <div className="text-muted-foreground">
               <P>{SITE_DESC}</P>
+              <p>そのほかにUnityでのゲーム開発も少しずつ始めています。</p>
               <P>
                 このサイトのソースコードを
                 <Link href="https://github.com/naopoyo/naopoyo-web">GitHub</Link>
