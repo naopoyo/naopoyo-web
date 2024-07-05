@@ -19,7 +19,11 @@ export default function YoutubeDirective({ children, node }: { children: ReactNo
 
   const start = getStartFromYoutubeUrl(href)
 
-  return <Youtube videoId={id} params={{ start: start }} />
+  return (
+    <div className="my-6">
+      <Youtube videoId={id} params={{ start: start }} style="margin: 0 auto;" />
+    </div>
+  )
 }
 
 function getIdFromYoutubeUrl(value: string) {
