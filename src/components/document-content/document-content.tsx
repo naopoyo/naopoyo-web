@@ -12,8 +12,6 @@ import remarkMath from 'remark-math'
 
 import docContentStyles from '@/styles/document-content.module.scss'
 
-import 'katex/dist/katex.min.css'
-
 import CustomImg from './custom-components/custom-img'
 import CustomLink from './custom-components/custom-link'
 import CustomPre from './custom-components/custom-pre'
@@ -27,9 +25,13 @@ import rehypeFootnoteLinks from './rehype-plugins/rehype-footnote-links'
 
 import type { Document } from '@/lib/hackersheet/types'
 
+// eslint-disable-next-line import/no-unresolved
+import 'katex/dist/katex.min.css'
+
 type DirectiveProps = { children: ReactNode } & ExtraProps
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
     interface IntrinsicElements {
       'link-card': DirectiveProps

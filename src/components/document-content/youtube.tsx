@@ -12,7 +12,7 @@ export type YoutubeProps = {
 export default async function Youtube({ videoId, params, playLabel, ...props }: YoutubeProps) {
   const paramsString = params
     ? Object.entries(params)
-        .filter(([_, value]) => value !== undefined)
+        .filter(([, value]) => value !== undefined)
         .map(
           ([key, value]) =>
             `${encodeURIComponent(key)}=${encodeURIComponent(value as string | number)}`
