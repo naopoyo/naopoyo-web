@@ -32,7 +32,7 @@
     "deepmerge": "4.3.1",
     "graphql": "16.9.0",
     "kifu-for-js": "5.4.1",
-    "lucide-react": "0.396.0",
+    "lucide-react": "0.400.0",
     "mermaid": "10.9.1",
     "mustache": "4.2.0",
     "next": "14.2.4",
@@ -50,7 +50,7 @@
     "remark-directive-rehype": "0.4.2",
     "remark-gfm": "4.0.0",
     "remark-math": "6.0.0",
-    "shiki": "1.9.1",
+    "shiki": "1.10.1",
     "tailwind-merge": "2.3.0",
     "tailwindcss-animate": "1.0.7",
     "tocbot": "4.28.2",
@@ -58,10 +58,10 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.2",
-    "@graphql-codegen/client-preset": "4.3.0",
+    "@graphql-codegen/client-preset": "4.3.2",
     "@types/hast": "3.0.4",
     "@types/mustache": "4.2.5",
-    "@types/node": "20.14.8",
+    "@types/node": "20.14.10",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@types/unist": "3.0.2",
@@ -72,12 +72,12 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-tailwindcss": "3.17.4",
-    "eslint-plugin-unused-imports": "3.0.0",
+    "eslint-plugin-unused-imports": "3.2.0",
     "graphql-config": "5.0.3",
-    "postcss": "8.4.38",
+    "postcss": "8.4.39",
     "prettier": "3.3.2",
     "sass": "1.77.6",
     "tailwindcss": "3.4.4",
-    "typescript": "5.4.5"
+    "typescript": "5.5.3"
   }
 }
