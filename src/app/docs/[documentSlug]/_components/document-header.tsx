@@ -6,8 +6,9 @@ import { DocumentEmoji } from '@/components/document'
 import { FlexCol, FlexRow } from '@/components/layout'
 import { Link } from '@/components/link'
 import { HACKERSHEET_GITHUB_REPO_URL } from '@/constants'
-import { Document } from '@/lib/hackersheet/types'
 import { createDateFormat, timeAgo } from '@/utils'
+
+import type { Document } from '@/lib/hackersheet'
 
 export interface DocumentHeaderProps {
   document: Document

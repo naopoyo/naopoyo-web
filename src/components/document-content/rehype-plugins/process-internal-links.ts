@@ -7,7 +7,7 @@ import { visit } from 'unist-util-visit'
 
 import { isUrl } from '@/utils'
 
-import type { Document } from '@/lib/hackersheet/types'
+import type { Document } from '@/lib/hackersheet'
 
 export interface ProcessInternalLinksArgs {
   document: Document

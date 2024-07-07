@@ -23,7 +23,7 @@ import processInternalLinks from './rehype-plugins/process-internal-links'
 import rehypeClobberUrlDecode from './rehype-plugins/rehype-clobber-url-decode'
 import rehypeFootnoteLinks from './rehype-plugins/rehype-footnote-links'
 
-import type { Document } from '@/lib/hackersheet/types'
+import type { Document } from '@/lib/hackersheet'
 
 // eslint-disable-next-line import/no-unresolved
 import 'katex/dist/katex.min.css'

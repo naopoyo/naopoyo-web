@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { DocumentEmoji } from '@/components/document'
 import { createDateFormat, timeAgo } from '@/utils'
 
-import type { DocumentList } from '@/lib/hackersheet/types'
+import type { DocumentList } from '@/lib/hackersheet'
 
 export interface DocumentListProps {
   documents: DocumentList

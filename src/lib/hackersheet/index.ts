@@ -13,3 +13,4 @@ const client = cache(() =>
 )()
 
 export { client, makeWebsiteQuery }
+export * from './types'

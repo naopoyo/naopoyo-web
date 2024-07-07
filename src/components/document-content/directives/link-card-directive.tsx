@@ -3,7 +3,8 @@ import { ReactNode } from 'react'
 import { ExtraProps } from 'react-markdown'
 
 import { LinkCard } from '@/components/link-card'
-import { Document } from '@/lib/hackersheet/types'
+
+import type { Document } from '@/lib/hackersheet'
 
 export function LinkCardDirective(props: { children: ReactNode } & ExtraProps, document: Document) {
   const { children, node } = props

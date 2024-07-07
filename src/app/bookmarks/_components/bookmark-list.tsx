@@ -3,8 +3,7 @@ import Image from 'next/image'
 import { Link } from '@/components/link'
 import { Pagination } from '@/components/pagination'
 import { Skeleton } from '@/components/ui/skeleton'
-import { client } from '@/lib/hackersheet'
-import { WebsiteListeItem } from '@/lib/hackersheet/types'
+import { client, type WebsiteListeItem } from '@/lib/hackersheet'
 import { getFaviconUrl } from '@/utils'
 
 interface BookmarkListProps {
