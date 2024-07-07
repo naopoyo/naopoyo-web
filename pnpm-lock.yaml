@@ -114,8 +114,8 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       shiki:
-        specifier: 1.10.1
-        version: 1.10.1
+        specifier: 1.10.3
+        version: 1.10.3
       tailwind-merge:
         specifier: 2.3.0
         version: 2.3.0
@@ -1251,8 +1251,8 @@ packages:
   '@rushstack/eslint-patch@1.4.0':
     resolution: {integrity: sha512-cEjvTPU32OM9lUFegJagO0mRnIn+rbqrG89vV8/xLnLFX0DoR0r1oy5IlTga71Q7uT3Qus7qm7wgeiMT/+Irlg==}
 
-  '@shikijs/core@1.10.1':
-    resolution: {integrity: sha512-qdiJS5a/QGCff7VUFIqd0hDdWly9rDp8lhVmXVrS11aazX8LOTRLHAXkkEeONNsS43EcCd7gax9LLoOz4vlFQA==}
+  '@shikijs/core@1.10.3':
+    resolution: {integrity: sha512-D45PMaBaeDHxww+EkcDQtDAtzv00Gcsp72ukBtaLSmqRvh0WgGMq3Al0rl1QQBZfuneO75NXMIzEZGFitThWbg==}
 
   '@sigstore/bundle@1.1.0':
     resolution: {integrity: sha512-PFutXEy0SmQxYI4texPw3dd2KewuNqv7OuK1ZFtY2fM754yhvG2KdgwIhRnoEE2uHdtdGNQ8s0lb94dW9sELog==}
@@ -4465,8 +4465,8 @@ packages:
   shell-quote@1.8.1:
     resolution: {integrity: sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==}
 
-  shiki@1.10.1:
-    resolution: {integrity: sha512-uafV7WCgN4YYrccH6yxpnps6k38sSTlFRrwc4jycWmhWxJIm9dPrk+XkY1hZ2t0I7jmacMNb15Lf2fspa/Y3lg==}
+  shiki@1.10.3:
+    resolution: {integrity: sha512-eneCLncGuvPdTutJuLyUGS8QNPAVFO5Trvld2wgEq1e002mwctAhJKeMGWtWVXOIEzmlcLRqcgPSorR6AVzOmQ==}
 
   shogi.js@5.4.1:
     resolution: {integrity: sha512-63YlCIN9IMbDvqUaCAKT77KCl7es+KQjXCdFx0nSZ3Fgth71qvZZuDQD9fqGKuVswdX00WFtiM97qzh1ZJ55sA==}
@@ -6419,7 +6419,9 @@ snapshots:
 
   '@rushstack/eslint-patch@1.4.0': {}
 
-  '@shikijs/core@1.10.1': {}
+  '@shikijs/core@1.10.3':
+    dependencies:
+      '@types/hast': 3.0.4
 
   '@sigstore/bundle@1.1.0':
     dependencies:
@@ -10477,9 +10479,10 @@ snapshots:
 
   shell-quote@1.8.1: {}
 
-  shiki@1.10.1:
+  shiki@1.10.3:
     dependencies:
-      '@shikijs/core': 1.10.1
+      '@shikijs/core': 1.10.3
+      '@types/hast': 3.0.4
 
   shogi.js@5.4.1: {}
 
