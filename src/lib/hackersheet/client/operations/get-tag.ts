@@ -15,7 +15,7 @@ graphql(`
   }
 `)
 
-export function createGetTagResponse(result: OperationResult<TagQuery, QueryTagArgs>) {
+export function makeGetTagResponse(result: OperationResult<TagQuery, QueryTagArgs>) {
   const tag: TagListItem | null = result.data?.tag ?? null
   const error = result.error
 

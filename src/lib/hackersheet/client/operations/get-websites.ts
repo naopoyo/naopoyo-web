@@ -44,9 +44,7 @@ graphql(`
   }
 `)
 
-export function createGetWebsitesResponse(
-  result: OperationResult<WebsitesQuery, QueryWebsitesArgs>
-) {
+export function makeGetWebsitesResponse(result: OperationResult<WebsitesQuery, QueryWebsitesArgs>) {
   const websites: WebsiteListeItem[] = toArrayFromEdges(result.data?.websites?.edges).map(
     (website) => ({
       ...website,

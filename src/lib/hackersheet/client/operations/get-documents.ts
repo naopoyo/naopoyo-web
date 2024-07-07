@@ -45,7 +45,7 @@ graphql(`
   }
 `)
 
-export function createDocumentListResponse(
+export function makeGetDocumentsResponse(
   result: OperationResult<DocumentsQuery, QueryDocumentsArgs>
 ) {
   if (!result.data || !result.data.documents) {

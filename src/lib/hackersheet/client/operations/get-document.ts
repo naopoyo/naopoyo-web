@@ -115,9 +115,7 @@ graphql(`
   }
 `)
 
-export function createGetDocumentResponse(
-  result: OperationResult<DocumentQuery, QueryDocumentArgs>
-) {
+export function makeGetDocumentResponse(result: OperationResult<DocumentQuery, QueryDocumentArgs>) {
   if (!result.data?.document) {
     return { document: null, error: result.error }
   }

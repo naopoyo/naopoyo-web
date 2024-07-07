@@ -5,11 +5,13 @@ import {
   type Client as UrqlClient,
 } from '@urql/core'
 
-import { createGetDocumentResponse } from './operations/get-document'
-import { createDocumentListResponse } from './operations/get-documents'
-import { createGetTagResponse } from './operations/get-tag'
-import { createGetTagsResponse } from './operations/get-tags'
-import { createGetWebsitesResponse } from './operations/get-websites'
+import {
+  makeGetDocumentResponse,
+  makeGetDocumentsResponse,
+  makeGetTagResponse,
+  makeGetTagsResponse,
+  makeGetWebsitesResponse,
+} from './operations'
 import {
   DocumentDocument,
   DocumentsDocument,
@@ -23,7 +25,7 @@ import {
   WebsitesDocument,
 } from '../gql/graphql'
 
-export interface ClientOptions {
+export type ClientOptions = {
   url: string
   accessKey: string
   urqlClient?: UrqlClient
@@ -42,27 +44,27 @@ export class Client {
 
   async getDocument(args: QueryDocumentArgs) {
     const result = await this.urqlClient.query(DocumentDocument, args)
-    return createGetDocumentResponse(result)
+    return makeGetDocumentResponse(result)
   }
 
   async getDocuments(args?: QueryDocumentsArgs) {
     const result = await this.urqlClient.query(DocumentsDocument, args ?? {})
-    return createDocumentListResponse(result)
+    return makeGetDocumentsResponse(result)
   }
 
   async getTag(args: QueryTagArgs) {
     const result = await this.urqlClient.query(TagDocument, args)
-    return createGetTagResponse(result)
+    return makeGetTagResponse(result)
   }
 
   async getTags(args?: QueryTagsArgs) {
     const result = await this.urqlClient.query(TagsDocument, args ?? {})
-    return createGetTagsResponse(result)
+    return makeGetTagsResponse(result)
   }
 
   async getWebsites(args?: QueryWebsitesArgs) {
     const result = await this.urqlClient.query(WebsitesDocument, args ?? {})
-    return createGetWebsitesResponse(result)
+    return makeGetWebsitesResponse(result)
   }
 
   private createUrqlClient(): UrqlClient {
