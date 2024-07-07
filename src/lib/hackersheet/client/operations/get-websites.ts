@@ -1,9 +1,9 @@
 import { OperationResult } from '@urql/core'
 
-import { graphql } from './gql'
-import { QueryWebsitesArgs, WebsitesQuery } from './gql/graphql'
-import { WebsiteListeItem } from './types'
-import { toArrayFromEdges } from './utils'
+import { graphql } from '../../gql'
+import { QueryWebsitesArgs, WebsitesQuery } from '../../gql/graphql'
+import { WebsiteListeItem } from '../../types'
+import { toArrayFromEdges } from '../../utils'
 
 graphql(`
   query websites($after: String, $first: Int) {

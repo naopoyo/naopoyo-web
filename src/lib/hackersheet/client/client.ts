@@ -5,11 +5,11 @@ import {
   type Client as UrqlClient,
 } from '@urql/core'
 
-import { createGetDocumentResponse } from './get-document'
-import { createDocumentListResponse } from './get-documents'
-import { createGetTagResponse } from './get-tag'
-import { createGetTagsResponse } from './get-tags'
-import { createGetWebsitesResponse } from './get-websites'
+import { createGetDocumentResponse } from './operations/get-document'
+import { createDocumentListResponse } from './operations/get-documents'
+import { createGetTagResponse } from './operations/get-tag'
+import { createGetTagsResponse } from './operations/get-tags'
+import { createGetWebsitesResponse } from './operations/get-websites'
 import {
   DocumentDocument,
   DocumentsDocument,
@@ -21,7 +21,7 @@ import {
   TagDocument,
   TagsDocument,
   WebsitesDocument,
-} from './gql/graphql'
+} from '../gql/graphql'
 
 export interface ClientOptions {
   url: string

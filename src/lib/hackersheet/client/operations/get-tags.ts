@@ -1,9 +1,9 @@
 import { OperationResult } from '@urql/core'
 
-import { graphql } from './gql'
-import { QueryTagsArgs, TagsQuery } from './gql/graphql'
-import { TagList } from './types'
-import { toArrayFromEdges } from './utils'
+import { graphql } from '../../gql'
+import { QueryTagsArgs, TagsQuery } from '../../gql/graphql'
+import { TagList } from '../../types'
+import { toArrayFromEdges } from '../../utils'
 
 graphql(`
   query tags($sort: ConnectionSort) {

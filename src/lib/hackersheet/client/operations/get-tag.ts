@@ -1,8 +1,8 @@
 import { OperationResult } from '@urql/core'
 
-import { graphql } from './gql'
-import { QueryTagArgs, TagQuery } from './gql/graphql'
-import { TagListItem } from './types'
+import { graphql } from '../../gql'
+import { QueryTagArgs, TagQuery } from '../../gql/graphql'
+import { TagListItem } from '../../types'
 
 graphql(`
   query tag($name: String) {
