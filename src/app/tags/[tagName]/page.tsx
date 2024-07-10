@@ -43,24 +43,26 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
 
       <PageHeader>{tag.name}</PageHeader>
 
+      {tag.relatedTags.length > 0 && (
+        <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="text-nowrap text-sm text-muted-foreground">関連タグ:</div>
+          <ul className="flex flex-row flex-wrap gap-4">
+            {tag.relatedTags.map((tag) => (
+              <li key={tag.id} className="text-nowrap">
+                <NextLink
+                  href={`/tags/${tag.name}`}
+                  className="block rounded border bg-primary-foreground px-3 py-1 text-sm hover:scale-110 hover:duration-500"
+                >
+                  {tag.name}
+                </NextLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
         <div className="text-muted-foreground">全 {totalCount} 件</div>
-      </div>
-
-      <div className="my-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <div className="text-nowrap text-sm text-muted-foreground">関連タグ:</div>
-        <ul className="flex flex-row flex-wrap gap-4">
-          {tag.relatedTags.map((tag) => (
-            <li key={tag.id} className="text-nowrap">
-              <NextLink
-                href={`/tags/${tag.name}`}
-                className="block rounded border bg-primary-foreground px-3 py-1 text-sm hover:scale-110 hover:duration-500"
-              >
-                {tag.name}
-              </NextLink>
-            </li>
-          ))}
-        </ul>
       </div>
 
       <section className="pb-8">
