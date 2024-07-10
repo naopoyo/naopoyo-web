@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import NextLink from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
@@ -39,10 +40,29 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
   return (
     <div className="container">
       <div className="text-center text-lg font-bold text-muted-foreground">Tag</div>
+
       <PageHeader>{tag.name}</PageHeader>
-      <section className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
+
+      <div className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
         <div className="text-muted-foreground">全 {totalCount} 件</div>
-      </section>
+      </div>
+
+      <div className="my-10 flex items-center justify-center gap-4">
+        <div>関連タグ:</div>
+        <ul className="flex flex-row gap-4">
+          {tag.relatedTags.map((tag) => (
+            <li key={tag.id}>
+              <NextLink
+                href={`/tags/${tag.name}`}
+                className="block rounded border bg-primary-foreground px-3 py-1 text-sm hover:scale-110 hover:duration-500"
+              >
+                {tag.name}
+              </NextLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <section className="pb-8">
         <DocumentList documents={documents} />
       </section>

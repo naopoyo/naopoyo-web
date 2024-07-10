@@ -312,6 +312,8 @@ export type Tag = {
   id: Scalars['ID']['output']
   /** The name of the tag. */
   name: Scalars['String']['output']
+  /** A list of related tags associated with the object. */
+  relatedTags?: Maybe<TagConnection>
   /** Identifies the date and time when the object was updated. */
   updatedAt: Scalars['DateTime']['output']
 }
@@ -323,6 +325,13 @@ export type TagDocumentsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>
   last?: InputMaybe<Scalars['Int']['input']>
   sort?: InputMaybe<ConnectionSort>
+}
+
+export type TagRelatedTagsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>
+  before?: InputMaybe<Scalars['String']['input']>
+  first?: InputMaybe<Scalars['Int']['input']>
+  last?: InputMaybe<Scalars['Int']['input']>
 }
 
 /** The connection type for Tag. */
@@ -617,6 +626,19 @@ export type TagQuery = {
     name: string
     documentCount: number
     documentCountInPublished: number
+    relatedTags?: {
+      __typename?: 'TagConnection'
+      edges?: Array<{
+        __typename?: 'TagEdge'
+        node?: {
+          __typename?: 'Tag'
+          id: string
+          name: string
+          documentCount: number
+          documentCountInPublished: number
+        } | null
+      } | null> | null
+    } | null
   } | null
 }
 
@@ -1184,6 +1206,40 @@ export const TagDocument = {
                 { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'documentCount' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'documentCountInPublished' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'relatedTags' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'edges' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'node' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'documentCount' } },
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'documentCountInPublished' },
+                                  },
+                                ],
+                              },
+                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
               ],
             },
           },
