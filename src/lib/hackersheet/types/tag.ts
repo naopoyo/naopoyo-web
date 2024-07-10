@@ -1,9 +1,16 @@
-export type TagListItem = {
+export type Tag = {
   id: string
   name: string
   documentCount: number
   documentCountInPublished: number
   relatedTags: RelatedTagList
+}
+
+export type TagListItem = {
+  id: string
+  name: string
+  documentCount: number
+  documentCountInPublished: number
 }
 
 export type TagList = TagListItem[]
