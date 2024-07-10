@@ -47,11 +47,11 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
         <div className="text-muted-foreground">全 {totalCount} 件</div>
       </div>
 
-      <div className="my-10 flex items-center justify-center gap-4">
-        <div>関連タグ:</div>
-        <ul className="flex flex-row gap-4">
+      <div className="my-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="text-nowrap text-sm text-muted-foreground">関連タグ:</div>
+        <ul className="flex flex-row flex-wrap gap-4">
           {tag.relatedTags.map((tag) => (
-            <li key={tag.id}>
+            <li key={tag.id} className="text-nowrap">
               <NextLink
                 href={`/tags/${tag.name}`}
                 className="block rounded border bg-primary-foreground px-3 py-1 text-sm hover:scale-110 hover:duration-500"
