@@ -42,8 +42,8 @@ export default function NavBarMenu() {
         <li
           key={`menu-item-${i}`}
           className={cn(
-            'text-sm text-muted-foreground hover:text-primary py-2',
-            item.isActive ? 'border-b' : ''
+            'text-sm text-muted-foreground hover:text-primary py-2 border-b border-transparent',
+            item.isActive ? 'border-primary' : ''
           )}
         >
           <Link href={`/${item.segment}`}>{item.label}</Link>
