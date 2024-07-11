@@ -1,5 +1,7 @@
+import { FaTerminal, FaReact } from 'react-icons/fa6'
 import { HiCodeBracket } from 'react-icons/hi2'
-import { SiGnubash, SiTypescript, SiTerraform, SiMarkdown, SiPhp, SiRuby } from 'react-icons/si'
+import { SiTypescript, SiTerraform, SiMarkdown, SiPhp, SiRuby, SiYaml } from 'react-icons/si'
+import { VscJson } from 'react-icons/vsc'
 
 export interface CodeBlockIconProps {
   language: string
@@ -9,17 +11,23 @@ export default function CodeBlockIcon({ language }: CodeBlockIconProps) {
   switch (language) {
     case 'sh':
     case 'bash':
-      return <SiGnubash />
+      return <FaTerminal />
     case 'hcl':
       return <SiTerraform />
     case 'typescript':
       return <SiTypescript />
+    case 'tsx':
+      return <FaReact />
     case 'markdown':
       return <SiMarkdown />
     case 'php':
       return <SiPhp />
     case 'ruby':
       return <SiRuby />
+    case 'yaml':
+      return <SiYaml />
+    case 'json':
+      return <VscJson />
     default:
       return <HiCodeBracket />
   }
