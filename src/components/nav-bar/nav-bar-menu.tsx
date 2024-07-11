@@ -3,8 +3,6 @@
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
 
-import { cn } from '@/lib/shadcn-utils'
-
 const menuItems = [
   {
     label: 'Docs',
@@ -37,16 +35,21 @@ export default function NavBarMenu() {
   }))
 
   return (
-    <ul className="flex items-center gap-6">
+    <ul className="flex items-center gap-2">
       {items.map((item, i) => (
         <li
           key={`menu-item-${i}`}
-          className={cn(
-            'text-sm text-muted-foreground hover:text-primary py-2 border-b border-transparent',
-            item.isActive ? 'border-primary' : ''
-          )}
+          className="relative text-sm text-muted-foreground hover:text-primary"
         >
-          <Link href={`/${item.segment}`}>{item.label}</Link>
+          <Link
+            href={`/${item.segment}`}
+            className="inline-block rounded px-4 py-2 hover:bg-muted/50"
+          >
+            {item.label}
+          </Link>
+          {item.isActive && (
+            <div className="absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-primary"></div>
+          )}
         </li>
       ))}
     </ul>
