@@ -133,6 +133,10 @@
       td {
         border-top: 1px solid hsl(var(--border));
       }
+
+      tr:hover {
+        background-color: hsl(var(--muted) / 0.5);
+      }
     }
 
     th,
@@ -195,11 +199,10 @@
   overflow: hidden;
 
   pre {
-    font-family: var(--font-source-code-pro);
+    font-family: var(--font-source-code-pro), monospace, serif;
     font-size: 14px;
     padding: 16px;
     overflow: auto;
-    color: #fff;
     background-color: hsl(var(--code-block));
   }
 }

@@ -45,7 +45,7 @@
 
     --link: 216, 100%, 50%;
 
-    --code-block: 0, 0%, 14%;
+    --code-block: 0 0% 100%;
   }
 
   .dark {
@@ -79,7 +79,7 @@
 
     --link: 210, 90%, 75%;
 
-    --code-block: 222.2 47.4% 11.2%;
+    --code-block: 215 15% 16%;
   }
 }
 
@@ -89,5 +89,14 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  html.dark .shiki,
+  html.dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
   }
 }

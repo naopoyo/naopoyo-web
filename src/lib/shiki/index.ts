@@ -1,5 +1,5 @@
 import { cache } from 'react'
-import { bundledLanguages, bundledThemes, getHighlighter } from 'shiki'
+import { bundledLanguages, bundledThemes, getSingletonHighlighter } from 'shiki'
 
 export async function highlighteCode(code: string, language: string) {
   const highlighter = await getShikiHighlighter()
@@ -11,14 +11,17 @@ export async function highlighteCode(code: string, language: string) {
 
   const html = highlighter.codeToHtml(code, {
     lang: shikiLang,
-    theme: 'github-dark-dimmed',
+    themes: {
+      light: 'github-light',
+      dark: 'github-dark-dimmed',
+    },
   })
 
   return html
 }
 
 const getShikiHighlighter = cache(async () => {
-  return getHighlighter({
+  return getSingletonHighlighter({
     themes: Object.keys(bundledThemes),
     langs: Object.keys(bundledLanguages),
   })
