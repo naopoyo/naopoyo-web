@@ -1,3 +1,4 @@
+import { transformerNotationDiff, transformerNotationWordHighlight } from '@shikijs/transformers'
 import { cache } from 'react'
 import { bundledLanguages, bundledThemes, getSingletonHighlighter } from 'shiki'
 
@@ -15,6 +16,7 @@ export async function highlighteCode(code: string, language: string) {
       light: 'github-light',
       dark: 'github-dark-dimmed',
     },
+    transformers: [transformerNotationDiff(), transformerNotationWordHighlight()],
   })
 
   return html
