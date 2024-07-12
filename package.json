@@ -14,7 +14,8 @@
     "prettier:check": "prettier --check --ignore-unknown .",
     "format": "pnpm prettier && pnpm lint:fix",
     "codegen": "gql-gen --config codegen.ts",
-    "ncu:minor": "pnpm ncu -u --target minor"
+    "ncu:minor": "pnpm ncu -u --target minor",
+    "check": "pnpm tsc && pnpm lint"
   },
   "dependencies": {
     "@graphql-typed-document-node/core": "3.2.0",
