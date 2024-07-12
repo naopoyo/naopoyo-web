@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.4.0",
   "scripts": {
+    "local:setup": "sh scripts/setup_local.sh",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
