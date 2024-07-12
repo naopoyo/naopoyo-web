@@ -66,21 +66,27 @@ function ProfileSection() {
 }
 
 async function PickupDocumentList() {
-  const { documents } = await client.getDocuments({
+  const { documents, totalCount } = await client.getDocuments({
     filter: { draft: false, slugs: PICKUP_DOC_SLUGS },
     sort: { by: 'published_at', order: 'desc' },
     first: PICKUP_DOCS_COUNT,
   })
 
+  if (totalCount === 0)
+    return <p className="text-center text-muted-foreground">おすすめの記事はありません。</p>
+
   return <DocumentList documents={documents} />
 }
 
 async function RecentDocumentList() {
-  const { documents } = await client.getDocuments({
+  const { documents, totalCount } = await client.getDocuments({
     filter: { draft: false, excludeSlugs: PICKUP_DOC_SLUGS },
     sort: { by: 'published_at', order: 'desc' },
     first: RECENT_DOCS_COUNT,
   })
+
+  if (totalCount === 0)
+    return <p className="text-center text-muted-foreground">最近書いたの記事はありません。</p>
 
   return <DocumentList documents={documents} />
 }
