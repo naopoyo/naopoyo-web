@@ -1,8 +1,12 @@
 {
   "name": "naopoyo-web",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "pnpm@9.5.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "local:setup": "sh scripts/setup_local.sh",
     "dev": "next dev",
