@@ -1,6 +1,7 @@
 import { FaTerminal, FaReact } from 'react-icons/fa6'
 import { HiCodeBracket } from 'react-icons/hi2'
 import { SiTypescript, SiTerraform, SiMarkdown, SiPhp, SiRuby, SiYaml } from 'react-icons/si'
+import { TbTxt } from 'react-icons/tb'
 import { VscJson } from 'react-icons/vsc'
 
 export interface CodeBlockIconProps {
@@ -28,6 +29,8 @@ export default function CodeBlockIcon({ language }: CodeBlockIconProps) {
       return <SiYaml />
     case 'json':
       return <VscJson />
+    case 'text':
+      return <TbTxt />
     default:
       return <HiCodeBracket />
   }
