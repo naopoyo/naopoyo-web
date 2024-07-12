@@ -16,14 +16,12 @@ export const metadata: Metadata = {
     follow: true,
     index: true,
   },
+  formatDetection: { telephone: false },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" className={sourceCodePro.variable} suppressHydrationWarning>
-      <head>
-        <meta name="format-detection" content="telephone=no" />
-      </head>
       <body className="flex min-h-screen flex-col font-body">
         <Providers>
           <NavBar />
