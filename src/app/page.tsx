@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { Metadata } from 'next'
-import { Suspense } from 'react'
+import { PropsWithChildren, Suspense } from 'react'
 
 import { Avater } from '@/components/avatar'
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
@@ -72,8 +72,7 @@ async function PickupDocumentList() {
     first: PICKUP_DOCS_COUNT,
   })
 
-  if (totalCount === 0)
-    return <p className="text-center text-muted-foreground">おすすめの記事はありません。</p>
+  if (totalCount === 0) return <NotFoundMessage>おすすめの記事はありません。</NotFoundMessage>
 
   return <DocumentList documents={documents} />
 }
@@ -85,8 +84,11 @@ async function RecentDocumentList() {
     first: RECENT_DOCS_COUNT,
   })
 
-  if (totalCount === 0)
-    return <p className="text-center text-muted-foreground">最近書いたの記事はありません。</p>
+  if (totalCount === 0) return <NotFoundMessage>最近書いた記事はありません。</NotFoundMessage>
 
   return <DocumentList documents={documents} />
+}
+
+function NotFoundMessage({ children }: PropsWithChildren) {
+  return <p className="text-center text-muted-foreground">{children}</p>
 }
