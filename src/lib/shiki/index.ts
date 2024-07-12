@@ -6,12 +6,12 @@ export async function highlighteCode(code: string, language: string) {
   const highlighter = await getShikiHighlighter()
   const shikiLang = Object.keys(bundledLanguages).find((lang) => lang === language)
 
-  if (shikiLang === undefined) {
+  if (shikiLang === undefined && language !== 'text') {
     return null
   }
 
   const html = highlighter.codeToHtml(code, {
-    lang: shikiLang,
+    lang: shikiLang || 'text',
     themes: {
       light: 'github-light',
       dark: 'github-dark-dimmed',
