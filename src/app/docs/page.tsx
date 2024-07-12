@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from 'lucide-react'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
@@ -33,10 +32,11 @@ export default async function DocsPage({ searchParams }: DocsPageProps) {
         <div className="w-[348px]">
           <SearchForm keyword={keyword} />
         </div>
-        <Link href="/tags" className="flex items-center gap-1">
-          <span>タグで探す</span>
-          <ArrowRightIcon />
-        </Link>
+        <div className="text-center">
+          <Link href="/tags" icon="arrow">
+            タグで探す
+          </Link>
+        </div>
       </section>
       <Suspense fallback={<DocumentListSkeleton length={9} />}>
         <section>

@@ -1,4 +1,3 @@
-import { ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
@@ -47,9 +46,8 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
               <FlexCol className="gap-1">
                 <div className="text-muted-foreground">更新履歴</div>
                 <div>
-                  <Link href={historyUrl} className="flex items-center gap-1">
-                    <span>GitHubで見る</span>
-                    <ExternalLink fontSize={12} size={12} />
+                  <Link href={historyUrl} icon="external" iconSize={12}>
+                    GitHubで見る
                   </Link>
                 </div>
               </FlexCol>

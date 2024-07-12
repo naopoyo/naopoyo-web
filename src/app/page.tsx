@@ -1,4 +1,3 @@
-import { ArrowRight } from 'lucide-react'
 import { Metadata } from 'next'
 import { PropsWithChildren, Suspense } from 'react'
 
@@ -28,20 +27,21 @@ export default async function HomePage() {
     <main className="container flex flex-col gap-10">
       <ProfileSection />
       <section>
-        <h2 className="my-4 text-center text-xl font-bold">おすすめの記事</h2>
+        <Heading>おすすめの記事</Heading>
         <Suspense fallback={<DocumentListSkeleton length={PICKUP_DOCS_COUNT} />}>
           <PickupDocumentList />
         </Suspense>
       </section>
       <section>
-        <h2 className="my-4 text-center text-xl font-bold">最近書いた記事</h2>
+        <Heading>最近書いた記事</Heading>
         <Suspense fallback={<DocumentListSkeleton length={RECENT_DOCS_COUNT} />}>
           <RecentDocumentList />
         </Suspense>
-        <Link href="/docs" className="my-20 flex items-center justify-center gap-1">
-          <span>すべての記事を見る</span>
-          <ArrowRight />
-        </Link>
+        <div className="my-8 text-center">
+          <Link href="/docs" icon="arrow">
+            すべての記事を見る
+          </Link>
+        </div>
       </section>
     </main>
   )
@@ -55,9 +55,8 @@ function ProfileSection() {
         <h1 className="text-lg font-bold text-foreground">naopoyo</h1>
         <P>{SITE_DESC}</P>
         <P>
-          <Link href="/about" className="flex items-center gap-1">
-            <span>プロフィールをもっと見る</span>
-            <ArrowRight />
+          <Link href="/about" icon="arrow">
+            プロフィールをもっと見る
           </Link>
         </P>
       </div>
@@ -91,4 +90,8 @@ async function RecentDocumentList() {
 
 function NotFoundMessage({ children }: PropsWithChildren) {
   return <p className="text-center text-muted-foreground">{children}</p>
+}
+
+function Heading({ children }: PropsWithChildren) {
+  return <h2 className="my-4 text-center text-xl font-bold">{children}</h2>
 }
