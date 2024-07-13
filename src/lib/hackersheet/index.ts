@@ -1,8 +1,8 @@
+import { createClient } from '@hackersheet/core'
 import { cache } from 'react'
 
 import { HACKERSHEET_API_ACCESS_KEY, HACKERSHEET_API_ENDPOINT } from '@/constants'
 
-import { createClient } from './client/create-client'
 import makeWebsiteQuery from './make-website-query'
 
 const client = cache(() =>
@@ -13,4 +13,4 @@ const client = cache(() =>
 )()
 
 export { client, makeWebsiteQuery }
-export * from './types'
+export * from '@hackersheet/core'
