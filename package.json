@@ -8,18 +8,18 @@
     "pnpm": ">=9.0.0"
   },
   "scripts": {
-    "local:setup": "sh scripts/setup_local.sh",
-    "dev": "next dev",
+    "analyze": "ANALYZE=true pnpm build",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
-    "prettier": "prettier --write --ignore-unknown .",
-    "prettier:check": "prettier --check --ignore-unknown .",
-    "format": "pnpm prettier && pnpm lint:fix",
-    "ncu:minor": "pnpm ncu -u --target minor",
     "check": "pnpm tsc && pnpm lint",
-    "analyze": "ANALYZE=true pnpm build"
+    "dev": "next dev",
+    "format": "pnpm prettier && pnpm lint:fix",
+    "lint:fix": "next lint --fix",
+    "lint": "next lint",
+    "local:setup": "sh scripts/setup_local.sh",
+    "ncu:minor": "pnpm ncu -u --target minor",
+    "prettier:check": "prettier --check --ignore-unknown .",
+    "prettier": "prettier --write --ignore-unknown .",
+    "start": "next start"
   },
   "dependencies": {
     "@hackersheet/core": "0.1.0-alpha.4",
