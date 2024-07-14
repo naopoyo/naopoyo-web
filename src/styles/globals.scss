@@ -103,46 +103,4 @@
   html.dark .shiki span.line {
     background-color: var(--shiki-dark-bg) !important;
   }
-
-  .shiki code {
-    width: 100%;
-    min-width: max-content;
-    display: flex;
-    flex-direction: column;
-    margin: 0 -16px;
-  }
-
-  .shiki span.line {
-    position: relative;
-    width: 100%;
-    padding: 0 16px;
-  }
-
-  .shiki span.line.diff.add {
-    background-color: rgba(16, 185, 129, 0.16) !important;
-
-    &::before {
-      position: absolute;
-      left: 2px;
-      content: '+';
-      color: rgb(61, 214, 140);
-    }
-  }
-
-  .shiki span.line.diff.remove {
-    background-color: rgba(244, 63, 94, 0.16) !important;
-
-    &::before {
-      position: absolute;
-      left: 2px;
-      content: '-';
-      color: rgb(203, 118, 118);
-    }
-  }
-
-  .shiki .highlighted-word {
-    background-color: rgb(255, 255, 0, 0.2);
-    padding: 2px 0;
-    margin: -2px 0;
-  }
 }
