@@ -24,11 +24,11 @@
       padding-left: 1em;
     }
 
-    li {
-      margin: 0.5rem 0;
-      line-height: 1.5rem;
-      padding-left: 0.5rem;
-    }
+    // li {
+    //   margin: 0.5rem 0;
+    //   line-height: 1.5rem;
+    //   padding-left: 0.5rem;
+    // }
   }
 
   ol {
@@ -42,8 +42,11 @@
   }
 
   a {
+    display: block;
+    padding: 0.3rem 0.4rem;
+    border-radius: 0.25rem;
     &:hover {
-      text-decoration-line: underline;
+      background-color: hsl(var(--muted));
     }
   }
 }
