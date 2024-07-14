@@ -15,7 +15,6 @@ export default async function Tweet({ id }: TweetProps) {
     const tweet = await getTweet(id)
     return tweet ? <EmbeddedTweet tweet={tweet} /> : <TweetNotFound />
   } catch (error) {
-    console.error(error)
     return <TweetNotFound error={error} />
   }
 }
