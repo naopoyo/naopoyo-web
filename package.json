@@ -18,7 +18,8 @@
     "prettier:check": "prettier --check --ignore-unknown .",
     "format": "pnpm prettier && pnpm lint:fix",
     "ncu:minor": "pnpm ncu -u --target minor",
-    "check": "pnpm tsc && pnpm lint"
+    "check": "pnpm tsc && pnpm lint",
+    "analyze": "ANALYZE=true pnpm build"
   },
   "dependencies": {
     "@hackersheet/core": "0.1.0-alpha.4",
@@ -61,6 +62,7 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "14.2.5",
     "@types/hast": "3.0.4",
     "@types/mustache": "4.2.5",
     "@types/node": "20.14.10",
