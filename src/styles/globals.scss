@@ -6,8 +6,8 @@
   :root {
     --brand: 31 94% 68%;
 
-    --body-font: 'Hiragino Kaku Gothic ProN', 'Helvetica', 'Helvetica Neue', 'Arial', 'Meiryo',
-      'Hiragino Sans', sans-serif;
+    --body-font: var(--font-inter), 'Hiragino Kaku Gothic ProN', 'Helvetica', 'Helvetica Neue',
+      'Arial', 'Meiryo', 'Hiragino Sans', sans-serif;
 
     --noto-color-emoji-font: 'Noto Color Emoji', sans-serif;
 

@@ -1,4 +1,4 @@
-import { Source_Code_Pro } from 'next/font/google'
+import { Source_Code_Pro, Inter } from 'next/font/google'
 
 const sourceCodePro = Source_Code_Pro({
   subsets: ['latin'],
@@ -6,4 +6,10 @@ const sourceCodePro = Source_Code_Pro({
   variable: '--font-source-code-pro',
 })
 
-export { sourceCodePro }
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
+export { sourceCodePro, inter }
