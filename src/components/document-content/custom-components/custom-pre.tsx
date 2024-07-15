@@ -4,30 +4,30 @@ import { ExtraProps } from 'react-markdown'
 import { CodeBlock } from '@/components/document-content/code-block'
 
 export default function CustomPre({ children, node }: JSX.IntrinsicElements['pre'] & ExtraProps) {
-  const childrenElm = <>{children}</>
+  const childrenJsxElement = <>{children}</>
 
   if (!node) {
-    return childrenElm
+    return childrenJsxElement
   }
 
-  const code = node['children'][0] as Element
+  const codeElement = node['children'][0] as Element
 
-  if (code['type'] !== 'element' || code['tagName'] !== 'code') {
-    return childrenElm
+  if (codeElement['type'] !== 'element' || codeElement['tagName'] !== 'code') {
+    return childrenJsxElement
   }
 
-  const text = code['children'][0] as Text
+  const text = codeElement['children'][0] as Text
 
   if (text['type'] !== 'text') {
-    return childrenElm
+    return childrenJsxElement
   }
 
-  const className = code.properties.className as string
-  const codeValue = text.value as string
+  const className = codeElement.properties.className as string
+  const code = text.value
 
   const match = /language-(.+)/.exec(className || '')
   const tmpLanguage = match && match[1] ? (match[1] as string) : ''
   const [language, filename] = tmpLanguage.split(':')
 
-  return <CodeBlock code={codeValue} language={language} filename={filename} />
+  return <CodeBlock code={code} language={language} filename={filename} />
 }
