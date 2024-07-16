@@ -1,12 +1,13 @@
 import Image from 'next/image'
 
 export interface AvaterProps {
-  size: 'sm' | 'base' | 'lg'
+  size: 'xs' | 'sm' | 'base' | 'lg'
 }
 
 const sizeMap = {
-  sm: 64,
-  base: 128,
+  xs: 64,
+  sm: 128,
+  base: 192,
   lg: 256,
 }
 

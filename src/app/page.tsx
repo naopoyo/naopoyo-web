@@ -49,9 +49,11 @@ export default async function HomePage() {
 
 function ProfileSection() {
   return (
-    <section className="mx-auto flex max-w-sm items-start justify-center gap-4 py-10">
-      <Avater size="base" />
-      <div className="text-sm text-muted-foreground">
+    <section className="mx-auto flex items-start justify-center gap-4 py-10">
+      <div className="w-fit">
+        <Avater size="sm" />
+      </div>
+      <div className="max-w-sm text-sm text-muted-foreground">
         <h1 className="text-lg font-bold text-foreground">naopoyo</h1>
         <P>{SITE_DESC}</P>
         <P>

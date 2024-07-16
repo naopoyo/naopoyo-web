@@ -20,8 +20,9 @@ export default function AbountPage() {
       <PageHeader>{title}</PageHeader>
 
       <FlexCol className="items-center justify-center gap-8 pb-8 md:flex-row md:items-start">
-        <Avater size="lg" />
-
+        <div className="w-fit">
+          <Avater size="lg" />
+        </div>
         <FlexCol className="max-w-sm items-start gap-8">
           <section>
             <h2 className="mb-2 text-xl font-bold">naopoyo</h2>
