@@ -87,6 +87,8 @@
   * {
     @apply border-border;
   }
+
+  :root,
   body {
     @apply bg-background text-foreground;
   }

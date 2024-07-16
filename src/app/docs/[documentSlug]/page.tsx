@@ -1,3 +1,4 @@
+import { ScrollShadow } from '@nextui-org/scroll-shadow'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -55,9 +56,12 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         <aside className="hidden w-[300px] md:inline-block">
           <h2 className="font-bold text-muted-foreground">目次</h2>
           <div className="sticky top-[64px] p-2">
-            <div className="relative max-h-[calc(100vh-var(--navbar-height)-8px)] overflow-auto">
+            <ScrollShadow
+              size={100}
+              className="max-h-[calc(100vh-var(--navbar-height)-8px)] overflow-auto"
+            >
               <DocumentToc />
-            </div>
+            </ScrollShadow>
           </div>
         </aside>
       </FlexRow>
