@@ -5,5 +5,9 @@
   },
   "editor.tabSize": 2,
   "tailwindCSS.experimental.classRegex": ["tw=\"([^\"]*)\""],
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.scss": "tailwindcss"
+  },
   "typescript.tsdk": "node_modules/typescript/lib"
 }
