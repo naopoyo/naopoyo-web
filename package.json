@@ -8,6 +8,7 @@
     "check": "pnpm tsc && pnpm lint",
     "dev": "next dev",
     "format": "pnpm prettier && pnpm lint:fix",
+    "format:package": "pnpm dlx sort-package-json",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "local:setup": "sh scripts/setup_local.sh",
