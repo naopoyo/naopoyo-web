@@ -14,7 +14,7 @@ import { TOCBOT_BASE_OPTIONS } from '@/constants'
 import documentContentStyle from '@/styles/document-content.module.scss'
 import tocStyles from '@/styles/document-toc.module.scss'
 
-export default function DropdownToc() {
+export default function DocumentDropdownToc() {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>

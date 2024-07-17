@@ -6,7 +6,7 @@ import { DocumentList } from '@/components/document'
 import { FlexCol, FlexRow } from '@/components/layout'
 import { client, DocumentContent } from '@/lib/hackersheet'
 
-import { DocumentHeader, DocumentToc, DropdownToc } from './_components'
+import { DocumentHeader, DocumentToc, DocumentDropdownToc } from './_components'
 
 interface DocumentPageProps {
   params: { documentSlug: string }
@@ -77,7 +77,7 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         </FlexCol>
       )}
       <div className="fixed bottom-4 right-4 md:hidden">
-        <DropdownToc />
+        <DocumentDropdownToc />
       </div>
     </FlexCol>
   )
