@@ -25,7 +25,6 @@ import rehypeFootnoteLinks from './rehype-plugins/rehype-footnote-links'
 
 import type { Document } from '@/lib/hackersheet'
 
-// eslint-disable-next-line import/no-unresolved
 import 'katex/dist/katex.min.css'
 
 type DirectiveProps = { children: ReactNode } & ExtraProps
