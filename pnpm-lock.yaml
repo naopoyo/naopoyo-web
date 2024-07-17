@@ -13,7 +13,7 @@ importers:
         version: 0.1.0-alpha.4
       '@hackersheet/next-document-content-components':
         specifier: alpha
-        version: 0.1.0-alpha.1(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.1.0-alpha.2(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hackersheet/react-document-content':
         specifier: alpha
         version: 0.1.0-alpha.2(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -239,8 +239,8 @@ packages:
   '@hackersheet/core@0.1.0-alpha.4':
     resolution: {integrity: sha512-3VVTrjsY8Dzhva3YkVPXa4/WlzcNwzSuwjrTQOohfPbD70E18+XbOp6EcEDdt4w+Uz6j9ZQzShMZ+3G7K5gI7Q==}
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.1':
-    resolution: {integrity: sha512-jhby0HLiB+X5Uqe5SIMSnf3zc4flg8uOGhgJZn3ryLLEGAIM0kOM7dGJcmK58DpUgkYXai8hXzv+Ew6koGJS8Q==}
+  '@hackersheet/next-document-content-components@0.1.0-alpha.2':
+    resolution: {integrity: sha512-a/dEWLCKskPafWZOpGc51if1wJBqj5VBpmWCHagmzVi5YV8e8aQR/9NeXErA/MhUjKQS/mZ21zwdeB6+Wkmczg==}
     peerDependencies:
       next: ^14.0.0
       react: ^18.0.0
@@ -1696,8 +1696,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.4.828:
-    resolution: {integrity: sha512-QOIJiWpQJDHAVO4P58pwb133Cwee0nbvy/MV1CwzZVGpkH1RX33N3vsaWRCpR6bF63AAq366neZrRTu7Qlsbbw==}
+  electron-to-chromium@1.4.829:
+    resolution: {integrity: sha512-5qp1N2POAfW0u1qGAxXEtz6P7bO1m6gpZr5hdf5ve6lxpLM7MpiM4jIPz7xcrNlClQMafbyUDDWjlIQZ1Mw0Rw==}
 
   elkjs@0.9.3:
     resolution: {integrity: sha512-f/ZeWvW/BCXbhGEf1Ujp29EASo/lk1FDnETgNKwJrsVvGZhUWCZyg3xLJjAsxfOmt8KjswHmI5EwCQcPMpOYhQ==}
@@ -2745,8 +2745,8 @@ packages:
   micromark-core-commonmark@2.0.1:
     resolution: {integrity: sha512-CUQyKr1e///ZODyD1U3xit6zXwy1a8q2a1S1HKtIlmgvurrEpaw/Y9y6KSIbF8P59cn/NjzHyO+Q2fAyYLQrAA==}
 
-  micromark-extension-directive@3.0.0:
-    resolution: {integrity: sha512-61OI07qpQrERc+0wEysLHMvoiO3s2R56x5u7glHq2Yqq6EHbH4dW25G9GfDdGCDYqA21KE6DWgNSzxSwHc2hSg==}
+  micromark-extension-directive@3.0.1:
+    resolution: {integrity: sha512-VGV2uxUzhEZmaP7NSFo2vtq7M2nUD+WfmYQD+d8i/1nHbzE+rMy9uzTvUybBbNiVbrhOZibg3gbyoARGqgDWyg==}
 
   micromark-extension-gfm-autolink-literal@2.1.0:
     resolution: {integrity: sha512-oOg7knzhicgQ3t4QCjCWgTmfNhvQbDDnJeVu9v81r7NltNCVmhPy1fJRX27pISafdjL+SVc4d3l48Gb6pbRypw==}
@@ -3054,8 +3054,8 @@ packages:
     engines: {node: ^12.13 || ^14.13 || >=16}
     hasBin: true
 
-  node-releases@2.0.14:
-    resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==}
+  node-releases@2.0.17:
+    resolution: {integrity: sha512-Ww6ZlOiEQfPfXM45v17oabk77Z7mg5bOt7AjDyzy7RjK9OrLrLC8dyZQoAPEOtFX9SaNf1Tdvr5gRJWdTJj7GA==}
 
   non-layered-tidy-tree-layout@2.0.2:
     resolution: {integrity: sha512-gkXMxRzUH+PB0ax9dUN0yYF0S25BqeAYqhgMaLUFmpXLEk7Fcu8f4emJuOAY0V8kjDICxROIKsTAKsV/v355xw==}
@@ -3629,8 +3629,8 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.6.2:
-    resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
+  semver@7.6.3:
+    resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -4303,7 +4303,7 @@ snapshots:
       '@urql/core': 5.0.4(graphql@16.9.0)
       graphql: 16.9.0
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.1(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@hackersheet/next-document-content-components@0.1.0-alpha.2(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.4
       '@hackersheet/react-document-content': 0.1.0-alpha.2(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -4524,11 +4524,11 @@ snapshots:
   '@npmcli/fs@2.1.2':
     dependencies:
       '@gar/promisify': 1.1.3
-      semver: 7.6.2
+      semver: 7.6.3
 
   '@npmcli/fs@3.1.1':
     dependencies:
-      semver: 7.6.2
+      semver: 7.6.3
 
   '@npmcli/git@4.1.0':
     dependencies:
@@ -4538,7 +4538,7 @@ snapshots:
       proc-log: 3.0.0
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.6.2
+      semver: 7.6.3
       which: 3.0.1
     transitivePeerDependencies:
       - bluebird
@@ -5172,7 +5172,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.2
+      semver: 7.6.3
       ts-api-utils: 1.3.0(typescript@5.5.3)
     optionalDependencies:
       typescript: 5.5.3
@@ -5187,7 +5187,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.3
-      semver: 7.6.2
+      semver: 7.6.3
       ts-api-utils: 1.3.0(typescript@5.5.3)
     optionalDependencies:
       typescript: 5.5.3
@@ -5429,8 +5429,8 @@ snapshots:
   browserslist@4.23.2:
     dependencies:
       caniuse-lite: 1.0.30001642
-      electron-to-chromium: 1.4.828
-      node-releases: 2.0.14
+      electron-to-chromium: 1.4.829
+      node-releases: 2.0.17
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
 
   buffer-from@1.1.2: {}
@@ -5943,7 +5943,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.4.828: {}
+  electron-to-chromium@1.4.829: {}
 
   elkjs@0.9.3: {}
 
@@ -7458,7 +7458,7 @@ snapshots:
       micromark-util-symbol: 2.0.0
       micromark-util-types: 2.0.0
 
-  micromark-extension-directive@3.0.0:
+  micromark-extension-directive@3.0.1:
     dependencies:
       devlop: 1.1.0
       micromark-factory-space: 2.0.0
@@ -7924,14 +7924,14 @@ snapshots:
       nopt: 6.0.0
       npmlog: 6.0.2
       rimraf: 3.0.2
-      semver: 7.6.2
+      semver: 7.6.3
       tar: 6.2.1
       which: 2.0.2
     transitivePeerDependencies:
       - bluebird
       - supports-color
 
-  node-releases@2.0.14: {}
+  node-releases@2.0.17: {}
 
   non-layered-tidy-tree-layout@2.0.2: {}
 
@@ -7943,7 +7943,7 @@ snapshots:
     dependencies:
       hosted-git-info: 6.1.1
       is-core-module: 2.14.0
-      semver: 7.6.2
+      semver: 7.6.3
       validate-npm-package-license: 3.0.4
 
   normalize-path@3.0.0: {}
@@ -7983,7 +7983,7 @@ snapshots:
       rc-config-loader: 4.1.3
       remote-git-tags: 3.0.0
       rimraf: 5.0.9
-      semver: 7.6.2
+      semver: 7.6.3
       semver-utils: 1.1.4
       source-map-support: 0.5.21
       spawn-please: 2.0.2
@@ -7997,7 +7997,7 @@ snapshots:
 
   npm-install-checks@6.3.0:
     dependencies:
-      semver: 7.6.2
+      semver: 7.6.3
 
   npm-normalize-package-bin@3.0.1: {}
 
@@ -8005,7 +8005,7 @@ snapshots:
     dependencies:
       hosted-git-info: 6.1.1
       proc-log: 3.0.0
-      semver: 7.6.2
+      semver: 7.6.3
       validate-npm-package-name: 5.0.1
 
   npm-packlist@7.0.4:
@@ -8017,7 +8017,7 @@ snapshots:
       npm-install-checks: 6.3.0
       npm-normalize-package-bin: 3.0.1
       npm-package-arg: 10.1.0
-      semver: 7.6.2
+      semver: 7.6.3
 
   npm-registry-fetch@14.0.5:
     dependencies:
@@ -8119,7 +8119,7 @@ snapshots:
       got: 12.6.1
       registry-auth-token: 5.0.2
       registry-url: 6.0.1
-      semver: 7.6.2
+      semver: 7.6.3
 
   pacote@15.2.0:
     dependencies:
@@ -8498,7 +8498,7 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
       mdast-util-directive: 3.0.0
-      micromark-extension-directive: 3.0.0
+      micromark-extension-directive: 3.0.1
       unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
@@ -8625,13 +8625,13 @@ snapshots:
 
   semver-diff@4.0.0:
     dependencies:
-      semver: 7.6.2
+      semver: 7.6.3
 
   semver-utils@1.1.4: {}
 
   semver@6.3.1: {}
 
-  semver@7.6.2: {}
+  semver@7.6.3: {}
 
   set-blocking@2.0.0: {}
 
@@ -9128,7 +9128,7 @@ snapshots:
       is-yarn-global: 0.4.1
       latest-version: 7.0.0
       pupa: 3.1.0
-      semver: 7.6.2
+      semver: 7.6.3
       semver-diff: 4.0.0
       xdg-basedir: 5.1.0
 
