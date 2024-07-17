@@ -59,11 +59,13 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
     <div>
       <a
         href={url}
-        className="flex flex-col-reverse overflow-hidden rounded-lg border !no-underline hover:bg-primary/5 md:h-36 md:flex-row"
+        className="flex max-h-[160px] w-full overflow-hidden rounded-lg border !no-underline hover:bg-muted/50"
       >
-        <div className="flex flex-auto flex-col overflow-hidden p-4">
-          <div className="line-clamp-2 flex-auto text-primary">{title}</div>
-          <div className="mb-2 line-clamp-2 text-xs text-muted-foreground">{description}</div>
+        <div className="flex flex-1 flex-col gap-3 overflow-hidden px-4 py-3">
+          <div className="flex-auto">
+            <div className="line-clamp-2 text-foreground">{title}</div>
+          </div>
+          <div className="line-clamp-2 text-xs text-muted-foreground">{description}</div>
           <div className="flex items-center gap-2">
             <picture className="rounded-full dark:bg-foreground">
               <img src={faviconUrl} alt={`${domain} favicon`} width={16} height={16} />
@@ -72,13 +74,13 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
           </div>
         </div>
         {ogImage && ogImage.fileUrl && (
-          <div className="md:max-w-[50%]">
+          <div className="w-[30%]">
             <Image
               alt={title}
               src={ogImage.fileUrl}
               height={ogImage.height}
               width={ogImage.width}
-              className="aspect-auto max-h-72 max-w-full object-contain md:max-h-36 md:max-w-min"
+              className="size-full object-contain object-top p-2 sm:object-cover sm:p-0"
             />
           </div>
         )}
