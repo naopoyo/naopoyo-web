@@ -22,7 +22,7 @@ export default function DocumentDropdownToc() {
           目次
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="max-h-[70vh] w-screen" align="end">
+      <DropdownMenuContent className="max-h-[70vh] w-screen bg-card" align="end">
         <ScrollShadow className="max-h-[70vh] p-2">
           <Toc />
         </ScrollShadow>
