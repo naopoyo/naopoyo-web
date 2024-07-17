@@ -3,7 +3,7 @@ import { cache } from 'react'
 
 import { HACKERSHEET_API_ACCESS_KEY, HACKERSHEET_API_ENDPOINT } from '@/constants'
 
-import makeWebsiteQuery from './make-website-query'
+import makeWebsiteQuery from './utils/make-website-query'
 
 const client = cache(() =>
   createClient({

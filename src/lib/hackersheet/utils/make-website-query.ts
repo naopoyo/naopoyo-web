@@ -1,4 +1,4 @@
-import { makeAfterCursorFromPage } from './utils'
+import makeAfterCursorFromPage from './make-after-cursor-from-page'
 
 const DEFAULT_PAGE_SIZE = 20
 
