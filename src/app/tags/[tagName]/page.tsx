@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
-import NextLink from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
 import { PageHeader } from '@/components/page-header'
+import { SmallTag } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
 
 interface TagPageProps {
@@ -49,12 +49,7 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
           <ul className="flex flex-row flex-wrap gap-4">
             {tag.relatedTags.map((tag) => (
               <li key={tag.id} className="text-nowrap">
-                <NextLink
-                  href={`/tags/${tag.name}`}
-                  className="block rounded border bg-primary-foreground px-3 py-1 text-sm hover:scale-110 hover:duration-500"
-                >
-                  {tag.name}
-                </NextLink>
+                <SmallTag tagName={tag.name} />
               </li>
             ))}
           </ul>

@@ -1,3 +1,4 @@
+import SmallTag from './small-tag'
 import TagList from './tag-list'
 
-export { TagList }
+export { SmallTag, TagList }

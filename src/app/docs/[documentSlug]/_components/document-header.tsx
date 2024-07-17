@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import NextLink from 'next/link'
 
 import { DocumentEmoji } from '@/components/document'
 import { FlexCol, FlexRow } from '@/components/layout'
 import { Link } from '@/components/link'
+import { SmallTag } from '@/components/tag'
 import { HACKERSHEET_GITHUB_REPO_URL } from '@/constants'
 import { createDateFormat, timeAgo } from '@/utils'
 
@@ -57,12 +57,7 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
             <ul className="flex flex-row gap-4">
               {document.tags.map((tag) => (
                 <li key={tag.id}>
-                  <NextLink
-                    href={`/tags/${tag.name}`}
-                    className="block rounded border bg-primary-foreground px-3 py-1 text-sm hover:scale-110 hover:duration-500"
-                  >
-                    {tag.name}
-                  </NextLink>
+                  <SmallTag tagName={tag.name} />
                 </li>
               ))}
             </ul>
