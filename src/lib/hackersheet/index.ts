@@ -13,4 +13,5 @@ const client = cache(() =>
 )()
 
 export { client, makeWebsiteQuery }
+export { DocumentContent } from './components/document-content'
 export * from '@hackersheet/core'

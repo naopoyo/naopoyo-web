@@ -3,9 +3,8 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
-import { DocumentContent } from '@/components/document-content'
 import { FlexCol, FlexRow } from '@/components/layout'
-import { client } from '@/lib/hackersheet'
+import { client, DocumentContent } from '@/lib/hackersheet'
 
 import { DocumentHeader, DocumentToc, DropdownToc } from './_components'
 
@@ -50,7 +49,7 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         <FlexCol className="w-full gap-14 md:w-[768px]">
           <DocumentHeader document={document} />
           <main>
-            <DocumentContent document={document} permaLinkFormat="/docs/{{slug}}" />
+            <DocumentContent document={document} />
           </main>
         </FlexCol>
         <aside className="hidden w-[300px] md:inline-block">

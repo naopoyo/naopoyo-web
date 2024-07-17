@@ -50,7 +50,7 @@
 
   .dark {
     --background: 240 6% 11%;
-    --foreground: 60 9.1% 97.8%;
+    --foreground: 213 9% 84%;
 
     --card: 240 6% 14%;
     --card-foreground: 60 9.1% 97.8%;
@@ -80,6 +80,19 @@
     --link: 210, 90%, 75%;
 
     --code-block: 215 15% 16%;
+  }
+
+  :root {
+    --hsdc-scroll-margin-top: calc(var(--navbar-height) + 16px);
+    --hsdc-font-code: var(--font-source-code-pro), monospace, sans-serif;
+    --hsdc-border: var(--border);
+    --hsdc-muted: var(--muted);
+    --hsdc-muted-foreground: var(--muted-foreground);
+    --hsdc-link: var(--link);
+    --hsdc-code-block: var(--code-block);
+    --hsdc-shiki-diff-add: 160 84% 39%;
+    --hsdc-shiki-diff-remove: 350 89% 60%;
+    --hsdc-shiki-highlighted-word: 60 100% 50%;
   }
 }
 

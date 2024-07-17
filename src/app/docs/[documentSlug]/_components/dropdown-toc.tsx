@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { TOCBOT_BASE_OPTIONS } from '@/constants'
-import docContentStyles from '@/styles/document-content.module.scss'
+import documentContentStyle from '@/styles/document-content.module.scss'
 import tocStyles from '@/styles/document-toc.module.scss'
 
 export default function DropdownToc() {
@@ -33,7 +33,7 @@ function Toc() {
     tocbot.init({
       ...TOCBOT_BASE_OPTIONS,
       tocSelector: `.${tocStyles['dropdown']}`,
-      contentSelector: `.${docContentStyles['main']}`,
+      contentSelector: `.${documentContentStyle.main}`,
     })
   }
 
