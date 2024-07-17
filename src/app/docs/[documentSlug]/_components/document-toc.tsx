@@ -1,10 +1,10 @@
 'use client'
 
+import documentContentStyle from '@hackersheet/next-document-content-components/style'
 import { useEffect } from 'react'
 import tocbot from 'tocbot'
 
 import { TOCBOT_BASE_OPTIONS } from '@/constants'
-import documentContentStyle from '@/styles/document-content.module.scss'
 import tocStyles from '@/styles/document-toc.module.scss'
 
 export default function DocumentToc() {

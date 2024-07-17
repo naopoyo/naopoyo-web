@@ -8,9 +8,9 @@ import {
   XPost,
   Youtube,
 } from '@hackersheet/next-document-content-components'
+import documentContentStyle from '@hackersheet/next-document-content-components/style'
 import { DocumentContent as OrgDocumentContent } from '@hackersheet/react-document-content'
 
-import documentContentStyle from '@/styles/document-content.module.scss'
 import 'katex/dist/katex.min.css'
 
 export type DocumentContentProps = {
