@@ -1,6 +1,6 @@
 'use client'
 
-import documentContentStyle from '@hackersheet/next-document-content-components/style'
+import documentContentStyle from '@hackersheet/react-document-content-styles/basic'
 import { ScrollShadow } from '@nextui-org/scroll-shadow'
 import { useEffect } from 'react'
 import tocbot from 'tocbot'
