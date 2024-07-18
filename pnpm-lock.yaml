@@ -22,7 +22,7 @@ importers:
         version: 0.1.0-alpha.4(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hackersheet/react-document-content-styles':
         specifier: alpha
-        version: 0.1.0-alpha.2
+        version: 0.1.0-alpha.3
       '@next/third-parties':
         specifier: 14.2.5
         version: 14.2.5(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react@18.3.1)
@@ -259,8 +259,8 @@ packages:
       react: ^18.0.0
       react-dom: ^18.0.0
 
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.2':
-    resolution: {integrity: sha512-fz0hYVK9YAsFfl7/JjfatzJ61cc8NLQjag/qw89MOqRzORkOIzuNSoNqOM4G8jjlqnqCDnxRWDsjTFZsXvbryQ==}
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.3':
+    resolution: {integrity: sha512-Qu0dCIBqDkCaxRc+OqYvs/q9iO1Xs4sQVgfVmQ3ChvNX8Qd1s6uDlkC3choG4JU2D85+h/lvWlhV0matxoDOig==}
 
   '@hackersheet/react-document-content@0.1.0-alpha.4':
     resolution: {integrity: sha512-8aHNrcpvRoiaoMi2OAAiLQ9FRG3EonxBqUI1SlaGWu0endh1eQaeYJgdFSMw0/emPevSGZHG/MfujQ8InD9GKg==}
@@ -4351,12 +4351,12 @@ snapshots:
       - react-native
       - supports-color
 
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.2': {}
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.3': {}
 
   '@hackersheet/react-document-content@0.1.0-alpha.4(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.4
-      '@hackersheet/react-document-content-styles': 0.1.0-alpha.2
+      '@hackersheet/react-document-content-styles': 0.1.0-alpha.3
       deepmerge: 4.3.1
       mustache: 4.2.0
       path: 0.12.7
