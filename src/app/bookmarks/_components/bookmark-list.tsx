@@ -62,15 +62,17 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
         className="flex max-h-[160px] w-full overflow-hidden rounded-lg border !no-underline hover:bg-muted/50"
       >
         <div className="flex flex-1 flex-col gap-3 overflow-hidden px-4 py-3">
-          <div className="flex-auto">
-            <div className="line-clamp-2 text-foreground">{title}</div>
+          <div className="flex-1">
+            <div className="line-clamp-4 text-sm text-foreground sm:line-clamp-2 sm:text-medium">
+              {title}
+            </div>
           </div>
-          <div className="line-clamp-2 text-xs text-muted-foreground">{description}</div>
+          <div className="hidden text-xs text-muted-foreground sm:line-clamp-2">{description}</div>
           <div className="flex items-center gap-2">
             <picture className="rounded-full dark:bg-foreground">
               <img src={faviconUrl} alt={`${domain} favicon`} width={16} height={16} />
             </picture>
-            <div className="line-clamp-1 text-nowrap text-sm text-muted-foreground">{domain}</div>
+            <div className="line-clamp-1 text-nowrap text-xs text-muted-foreground">{domain}</div>
           </div>
         </div>
         {ogImage && ogImage.fileUrl && (
@@ -80,7 +82,7 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
               src={ogImage.fileUrl}
               height={ogImage.height}
               width={ogImage.width}
-              className="size-full object-contain object-top p-2 sm:object-cover sm:p-0"
+              className="size-full object-contain object-top p-2 sm:object-cover sm:object-center sm:p-0"
             />
           </div>
         )}
