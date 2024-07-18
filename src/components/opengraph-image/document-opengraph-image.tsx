@@ -1,16 +1,10 @@
 import { ImageResponse } from 'next/og'
 
-const boldFont = fetch(new URL('https://naopoyo.com/NotoSansJP-Bold.woff2')).then((res) =>
-  res.arrayBuffer()
-)
-
 export default async function DocumentOpengraphImage(
   size: { width: number; height: number },
   emoji: string,
   title: string
 ) {
-  const [boldFontData] = await Promise.all([boldFont])
-
   return new ImageResponse(
     (
       <div tw="bg-[#FBB161] h-full w-full flex flex-col p-10">
@@ -35,13 +29,6 @@ export default async function DocumentOpengraphImage(
     {
       ...size,
       emoji: 'noto',
-      fonts: [
-        {
-          name: 'NotoSansJP',
-          data: boldFontData,
-          weight: 700,
-        },
-      ],
     }
   )
 }
