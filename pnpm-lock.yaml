@@ -13,7 +13,7 @@ importers:
         version: 0.1.0-alpha.4
       '@hackersheet/next-document-content-components':
         specifier: alpha
-        version: 0.1.0-alpha.3(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.1.0-alpha.4(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hackersheet/next-document-content-kifu':
         specifier: alpha
         version: 0.1.0-alpha.1(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -22,7 +22,7 @@ importers:
         version: 0.1.0-alpha.4(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hackersheet/react-document-content-styles':
         specifier: alpha
-        version: 0.1.0-alpha.1
+        version: 0.1.0-alpha.2
       '@next/third-parties':
         specifier: 14.2.5
         version: 14.2.5(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react@18.3.1)
@@ -245,8 +245,8 @@ packages:
   '@hackersheet/core@0.1.0-alpha.4':
     resolution: {integrity: sha512-3VVTrjsY8Dzhva3YkVPXa4/WlzcNwzSuwjrTQOohfPbD70E18+XbOp6EcEDdt4w+Uz6j9ZQzShMZ+3G7K5gI7Q==}
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.3':
-    resolution: {integrity: sha512-DOikygYaWVvwU4K6Yxy8FbDb974uxaLWR10IgHuvoXjJVPpvnrNhWwPStP5xnhumf0gCDksaS8Jm3+U7oIFFyw==}
+  '@hackersheet/next-document-content-components@0.1.0-alpha.4':
+    resolution: {integrity: sha512-ZFK1SlfbEZFKOg8XQFao8gvdJZ6FSG/JDnYaex1bzcKazqdYi8aML4rzvD+xVmUhK+W7Q3sjb/L9cLQI88+7eQ==}
     peerDependencies:
       next: ^14.0.0
       react: ^18.0.0
@@ -259,8 +259,8 @@ packages:
       react: ^18.0.0
       react-dom: ^18.0.0
 
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.1':
-    resolution: {integrity: sha512-pOtzI0Mr/epJQE+eKYZXjAcvcVRRU4DozEXMSZjN1Tpw5rmt99l5UcStOxit7m7ZMEJU08O1nOKTfKguQfqj2w==}
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.2':
+    resolution: {integrity: sha512-fz0hYVK9YAsFfl7/JjfatzJ61cc8NLQjag/qw89MOqRzORkOIzuNSoNqOM4G8jjlqnqCDnxRWDsjTFZsXvbryQ==}
 
   '@hackersheet/react-document-content@0.1.0-alpha.4':
     resolution: {integrity: sha512-8aHNrcpvRoiaoMi2OAAiLQ9FRG3EonxBqUI1SlaGWu0endh1eQaeYJgdFSMw0/emPevSGZHG/MfujQ8InD9GKg==}
@@ -4319,7 +4319,7 @@ snapshots:
       '@urql/core': 5.0.4(graphql@16.9.0)
       graphql: 16.9.0
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.3(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@hackersheet/next-document-content-components@0.1.0-alpha.4(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.4
       '@hackersheet/react-document-content': 0.1.0-alpha.4(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -4351,12 +4351,12 @@ snapshots:
       - react-native
       - supports-color
 
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.1': {}
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.2': {}
 
   '@hackersheet/react-document-content@0.1.0-alpha.4(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.4
-      '@hackersheet/react-document-content-styles': 0.1.0-alpha.1
+      '@hackersheet/react-document-content-styles': 0.1.0-alpha.2
       deepmerge: 4.3.1
       mustache: 4.2.0
       path: 0.12.7
