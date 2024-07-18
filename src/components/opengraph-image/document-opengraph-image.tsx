@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-const boldFont = fetch(new URL('https://naopoyo.com/NotoSansJP-Bold.otf')).then((res) =>
+const boldFont = fetch(new URL('https://naopoyo.com/NotoSansJP-Bold.woff2')).then((res) =>
   res.arrayBuffer()
 )
 
