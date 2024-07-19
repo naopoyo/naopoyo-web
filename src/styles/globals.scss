@@ -94,6 +94,24 @@
     --hsdc-shiki-diff-remove: 350 89% 60%;
     --hsdc-shiki-highlighted-word: 60 100% 50%;
   }
+
+  :root {
+    --github-alert-default-color: rgb(208, 215, 222);
+    --github-alert-note-color: rgb(9, 105, 218);
+    --github-alert-tip-color: rgb(26, 127, 55);
+    --github-alert-important-color: rgb(130, 80, 223);
+    --github-alert-warning-color: rgb(191, 135, 0);
+    --github-alert-caution-color: rgb(207, 34, 46);
+
+    .dark {
+      --github-alert-default-color: rgb(48, 54, 61);
+      --github-alert-note-color: rgb(31, 111, 235);
+      --github-alert-tip-color: rgb(35, 134, 54);
+      --github-alert-important-color: rgb(137, 87, 229);
+      --github-alert-warning-color: rgb(158, 106, 3);
+      --github-alert-caution-color: rgb(248, 81, 73);
+    }
+  }
 }
 
 @layer base {
