@@ -13,16 +13,16 @@ importers:
         version: 0.1.0-alpha.4
       '@hackersheet/next-document-content-components':
         specifier: alpha
-        version: 0.1.0-alpha.4(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.1.0-alpha.5(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hackersheet/next-document-content-kifu':
         specifier: alpha
         version: 0.1.0-alpha.1(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hackersheet/react-document-content':
         specifier: alpha
-        version: 0.1.0-alpha.4(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.1.0-alpha.5(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hackersheet/react-document-content-styles':
         specifier: alpha
-        version: 0.1.0-alpha.3
+        version: 0.1.0-alpha.4
       '@next/third-parties':
         specifier: 14.2.5
         version: 14.2.5(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react@18.3.1)
@@ -245,8 +245,8 @@ packages:
   '@hackersheet/core@0.1.0-alpha.4':
     resolution: {integrity: sha512-3VVTrjsY8Dzhva3YkVPXa4/WlzcNwzSuwjrTQOohfPbD70E18+XbOp6EcEDdt4w+Uz6j9ZQzShMZ+3G7K5gI7Q==}
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.4':
-    resolution: {integrity: sha512-ZFK1SlfbEZFKOg8XQFao8gvdJZ6FSG/JDnYaex1bzcKazqdYi8aML4rzvD+xVmUhK+W7Q3sjb/L9cLQI88+7eQ==}
+  '@hackersheet/next-document-content-components@0.1.0-alpha.5':
+    resolution: {integrity: sha512-XeuWGWjDjXnJP6TOJ2uCAnOWSzFxbTdIS4V5+hZ2wr5q50eQVE9fIHI+z+c3+BYcushF4pXscmJ5yHiCJ4OukA==}
     peerDependencies:
       next: ^14.0.0
       react: ^18.0.0
@@ -259,11 +259,11 @@ packages:
       react: ^18.0.0
       react-dom: ^18.0.0
 
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.3':
-    resolution: {integrity: sha512-Qu0dCIBqDkCaxRc+OqYvs/q9iO1Xs4sQVgfVmQ3ChvNX8Qd1s6uDlkC3choG4JU2D85+h/lvWlhV0matxoDOig==}
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.4':
+    resolution: {integrity: sha512-a9QyL3mVCRe5EMfqODSm2QVeq/ltHApDH/KcnXZWtwa+OTgkwsbWJOlfTje9VXo3M0CGm63jfH4GoAMWX8/PfA==}
 
-  '@hackersheet/react-document-content@0.1.0-alpha.4':
-    resolution: {integrity: sha512-8aHNrcpvRoiaoMi2OAAiLQ9FRG3EonxBqUI1SlaGWu0endh1eQaeYJgdFSMw0/emPevSGZHG/MfujQ8InD9GKg==}
+  '@hackersheet/react-document-content@0.1.0-alpha.5':
+    resolution: {integrity: sha512-Y9JMtbCyedvrkPElBvaSnppH0wA1WXgJFjHyQHvs3QAz9BVKHZLCIIuESyCpM5MPyPiTwWzmpzl3UVVYUkSDjw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -3517,6 +3517,9 @@ packages:
     resolution: {integrity: sha512-+crtS5QjFRqFCoQmvGduwYWEBng99ZvmFvF+cUJkGYF1L1BfU8C6Zp9T7f5vPAwyLkUExpvK+ANVZmGU49qi4Q==}
     engines: {node: '>=12'}
 
+  rehype-github-alerts@3.0.0:
+    resolution: {integrity: sha512-m8Lm+V0Ee0T9JqaLN0eBqtyUSfMUDFhAOIjbvoAQfI6EKtxKsIGWP6PaQE01UBHat0K7dBtnaeyCmJuUO7ylHg==}
+
   rehype-katex@7.0.0:
     resolution: {integrity: sha512-h8FPkGE00r2XKU+/acgqwWUlyzve1IiOKwsEkg4pDL3k48PiE0Pt+/uLtVHDVkN1yA4iurZN6UES8ivHVEQV6Q==}
 
@@ -4319,10 +4322,10 @@ snapshots:
       '@urql/core': 5.0.4(graphql@16.9.0)
       graphql: 16.9.0
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.4(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@hackersheet/next-document-content-components@0.1.0-alpha.5(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.4
-      '@hackersheet/react-document-content': 0.1.0-alpha.4(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@hackersheet/react-document-content': 0.1.0-alpha.5(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@next/third-parties': 14.2.5(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react@18.3.1)
       '@shikijs/transformers': 1.10.3
       mermaid: 10.9.1
@@ -4340,7 +4343,7 @@ snapshots:
   '@hackersheet/next-document-content-kifu@0.1.0-alpha.1(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.4
-      '@hackersheet/react-document-content': 0.1.0-alpha.4(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@hackersheet/react-document-content': 0.1.0-alpha.5(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       kifu-for-js: 5.4.1(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8)
       react: 18.3.1
@@ -4351,18 +4354,19 @@ snapshots:
       - react-native
       - supports-color
 
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.3': {}
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.4': {}
 
-  '@hackersheet/react-document-content@0.1.0-alpha.4(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@hackersheet/react-document-content@0.1.0-alpha.5(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.4
-      '@hackersheet/react-document-content-styles': 0.1.0-alpha.3
+      '@hackersheet/react-document-content-styles': 0.1.0-alpha.4
       deepmerge: 4.3.1
       mustache: 4.2.0
       path: 0.12.7
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-markdown: 9.0.1(@types/react@18.3.3)(react@18.3.1)
+      rehype-github-alerts: 3.0.0
       rehype-katex: 7.0.0
       rehype-raw: 7.0.0
       rehype-sanitize: 6.0.0
@@ -8489,6 +8493,12 @@ snapshots:
   registry-url@6.0.1:
     dependencies:
       rc: 1.2.8
+
+  rehype-github-alerts@3.0.0:
+    dependencies:
+      hast-util-from-html: 2.0.1
+      hast-util-is-element: 3.0.0
+      unist-util-visit: 5.0.0
 
   rehype-katex@7.0.0:
     dependencies:
