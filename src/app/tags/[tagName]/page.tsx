@@ -39,9 +39,11 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
 
   return (
     <div className="container">
-      <div className="text-center text-lg font-bold text-muted-foreground">Tag</div>
+      <div className="my-16 flex flex-col gap-4">
+        <div className="text-center text-lg font-bold text-muted-foreground">Tag</div>
 
-      <PageHeader>{tag.name}</PageHeader>
+        <PageHeader className="m-0">{tag.name}</PageHeader>
+      </div>
 
       {tag.relatedTags.length > 0 && (
         <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
