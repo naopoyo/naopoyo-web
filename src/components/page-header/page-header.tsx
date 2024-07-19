@@ -1,7 +1,10 @@
+import { ClassProp } from 'class-variance-authority/types'
 import { PropsWithChildren } from 'react'
 
-export interface PageHeaderProps extends PropsWithChildren {}
+import { cn } from '@/lib/shadcn-utils'
 
-export default function PageHeader({ children }: PageHeaderProps) {
-  return <h1 className="py-16 text-center text-4xl font-bold">{children}</h1>
+export type PageHeaderProps = PropsWithChildren & ClassProp
+
+export default function PageHeader({ children, className }: PageHeaderProps) {
+  return <h1 className={cn('my-16 text-center text-4xl font-bold', className)}>{children}</h1>
 }
