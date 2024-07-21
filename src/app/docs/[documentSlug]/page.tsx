@@ -65,13 +65,13 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
         </aside>
       </FlexRow>
       {showInboundLinkDocuments && (
-        <FlexCol className="container gap-5">
+        <FlexCol className="gap-5">
           <h2 className="text-center text-xl font-bold">この記事にリンクしている記事</h2>
           <DocumentList documents={document.inboundLinkDocuments} />
         </FlexCol>
       )}
       {showRecentDocuments && (
-        <FlexCol className="container gap-5">
+        <FlexCol className="gap-5">
           <h2 className="text-center text-xl font-bold">最近公開された記事</h2>
           <DocumentList documents={resentDocuments} />
         </FlexCol>
