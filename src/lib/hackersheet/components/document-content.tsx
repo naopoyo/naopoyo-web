@@ -10,7 +10,8 @@ import {
 } from '@hackersheet/next-document-content-components'
 import { Kifu, KifuTo } from '@hackersheet/next-document-content-kifu'
 import { DocumentContent as BaseDocumentContent } from '@hackersheet/react-document-content'
-import documentContentStyle from '@hackersheet/react-document-content-styles/basic'
+
+import { documentContentStyle } from '../../hackersheet/style'
 
 import 'katex/dist/katex.min.css'
 

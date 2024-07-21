@@ -1,6 +1,5 @@
 'use client'
 
-import documentContentStyle from '@hackersheet/react-document-content-styles/basic'
 import { ScrollShadow } from '@nextui-org/scroll-shadow'
 import { useEffect } from 'react'
 import tocbot from 'tocbot'
@@ -12,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { TOCBOT_BASE_OPTIONS } from '@/constants'
+import { documentContentStyle } from '@/lib/hackersheet/style'
 import tocStyles from '@/styles/document-toc.module.scss'
 
 export default function DocumentDropdownToc() {
