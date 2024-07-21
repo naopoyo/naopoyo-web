@@ -52,7 +52,7 @@ export default async function DocumentPage({ params: { documentSlug } }: Documen
           </main>
         </FlexCol>
         <aside className="hidden w-[300px] md:inline-block">
-          <h2 className="font-bold text-muted-foreground">目次</h2>
+          <h2 className="mb-2 font-bold text-muted-foreground">目次</h2>
           <div className="sticky top-[64px]">
             <DocumentToc />
           </div>
