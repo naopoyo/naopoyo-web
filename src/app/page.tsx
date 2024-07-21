@@ -5,13 +5,7 @@ import { Avater } from '@/components/avatar'
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
 import { Link } from '@/components/link'
 import { Paragraph as P } from '@/components/paragraph'
-import {
-  SITE_DESC,
-  SITE_NAME,
-  PICKUP_DOCS_COUNT,
-  RECENT_DOCS_COUNT,
-  PICKUP_DOC_SLUGS,
-} from '@/constants'
+import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT, PICKUP_DOC_SLUGS } from '@/constants'
 import { client } from '@/lib/hackersheet'
 
 export const metadata: Metadata = {
@@ -27,12 +21,6 @@ export default async function HomePage() {
     <main className="container flex flex-col gap-10">
       <ProfileSection />
       <section>
-        <Heading>おすすめの記事</Heading>
-        <Suspense fallback={<DocumentListSkeleton length={PICKUP_DOCS_COUNT} />}>
-          <PickupDocumentList />
-        </Suspense>
-      </section>
-      <section>
         <Heading>最近書いた記事</Heading>
         <Suspense fallback={<DocumentListSkeleton length={RECENT_DOCS_COUNT} />}>
           <RecentDocumentList />
@@ -42,6 +30,12 @@ export default async function HomePage() {
             すべての記事を見る
           </Link>
         </div>
+      </section>
+      <section>
+        <Heading>おすすめの記事</Heading>
+        <Suspense fallback={<DocumentListSkeleton length={PICKUP_DOC_SLUGS.length} />}>
+          <PickupDocumentList />
+        </Suspense>
       </section>
     </main>
   )
@@ -70,7 +64,7 @@ async function PickupDocumentList() {
   const { documents, totalCount } = await client.getDocuments({
     filter: { draft: false, slugs: PICKUP_DOC_SLUGS },
     sort: { by: 'published_at', order: 'desc' },
-    first: PICKUP_DOCS_COUNT,
+    first: PICKUP_DOC_SLUGS.length,
   })
 
   if (totalCount === 0) return <NotFoundMessage>おすすめの記事はありません。</NotFoundMessage>

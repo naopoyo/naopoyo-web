@@ -17,9 +17,11 @@ export const PICKUP_DOC_SLUGS = [
   'introduce-google-analytics-using-third-party-libraries-in-nextjs',
   'embed-kifu-player-in-markdown',
   'creating-a-headless-cms-for-developers',
+  'step-by-step-instructions-for-beginners-to-build-a-blog-site-in-next-js',
+  'cheat-sheet-for-various-commands',
+  'hackersheet-markdown-spec',
 ]
 
-export const PICKUP_DOCS_COUNT = 3
 export const RECENT_DOCS_COUNT = 6
 
 export const HACKERSHEET_API_ENDPOINT = process.env.HACKERSHEET_API_ENDPOINT!
