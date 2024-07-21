@@ -1,6 +1,5 @@
 'use client'
 
-import { ScrollShadow } from '@nextui-org/scroll-shadow'
 import { useEffect } from 'react'
 import tocbot from 'tocbot'
 
@@ -23,9 +22,7 @@ export default function DocumentDropdownToc() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="max-h-[70vh] w-screen bg-card" align="end">
-        <ScrollShadow className="max-h-[70vh] p-2">
-          <Toc />
-        </ScrollShadow>
+        <Toc />
       </DropdownMenuContent>
     </DropdownMenu>
   )

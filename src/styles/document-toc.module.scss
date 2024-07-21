@@ -1,6 +1,9 @@
 .main,
 .dropdown {
-  font-size: 14px;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  overflow-y: scroll;
+
   a,
   li {
     color: hsl(var(--muted-foreground));
@@ -43,4 +46,12 @@
       background-color: hsl(var(--muted));
     }
   }
+}
+
+.main {
+  max-height: calc(100vh - var(--navbar-height) - 8px);
+}
+
+.dropdown {
+  max-height: 70vh;
 }
