@@ -11,6 +11,7 @@ const title = 'Docs'
 
 export const metadata: Metadata = {
   title: title,
+  description: 'naopoyo.comのすべての記事の一覧ページです。',
 }
 
 export interface DocsPageProps {

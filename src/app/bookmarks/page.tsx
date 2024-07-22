@@ -10,6 +10,7 @@ const title = 'Bookmarks'
 
 export const metadata: Metadata = {
   title: title,
+  description: 'naopoyo.comの記事からリンクされているウェブサイトの一覧ページです。',
 }
 
 export interface BookmarksPageProps {

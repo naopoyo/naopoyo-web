@@ -8,6 +8,7 @@ const title = 'Tags'
 
 export const metadata: Metadata = {
   title: title,
+  description: 'naopoyo.comの記事につけられているタグ一覧ページです。',
 }
 
 export const dynamic = 'force-static'

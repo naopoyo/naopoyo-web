@@ -21,6 +21,7 @@ export async function generateMetadata({ params: { tagName } }: TagPageProps): P
 
   return {
     title: `${tag.name} - Tags`,
+    description: `${tag.name}に関する記事の一覧ページです。`,
   }
 }
 

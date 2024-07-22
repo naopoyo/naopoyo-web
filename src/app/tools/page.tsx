@@ -7,6 +7,7 @@ const title = 'Tools'
 
 export const metadata: Metadata = {
   title: title,
+  description: '便利ツールをまとめた一覧ページです。',
 }
 
 export const dynamic = 'force-static'

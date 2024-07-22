@@ -12,6 +12,7 @@ const title = 'About'
 
 export const metadata: Metadata = {
   title: title,
+  description: 'naopoyo.comについてを見ることができるページです。',
 }
 
 export default function AbountPage() {
