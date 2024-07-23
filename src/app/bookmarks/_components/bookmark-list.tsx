@@ -63,7 +63,7 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
       >
         <div className="flex flex-1 flex-col gap-3 overflow-hidden px-4 py-3">
           <div className="flex-1">
-            <div className="line-clamp-4 text-sm text-foreground sm:line-clamp-2 sm:text-medium">
+            <div className="line-clamp-4 text-sm text-foreground sm:line-clamp-2 sm:text-base">
               {title}
             </div>
           </div>
