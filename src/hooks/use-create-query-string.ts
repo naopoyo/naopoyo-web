@@ -3,14 +3,16 @@
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
 
-export interface UseCreateQueryStringProps {
-  withPathname?: boolean
-}
+export type UseCreateQueryStringArgs =
+  | {
+      withPathname?: boolean
+    }
+  | undefined
 
-export const useCreateQueryString = (props: UseCreateQueryStringProps | undefined) => {
+export function useCreateQueryString(args: UseCreateQueryStringArgs) {
   const searchParams = useSearchParams()
   const pathname = usePathname()
-  const withPathname = props?.withPathname || false
+  const withPathname = args?.withPathname || false
 
   return useCallback(
     (items: { [key: string]: string | string[] | undefined }) => {
