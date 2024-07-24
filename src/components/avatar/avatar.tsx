@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+import naopoyo2 from '@/public/naopoyo2.png'
+
 export interface AvaterProps {
   size: 'xs' | 'sm' | 'base' | 'lg'
 }
@@ -16,7 +18,7 @@ export default function Avater(props: AvaterProps) {
 
   return (
     <Image
-      src="/naopoyo2.png"
+      src={naopoyo2}
       width={size}
       height={size}
       alt="Avater"
