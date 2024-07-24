@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     follow: true,
     index: true,
   },
-  formatDetection: { telephone: false },
+  formatDetection: { telephone: false, address: false, email: false },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
