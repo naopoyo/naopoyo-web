@@ -37,6 +37,13 @@ export default async function HomePage() {
           <PickupDocumentList />
         </Suspense>
       </section>
+      <section>
+        <div className="my-8 text-center">
+          <Link href="/tags" icon="arrow">
+            記事をタグで探す
+          </Link>
+        </div>
+      </section>
     </main>
   )
 }

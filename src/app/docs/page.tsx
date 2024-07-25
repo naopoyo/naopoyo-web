@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
-import { Link } from '@/components/link'
 import { PageHeader } from '@/components/page-header'
 import { Input } from '@/components/ui/input'
 import { client } from '@/lib/hackersheet'
@@ -39,11 +38,6 @@ export default async function DocsPage({ searchParams }: DocsPageProps) {
         </div>
         <div className="w-[348px]">
           <SearchForm keyword={keyword} sortBy={searchParams.by} />
-        </div>
-        <div className="text-center">
-          <Link href="/tags" icon="arrow">
-            タグで探す
-          </Link>
         </div>
       </section>
       <Suspense fallback={<DocumentListSkeleton length={9} />}>
