@@ -7,10 +7,11 @@ import { makeWebsiteQuery } from '@/lib/hackersheet'
 import { BookmarkList, BookmarkListSkeleton } from './_components'
 
 const title = 'Bookmarks'
+const description = 'naopoyo.comの記事からリンクされているウェブサイトの一覧ページです。'
 
 export const metadata: Metadata = {
   title: title,
-  description: 'naopoyo.comの記事からリンクされているウェブサイトの一覧ページです。',
+  description: description,
 }
 
 export interface BookmarksPageProps {
@@ -26,7 +27,11 @@ export default async function BookmarksPage({ searchParams }: BookmarksPageProps
 
   return (
     <div className="container">
-      <PageHeader>{title}</PageHeader>
+      <div className="my-16 flex flex-col items-center gap-4">
+        <PageHeader>{title}</PageHeader>
+
+        <p className="text-sm text-muted-foreground">{description}</p>
+      </div>
 
       <section className="mx-auto flex max-w-screen-md flex-col gap-4">
         <Suspense key={suspenseKey} fallback={<BookmarkListSkeleton />}>

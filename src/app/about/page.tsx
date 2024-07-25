@@ -9,16 +9,21 @@ import { SnsList } from '@/components/sns-list'
 import { SITE_DESC } from '@/constants'
 
 const title = 'About'
+const description = 'naopoyo.comについて説明しているページです。'
 
 export const metadata: Metadata = {
   title: title,
-  description: 'naopoyo.comについてを見ることができるページです。',
+  description: description,
 }
 
 export default function AbountPage() {
   return (
     <div className="container">
-      <PageHeader>{title}</PageHeader>
+      <div className="my-16 flex flex-col items-center gap-4">
+        <PageHeader>{title}</PageHeader>
+
+        <p className="text-sm text-muted-foreground">{description}</p>
+      </div>
 
       <FlexCol className="items-center justify-center gap-8 pb-8 md:flex-row md:items-start">
         <div className="w-fit">

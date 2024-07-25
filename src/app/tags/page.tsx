@@ -5,10 +5,11 @@ import { TagList } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
 
 const title = 'Tags'
+const description = 'naopoyo.comの記事につけられているタグの一覧ページです。'
 
 export const metadata: Metadata = {
   title: title,
-  description: 'naopoyo.comの記事につけられているタグ一覧ページです。',
+  description: description,
 }
 
 export const dynamic = 'force-static'
@@ -21,7 +22,12 @@ export default async function TagsPage() {
 
   return (
     <div className="container">
-      <PageHeader>{title}</PageHeader>
+      <div className="my-16 flex flex-col items-center gap-4">
+        <PageHeader>{title}</PageHeader>
+
+        <p className="text-sm text-muted-foreground">{description}</p>
+      </div>
+
       <section className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
         <div className="text-muted-foreground">全 {totalCount} 件</div>
       </section>

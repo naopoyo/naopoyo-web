@@ -40,10 +40,12 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
 
   return (
     <div className="container">
-      <div className="my-16 flex flex-col gap-4">
-        <div className="text-center text-lg font-bold text-muted-foreground">Tag</div>
+      <div className="my-16 flex flex-col items-center gap-4">
+        <div className="text-lg font-bold text-muted-foreground">Tag</div>
 
-        <PageHeader className="m-0">{tag.name}</PageHeader>
+        <PageHeader>{tag.name}</PageHeader>
+
+        <p className="text-sm text-muted-foreground">{tag.name}に関する記事の一覧ページです。</p>
       </div>
 
       {tag.relatedTags.length > 0 && (
