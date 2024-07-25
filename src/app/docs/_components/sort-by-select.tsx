@@ -27,11 +27,11 @@ export default function SortBySelect({ sortBy }: SortBySelectProps) {
   return (
     <Select value={sortBy} onValueChange={handleValueChange}>
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Sort" />
+        <SelectValue placeholder="並び順" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Sort</SelectLabel>
+          <SelectLabel>並び順</SelectLabel>
           <SelectItem value="published_at">最近公開された</SelectItem>
           <SelectItem value="modified_at">最近更新された</SelectItem>
         </SelectGroup>
