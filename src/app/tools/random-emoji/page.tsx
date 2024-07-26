@@ -16,7 +16,9 @@ export const revalidate = 60
 export default async function RandomEmojiPage() {
   return (
     <div className="container">
-      <PageHeader>{title}</PageHeader>
+      <div className="my-16 flex flex-col items-center gap-4">
+        <PageHeader>{title}</PageHeader>
+      </div>
       <section className="pb-8">
         <RandomEmoji />
       </section>
