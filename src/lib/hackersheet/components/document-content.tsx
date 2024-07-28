@@ -1,6 +1,7 @@
 import { Document } from '@hackersheet/core'
 import {
   CodeBlock,
+  Gist,
   Heading,
   Image,
   Link,
@@ -15,6 +16,7 @@ import { DocumentContent as BaseDocumentContent } from '@hackersheet/react-docum
 import { documentContentStyle } from '../../hackersheet/style'
 
 import 'katex/dist/katex.min.css'
+import '@hackersheet/react-document-content-styles/gist-theme'
 
 export type DocumentContentProps = {
   document: Document
@@ -28,6 +30,7 @@ export function DocumentContent({ document }: DocumentContentProps) {
       permaLinkFormat="/docs/{{slug}}"
       components={{
         codeBlock: CodeBlock,
+        gist: Gist,
         heading: Heading,
         image: Image,
         kifu: Kifu,
