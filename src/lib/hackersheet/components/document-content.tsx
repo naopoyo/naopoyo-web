@@ -1,6 +1,7 @@
 import { Document } from '@hackersheet/core'
 import {
   CodeBlock,
+  Heading,
   Image,
   Link,
   LinkCard,
@@ -27,6 +28,7 @@ export function DocumentContent({ document }: DocumentContentProps) {
       permaLinkFormat="/docs/{{slug}}"
       components={{
         codeBlock: CodeBlock,
+        heading: Heading,
         image: Image,
         kifu: Kifu,
         kifuTo: KifuTo,
