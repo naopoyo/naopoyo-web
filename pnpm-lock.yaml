@@ -13,7 +13,7 @@ importers:
         version: 0.1.0-alpha.4
       '@hackersheet/next-document-content-components':
         specifier: alpha
-        version: 0.1.0-alpha.7(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.1.0-alpha.8(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hackersheet/next-document-content-kifu':
         specifier: alpha
         version: 0.1.0-alpha.2(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(prop-types@15.8.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -22,7 +22,7 @@ importers:
         version: 0.1.0-alpha.7(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hackersheet/react-document-content-styles':
         specifier: alpha
-        version: 0.1.0-alpha.8
+        version: 0.1.0-alpha.9
       '@next/third-parties':
         specifier: 14.2.5
         version: 14.2.5(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react@18.3.1)
@@ -63,8 +63,8 @@ importers:
         specifier: 0.16.11
         version: 0.16.11
       lucide-react:
-        specifier: 0.416.0
-        version: 0.416.0(react@18.3.1)
+        specifier: 0.417.0
+        version: 0.417.0(react@18.3.1)
       next:
         specifier: 14.2.5
         version: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8)
@@ -97,8 +97,8 @@ importers:
         specifier: 14.2.5
         version: 14.2.5
       '@types/node':
-        specifier: 20.14.12
-        version: 20.14.12
+        specifier: 20.14.13
+        version: 20.14.13
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
@@ -227,8 +227,8 @@ packages:
   '@hackersheet/core@0.1.0-alpha.4':
     resolution: {integrity: sha512-3VVTrjsY8Dzhva3YkVPXa4/WlzcNwzSuwjrTQOohfPbD70E18+XbOp6EcEDdt4w+Uz6j9ZQzShMZ+3G7K5gI7Q==}
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.7':
-    resolution: {integrity: sha512-GfPnI5kLPfotqRYEQ0qqMVPuodod0iA9uCoMtWF3v6E61qCNYOieEmpKRCmNpESIumkrSn+ipmQ0dpxRoHhxnw==}
+  '@hackersheet/next-document-content-components@0.1.0-alpha.8':
+    resolution: {integrity: sha512-W2BLG7cVz5UgLte0F3o4rJcF/5sBoJ/LZ+gg7CuTpVKc7FNsmkLhEmXUfPPtpXtfDGqn2aMDbGowYJxHgETcvg==}
     peerDependencies:
       next: ^14.0.0
       react: ^18.0.0
@@ -241,8 +241,8 @@ packages:
       react: ^18.0.0
       react-dom: ^18.0.0
 
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.8':
-    resolution: {integrity: sha512-a8/BDQ3D4aTn8u+NGtvWShaXxWyf4D2GKCd0G0lVfpMQuldkKDJMTOOad8UsZKwg0y3xEUFHmtjrhu59PMBRRA==}
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.9':
+    resolution: {integrity: sha512-fPGIVC8lDqsYs0N/hpWZI0yXwlP/mdQ5Ay3eKTbliqjzeGLYqzIj4upvpAJZwvTPyeZJPGlAYL90Hv5ujlxmgA==}
 
   '@hackersheet/react-document-content@0.1.0-alpha.7':
     resolution: {integrity: sha512-vNlSp6hnWZBh9OKclptOK9P91DLAJXbhnvcukqBycpFxUVRx7x9hwO3eqL9ugSI58HL5MQAogbP7NHNEGRzK2Q==}
@@ -858,8 +858,8 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/node@20.14.12':
-    resolution: {integrity: sha512-r7wNXakLeSsGT0H1AU863vS2wa5wBOK4bWMjZz2wj+8nBx+m5PeIn0k8AloSLpRuiwdRQZwarZqHE4FNArPuJQ==}
+  '@types/node@20.14.13':
+    resolution: {integrity: sha512-+bHoGiZb8UiQ0+WEtmph2IWQCjIqg8MDZMAV+ppRRhUZnquF5mQkP/9vpSwJClEiSM/C7fZZExPzfU0vJTyp8w==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -971,8 +971,8 @@ packages:
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  '@urql/core@5.0.4':
-    resolution: {integrity: sha512-gl86J6B6gWXvvkx5omZ+CaGiPQ0chCUGM0jBsm0zTtkDQPRqufv0NSUN6sp2JhGGtTOB0NR6Pd+w7XAVGGyUOA==}
+  '@urql/core@5.0.5':
+    resolution: {integrity: sha512-KmWRlN8dJz+XU21wmhcHcTV11n1K7zxaMtVwOhkH7b8H5Z5nuFKY5EkUsWqPlZl53YPiKwTtOMpptz5hamVVNQ==}
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -2523,8 +2523,8 @@ packages:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
 
-  lucide-react@0.416.0:
-    resolution: {integrity: sha512-wPWxTzdss1CTz2aqcNWNlbh4YSnH9neJWP3RaeXepxpLCTW+pmu7WcT/wxJe+Q7Y7DqGOxAqakJv0pIK3431Ag==}
+  lucide-react@0.417.0:
+    resolution: {integrity: sha512-F/MDUHDter8YMZ7JKQpW/5/+v38tdaoShKX3e+opYsqfCnaHwn+5zz3+lBrMDFMNtSsvxtNpchLIaMpEfsi/4w==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
@@ -2802,8 +2802,8 @@ packages:
     resolution: {integrity: sha512-JmQSYYpPUqX5Jyn1mXaRwOda1uQ8HP5KAT/oDSLCzt1BYRhQU0/hDtsB1ufZfEEzMZ9aAVmsBw8+FWsIXlClWw==}
     engines: {node: '>= 8'}
 
-  minipass-json-stream@1.0.1:
-    resolution: {integrity: sha512-ODqY18UZt/I8k+b7rl2AENgbWE8IDYam+undIJONvigAz8KR5GWblsFTEfQs0WODsjbSXWlm+JHEv8Gr6Tfdbg==}
+  minipass-json-stream@1.0.2:
+    resolution: {integrity: sha512-myxeeTm57lYs8pH2nxPzmEEg8DGIgW+9mv6D4JZD2pa81I/OBjeU7PtICXV6c9eRGTA5JMDsuIPUZRCyBMYNhg==}
 
   minipass-pipeline@1.2.4:
     resolution: {integrity: sha512-xuIq7cIOt09RPRJ19gdi4b+RiNvDFYe5JH+ggNvBqGqpQXcru3PcRmOZuHBKWK1Txf9+cQ+HMVN4d6z46LZP7A==}
@@ -4131,10 +4131,10 @@ snapshots:
   '@hackersheet/core@0.1.0-alpha.4':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.9.0)
-      '@urql/core': 5.0.4(graphql@16.9.0)
+      '@urql/core': 5.0.5(graphql@16.9.0)
       graphql: 16.9.0
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.7(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@hackersheet/next-document-content-components@0.1.0-alpha.8(@types/react@18.3.3)(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.4
       '@hackersheet/react-document-content': 0.1.0-alpha.7(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -4166,12 +4166,12 @@ snapshots:
       - react-native
       - supports-color
 
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.8': {}
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.9': {}
 
   '@hackersheet/react-document-content@0.1.0-alpha.7(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.4
-      '@hackersheet/react-document-content-styles': 0.1.0-alpha.8
+      '@hackersheet/react-document-content-styles': 0.1.0-alpha.9
       deepmerge: 4.3.1
       mustache: 4.2.0
       path: 0.12.7
@@ -4793,7 +4793,7 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@20.14.12':
+  '@types/node@20.14.13':
     dependencies:
       undici-types: 5.26.5
 
@@ -4937,7 +4937,7 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@urql/core@5.0.4(graphql@16.9.0)':
+  '@urql/core@5.0.5(graphql@16.9.0)':
     dependencies:
       '@0no-co/graphql.web': 1.0.7(graphql@16.9.0)
       wonka: 6.3.4
@@ -6816,7 +6816,7 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  lucide-react@0.416.0(react@18.3.1):
+  lucide-react@0.417.0(react@18.3.1):
     dependencies:
       react: 18.3.1
 
@@ -7485,7 +7485,7 @@ snapshots:
     dependencies:
       minipass: 3.3.6
 
-  minipass-json-stream@1.0.1:
+  minipass-json-stream@1.0.2:
     dependencies:
       jsonparse: 1.3.1
       minipass: 3.3.6
@@ -7694,7 +7694,7 @@ snapshots:
       make-fetch-happen: 11.1.1
       minipass: 5.0.0
       minipass-fetch: 3.0.5
-      minipass-json-stream: 1.0.1
+      minipass-json-stream: 1.0.2
       minizlib: 2.1.2
       npm-package-arg: 10.1.0
       proc-log: 3.0.0
