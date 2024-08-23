@@ -5,7 +5,7 @@ import { Avater } from '@/components/avatar'
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
 import { Link } from '@/components/link'
 import { Paragraph as P } from '@/components/paragraph'
-import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT, PICKUP_DOC_SLUGS } from '@/constants'
+import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
 import { client } from '@/lib/hackersheet'
 
 export const metadata: Metadata = {
@@ -17,6 +17,8 @@ export const dynamic = 'force-static'
 export const revalidate = 60
 
 export default async function HomePage() {
+  const picupSlugs = await getPicupSlugs()
+
   return (
     <main className="container flex flex-col gap-10">
       <ProfileSection />
@@ -33,7 +35,7 @@ export default async function HomePage() {
       </section>
       <section>
         <Heading>おすすめの記事</Heading>
-        <Suspense fallback={<DocumentListSkeleton length={PICKUP_DOC_SLUGS.length} />}>
+        <Suspense fallback={<DocumentListSkeleton length={picupSlugs.length} />}>
           <PickupDocumentList />
         </Suspense>
       </section>
@@ -68,10 +70,12 @@ function ProfileSection() {
 }
 
 async function PickupDocumentList() {
+  const picupSlugs = await getPicupSlugs()
+
   const { documents, totalCount } = await client.getDocuments({
-    filter: { draft: false, slugs: PICKUP_DOC_SLUGS },
+    filter: { draft: false, slugs: picupSlugs },
     sort: { by: 'published_at', order: 'desc' },
-    first: PICKUP_DOC_SLUGS.length,
+    first: picupSlugs.length,
   })
 
   if (totalCount === 0) return <NotFoundMessage>おすすめの記事はありません。</NotFoundMessage>
@@ -80,8 +84,9 @@ async function PickupDocumentList() {
 }
 
 async function RecentDocumentList() {
+  const picupSlugs = await getPicupSlugs()
   const { documents, totalCount } = await client.getDocuments({
-    filter: { draft: false, excludeSlugs: PICKUP_DOC_SLUGS },
+    filter: { draft: false, excludeSlugs: picupSlugs },
     sort: { by: 'published_at', order: 'desc' },
     first: RECENT_DOCS_COUNT,
   })
@@ -97,4 +102,11 @@ function NotFoundMessage({ children }: PropsWithChildren) {
 
 function Heading({ children }: PropsWithChildren) {
   return <h2 className="my-4 text-center text-xl font-bold">{children}</h2>
+}
+
+async function getPicupSlugs() {
+  const { tree } = await client.getTree({ slug: 'pickup' })
+  return (
+    tree?.flatNodes.map((node) => node.document?.slug).filter((slug) => slug !== undefined) ?? []
+  )
 }
