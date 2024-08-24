@@ -39,7 +39,11 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
     if (!scrollContainerRef.current || !scrollAnchorRef.current) {
       return
     }
-    scrollContainerRef.current.scrollLeft = scrollAnchorRef.current.offsetLeft - 16
+
+    const containerCenter = scrollContainerRef.current.clientWidth / 2
+    const anchorCenter =
+      scrollAnchorRef.current.offsetLeft + scrollAnchorRef.current.clientWidth / 2
+    scrollContainerRef.current.scrollLeft = anchorCenter - containerCenter
   }, [])
 
   return (
@@ -49,7 +53,9 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
           <PaginationContent>
             {pageItems.map((pageItem) => (
               <PaginationItem key={`paginator-${pageItem.num}`}>
-                {isActive(pageItem.num) && <div ref={scrollAnchorRef} />}
+                {isActive(pageItem.num) && (
+                  <div className="ml-[-5px] size-px" ref={scrollAnchorRef} />
+                )}
                 <PaginationLink
                   href={isActive(pageItem.num) ? '' : pageItem.href}
                   isActive={isActive(pageItem.num)}
