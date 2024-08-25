@@ -9,10 +9,16 @@ import { getFaviconUrl } from '@/utils'
 interface BookmarkListProps {
   first: number
   after: string
+  keyword?: string
 }
 
-export async function BookmarkList({ first, after }: BookmarkListProps) {
-  const { websites, isEmpty, totalCount } = await client.getWebsites({ first, after })
+export async function BookmarkList({ first, after, keyword }: BookmarkListProps) {
+  const { websites, isEmpty, totalCount } = await client.getWebsites({
+    first,
+    after,
+    filter: { keyword: keyword },
+    sort: { by: 'published_at', order: 'desc' },
+  })
 
   return (
     <>
