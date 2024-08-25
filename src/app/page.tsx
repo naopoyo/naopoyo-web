@@ -23,7 +23,7 @@ export default async function HomePage() {
     <main className="container flex flex-col gap-10">
       <ProfileSection />
       <section>
-        <Heading>最近書いた記事</Heading>
+        <Heading>最近公開された記事</Heading>
         <Suspense fallback={<DocumentListSkeleton length={RECENT_DOCS_COUNT} />}>
           <RecentDocumentList />
         </Suspense>
@@ -91,7 +91,7 @@ async function RecentDocumentList() {
     first: RECENT_DOCS_COUNT,
   })
 
-  if (totalCount === 0) return <NotFoundMessage>最近書いた記事はありません。</NotFoundMessage>
+  if (totalCount === 0) return <NotFoundMessage>最近公開された記事はありません。</NotFoundMessage>
 
   return <DocumentList documents={documents} />
 }
