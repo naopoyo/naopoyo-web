@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import tocbot from 'tocbot'
+import { init, destroy } from 'tocbot'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -29,8 +29,8 @@ export default function DocumentDropdownToc() {
 }
 
 function Toc() {
-  const init = () => {
-    tocbot.init({
+  const initTocbot = () => {
+    init({
       ...TOCBOT_BASE_OPTIONS,
       tocSelector: `.${tocStyles['dropdown']}`,
       contentSelector: `.${documentContentStyle.main}`,
@@ -38,13 +38,13 @@ function Toc() {
   }
 
   useEffect(() => {
-    init()
+    initTocbot()
 
-    window.addEventListener('resize', init)
+    window.addEventListener('resize', initTocbot)
 
     return () => {
-      window.removeEventListener('resize', init)
-      tocbot.destroy()
+      window.removeEventListener('resize', initTocbot)
+      destroy()
     }
   }, [])
 
