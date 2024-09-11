@@ -1,5 +1,6 @@
 'use client'
 
+import { ScrollShadow } from '@nextui-org/scroll-shadow'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
@@ -51,7 +52,7 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
 
   return (
     <div className="flex flex-row items-center gap-2">
-      <div ref={scrollContainerRef} className="flex-auto overflow-auto">
+      <ScrollShadow ref={scrollContainerRef} orientation="horizontal" size={80}>
         <UIPagination className="justify-start">
           <PaginationContent>
             {pageItems.map((pageItem) => (
@@ -67,7 +68,7 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
             ))}
           </PaginationContent>
         </UIPagination>
-      </div>
+      </ScrollShadow>
       <div className="text-nowrap text-sm text-muted-foreground">
         {totalItems} 件中 {start} - {end}
       </div>
