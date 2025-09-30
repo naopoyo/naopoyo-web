@@ -1,4 +1,4 @@
-import { IStaticOptions } from 'tocbot'
+import tocbot from 'tocbot'
 
 export const isProduction = process.env.NODE_ENV === 'production'
 
@@ -22,7 +22,7 @@ export const HACKERSHEET_API_ACCESS_KEY = process.env.HACKERSHEET_API_ACCESS_KEY
 export const HACKERSHEET_GITHUB_REPO_FULL_NAME = process.env.HACKERSHEET_GITHUB_REPO_FULL_NAME!
 export const HACKERSHEET_GITHUB_REPO_URL = `https://github.com/${HACKERSHEET_GITHUB_REPO_FULL_NAME}`
 
-export const TOCBOT_BASE_OPTIONS: IStaticOptions = {
+export const TOCBOT_BASE_OPTIONS: tocbot.IStaticOptions = {
   headingSelector: 'h2, h3, h4, h5, h6',
   scrollSmooth: false,
   headingsOffset: 64 + 1 + 16,

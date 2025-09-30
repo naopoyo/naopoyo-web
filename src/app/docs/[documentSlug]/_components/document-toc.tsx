@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { init, destroy } from 'tocbot'
+import tocbot from 'tocbot'
 
 import { TOCBOT_BASE_OPTIONS } from '@/constants'
 import { documentContentStyle } from '@/lib/hackersheet/style'
@@ -9,7 +9,7 @@ import tocStyles from '@/styles/document-toc.module.scss'
 
 export default function DocumentToc() {
   const initTocbot = () => {
-    init({
+    tocbot.init({
       ...TOCBOT_BASE_OPTIONS,
       tocSelector: `.${tocStyles.main}`,
       contentSelector: `.${documentContentStyle['main']}`,
@@ -23,7 +23,7 @@ export default function DocumentToc() {
 
     return () => {
       window.removeEventListener('resize', initTocbot)
-      destroy()
+      tocbot.destroy()
     }
   }, [])
 
