@@ -7,13 +7,17 @@ import { SmallTag } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
 
 interface TagPageProps {
-  params: { tagName: string }
+  params: Promise<{ tagName: string }>
 }
 
 export const dynamic = 'force-static'
 export const revalidate = 60
 
-export async function generateMetadata({ params: { tagName } }: TagPageProps): Promise<Metadata> {
+export async function generateMetadata(props: TagPageProps): Promise<Metadata> {
+  const params = await props.params
+
+  const { tagName } = params
+
   const decodedTagName = decodeURI(tagName)
   const { tag } = await client.getTag({ name: decodedTagName })
 
@@ -25,7 +29,11 @@ export async function generateMetadata({ params: { tagName } }: TagPageProps): P
   }
 }
 
-export default async function TagPage({ params: { tagName } }: TagPageProps) {
+export default async function TagPage(props: TagPageProps) {
+  const params = await props.params
+
+  const { tagName } = params
+
   const decodedTagName = decodeURI(tagName)
   const { tag } = await client.getTag({ name: decodedTagName })
 

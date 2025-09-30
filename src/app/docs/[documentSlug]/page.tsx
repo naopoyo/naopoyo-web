@@ -8,15 +8,17 @@ import { client, DocumentContent } from '@/lib/hackersheet'
 import { DocumentHeader, DocumentToc, DocumentDropdownToc } from './_components'
 
 interface DocumentPageProps {
-  params: { documentSlug: string }
+  params: Promise<{ documentSlug: string }>
 }
 
 export const dynamic = 'force-static'
 export const revalidate = 60
 
-export async function generateMetadata({
-  params: { documentSlug },
-}: DocumentPageProps): Promise<Metadata> {
+export async function generateMetadata(props: DocumentPageProps): Promise<Metadata> {
+  const params = await props.params
+
+  const { documentSlug } = params
+
   const { document } = await client.getDocument({ slug: documentSlug })
 
   if (!document) notFound()
@@ -26,7 +28,11 @@ export async function generateMetadata({
   }
 }
 
-export default async function DocumentPage({ params: { documentSlug } }: DocumentPageProps) {
+export default async function DocumentPage(props: DocumentPageProps) {
+  const params = await props.params
+
+  const { documentSlug } = params
+
   const { document } = await client.getDocument({ slug: documentSlug })
 
   if (!document || document.draft) {

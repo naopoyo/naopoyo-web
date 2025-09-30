@@ -16,15 +16,16 @@ export const metadata: Metadata = {
 }
 
 export interface BookmarksPageProps {
-  searchParams: {
+  searchParams: Promise<{
     page?: number
     keyword?: string
-  }
+  }>
 }
 
 export const revalidate = 60
 
-export default async function BookmarksPage({ searchParams }: BookmarksPageProps) {
+export default async function BookmarksPage(props: BookmarksPageProps) {
+  const searchParams = await props.searchParams
   const { first, after, keyword, suspenseKey } = makeWebsiteQuery({
     page: searchParams.page,
     keyword: searchParams.keyword,

@@ -17,12 +17,13 @@ export const metadata: Metadata = {
 }
 
 export interface DocsPageProps {
-  searchParams: { keyword?: string; by?: string }
+  searchParams: Promise<{ keyword?: string; by?: string }>
 }
 
 export const revalidate = 60
 
-export default async function DocsPage({ searchParams }: DocsPageProps) {
+export default async function DocsPage(props: DocsPageProps) {
+  const searchParams = await props.searchParams
   const keyword = searchParams.keyword
   const sortOptions = new Map([['modified_at', 'modified_at']])
   const sortBy = sortOptions.get(searchParams.by ?? '') || 'published_at'
