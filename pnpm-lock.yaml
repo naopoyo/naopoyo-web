@@ -16,14 +16,14 @@ importers:
         specifier: 0.1.0-alpha.9
         version: 0.1.0-alpha.9
       '@hackersheet/next-document-content-components':
-        specifier: 0.1.0-alpha.11
-        version: 0.1.0-alpha.11(@types/react@19.1.16)(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.93.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        specifier: 0.1.0-alpha.12
+        version: 0.1.0-alpha.12(@types/react@19.1.16)(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.93.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@hackersheet/react-document-content':
         specifier: 0.1.0-alpha.11
         version: 0.1.0-alpha.11(@types/react@19.1.16)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@hackersheet/react-document-content-styles':
-        specifier: 0.1.0-alpha.11
-        version: 0.1.0-alpha.11
+        specifier: 0.1.0-alpha.12
+        version: 0.1.0-alpha.12
       '@next/third-parties':
         specifier: 15.5.4
         version: 15.5.4(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.93.2))(react@19.1.1)
@@ -248,8 +248,8 @@ packages:
   '@hackersheet/core@0.1.0-alpha.9':
     resolution: {integrity: sha512-J+ubBTD8pYUKzqulxnvwLrqnY8TvP2t126CtBM9ZZAKH07bdCGt/JTd//rU9a7QKCskZccNs5E9Dfl8Ji7jBcA==}
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.11':
-    resolution: {integrity: sha512-TL3ayGrPhTENMS/LskUWVDCo84wBrELTPr7qVTTg6nM3DSDTcuAZDnPVip9R7t+OyzmOJeG7djnZI4Efc+tfdw==}
+  '@hackersheet/next-document-content-components@0.1.0-alpha.12':
+    resolution: {integrity: sha512-xEVTON4sqNyb+RmhhCU8UK30Ld9Dk6fSOQcs2dZmT60weoqSyQ+C8kbp9pFIdHRUYYTK+NytrPTCEyyi/9m0Zw==}
     peerDependencies:
       next: ^14.0.0
       react: ^18.0.0
@@ -257,6 +257,9 @@ packages:
 
   '@hackersheet/react-document-content-styles@0.1.0-alpha.11':
     resolution: {integrity: sha512-zkDi4yrBNTFA/I5A6El4IQEBzTbEBgbf+PnDMYYVsFsMdO6vdJ0v+fw1jRFpGf+HXAcdRY8CbLMtvm+LCKNw9w==}
+
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.12':
+    resolution: {integrity: sha512-qHaFOqpDgx3n9Vonfbh5JBArhhrgkVyyQeF8mVII+i42hc/LVsOhDyu16au9EnzPnmDMt2YFa83Nys9Z16va9g==}
 
   '@hackersheet/react-document-content@0.1.0-alpha.11':
     resolution: {integrity: sha512-VsiNCOK8qkyzBnD7otVwAX3zQlQRic3AMemtn0ivl5uj2dR/La0sswaGZ6VVg0IvLGYI3dQT35mKFRrFCilUHQ==}
@@ -1149,9 +1152,6 @@ packages:
   '@sindresorhus/is@5.6.0':
     resolution: {integrity: sha512-TV7t8GKYaJWsn00tFDqBw8+Uqmr8A0fRU1tvTQhyZzGv0sJCGRQL3JGMI3ucuKo3XIZdUP+Lx7/gh2t3lewy7g==}
     engines: {node: '>=14.16'}
-
-  '@swc/helpers@0.5.12':
-    resolution: {integrity: sha512-KMZNXiGibsW9kvZAO1Pam2JPTDBm+KSHMMHWdsyI/1DbIZjT2A6Gy3hblVXUMEDvUAKq+e0vL0X0o54owWji7g==}
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -4703,7 +4703,7 @@ snapshots:
       '@urql/core': 5.0.6(graphql@16.9.0)
       graphql: 16.9.0
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.11(@types/react@19.1.16)(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.93.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@hackersheet/next-document-content-components@0.1.0-alpha.12(@types/react@19.1.16)(next@15.5.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.93.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.9
       '@hackersheet/react-document-content': 0.1.0-alpha.11(@types/react@19.1.16)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -4722,6 +4722,8 @@ snapshots:
       - supports-color
 
   '@hackersheet/react-document-content-styles@0.1.0-alpha.11': {}
+
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.12': {}
 
   '@hackersheet/react-document-content@0.1.0-alpha.11(@types/react@19.1.16)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
@@ -5619,10 +5621,6 @@ snapshots:
       - supports-color
 
   '@sindresorhus/is@5.6.0': {}
-
-  '@swc/helpers@0.5.12':
-    dependencies:
-      tslib: 2.7.0
 
   '@swc/helpers@0.5.15':
     dependencies:
@@ -9054,7 +9052,7 @@ snapshots:
 
   react-tweet@3.2.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
-      '@swc/helpers': 0.5.12
+      '@swc/helpers': 0.5.15
       clsx: 2.1.1
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)

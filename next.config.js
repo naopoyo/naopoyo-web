@@ -6,6 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 const nextConfig = {
+  transpilePackages: ['@hackersheet/next-document-content-components'],
   images: {
     formats: ['image/webp'],
     remotePatterns: [

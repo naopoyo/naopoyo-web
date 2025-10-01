@@ -9,13 +9,11 @@
     color: hsl(var(--muted-foreground));
   }
 
-  :global {
-    li:has(> .is-active-link) {
-      color: hsl(var(--accent-foreground));
-    }
-    .is-active-link {
-      color: hsl(var(--accent-foreground));
-    }
+  li:has(> :global(.is-active-link)) {
+    color: hsl(var(--accent-foreground));
+  }
+  :global(.is-active-link) {
+    color: hsl(var(--accent-foreground));
   }
 
   ol,
