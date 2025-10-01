@@ -13,7 +13,7 @@ export default function RandomEmoji() {
   const [history, setHistory] = useState<string[]>([])
 
   const copyToClipBoard = useCallback((value: string) => {
-    navigator.clipboard && navigator.clipboard.writeText(value)
+    if (navigator.clipboard) navigator.clipboard.writeText(value)
   }, [])
 
   const handleCopyButtonClick = useCallback(() => {

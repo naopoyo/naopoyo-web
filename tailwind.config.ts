@@ -90,7 +90,7 @@ const config = {
   },
   plugins: [
     nextui(),
-    require('tailwindcss-animate'),
+    // require('tailwindcss-animate'),
     plugin(function ({ addUtilities }) {
       addUtilities({
         '.auto-phrase': {
