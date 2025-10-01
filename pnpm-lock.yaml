@@ -4085,7 +4085,7 @@ snapshots:
       '@internationalized/date': 3.6.0
       '@nextui-org/react-utils': 2.1.3(react@19.1.1)
       '@nextui-org/system-rsc': 2.3.5(@nextui-org/theme@2.4.5(tailwindcss@4.1.13))(react@19.1.1)
-      '@react-aria/i18n': 3.12.4(react@19.1.1)
+      '@react-aria/i18n': 3.12.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@react-aria/overlays': 3.24.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@react-aria/utils': 3.26.0(react@19.1.1)
       '@react-stately/utils': 3.10.5(react@19.1.1)
@@ -4534,17 +4534,19 @@ snapshots:
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
 
-  '@react-aria/i18n@3.12.4(react@19.1.1)':
+  '@react-aria/i18n@3.12.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
-      '@internationalized/date': 3.6.0
+      '@internationalized/date': 3.9.0
       '@internationalized/message': 3.1.8
       '@internationalized/number': 3.6.5
       '@internationalized/string': 3.2.7
       '@react-aria/ssr': 3.9.10(react@19.1.1)
-      '@react-aria/utils': 3.26.0(react@19.1.1)
+      '@react-aria/utils': 3.30.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@react-types/shared': 3.32.0(react@19.1.1)
       '@swc/helpers': 0.5.17
       react: 19.1.1
+    transitivePeerDependencies:
+      - react-dom
 
   '@react-aria/interactions@3.25.5(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
@@ -4559,10 +4561,10 @@ snapshots:
   '@react-aria/overlays@3.24.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@react-aria/focus': 3.21.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      '@react-aria/i18n': 3.12.4(react@19.1.1)
+      '@react-aria/i18n': 3.12.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@react-aria/interactions': 3.25.5(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@react-aria/ssr': 3.9.10(react@19.1.1)
-      '@react-aria/utils': 3.26.0(react@19.1.1)
+      '@react-aria/utils': 3.30.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@react-aria/visually-hidden': 3.8.27(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@react-stately/overlays': 3.6.19(react@19.1.1)
       '@react-types/button': 3.14.0(react@19.1.1)
@@ -4580,7 +4582,7 @@ snapshots:
   '@react-aria/utils@3.26.0(react@19.1.1)':
     dependencies:
       '@react-aria/ssr': 3.9.10(react@19.1.1)
-      '@react-stately/utils': 3.10.5(react@19.1.1)
+      '@react-stately/utils': 3.10.8(react@19.1.1)
       '@react-types/shared': 3.32.0(react@19.1.1)
       '@swc/helpers': 0.5.17
       clsx: 2.1.1
@@ -4640,7 +4642,7 @@ snapshots:
 
   '@react-types/datepicker@3.9.0(react@19.1.1)':
     dependencies:
-      '@internationalized/date': 3.6.0
+      '@internationalized/date': 3.9.0
       '@react-types/calendar': 3.7.4(react@19.1.1)
       '@react-types/overlays': 3.9.1(react@19.1.1)
       '@react-types/shared': 3.32.0(react@19.1.1)

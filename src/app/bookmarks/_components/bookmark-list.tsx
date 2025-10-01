@@ -65,7 +65,7 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
     <div>
       <a
         href={url}
-        className="flex max-h-[160px] w-full overflow-hidden rounded-lg border !no-underline hover:bg-muted/50"
+        className="flex max-h-[160px] w-full overflow-hidden rounded-lg border no-underline! hover:bg-muted/50"
       >
         <div className="flex flex-1 flex-col gap-3 overflow-hidden px-4 py-3">
           <div className="flex-1">

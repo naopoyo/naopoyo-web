@@ -43,7 +43,7 @@ export default async function BookmarksPage(props: BookmarksPageProps) {
         </div>
       </div>
 
-      <section className="mx-auto flex max-w-screen-md flex-col gap-4">
+      <section className="mx-auto flex max-w-(--breakpoint-md) flex-col gap-4">
         <Suspense key={suspenseKey} fallback={<BookmarkListSkeleton />}>
           <BookmarkList first={first} after={after} keyword={keyword} />
         </Suspense>
