@@ -155,20 +155,31 @@
 /* my theme */
 :root {
   --link: oklch(0.623 0.214 259.815);
+}
 
-  .dark {
-    --link: oklch(0.546 0.245 262.881);
-  }
+.dark {
+  --link: oklch(0.7875 0.1022 249.65);
 }
 
 :root {
-  --hsdc-scroll-margin-top: calc(var(--navbar-height) + 16px);
+  --hsdc-scroll-margin-top: calc(64px + 16px);
   --hsdc-font-code: var(--font-source-code-pro), monospace, sans-serif;
-  --hsdc-border: 350 89% 60%;
-  --hsdc-muted: var(--muted);
-  --hsdc-muted-foreground: var(--muted-foreground);
-  --hsdc-link: var(--link);
-  --hsdc-code-block: var(--code-block);
+  --hsdc-border: 20 5.9% 90%;
+  --hsdc-muted: 60 4.8% 95.9%;
+  --hsdc-muted-foreground: 24 9.8% 10%;
+  --hsdc-link: 216, 100%, 50%;
+  --hsdc-code-block: 0 0% 100%;
+  --hsdc-shiki-diff-add: 160 84% 39%;
+  --hsdc-shiki-diff-remove: 350 89% 60%;
+  --hsdc-shiki-highlighted-word: 60 100% 50%;
+}
+
+.dark {
+  --hsdc-border: 12 6.5% 22%;
+  --hsdc-muted: 12 6.5% 15.1%;
+  --hsdc-muted-foreground: 24 5.4% 63.9%;
+  --hsdc-link: 210, 90%, 75%;
+  --hsdc-code-block: 215 15% 16%;
   --hsdc-shiki-diff-add: 160 84% 39%;
   --hsdc-shiki-diff-remove: 350 89% 60%;
   --hsdc-shiki-highlighted-word: 60 100% 50%;
@@ -181,13 +192,13 @@
   --github-alert-important-color: rgb(130, 80, 223);
   --github-alert-warning-color: rgb(191, 135, 0);
   --github-alert-caution-color: rgb(207, 34, 46);
+}
 
-  .dark {
-    --github-alert-default-color: rgb(48, 54, 61);
-    --github-alert-note-color: rgb(31, 111, 235);
-    --github-alert-tip-color: rgb(35, 134, 54);
-    --github-alert-important-color: rgb(137, 87, 229);
-    --github-alert-warning-color: rgb(158, 106, 3);
-    --github-alert-caution-color: rgb(248, 81, 73);
-  }
+.dark {
+  --github-alert-default-color: rgb(48, 54, 61);
+  --github-alert-note-color: rgb(31, 111, 235);
+  --github-alert-tip-color: rgb(35, 134, 54);
+  --github-alert-important-color: rgb(137, 87, 229);
+  --github-alert-warning-color: rgb(158, 106, 3);
+  --github-alert-caution-color: rgb(248, 81, 73);
 }
