@@ -43,9 +43,10 @@ export function BookmarkListSkeleton() {
     <div className="flex flex-col gap-4">
       <Pagination totalItems={1} pageSize={1} />
       {Array.from({ length: 20 }).map((_, index) => (
-        <Skeleton key={`bookmark-list-skeleton-${index}`} className={`
-          w-full rounded-lg
-        `}>
+        <Skeleton
+          key={`bookmark-list-skeleton-${index}`}
+          className={`w-full rounded-lg`}
+        >
           <div className="h-28 w-full rounded-lg"></div>
         </Skeleton>
       ))}
