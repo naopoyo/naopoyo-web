@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
+import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/page-header'
 import { SmallTag } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
@@ -47,7 +48,7 @@ export default async function TagPage(props: TagPageProps) {
   })
 
   return (
-    <div className="container">
+    <Container>
       <div className="my-16 flex flex-col items-center gap-4">
         <div className="text-lg font-bold text-muted-foreground">Tag</div>
 
@@ -86,6 +87,6 @@ export default async function TagPage(props: TagPageProps) {
       <section className="pb-8">
         <DocumentList documents={documents} />
       </section>
-    </div>
+    </Container>
   )
 }

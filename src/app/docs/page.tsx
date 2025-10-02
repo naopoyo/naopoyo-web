@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
+import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/page-header'
 import { Input } from '@/components/ui/input'
 import { client } from '@/lib/hackersheet'
@@ -31,7 +32,7 @@ export default async function DocsPage(props: DocsPageProps) {
   const isNotFound = keyword && totalCount === 0
 
   return (
-    <main className="container">
+    <Container>
       <div className="my-16 flex flex-col items-center gap-4">
         <PageHeader>{title}</PageHeader>
 
@@ -56,7 +57,7 @@ export default async function DocsPage(props: DocsPageProps) {
           {isNotFound ? <DocumentListNotFound /> : <DocumentList documents={documents} />}
         </section>
       </Suspense>
-    </main>
+    </Container>
   )
 }
 

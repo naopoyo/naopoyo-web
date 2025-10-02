@@ -61,7 +61,9 @@ export default function RandomEmoji() {
             </div>
           </div>
 
-          <Button onClick={handleCopyButtonClick}>絵文字をクリップボードにコピー</Button>
+          <Button variant="default" onClick={handleCopyButtonClick}>
+            絵文字をクリップボードにコピー
+          </Button>
 
           <Button variant="outline" onClick={handleAllHistoriesCopyClick}>
             履歴をまとめてクリップボードにコピー
