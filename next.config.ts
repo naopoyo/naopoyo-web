@@ -1,11 +1,14 @@
-/* eslint-disable */
-/** @type {import('next').NextConfig} */
+import type { NextConfig } from 'next'
+import NextBundleAnalyzer from '@next/bundle-analyzer'
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = NextBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: false,
+  analyzerMode: 'static',
+  logLevel: 'info',
 })
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   transpilePackages: ['@hackersheet/next-document-content-components'],
   images: {
     formats: ['image/webp'],
@@ -24,4 +27,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(nextConfig)
+export default withBundleAnalyzer(nextConfig)
