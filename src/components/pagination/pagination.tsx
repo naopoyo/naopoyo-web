@@ -1,6 +1,6 @@
 'use client'
 
-import { ScrollShadow } from '@nextui-org/scroll-shadow'
+import { ScrollShadow } from '@heroui/scroll-shadow'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
