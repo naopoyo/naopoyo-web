@@ -9,7 +9,8 @@ export default function NavBar() {
     <>
       <header
         className={`
-          container flex h-16 flex-row justify-center backdrop-blur-xl
+          container mx-auto flex h-16 flex-row justify-center px-4
+          backdrop-blur-xl
           sm:sticky sm:top-0 sm:z-10
         `}
       >

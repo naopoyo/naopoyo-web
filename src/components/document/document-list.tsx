@@ -14,10 +14,12 @@ export default async function DocumentList({ documents }: DocumentListProps) {
   const df = createDateFormat('yyyy-MM-dd')
 
   return (
-    <div className={`
-      grid grid-cols-1 gap-8
-      md:grid-cols-3
-    `}>
+    <div
+      className={`
+        grid grid-cols-1 gap-8
+        md:grid-cols-3
+      `}
+    >
       {documents.map((document) => (
         <Link
           key={document.id}
@@ -46,9 +48,11 @@ export default async function DocumentList({ documents }: DocumentListProps) {
             )}
           </div>
           <div className="text-lg break-all">{document.title}</div>
-          <div className={`
-            flex flex-col gap-4 text-center text-xs text-muted-foreground
-          `}>
+          <div
+            className={`
+              flex flex-col gap-4 text-center text-xs text-muted-foreground
+            `}
+          >
             <div>
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
             </div>

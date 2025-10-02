@@ -8,10 +8,12 @@ export interface TagListProps {
 
 export default async function TagList({ tags }: TagListProps) {
   return (
-    <div className={`
-      grid grid-cols-2 gap-8
-      md:grid-cols-6
-    `}>
+    <div
+      className={`
+        grid grid-cols-2 gap-8
+        md:grid-cols-6
+      `}
+    >
       {tags.map(
         (tag) =>
           tag.documentCountInPublished > 0 && (

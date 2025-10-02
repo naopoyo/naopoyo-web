@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
+import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/page-header'
 import { Input } from '@/components/ui/input'
 import { makeWebsiteQuery } from '@/lib/hackersheet'
@@ -32,7 +33,7 @@ export default async function BookmarksPage(props: BookmarksPageProps) {
   })
 
   return (
-    <div className="container">
+    <Container>
       <div className="my-16 flex flex-col items-center gap-4">
         <PageHeader>{title}</PageHeader>
 
@@ -48,7 +49,7 @@ export default async function BookmarksPage(props: BookmarksPageProps) {
           <BookmarkList first={first} after={after} keyword={keyword} />
         </Suspense>
       </section>
-    </div>
+    </Container>
   )
 }
 

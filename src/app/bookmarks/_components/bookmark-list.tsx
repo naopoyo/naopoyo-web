@@ -75,27 +75,39 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
       >
         <div className="flex flex-1 flex-col gap-3 overflow-hidden px-4 py-3">
           <div className="flex-1">
-            <div className={`
-              line-clamp-4 text-sm text-foreground
-              sm:line-clamp-2 sm:text-base
-            `}>
+            <div
+              className={`
+                line-clamp-4 text-sm text-foreground
+                sm:line-clamp-2 sm:text-base
+              `}
+            >
               {title}
             </div>
           </div>
-          <div className={`
-            hidden text-xs text-muted-foreground
-            sm:line-clamp-2
-          `}>{description}</div>
+          <div
+            className={`
+              hidden text-xs text-muted-foreground
+              sm:line-clamp-2
+            `}
+          >
+            {description}
+          </div>
           <div className="flex items-center gap-2">
-            <picture className={`
-              rounded-full
-              dark:bg-foreground
-            `}>
+            <picture
+              className={`
+                rounded-full
+                dark:bg-foreground
+              `}
+            >
               <img src={faviconUrl} alt={`${domain} favicon`} width={16} height={16} />
             </picture>
-            <div className={`
-              line-clamp-1 text-xs text-nowrap text-muted-foreground
-            `}>{domain}</div>
+            <div
+              className={`
+                line-clamp-1 text-xs text-nowrap text-muted-foreground
+              `}
+            >
+              {domain}
+            </div>
           </div>
         </div>
         {ogImage && ogImage.fileUrl && (

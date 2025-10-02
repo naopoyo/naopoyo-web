@@ -60,14 +60,16 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className={`
-        absolute top-4 right-4 rounded-sm opacity-70 ring-offset-background
-        transition-opacity
-        hover:opacity-100
-        focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none
-        disabled:pointer-events-none
-        data-[state=open]:bg-accent data-[state=open]:text-muted-foreground
-      `}>
+      <DialogPrimitive.Close
+        className={`
+          absolute top-4 right-4 rounded-sm opacity-70 ring-offset-background
+          transition-opacity
+          hover:opacity-100
+          focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none
+          disabled:pointer-events-none
+          data-[state=open]:bg-accent data-[state=open]:text-muted-foreground
+        `}
+      >
         <X className="size-4" />
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
@@ -77,19 +79,28 @@ const DialogContent = React.forwardRef<
 DialogContent.displayName = DialogPrimitive.Content.displayName
 
 const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn(`
-    flex flex-col space-y-1.5 text-center
-    sm:text-left
-  `, className)} {...props} />
+  <div
+    className={cn(
+      `
+        flex flex-col space-y-1.5 text-center
+        sm:text-left
+      `,
+      className
+    )}
+    {...props}
+  />
 )
 DialogHeader.displayName = 'DialogHeader'
 
 const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(`
-      flex flex-col-reverse
-      sm:flex-row sm:justify-end sm:space-x-2
-    `, className)}
+    className={cn(
+      `
+        flex flex-col-reverse
+        sm:flex-row sm:justify-end sm:space-x-2
+      `,
+      className
+    )}
     {...props}
   />
 )

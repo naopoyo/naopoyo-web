@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/page-header'
 import { TagList } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
@@ -21,7 +22,7 @@ export default async function TagsPage() {
   })
 
   return (
-    <div className="container">
+    <Container>
       <div className="my-16 flex flex-col items-center gap-4">
         <PageHeader>{title}</PageHeader>
 
@@ -39,6 +40,6 @@ export default async function TagsPage() {
       <section className="pb-8">
         <TagList tags={tags} />
       </section>
-    </div>
+    </Container>
   )
 }

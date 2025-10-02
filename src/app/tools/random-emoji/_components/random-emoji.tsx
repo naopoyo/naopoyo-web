@@ -43,16 +43,20 @@ export default function RandomEmoji() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className={`
-        flex flex-col justify-center gap-8
-        md:flex-row
-      `}>
+      <div
+        className={`
+          flex flex-col justify-center gap-8
+          md:flex-row
+        `}
+      >
         <section className="flex flex-col gap-4">
           <div className="flex flex-col items-center">
-            <div className={`
-              flex size-32 items-center justify-center rounded-lg border
-              text-7xl
-            `}>
+            <div
+              className={`
+                flex size-32 items-center justify-center rounded-lg border
+                text-7xl
+              `}
+            >
               <div>{emoji}</div>
             </div>
           </div>
@@ -64,10 +68,12 @@ export default function RandomEmoji() {
           </Button>
         </section>
 
-        <section className={`
-          flex flex-col gap-4
-          md:w-96
-        `}>
+        <section
+          className={`
+            flex flex-col gap-4
+            md:w-96
+          `}
+        >
           <h2 className="text-2xl font-bold">履歴 ({history.length})</h2>
           {history.length > 0 ? (
             <ul className="grid max-w-sm grid-cols-12 gap-4">
@@ -83,10 +89,12 @@ export default function RandomEmoji() {
         </section>
       </div>
 
-      <section className={`
-        mx-auto flex flex-col gap-4 text-muted-foreground
-        md:w-96
-      `}>
+      <section
+        className={`
+          mx-auto flex flex-col gap-4 text-muted-foreground
+          md:w-96
+        `}
+      >
         <h2 className="text-2xl font-bold text-primary">使い方</h2>
         <p>
           ランダムに選ばれた絵文字をクリップボードにコピーします。コピーした絵文字が表示されます。

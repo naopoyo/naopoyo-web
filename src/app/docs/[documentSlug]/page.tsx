@@ -49,21 +49,25 @@ export default async function DocumentPage(props: DocumentPageProps) {
   const showRecentDocuments = resentDocuments.length > 0
 
   return (
-    <FlexCol className="container gap-24 pt-10">
+    <FlexCol className="container mx-auto gap-24 px-4 pt-10">
       <FlexRow className="mx-auto max-w-full gap-14">
-        <FlexCol className={`
-          w-full gap-14
-          md:w-[768px]
-        `}>
+        <FlexCol
+          className={`
+            w-full gap-14
+            md:w-[768px]
+          `}
+        >
           <DocumentHeader document={document} />
           <main>
             <DocumentContent document={document} />
           </main>
         </FlexCol>
-        <aside className={`
-          hidden w-[300px]
-          md:inline-block
-        `}>
+        <aside
+          className={`
+            hidden w-[300px]
+            md:inline-block
+          `}
+        >
           <h2 className="mb-2 font-bold text-muted-foreground">目次</h2>
           <div className="sticky top-[64px]">
             <DocumentToc />
@@ -82,10 +86,12 @@ export default async function DocumentPage(props: DocumentPageProps) {
           <DocumentList documents={resentDocuments} />
         </FlexCol>
       )}
-      <div className={`
-        fixed right-4 bottom-4
-        md:hidden
-      `}>
+      <div
+        className={`
+          fixed right-4 bottom-4
+          md:hidden
+        `}
+      >
         <DocumentDropdownToc />
       </div>
     </FlexCol>
