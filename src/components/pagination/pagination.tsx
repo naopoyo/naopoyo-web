@@ -69,7 +69,7 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
           </PaginationContent>
         </UIPagination>
       </ScrollShadow>
-      <div className="text-nowrap text-sm text-muted-foreground">
+      <div className="text-sm text-nowrap text-muted-foreground">
         {totalItems} 件中 {start} - {end}
       </div>
     </div>

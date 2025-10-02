@@ -25,7 +25,10 @@ export default function AbountPage() {
         <p className="text-sm text-muted-foreground">{description}</p>
       </div>
 
-      <FlexCol className="items-center justify-center gap-8 pb-8 md:flex-row md:items-start">
+      <FlexCol className={`
+        items-center justify-center gap-8 pb-8
+        md:flex-row md:items-start
+      `}>
         <div className="w-fit">
           <Avater size="lg" />
         </div>

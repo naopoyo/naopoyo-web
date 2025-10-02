@@ -28,7 +28,12 @@ export default async function TagsPage() {
         <p className="text-sm text-muted-foreground">{description}</p>
       </div>
 
-      <section className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
+      <section
+        className={`
+          mx-auto mb-10 flex flex-col items-center justify-center gap-4
+          md:flex-row
+        `}
+      >
         <div className="text-muted-foreground">全 {totalCount} 件</div>
       </section>
       <section className="pb-8">

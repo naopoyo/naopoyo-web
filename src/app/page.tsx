@@ -20,7 +20,12 @@ export default async function HomePage() {
   const picupSlugs = await getPicupSlugs()
 
   return (
-    <main className="container flex flex-col gap-10">
+    <main
+      className={`
+        container mx-auto flex flex-col gap-10 px-4
+        md:px-0
+      `}
+    >
       <ProfileSection />
       <section>
         <Heading>最近公開された記事</Heading>

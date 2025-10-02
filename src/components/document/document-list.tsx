@@ -14,12 +14,19 @@ export default async function DocumentList({ documents }: DocumentListProps) {
   const df = createDateFormat('yyyy-MM-dd')
 
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+    <div className={`
+      grid grid-cols-1 gap-8
+      md:grid-cols-3
+    `}>
       {documents.map((document) => (
         <Link
           key={document.id}
           href={`/docs/${document.slug}`}
-          className="row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl border bg-card p-6 hover:bg-muted/50"
+          className={`
+            row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl
+            border bg-card p-6
+            hover:bg-muted/50
+          `}
         >
           <div className="flex items-center justify-center">
             {document.preview ? (
@@ -38,8 +45,10 @@ export default async function DocumentList({ documents }: DocumentListProps) {
               </div>
             )}
           </div>
-          <div className="break-all text-lg">{document.title}</div>
-          <div className="flex flex-col gap-4 text-center text-xs text-muted-foreground">
+          <div className="text-lg break-all">{document.title}</div>
+          <div className={`
+            flex flex-col gap-4 text-center text-xs text-muted-foreground
+          `}>
             <div>
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
             </div>
@@ -48,7 +57,10 @@ export default async function DocumentList({ documents }: DocumentListProps) {
                 {document.tags.map((tag) => (
                   <li
                     key={tag.id}
-                    className="rounded border bg-secondary px-2 py-1 text-xs text-foreground"
+                    className={`
+                      rounded border bg-secondary px-2 py-1 text-xs
+                      text-foreground
+                    `}
                   >
                     {tag.name}
                   </li>

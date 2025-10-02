@@ -57,8 +57,11 @@ export default async function TagPage(props: TagPageProps) {
       </div>
 
       {tag.relatedTags.length > 0 && (
-        <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <div className="text-nowrap text-sm text-muted-foreground">関連タグ:</div>
+        <div className={`
+          mb-10 flex flex-col items-center justify-center gap-4
+          sm:flex-row
+        `}>
+          <div className="text-sm text-nowrap text-muted-foreground">関連タグ:</div>
           <ul className="flex flex-row flex-wrap gap-4">
             {tag.relatedTags.map((tag) => (
               <li key={tag.id} className="text-nowrap">
@@ -69,7 +72,10 @@ export default async function TagPage(props: TagPageProps) {
         </div>
       )}
 
-      <div className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
+      <div className={`
+        mx-auto mb-10 flex flex-col items-center justify-center gap-4
+        md:flex-row
+      `}>
         <div className="text-muted-foreground">全 {totalCount} 件</div>
       </div>
 
