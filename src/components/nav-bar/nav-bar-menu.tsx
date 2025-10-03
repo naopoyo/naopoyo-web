@@ -39,16 +39,26 @@ export default function NavBarMenu() {
       {items.map((item, i) => (
         <li
           key={`menu-item-${i}`}
-          className="relative text-sm text-muted-foreground hover:text-primary"
+          className={`
+            relative text-sm text-muted-foreground
+            hover:text-link
+          `}
         >
           <Link
             href={`/${item.segment}`}
-            className="inline-block rounded px-4 py-2 hover:bg-muted/50"
+            className={`
+              inline-block rounded px-4 py-2
+              hover:bg-muted/50
+            `}
           >
             {item.label}
           </Link>
           {item.isActive && (
-            <div className="absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-primary"></div>
+            <div
+              className={`
+                absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-link
+              `}
+            ></div>
           )}
         </li>
       ))}

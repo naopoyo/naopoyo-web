@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
+import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/page-header'
 import { Input } from '@/components/ui/input'
 import { makeWebsiteQuery } from '@/lib/hackersheet'
@@ -16,22 +17,23 @@ export const metadata: Metadata = {
 }
 
 export interface BookmarksPageProps {
-  searchParams: {
+  searchParams: Promise<{
     page?: number
     keyword?: string
-  }
+  }>
 }
 
 export const revalidate = 60
 
-export default async function BookmarksPage({ searchParams }: BookmarksPageProps) {
+export default async function BookmarksPage(props: BookmarksPageProps) {
+  const searchParams = await props.searchParams
   const { first, after, keyword, suspenseKey } = makeWebsiteQuery({
     page: searchParams.page,
     keyword: searchParams.keyword,
   })
 
   return (
-    <div className="container">
+    <Container>
       <div className="my-16 flex flex-col items-center gap-4">
         <PageHeader>{title}</PageHeader>
 
@@ -42,12 +44,12 @@ export default async function BookmarksPage({ searchParams }: BookmarksPageProps
         </div>
       </div>
 
-      <section className="mx-auto flex max-w-screen-md flex-col gap-4">
+      <section className="mx-auto flex max-w-(--breakpoint-md) flex-col gap-4">
         <Suspense key={suspenseKey} fallback={<BookmarkListSkeleton />}>
           <BookmarkList first={first} after={after} keyword={keyword} />
         </Suspense>
       </section>
-    </div>
+    </Container>
   )
 }
 

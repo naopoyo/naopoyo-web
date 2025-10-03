@@ -27,9 +27,14 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
         <div className="text-7xl">
           <DocumentEmoji emoji={document.emoji} />
         </div>
-        <h1 className="text-3xl font-semibold leading-relaxed auto-phrase">{document.title}</h1>
+        <h1 className="auto-phrase text-3xl leading-relaxed font-semibold">{document.title}</h1>
         <FlexCol className="gap-4">
-          <FlexRow className="gap-8 text-xs md:gap-16">
+          <FlexRow
+            className={`
+              gap-8 text-xs
+              md:gap-16
+            `}
+          >
             <FlexCol className="gap-1">
               <div className="text-muted-foreground">公開日</div>
               <div>{timeAgo(document.publishedAt)}</div>

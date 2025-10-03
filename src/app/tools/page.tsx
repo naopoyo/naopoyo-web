@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import { Container } from '@/components/layout'
 import { Link } from '@/components/link'
 import { PageHeader } from '@/components/page-header'
 
@@ -16,7 +17,7 @@ export const revalidate = 60
 
 export default async function ToolsPage() {
   return (
-    <div className="container">
+    <Container>
       <div className="my-16 flex flex-col items-center gap-4">
         <PageHeader>{title}</PageHeader>
 
@@ -27,6 +28,6 @@ export default async function ToolsPage() {
           <Link href="/tools/random-emoji">ランダム絵文字コピー</Link>
         </li>
       </ul>
-    </div>
+    </Container>
   )
 }

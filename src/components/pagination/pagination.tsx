@@ -1,6 +1,6 @@
 'use client'
 
-import { ScrollShadow } from '@nextui-org/scroll-shadow'
+import { ScrollShadow } from '@heroui/scroll-shadow'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
@@ -69,7 +69,7 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
           </PaginationContent>
         </UIPagination>
       </ScrollShadow>
-      <div className="text-nowrap text-sm text-muted-foreground">
+      <div className="text-sm text-nowrap text-muted-foreground">
         {totalItems} 件中 {start} - {end}
       </div>
     </div>

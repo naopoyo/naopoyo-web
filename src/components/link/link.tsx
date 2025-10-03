@@ -33,7 +33,13 @@ export default function Link({
   return (
     <NextLink
       {...props}
-      className={cn('text-link hover:underline inline-flex items-center gap-1', className)}
+      className={cn(
+        `
+          inline-flex items-center gap-1 text-link
+          hover:underline
+        `,
+        className
+      )}
     >
       {iconElem ? (
         <>

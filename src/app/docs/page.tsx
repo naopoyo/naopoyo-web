@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
+import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/page-header'
 import { Input } from '@/components/ui/input'
 import { client } from '@/lib/hackersheet'
@@ -17,12 +18,13 @@ export const metadata: Metadata = {
 }
 
 export interface DocsPageProps {
-  searchParams: { keyword?: string; by?: string }
+  searchParams: Promise<{ keyword?: string; by?: string }>
 }
 
 export const revalidate = 60
 
-export default async function DocsPage({ searchParams }: DocsPageProps) {
+export default async function DocsPage(props: DocsPageProps) {
+  const searchParams = await props.searchParams
   const keyword = searchParams.keyword
   const sortOptions = new Map([['modified_at', 'modified_at']])
   const sortBy = sortOptions.get(searchParams.by ?? '') || 'published_at'
@@ -30,13 +32,18 @@ export default async function DocsPage({ searchParams }: DocsPageProps) {
   const isNotFound = keyword && totalCount === 0
 
   return (
-    <main className="container">
+    <Container>
       <div className="my-16 flex flex-col items-center gap-4">
         <PageHeader>{title}</PageHeader>
 
         <p className="text-sm text-muted-foreground">{description}</p>
       </div>
-      <section className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
+      <section
+        className={`
+          mx-auto mb-10 flex flex-col items-center justify-center gap-4
+          md:flex-row
+        `}
+      >
         <div className="text-muted-foreground">全 {totalCount} 件</div>
         <div>
           <SortBySelect sortBy={sortBy} />
@@ -50,7 +57,7 @@ export default async function DocsPage({ searchParams }: DocsPageProps) {
           {isNotFound ? <DocumentListNotFound /> : <DocumentList documents={documents} />}
         </section>
       </Suspense>
-    </main>
+    </Container>
   )
 }
 

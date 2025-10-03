@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { Avater } from '@/components/avatar'
-import { FlexCol } from '@/components/layout'
+import { Container, FlexCol } from '@/components/layout'
 import { Link } from '@/components/link'
 import { PageHeader } from '@/components/page-header'
 import { Paragraph as P } from '@/components/paragraph'
@@ -18,14 +18,19 @@ export const metadata: Metadata = {
 
 export default function AbountPage() {
   return (
-    <div className="container">
+    <Container>
       <div className="my-16 flex flex-col items-center gap-4">
         <PageHeader>{title}</PageHeader>
 
         <p className="text-sm text-muted-foreground">{description}</p>
       </div>
 
-      <FlexCol className="items-center justify-center gap-8 pb-8 md:flex-row md:items-start">
+      <FlexCol
+        className={`
+          items-center justify-center gap-8 pb-8
+          md:flex-row md:items-start
+        `}
+      >
         <div className="w-fit">
           <Avater size="lg" />
         </div>
@@ -56,6 +61,6 @@ export default function AbountPage() {
           </section>
         </FlexCol>
       </FlexCol>
-    </div>
+    </Container>
   )
 }

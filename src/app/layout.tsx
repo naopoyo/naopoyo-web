@@ -1,4 +1,4 @@
-import '@/styles/globals.scss'
+import '@/styles/globals.css'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 

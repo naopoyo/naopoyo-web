@@ -2,18 +2,23 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
+import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/page-header'
 import { SmallTag } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
 
 interface TagPageProps {
-  params: { tagName: string }
+  params: Promise<{ tagName: string }>
 }
 
 export const dynamic = 'force-static'
 export const revalidate = 60
 
-export async function generateMetadata({ params: { tagName } }: TagPageProps): Promise<Metadata> {
+export async function generateMetadata(props: TagPageProps): Promise<Metadata> {
+  const params = await props.params
+
+  const { tagName } = params
+
   const decodedTagName = decodeURI(tagName)
   const { tag } = await client.getTag({ name: decodedTagName })
 
@@ -25,7 +30,11 @@ export async function generateMetadata({ params: { tagName } }: TagPageProps): P
   }
 }
 
-export default async function TagPage({ params: { tagName } }: TagPageProps) {
+export default async function TagPage(props: TagPageProps) {
+  const params = await props.params
+
+  const { tagName } = params
+
   const decodedTagName = decodeURI(tagName)
   const { tag } = await client.getTag({ name: decodedTagName })
 
@@ -39,7 +48,7 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
   })
 
   return (
-    <div className="container">
+    <Container>
       <div className="my-16 flex flex-col items-center gap-4">
         <div className="text-lg font-bold text-muted-foreground">Tag</div>
 
@@ -49,8 +58,13 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
       </div>
 
       {tag.relatedTags.length > 0 && (
-        <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <div className="text-nowrap text-sm text-muted-foreground">関連タグ:</div>
+        <div
+          className={`
+            mb-10 flex flex-col items-center justify-center gap-4
+            sm:flex-row
+          `}
+        >
+          <div className="text-sm text-nowrap text-muted-foreground">関連タグ:</div>
           <ul className="flex flex-row flex-wrap gap-4">
             {tag.relatedTags.map((tag) => (
               <li key={tag.id} className="text-nowrap">
@@ -61,13 +75,18 @@ export default async function TagPage({ params: { tagName } }: TagPageProps) {
         </div>
       )}
 
-      <div className="mx-auto mb-10 flex flex-col items-center justify-center gap-4 md:flex-row">
+      <div
+        className={`
+          mx-auto mb-10 flex flex-col items-center justify-center gap-4
+          md:flex-row
+        `}
+      >
         <div className="text-muted-foreground">全 {totalCount} 件</div>
       </div>
 
       <section className="pb-8">
         <DocumentList documents={documents} />
       </section>
-    </div>
+    </Container>
   )
 }

@@ -3,6 +3,7 @@ import { PropsWithChildren, Suspense } from 'react'
 
 import { Avater } from '@/components/avatar'
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
+import { Container } from '@/components/layout'
 import { Link } from '@/components/link'
 import { Paragraph as P } from '@/components/paragraph'
 import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
@@ -20,7 +21,7 @@ export default async function HomePage() {
   const picupSlugs = await getPicupSlugs()
 
   return (
-    <main className="container flex flex-col gap-10">
+    <Container className="flex flex-col gap-10">
       <ProfileSection />
       <section>
         <Heading>最近公開された記事</Heading>
@@ -46,7 +47,7 @@ export default async function HomePage() {
           </Link>
         </div>
       </section>
-    </main>
+    </Container>
   )
 }
 
