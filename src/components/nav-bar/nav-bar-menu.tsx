@@ -41,7 +41,7 @@ export default function NavBarMenu() {
           key={`menu-item-${i}`}
           className={`
             relative text-sm text-muted-foreground
-            hover:text-primary
+            hover:text-link
           `}
         >
           <Link
@@ -56,7 +56,7 @@ export default function NavBarMenu() {
           {item.isActive && (
             <div
               className={`
-                absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-primary
+                absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-link
               `}
             ></div>
           )}
