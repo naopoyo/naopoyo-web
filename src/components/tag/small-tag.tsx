@@ -9,7 +9,7 @@ export default function SmallTag({ tagName }: SmallTagProps) {
     <NextLink
       href={`/tags/${tagName}`}
       className={`
-        block rounded-lg border bg-primary-foreground px-3 py-1 text-sm
+        block rounded-lg border bg-muted px-3 py-1 text-sm
         hover:bg-muted/50
       `}
     >
