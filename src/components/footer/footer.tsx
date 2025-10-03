@@ -17,7 +17,7 @@ export default function Footer() {
         `}
       >
         <SnsList />
-        <p className="align-middle">© naopoyo</p>
+        <p className="align-middle text-xs text-muted-foreground">© naopoyo</p>
       </div>
 
       <ThemeSwitcher />
