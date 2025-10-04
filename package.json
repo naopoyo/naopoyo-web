@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@hackersheet/core": "0.1.0-alpha.11",
-    "@hackersheet/next-document-content-components": "0.1.0-alpha.13",
+    "@hackersheet/next-document-content-components": "0.1.0-alpha.14",
     "@hackersheet/react-document-content": "0.1.0-alpha.12",
     "@hackersheet/react-document-content-styles": "0.1.0-alpha.13",
     "@heroui/scroll-shadow": "2.3.18",
@@ -42,7 +42,7 @@
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-icons": "5.5.0",
-    "shiki": "3.13.0",
+    "shiki": "1.14.1",
     "tailwind-merge": "3.3.1",
     "tailwindcss-animate": "1.0.7",
     "tocbot": "4.36.4"
