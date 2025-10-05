@@ -9,7 +9,10 @@ const withBundleAnalyzer = NextBundleAnalyzer({
 })
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['@hackersheet/next-document-content-components'],
+  transpilePackages: [
+    '@hackersheet/next-document-content-components',
+    '@hackersheet/next-document-content-kifu',
+  ],
   images: {
     formats: ['image/webp'],
     remotePatterns: [

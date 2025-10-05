@@ -14,6 +14,9 @@ importers:
       '@hackersheet/next-document-content-components':
         specifier: 0.1.0-alpha.15
         version: 0.1.0-alpha.15(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@hackersheet/next-document-content-kifu':
+        specifier: 0.1.0-alpha.3
+        version: 0.1.0-alpha.3(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/react-document-content':
         specifier: 0.1.0-alpha.12
         version: 0.1.0-alpha.12(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -268,6 +271,13 @@ packages:
     resolution: {integrity: sha512-bbYJed+aEXDr4EBLlWisKlmDNIeLRrdtcoy01gcpurVwpIxODWcy/PPaESPEJq5cDQSa3kH+b0jOb/bdTnmRDA==}
     peerDependencies:
       next: ^15.0.0
+      react: ^19.0.0
+      react-dom: ^19.0.0
+
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.3':
+    resolution: {integrity: sha512-iWkNd1mScz5G3pm3Yt7tkK2U87baOYpVRVQJcxRQ4kiGdE4epLCAHUhMJ7Ry3yJ14IOGtwzu2saAL5KdJnnE7Q==}
+    peerDependencies:
+      next: ^14.0.0
       react: ^19.0.0
       react-dom: ^19.0.0
 
@@ -2519,6 +2529,9 @@ packages:
   json-buffer@3.0.1:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
 
+  json-kifu-format@5.4.1:
+    resolution: {integrity: sha512-XI3kBhYTY2z6SDwfFKvC0Hfi3ESmT1sKgnXIIyhDU2CThGxlcpC74UB4BficHaL9Ac18k8aEGJR5daMmiwFmoQ==}
+
   json-schema-traverse@0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
 
@@ -3341,6 +3354,9 @@ packages:
   shiki@3.13.0:
     resolution: {integrity: sha512-aZW4l8Og16CokuCLf8CF8kq+KK2yOygapU5m3+hoGw0Mdosc6fPitjM+ujYarppj5ZIKGyPDPP1vqmQhr+5/0g==}
 
+  shogi.js@5.4.1:
+    resolution: {integrity: sha512-63YlCIN9IMbDvqUaCAKT77KCl7es+KQjXCdFx0nSZ3Fgth71qvZZuDQD9fqGKuVswdX00WFtiM97qzh1ZJ55sA==}
+
   side-channel-list@1.0.0:
     resolution: {integrity: sha512-FCLHtRD/gnpCiCHEiJLOwdmFP+wzCmDEkc9y7NsYxeF4u7Btsn1ZuwgwJGxImImHicJArLP4R0yX4c2KCrMrTA==}
     engines: {node: '>= 0.4'}
@@ -3863,6 +3879,19 @@ snapshots:
       react-icons: 5.5.0(react@19.2.0)
       react-tweet: 3.2.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       shiki: 3.13.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.3(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      '@hackersheet/core': 0.1.0-alpha.11
+      '@hackersheet/react-document-content': 0.1.0-alpha.12(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      json-kifu-format: 5.4.1
+      next: 15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+      shogi.js: 5.4.1
     transitivePeerDependencies:
       - '@types/react'
       - supports-color
@@ -6342,6 +6371,10 @@ snapshots:
 
   json-buffer@3.0.1: {}
 
+  json-kifu-format@5.4.1:
+    dependencies:
+      shogi.js: 5.4.1
+
   json-schema-traverse@0.4.1: {}
 
   json-stable-stringify-without-jsonify@1.0.1: {}
@@ -7598,6 +7631,8 @@ snapshots:
       '@shikijs/types': 3.13.0
       '@shikijs/vscode-textmate': 10.0.2
       '@types/hast': 3.0.4
+
+  shogi.js@5.4.1: {}
 
   side-channel-list@1.0.0:
     dependencies:

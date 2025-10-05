@@ -11,6 +11,7 @@ import {
   XPost,
   Youtube,
 } from '@hackersheet/next-document-content-components'
+import { Kifu, KifuTo } from '@hackersheet/next-document-content-kifu'
 import { DocumentContent as BaseDocumentContent } from '@hackersheet/react-document-content'
 
 import { documentContentStyle } from '../../hackersheet/style'
@@ -34,6 +35,8 @@ export function DocumentContent({ document }: DocumentContentProps) {
         heading: Heading,
         image: Image,
         link: Link,
+        kifu: Kifu,
+        kifuTo: KifuTo,
         linkCard: LinkCard,
         mermaid: Mermaid,
         xPost: XPost,
