@@ -15,8 +15,8 @@ importers:
         specifier: 0.1.0-alpha.15
         version: 0.1.0-alpha.15(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/next-document-content-kifu':
-        specifier: 0.1.0-alpha.3
-        version: 0.1.0-alpha.3(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 0.1.0-alpha.5
+        version: 0.1.0-alpha.5(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/react-document-content':
         specifier: 0.1.0-alpha.12
         version: 0.1.0-alpha.12(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -274,10 +274,10 @@ packages:
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.3':
-    resolution: {integrity: sha512-iWkNd1mScz5G3pm3Yt7tkK2U87baOYpVRVQJcxRQ4kiGdE4epLCAHUhMJ7Ry3yJ14IOGtwzu2saAL5KdJnnE7Q==}
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.5':
+    resolution: {integrity: sha512-V9v/j1WESBTPAB9La3gILH0gFPEe8+vi6LOS4o7l0soY6UNSE1GJY96J2AvVpn/XICWGXdJRrrfOJRtPRhEJGw==}
     peerDependencies:
-      next: ^14.0.0
+      next: ^15.0.0
       react: ^19.0.0
       react-dom: ^19.0.0
 
@@ -3883,7 +3883,7 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.3(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.5(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.11
       '@hackersheet/react-document-content': 0.1.0-alpha.12(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
