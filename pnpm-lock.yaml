@@ -15,11 +15,11 @@ importers:
         specifier: 0.1.0-alpha.15
         version: 0.1.0-alpha.15(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/next-document-content-kifu':
-        specifier: 0.1.0-alpha.5
-        version: 0.1.0-alpha.5(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 0.1.0-alpha.6
+        version: 0.1.0-alpha.6(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/react-document-content':
-        specifier: 0.1.0-alpha.12
-        version: 0.1.0-alpha.12(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 0.1.0-alpha.13
+        version: 0.1.0-alpha.13(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/react-document-content-styles':
         specifier: 0.1.0-alpha.13
         version: 0.1.0-alpha.13
@@ -106,8 +106,8 @@ importers:
         specifier: 4.1.14
         version: 4.1.14
       '@types/node':
-        specifier: 24.6.2
-        version: 24.6.2
+        specifier: 24.7.0
+        version: 24.7.0
       '@types/react':
         specifier: 19.2.0
         version: 19.2.0
@@ -274,8 +274,8 @@ packages:
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.5':
-    resolution: {integrity: sha512-V9v/j1WESBTPAB9La3gILH0gFPEe8+vi6LOS4o7l0soY6UNSE1GJY96J2AvVpn/XICWGXdJRrrfOJRtPRhEJGw==}
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.6':
+    resolution: {integrity: sha512-kjZfYnakX2wKNyEQZL8BLfuFEssez76wcxNZvFzJobajg3RtIczg8AlJJHFBVjR4zdG8ekQ6xJwtVYGpTL69aQ==}
     peerDependencies:
       next: ^15.0.0
       react: ^19.0.0
@@ -286,6 +286,12 @@ packages:
 
   '@hackersheet/react-document-content@0.1.0-alpha.12':
     resolution: {integrity: sha512-XkR+AiwM8j0RbQwhzmLcAPduSNbPvQU01GjE87h9/DfLq3LBNGxU46tJW3lBQ2uDVN1oYEjObPgr+DVWKwoDlw==}
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
+
+  '@hackersheet/react-document-content@0.1.0-alpha.13':
+    resolution: {integrity: sha512-ZC1c0Rscr2rl9ZK7umQ1nv5wxaijjGZMilpKzpjQd9i4/gYfmfjgsO3GIAHUBjAluv0AH96Az96c5Ntd48R68g==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -1265,8 +1271,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@24.6.2':
-    resolution: {integrity: sha512-d2L25Y4j+W3ZlNAeMKcy7yDsK425ibcAOO2t7aPTz6gNMH0z2GThtwENCDc0d/Pw9wgyRqE5Px1wkV7naz8ang==}
+  '@types/node@24.7.0':
+    resolution: {integrity: sha512-IbKooQVqUBrlzWTi79E8Fw78l8k1RNtlDDNWsFZs7XonuQSJ8oNYfEeclhprUldXISRMLzBpILuKgPlIxm+/Yw==}
 
   '@types/react-dom@19.2.0':
     resolution: {integrity: sha512-brtBs0MnE9SMx7px208g39lRmC5uHZs96caOJfTjFcYSLHNamvaSMfJNagChVNkup2SdtOxKX1FDBkRSJe1ZAg==}
@@ -3580,8 +3586,8 @@ packages:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
     engines: {node: '>= 0.4'}
 
-  undici-types@7.13.0:
-    resolution: {integrity: sha512-Ov2Rr9Sx+fRgagJ5AX0qvItZG/JKKoBRAVITs1zk7IqZGTJUwgUr7qoYBpWwakpWilTZFM98rG/AFRocu10iIQ==}
+  undici-types@7.14.0:
+    resolution: {integrity: sha512-QQiYxHuyZ9gQUIrmPo3IA+hUl4KYk8uSA7cHrcKd/l3p1OTpZcM0Tbp9x7FAtXdAYhlasd60ncPpgu6ihG6TOA==}
 
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
@@ -3883,10 +3889,10 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.5(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.6(@types/react@19.2.0)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.11
-      '@hackersheet/react-document-content': 0.1.0-alpha.12(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@hackersheet/react-document-content': 0.1.0-alpha.13(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       json-kifu-format: 5.4.1
       next: 15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2)
       react: 19.2.0
@@ -3899,6 +3905,30 @@ snapshots:
   '@hackersheet/react-document-content-styles@0.1.0-alpha.13': {}
 
   '@hackersheet/react-document-content@0.1.0-alpha.12(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      '@hackersheet/core': 0.1.0-alpha.11
+      '@hackersheet/react-document-content-styles': 0.1.0-alpha.13
+      deepmerge: 4.3.1
+      mustache: 4.2.0
+      path: 0.12.7
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+      react-markdown: 10.1.0(@types/react@19.2.0)(react@19.2.0)
+      rehype-github-alerts: 4.1.1
+      rehype-katex: 7.0.1
+      rehype-raw: 7.0.0
+      rehype-sanitize: 6.0.0
+      rehype-slug: 6.0.0
+      remark-directive: 4.0.0
+      remark-directive-rehype: 0.4.2
+      remark-gfm: 4.0.1
+      remark-math: 6.0.0
+      unist-util-visit: 5.0.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
+  '@hackersheet/react-document-content@0.1.0-alpha.13(@types/react@19.2.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.11
       '@hackersheet/react-document-content-styles': 0.1.0-alpha.13
@@ -4856,9 +4886,9 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@24.6.2':
+  '@types/node@24.7.0':
     dependencies:
-      undici-types: 7.13.0
+      undici-types: 7.14.0
 
   '@types/react-dom@19.2.0(@types/react@19.2.0)':
     dependencies:
@@ -7894,7 +7924,7 @@ snapshots:
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
 
-  undici-types@7.13.0: {}
+  undici-types@7.14.0: {}
 
   unified@11.0.5:
     dependencies:
