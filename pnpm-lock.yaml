@@ -15,8 +15,8 @@ importers:
         specifier: 0.1.0-alpha.15
         version: 0.1.0-alpha.15(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/next-document-content-kifu':
-        specifier: 0.1.0-alpha.7
-        version: 0.1.0-alpha.7(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 0.1.0-alpha.8
+        version: 0.1.0-alpha.8(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/react-document-content':
         specifier: 0.1.0-alpha.13
         version: 0.1.0-alpha.13(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -274,8 +274,8 @@ packages:
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.7':
-    resolution: {integrity: sha512-hvb3pPhjSsh8daYlxb5c8FUqI7YkqEIzcgK2wVUAEvS0L+8jrP1psY108uV2uETLCU6yjMISkT7h6eUVuxffGA==}
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.8':
+    resolution: {integrity: sha512-TOi9YCuKo0H7G9Uz065pY0gZtG/N4qrND7OAEr3UfttMYEBMd+nC6VrE9Ty7gFkSD4uKuNodNEl8xIQ/jn7++g==}
     peerDependencies:
       next: ^15.0.0
       react: ^19.0.0
@@ -3889,7 +3889,7 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.7(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.8(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.11
       '@hackersheet/react-document-content': 0.1.0-alpha.13(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
