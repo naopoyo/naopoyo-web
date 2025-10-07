@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import ColorCircle from './color-circle'
+
 import type { TagList } from '@/lib/hackersheet'
 
 export interface TagListProps {
@@ -21,11 +23,14 @@ export default async function TagList({ tags }: TagListProps) {
               key={tag.id}
               href={`/tags/${tag.name}`}
               className={`
-                flex flex-col gap-4 rounded-xl border p-4
+                flex h-fit flex-col gap-4 rounded-xl border p-4
                 hover:bg-muted/50
               `}
             >
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row items-center gap-4">
+                <div className="size-3">
+                  <ColorCircle value={tag.name} />
+                </div>
                 <div className="flex-auto">{tag.name}</div>
                 <div className="text-muted-foreground">{tag.documentCountInPublished}</div>
               </div>

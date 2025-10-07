@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { DocumentList } from '@/components/document'
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/page-header'
-import { SmallTag } from '@/components/tag'
+import { ColorCircle, SmallTag } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
 
 interface TagPageProps {
@@ -52,7 +52,12 @@ export default async function TagPage(props: TagPageProps) {
       <div className="my-16 flex flex-col items-center gap-4">
         <div className="text-lg font-bold text-muted-foreground">Tag</div>
 
-        <PageHeader>{tag.name}</PageHeader>
+        <PageHeader className="flex items-center gap-4">
+          <div className="size-4">
+            <ColorCircle value={tag.name} />
+          </div>
+          <div>{tag.name}</div>
+        </PageHeader>
 
         <p className="text-sm text-muted-foreground">{tag.name}に関する記事の一覧ページです。</p>
       </div>

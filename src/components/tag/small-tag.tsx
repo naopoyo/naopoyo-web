@@ -1,5 +1,7 @@
 import NextLink from 'next/link'
 
+import ColorCircle from './color-circle'
+
 export type SmallTagProps = {
   tagName: string
 }
@@ -9,11 +11,14 @@ export default function SmallTag({ tagName }: SmallTagProps) {
     <NextLink
       href={`/tags/${tagName}`}
       className={`
-        block rounded-lg border bg-muted px-3 py-1 text-sm
+        flex items-center gap-2 rounded-lg border bg-muted px-3 py-1 text-sm
         hover:bg-muted/50
       `}
     >
-      {tagName}
+      <div className="size-2">
+        <ColorCircle value={tagName} />
+      </div>
+      <div>{tagName}</div>
     </NextLink>
   )
 }
