@@ -65,7 +65,7 @@
 ## 6. テスト・ドキュメント化の簡単な推奨
 
 - 簡単なスナップショットテストやレンダリングのユニットテストを追加することを推奨。特に Props バリエーション（サイズ、variant）や条件分岐に対するテストを用意する。
-- 各コンポーネントのトップに短い TSDoc（日本語で可）を入れて、役割と主要 props を記載すると探索性が上がる。TSDoc を使うことでエディタの補完や型情報が充実し、ドキュメント化が容易になります。
+- 各コンポーネントのトップに短い TSDoc（日本語で記載）を入れて、役割と主要 props を記載すると探索性が上がる。TSDoc を使うことでエディタの補完や型情報が充実し、ドキュメント化が容易になります。
 
 ## 7. 例外と注意点
 
@@ -95,7 +95,9 @@
    * @example
    * <Avatar size="sm" src={user.image} alt={user.name} />
    */
-  export default function Avatar(props: AvatarProps) { /* ... */ }
+  export default function Avatar(props: AvatarProps) {
+    /* ... */
+  }
   ```
 
 - 例（型）:

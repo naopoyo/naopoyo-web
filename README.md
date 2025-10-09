@@ -36,13 +36,13 @@ GOOGLE_TAG_ID=
 NEXT_PUBLIC_DOMAIN=localhost:3000
 ```
 
-| キー                                | 説明                                                                                                |
-| ----------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `HACKERSHEET_API_ENDPOINT`          | コンテンツデータAPIのエンドポイントです。例の値はデモ用なのでそのまま使用可能です。                 |
-| `HACKERSHEET_API_ACCESS_KEY`        | コンテンツデータAPIのアクセスキーです。例の値はデモ用なのでそのまま使用可能です。                   |
-| `HACKERSHEET_GITHUB_REPO_FULL_NAME` | コンテンツデータを管理しているGitHubリポジトリ名です。例の値はデモ用なのでそのまま使用可能です。    |
-| `GOOGLE_TAG_ID`                     | Google AnalyticsのためのGoogle Tag IDです。                                                         |
-| `NEXT_PUBLIC_DOMAIN`                | ローカル環境を localhost:3000 で動作させる場合は変更不要です。                                      |
+| キー                                | 説明                                                                                             |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `HACKERSHEET_API_ENDPOINT`          | コンテンツデータAPIのエンドポイントです。例の値はデモ用なのでそのまま使用可能です。              |
+| `HACKERSHEET_API_ACCESS_KEY`        | コンテンツデータAPIのアクセスキーです。例の値はデモ用なのでそのまま使用可能です。                |
+| `HACKERSHEET_GITHUB_REPO_FULL_NAME` | コンテンツデータを管理しているGitHubリポジトリ名です。例の値はデモ用なのでそのまま使用可能です。 |
+| `GOOGLE_TAG_ID`                     | Google AnalyticsのためのGoogle Tag IDです。                                                      |
+| `NEXT_PUBLIC_DOMAIN`                | ローカル環境を localhost:3000 で動作させる場合は変更不要です。                                   |
 
 ### ローカルサーバーを起動
 
