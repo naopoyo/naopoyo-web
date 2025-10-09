@@ -12,8 +12,8 @@ importers:
         specifier: 0.1.0-alpha.11
         version: 0.1.0-alpha.11
       '@hackersheet/next-document-content-components':
-        specifier: 0.1.0-alpha.15
-        version: 0.1.0-alpha.15(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 0.1.0-alpha.16
+        version: 0.1.0-alpha.16(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/next-document-content-kifu':
         specifier: 0.1.0-alpha.8
         version: 0.1.0-alpha.8(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -267,8 +267,8 @@ packages:
   '@hackersheet/core@0.1.0-alpha.11':
     resolution: {integrity: sha512-58OQnddta3wKCP3butrJXLG4T4nVL272Ue4vVwLHYREU5FDvrJ2pZexRAh9T6k8v36jU1fYF2XiSCAuCvYy7Cw==}
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.15':
-    resolution: {integrity: sha512-bbYJed+aEXDr4EBLlWisKlmDNIeLRrdtcoy01gcpurVwpIxODWcy/PPaESPEJq5cDQSa3kH+b0jOb/bdTnmRDA==}
+  '@hackersheet/next-document-content-components@0.1.0-alpha.16':
+    resolution: {integrity: sha512-fcyVCnD44Qsx2p052eRd8eXmnKfLkIy6aXl8J7pqQ+RtQfHdKePIMLdDL+uRF3/lDijq+zeID/6gvEvcIJX8nQ==}
     peerDependencies:
       next: ^15.0.0
       react: ^19.0.0
@@ -283,12 +283,6 @@ packages:
 
   '@hackersheet/react-document-content-styles@0.1.0-alpha.13':
     resolution: {integrity: sha512-9cRHp8eNj7/fSiLmTMNm9Fsxhd8xw9eYQljTO43JfM7Kgka8Kx16QstKun8u+DDlc9X6ftmdZONfwmyUsgg8hg==}
-
-  '@hackersheet/react-document-content@0.1.0-alpha.12':
-    resolution: {integrity: sha512-XkR+AiwM8j0RbQwhzmLcAPduSNbPvQU01GjE87h9/DfLq3LBNGxU46tJW3lBQ2uDVN1oYEjObPgr+DVWKwoDlw==}
-    peerDependencies:
-      react: ^19.0.0
-      react-dom: ^19.0.0
 
   '@hackersheet/react-document-content@0.1.0-alpha.13':
     resolution: {integrity: sha512-ZC1c0Rscr2rl9ZK7umQ1nv5wxaijjGZMilpKzpjQd9i4/gYfmfjgsO3GIAHUBjAluv0AH96Az96c5Ntd48R68g==}
@@ -3861,10 +3855,10 @@ snapshots:
       '@urql/core': 6.0.1(graphql@16.11.0)
       graphql: 16.11.0
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.15(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@hackersheet/next-document-content-components@0.1.0-alpha.16(@types/react@19.2.2)(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.11
-      '@hackersheet/react-document-content': 0.1.0-alpha.12(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@hackersheet/react-document-content': 0.1.0-alpha.13(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@next/third-parties': 15.5.4(next@15.5.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react@19.2.0)
       '@shikijs/langs': 3.13.0
       '@shikijs/themes': 3.13.0
@@ -3895,30 +3889,6 @@ snapshots:
       - supports-color
 
   '@hackersheet/react-document-content-styles@0.1.0-alpha.13': {}
-
-  '@hackersheet/react-document-content@0.1.0-alpha.12(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
-    dependencies:
-      '@hackersheet/core': 0.1.0-alpha.11
-      '@hackersheet/react-document-content-styles': 0.1.0-alpha.13
-      deepmerge: 4.3.1
-      mustache: 4.2.0
-      path: 0.12.7
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-      react-markdown: 10.1.0(@types/react@19.2.2)(react@19.2.0)
-      rehype-github-alerts: 4.1.1
-      rehype-katex: 7.0.1
-      rehype-raw: 7.0.0
-      rehype-sanitize: 6.0.0
-      rehype-slug: 6.0.0
-      remark-directive: 4.0.0
-      remark-directive-rehype: 0.4.2
-      remark-gfm: 4.0.1
-      remark-math: 6.0.0
-      unist-util-visit: 5.0.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - supports-color
 
   '@hackersheet/react-document-content@0.1.0-alpha.13(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
