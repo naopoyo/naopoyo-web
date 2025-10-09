@@ -4,13 +4,25 @@ import Link from 'next/link'
 import { DocumentEmoji } from '@/components/document'
 import { createDateFormat, timeAgo } from '@/utils'
 
-import type { DocumentList } from '@/lib/hackersheet'
+import type { DocumentList as DocumentListType } from '@/lib/hackersheet'
 
-export interface DocumentListProps {
-  documents: DocumentList
+/**
+ * DocumentList の Props
+ *
+ * documents - レンダリングするドキュメント配列
+ */
+export type DocumentListProps = {
+  /** レンダリング対象のドキュメント配列 */
+  documents: DocumentListType
 }
 
-export default async function DocumentList({ documents }: DocumentListProps) {
+/**
+ * DocumentList コンポーネント - ドキュメントカードのグリッドを表示します。
+ *
+ * @param props - DocumentListProps
+ * @returns ドキュメントカードを含む JSX 要素
+ */
+export default function DocumentList({ documents }: DocumentListProps) {
   const df = createDateFormat('yyyy-MM-dd')
 
   return (

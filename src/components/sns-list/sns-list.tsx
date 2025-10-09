@@ -4,6 +4,11 @@ import { SiGithub, SiX, SiZenn } from 'react-icons/si'
 import { FlexRow } from '@/components/layout'
 import { Button } from '@/components/ui/button'
 
+/**
+ * SnsList コンポーネント - 外部サービスへのリンクボタン群を表示します。
+ *
+ * @returns SNS のリンクリストを含む JSX
+ */
 export default function SnsList() {
   return (
     <FlexRow className="gap-2">

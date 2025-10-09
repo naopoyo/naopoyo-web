@@ -4,10 +4,16 @@ import ColorCircle from './color-circle'
 
 import type { TagList } from '@/lib/hackersheet'
 
-export interface TagListProps {
+/**
+ * TagList の Props
+ */
+export type TagListProps = {
   tags: TagList
 }
 
+/**
+ * TagList コンポーネント - タグ一覧をグリッドで表示します（サーバーコンポーネント）。
+ */
 export default async function TagList({ tags }: TagListProps) {
   return (
     <div

@@ -4,6 +4,11 @@ import { SITE_NAME } from '@/constants'
 
 import NavBarMenu from './nav-bar-menu'
 
+/**
+ * NavBar コンポーネント - サイト上部のナビゲーションバーを表示します。
+ *
+ * @returns ヘッダーとモバイル用メニューを含む JSX
+ */
 export default function NavBar() {
   return (
     <>

@@ -6,6 +6,11 @@ import { useEffect, useState } from 'react'
 
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
+/**
+ * ThemeSwitcher コンポーネント - ユーザーがテーマ（dark/system/light）を切り替えられる UI を提供します。
+ *
+ * クライアントコンポーネントで、マウント確認後に現在のテーマ値を表示します。
+ */
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()

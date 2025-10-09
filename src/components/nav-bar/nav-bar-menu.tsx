@@ -26,6 +26,11 @@ const menuItems = [
   },
 ]
 
+/**
+ * NavBarMenu コンポーネント - ナビゲーションのメニューリストを表示します（クライアントコンポーネント）。
+ *
+ * @returns メニューのリストを返します
+ */
 export default function NavBarMenu() {
   const segment = useSelectedLayoutSegment()
 

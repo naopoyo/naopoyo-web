@@ -5,6 +5,9 @@ import { PropsWithChildren } from 'react'
 
 import { cn } from '@/lib/shadcn-utils'
 
+/**
+ * Link の Props
+ */
 export type LinkProps = PropsWithChildren &
   NextLinkProps &
   ClassProp & {
@@ -12,6 +15,9 @@ export type LinkProps = PropsWithChildren &
     iconSize?: number
   }
 
+/**
+ * Link コンポーネント - Next.js の Link をラップし、アイコン付きリンクを提供します。
+ */
 export default function Link({
   className,
   children,

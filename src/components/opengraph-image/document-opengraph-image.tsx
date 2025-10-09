@@ -4,6 +4,14 @@ const boldFont = fetch(new URL('https://naopoyo.com/NotoSansJP-Bold.otf')).then(
   res.arrayBuffer()
 )
 
+/**
+ * DocumentOpengraphImage - OpenGraph 用の画像を生成する関数
+ *
+ * @param size - 生成する画像の幅と高さ
+ * @param emoji - 画像に表示する絵文字
+ * @param title - 画像に表示するタイトル文字列
+ * @returns next/og の ImageResponse
+ */
 export default async function DocumentOpengraphImage(
   size: { width: number; height: number },
   emoji: string,

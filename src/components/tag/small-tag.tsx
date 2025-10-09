@@ -2,10 +2,21 @@ import NextLink from 'next/link'
 
 import ColorCircle from './color-circle'
 
+/**
+ * SmallTag の Props
+ *
+ * tagName - タグの表示名
+ */
 export type SmallTagProps = {
   tagName: string
 }
 
+/**
+ * SmallTag コンポーネント - タグの小さなリンク表示をします。
+ *
+ * @param props - SmallTagProps
+ * @returns タグリンクを含む JSX
+ */
 export default function SmallTag({ tagName }: SmallTagProps) {
   return (
     <NextLink

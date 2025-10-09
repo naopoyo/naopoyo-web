@@ -1,9 +1,21 @@
 import { Skeleton } from '@/components/ui/skeleton'
 
-export interface DocumentListSkeletonProps {
+/**
+ * DocumentListSkeleton の Props
+ *
+ * length - レンダリングするスケルトンの数
+ */
+export type DocumentListSkeletonProps = {
+  /** レンダリングするスケルトン数 */
   length: number
 }
 
+/**
+ * DocumentListSkeleton コンポーネント - ドキュメント一覧用のプレースホルダ（スケルトン）を表示します。
+ *
+ * @param props - DocumentListSkeletonProps
+ * @returns スケルトングリッドを含む JSX 要素
+ */
 export default function DocumentListSkeleton({ length }: DocumentListSkeletonProps) {
   return (
     <div

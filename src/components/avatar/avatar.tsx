@@ -2,7 +2,12 @@ import Image from 'next/image'
 
 import naopoyo2 from '@/public/naopoyo2.png'
 
-export interface AvaterProps {
+/**
+ * Avatar の Props
+ *
+ * size - 表示サイズ ('xs' | 'sm' | 'base' | 'lg')
+ */
+export type AvaterProps = {
   size: 'xs' | 'sm' | 'base' | 'lg'
 }
 
@@ -13,6 +18,12 @@ const sizeMap = {
   lg: 256,
 }
 
+/**
+ * Avatar コンポーネント - ユーザーのプロフィール画像を表示します
+ *
+ * @param props - AvaterProps
+ * @returns ユーザーのアバターを表す JSX
+ */
 export default function Avater(props: AvaterProps) {
   const size = sizeMap[props.size]
 

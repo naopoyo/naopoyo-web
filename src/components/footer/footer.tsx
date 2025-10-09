@@ -1,6 +1,13 @@
 import { SnsList } from '@/components/sns-list'
 import { ThemeSwitcher } from '@/components/theme-switcher'
 
+/**
+ * Footer コンポーネント - サイト下部のフッターを表示します。
+ *
+ * フッターには SNS リンクとテーマ切替、著作表示を含みます。
+ *
+ * @returns フッターの JSX
+ */
 export default function Footer() {
   return (
     <footer
