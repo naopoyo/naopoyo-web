@@ -16,7 +16,9 @@
     "prettier": "prettier --write --ignore-unknown .",
     "prettier:check": "prettier --check --ignore-unknown .",
     "start": "next start",
-    "test": "vitest"
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "@hackersheet/core": "0.1.0-alpha.11",
