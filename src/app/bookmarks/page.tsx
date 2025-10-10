@@ -1,10 +1,9 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
-import { BookmarkList, BookmarkListSkeleton } from '@/components/bookmark'
+import { BookmarkFilter, BookmarkList, BookmarkListSkeleton } from '@/components/bookmark'
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
-import { Input } from '@/components/ui/input'
 import { makeWebsiteQuery } from '@/lib/hackersheet'
 
 const title = 'Bookmarks'
@@ -37,7 +36,7 @@ export default async function BookmarksPage(props: BookmarksPageProps) {
         <PageHeader title={title} description={description} />
 
         <div className="w-[348px]">
-          <SearchForm keyword={keyword} />
+          <BookmarkFilter keyword={keyword} />
         </div>
       </div>
 
@@ -47,19 +46,5 @@ export default async function BookmarksPage(props: BookmarksPageProps) {
         </Suspense>
       </section>
     </Container>
-  )
-}
-
-function SearchForm({ keyword }: { keyword?: string }) {
-  return (
-    <form action="/bookmarks" method="get">
-      <Input
-        className="text-base"
-        type="search"
-        name="keyword"
-        defaultValue={keyword}
-        placeholder="キーワードを入力して検索"
-      />
-    </form>
   )
 }
