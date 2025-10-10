@@ -5,7 +5,7 @@
   "scripts": {
     "analyze": "ANALYZE=true pnpm build",
     "build": "next build --turbopack",
-    "check": "pnpm tsc && pnpm lint",
+    "check": "pnpm test:run && pnpm tsc && pnpm lint",
     "dev": "next dev --turbopack",
     "format": "pnpm prettier && pnpm lint:fix",
     "format:package": "pnpm dlx sort-package-json",
