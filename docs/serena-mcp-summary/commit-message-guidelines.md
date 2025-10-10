@@ -1,34 +1,34 @@
-# Semantic Commit Messages
+# セマンティックなコミットメッセージ
 
-一行目は以下の内容を参考に日本語でコミットメッセージを作成してください
+コミットメッセージは `<type>` と `<scope>` を除いて、本文は必ず日本語で記述してください。
 
-改行をして続けてファイルごとの詳細な変更内容を記述してください
+コミット本文（サマリの下）には空行を2つ入れ、その後にファイル単位の詳細な変更点を箇条書きで記述してください。
 
-## Format
+## フォーマット
 
-See how a minor change to your commit message style can make you a better programmer.
+小さなコミットメッセージのスタイル変更が、コードの可読性やレビューの質を向上させます。
 
-Format: `<type>(<scope>): <subject>`
+フォーマット: `<type>(<scope>): <subject>`
 
-`<scope>` is optional
+- `<scope>` は任意です。コンポーネント名やモジュール名などを指定するとレビューで理解しやすくなります。
 
-## Example
+## 例
 
 ```text
-feat: add hat wobble
+feat: 帽子の揺れを追加
 ^--^  ^------------^
 |     |
-|     +-> Summary in present tense.
+|     +-> 要約は現在形で簡潔に書く（日本語の場合も同様）
 |
-+-------> Type: chore, docs, feat, fix, refactor, style, or test.
++-------> Type: chore, docs, feat, fix, refactor, style, test など
 ```
 
-More Examples:
+代表的な `<type>` の意味:
 
-- `feat`: (new feature for the user, not a new feature for build script)
-- `fix`: (bug fix for the user, not a fix to a build script)
-- `docs`: (changes to the documentation)
-- `style`: (formatting, missing semi colons, etc; no production code change)
-- `refactor`: (refactoring production code, eg. renaming a variable)
-- `test`: (adding missing tests, refactoring tests; no production code change)
-- `chore`: (updating grunt tasks etc; no production code change)
+- `feat`: ユーザー向けの新機能（ビルドスクリプトの変更は含まない）
+- `fix`: ユーザー向けのバグ修正（ビルドスクリプトの修正は含まない）
+- `docs`: ドキュメントのみの変更
+- `style`: フォーマットやセミコロンの欠落など、プロダクションコードの動作に影響しない変更
+- `refactor`: 動作に変更を加えないリファクタリング（変数名の変更など）
+- `test`: テストの追加・修正（プロダクションコードの変更を含まない）
+- `chore`: ビルドタスクや設定の更新など、プロダクションコードの変更を伴わない雑務
