@@ -1,11 +1,10 @@
 import { Metadata } from 'next'
 import { PropsWithChildren, Suspense } from 'react'
 
-import { Avater } from '@/components/avatar'
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
 import { Container } from '@/components/layout'
 import { Link } from '@/components/link'
-import { Paragraph as P } from '@/components/paragraph'
+import { Profile } from '@/components/profile'
 import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
 import { client } from '@/lib/hackersheet'
 
@@ -22,7 +21,7 @@ export default async function HomePage() {
 
   return (
     <Container className="flex flex-col gap-10">
-      <ProfileSection />
+      <Profile />
       <section>
         <Heading>最近公開された記事</Heading>
         <Suspense fallback={<DocumentListSkeleton length={RECENT_DOCS_COUNT} />}>
@@ -48,25 +47,6 @@ export default async function HomePage() {
         </div>
       </section>
     </Container>
-  )
-}
-
-function ProfileSection() {
-  return (
-    <section className="mx-auto flex items-start justify-center gap-4 py-10">
-      <div className="w-fit">
-        <Avater size="sm" />
-      </div>
-      <div className="max-w-sm text-sm text-muted-foreground">
-        <h1 className="text-lg font-bold text-foreground">naopoyo</h1>
-        <P>{SITE_DESC}</P>
-        <P>
-          <Link href="/about" icon="arrow">
-            プロフィールをもっと見る
-          </Link>
-        </P>
-      </div>
-    </section>
   )
 }
 
