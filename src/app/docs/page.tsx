@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
+import { Suspense } from 'react'
 
-import { getDocuments } from '@/actions'
-import { DocumentList, DocumentFilter } from '@/components/document'
+import { AllDocumentList, DocumentFilter, DocumentListSkeleton } from '@/components/document'
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
-import { MutedMessage } from '@/components/message'
+import { Skeleton } from '@/components/ui/skeleton'
 
 const title = 'Docs'
 const description = 'naopoyo.comのすべての記事の一覧ページです。'
@@ -25,20 +25,16 @@ export default async function DocsPage(props: DocsPageProps) {
   const keyword = searchParams.keyword
   const sortOptions = new Map([['modified_at', 'modified_at']])
   const sortBy = sortOptions.get(searchParams.by ?? '') || 'published_at'
-  const { documents, totalCount } = await getDocuments({ keyword, sortBy })
-  const isNotFound = keyword && totalCount === 0
 
   return (
     <Container className="flex flex-col gap-8 pt-16">
       <PageHeader title={title} description={description} />
-      <DocumentFilter keyword={keyword} sortBy={sortBy} totalCount={totalCount} />
-      <section>
-        {isNotFound ? (
-          <MutedMessage>検索結果がありませんでした。</MutedMessage>
-        ) : (
-          <DocumentList documents={documents} />
-        )}
-      </section>
+      <Suspense fallback={<Skeleton className="h-8 w-1/3" />}>
+        <DocumentFilter keyword={keyword} sortBy={sortBy} />
+      </Suspense>
+      <Suspense fallback={<DocumentListSkeleton length={9} />}>
+        <AllDocumentList keyword={keyword} sortBy={sortBy} />
+      </Suspense>
     </Container>
   )
 }
