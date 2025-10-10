@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import { DocumentEmoji } from '@/components/document'
 import { Link } from '@/components/link'
 import { SmallTag } from '@/components/tag'
@@ -70,7 +68,7 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
       </div>
       {document.preview && (
         <picture className="mx-[-16px]">
-          <Image
+          <img
             src={document.preview.fileUrl}
             width={document.preview.width}
             height={document.preview.height}

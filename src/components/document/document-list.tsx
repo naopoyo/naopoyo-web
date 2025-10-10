@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { createDateFormat, timeAgo } from '@/utils'
@@ -45,7 +44,7 @@ export default function DocumentList({ documents }: DocumentListProps) {
           <div className="flex items-center justify-center">
             {document.preview ? (
               <picture className="-mx-6 -mt-6">
-                <Image
+                <img
                   src={document.preview.fileUrl}
                   width={document.preview.width}
                   height={document.preview.height}

@@ -1,7 +1,3 @@
-import Image from 'next/image'
-
-import naopoyo2 from '@/public/naopoyo2.png'
-
 /**
  * Avatar の Props
  *
@@ -28,12 +24,14 @@ export default function Avatar(props: AvatarProps) {
   const size = sizeMap[props.size]
 
   return (
-    <Image
-      src={naopoyo2}
-      width={size}
-      height={size}
-      alt="Avatar"
-      className={`rounded-full border object-cover`}
-    />
+    <picture>
+      <img
+        src={'./naopoyo2.png'}
+        width={size}
+        height={size}
+        alt="Avatar"
+        className={`rounded-full border object-cover`}
+      />
+    </picture>
   )
 }

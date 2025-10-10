@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import { Link } from '@/components/link'
 import { Pagination } from '@/components/pagination'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -102,8 +100,8 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
           </div>
         </div>
         {ogImage && ogImage.fileUrl && (
-          <div className="w-[30%]">
-            <Image
+          <picture className="w-[30%]">
+            <img
               alt={title}
               src={ogImage.fileUrl}
               height={ogImage.height}
@@ -113,7 +111,7 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
                 sm:object-cover sm:object-center sm:p-0
               `}
             />
-          </div>
+          </picture>
         )}
       </a>
       {documents.length > 0 && (
