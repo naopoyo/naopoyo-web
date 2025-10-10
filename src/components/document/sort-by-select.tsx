@@ -14,7 +14,7 @@ import {
 import { useCreateQueryString } from '@/hooks'
 
 export type SortBySelectProps = {
-  sortBy: string
+  sortBy?: string
 }
 
 export default function SortBySelect({ sortBy }: SortBySelectProps) {
