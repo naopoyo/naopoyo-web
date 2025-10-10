@@ -2,13 +2,11 @@ import { Metadata } from 'next'
 import { PropsWithChildren, Suspense } from 'react'
 
 import { getPicupSlugs } from '@/actions'
-import { DocumentList, DocumentListSkeleton, PickupDocumentList } from '@/components/document'
+import { DocumentListSkeleton, PickupDocumentList, RecentDocumentList } from '@/components/document'
 import { Container } from '@/components/layout'
 import { Link } from '@/components/link'
-import { NotFoundMessage } from '@/components/message'
 import { Profile } from '@/components/profile'
 import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
-import { client } from '@/lib/hackersheet'
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -50,19 +48,6 @@ export default async function HomePage() {
       </section>
     </Container>
   )
-}
-
-async function RecentDocumentList() {
-  const picupSlugs = await getPicupSlugs()
-  const { documents, totalCount } = await client.getDocuments({
-    filter: { draft: false, excludeSlugs: picupSlugs },
-    sort: { by: 'updated_at', order: 'desc' },
-    first: RECENT_DOCS_COUNT,
-  })
-
-  if (totalCount === 0) return <NotFoundMessage>最近更新された記事はありません。</NotFoundMessage>
-
-  return <DocumentList documents={documents} />
 }
 
 function Heading({ children }: PropsWithChildren) {
