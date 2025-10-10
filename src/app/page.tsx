@@ -1,11 +1,12 @@
 import { Metadata } from 'next'
-import { PropsWithChildren, Suspense } from 'react'
+import { Suspense } from 'react'
 
 import { getPicupSlugs } from '@/actions'
 import { DocumentListSkeleton, PickupDocumentList, RecentDocumentList } from '@/components/document'
 import { Container } from '@/components/layout'
 import { Link } from '@/components/link'
 import { Profile } from '@/components/profile'
+import { Heading } from '@/components/typography'
 import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
 
 export const metadata: Metadata = {
@@ -48,8 +49,4 @@ export default async function HomePage() {
       </section>
     </Container>
   )
-}
-
-function Heading({ children }: PropsWithChildren) {
-  return <h2 className="my-4 text-center text-xl font-bold">{children}</h2>
 }
