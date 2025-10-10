@@ -146,7 +146,9 @@
  * - 表示サイズは design token の `size-18`（72px）を使用します。
  * - Twemoji の `toCodePoint` は複数コードポイントを返すことがあるため、ハイフン以降を切り捨てる処理を行っています。
  */
-export default function DocumentEmoji(props: DocumentEmojiProps) { /* ... */ }
+export default function DocumentEmoji(props: DocumentEmojiProps) {
+  /* ... */
+}
 ```
 
 - 運用上のヒント:
