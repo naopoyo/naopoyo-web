@@ -1,11 +1,14 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { Suspense } from 'react'
 
 import {
   DocumentDropdownToc,
   DocumentHeader,
   DocumentList,
+  DocumentListSkeleton,
   DocumentToc,
+  RecentDocumentList,
 } from '@/components/document'
 import { Container } from '@/components/layout'
 import { client, DocumentContent } from '@/lib/hackersheet'
@@ -42,14 +45,7 @@ export default async function DocumentPage(props: DocumentPageProps) {
     return notFound()
   }
 
-  const { documents: resentDocuments } = await client.getDocuments({
-    first: 3,
-    filter: { draft: false, excludeSlugs: [document.slug] },
-    sort: { by: 'published_at', order: 'desc' },
-  })
-
   const showInboundLinkDocuments = document.inboundLinkDocuments.length > 0
-  const showRecentDocuments = resentDocuments.length > 0
 
   return (
     <Container className="flex flex-col gap-24 px-4 pt-10">
@@ -83,12 +79,14 @@ export default async function DocumentPage(props: DocumentPageProps) {
           <DocumentList documents={document.inboundLinkDocuments} />
         </div>
       )}
-      {showRecentDocuments && (
-        <div className="flex flex-col gap-5">
-          <h2 className="text-center text-xl font-bold">最近公開された記事</h2>
-          <DocumentList documents={resentDocuments} />
-        </div>
-      )}
+
+      <div className="flex flex-col gap-5">
+        <h2 className="text-center text-xl font-bold">最近更新された記事</h2>
+        <Suspense fallback={<DocumentListSkeleton length={3} />}>
+          <RecentDocumentList first={3} excludeSlugs={[document.slug]} />
+        </Suspense>
+      </div>
+
       <div
         className={`
           fixed right-4 bottom-4
