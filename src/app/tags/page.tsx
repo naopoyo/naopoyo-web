@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
+import { MutedMessage } from '@/components/message'
 import { TagList } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
 
@@ -22,22 +23,10 @@ export default async function TagsPage() {
   })
 
   return (
-    <Container>
-      <div className="my-16 flex flex-col items-center gap-4">
-        <PageHeader title={title} description={description} />
-      </div>
-
-      <section
-        className={`
-          mx-auto mb-10 flex flex-col items-center justify-center gap-4
-          md:flex-row
-        `}
-      >
-        <div className="text-muted-foreground">全 {totalCount} 件</div>
-      </section>
-      <section className="pb-8">
-        <TagList tags={tags} />
-      </section>
+    <Container className="flex flex-col items-center gap-8 pt-16">
+      <PageHeader title={title} description={description} />
+      <MutedMessage>全 {totalCount} 件</MutedMessage>
+      <TagList tags={tags} />
     </Container>
   )
 }
