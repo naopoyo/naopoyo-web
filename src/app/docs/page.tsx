@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
+import { getDocuments } from '@/actions'
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
 import { Input } from '@/components/ui/input'
-import { client } from '@/lib/hackersheet'
 
 import SortBySelect from './_components/sort-by-select'
 
@@ -57,13 +57,6 @@ export default async function DocsPage(props: DocsPageProps) {
       </Suspense>
     </Container>
   )
-}
-
-async function getDocuments({ keyword, sortBy }: { keyword?: string; sortBy?: string }) {
-  return await client.getDocuments({
-    filter: { draft: false, keyword: keyword },
-    sort: { by: sortBy, order: 'desc' },
-  })
 }
 
 function DocumentListNotFound() {
