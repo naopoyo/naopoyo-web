@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { DocumentList } from '@/components/document'
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
+import { MutedMessage } from '@/components/message'
 import { ColorCircle, SmallTag } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
 
@@ -48,21 +49,19 @@ export default async function TagPage(props: TagPageProps) {
   })
 
   return (
-    <Container>
-      <div className="my-16 flex flex-col items-center gap-4">
-        <PageHeader
-          subTitle="Tag"
-          title={
-            <div className="flex items-center justify-center gap-4">
-              <div className="size-4">
-                <ColorCircle value={tag.name} />
-              </div>
-              <div>{tag.name}</div>
+    <Container className="flex flex-col items-center gap-8 pt-16">
+      <PageHeader
+        subTitle="Tag"
+        title={
+          <div className="flex items-center justify-center gap-4">
+            <div className="size-4">
+              <ColorCircle value={tag.name} />
             </div>
-          }
-          description={`${tag.name}に関する記事の一覧ページです。`}
-        ></PageHeader>
-      </div>
+            <div>{tag.name}</div>
+          </div>
+        }
+        description={`${tag.name}に関する記事の一覧ページです。`}
+      />
 
       {tag.relatedTags.length > 0 && (
         <div
@@ -82,18 +81,9 @@ export default async function TagPage(props: TagPageProps) {
         </div>
       )}
 
-      <div
-        className={`
-          mx-auto mb-10 flex flex-col items-center justify-center gap-4
-          md:flex-row
-        `}
-      >
-        <div className="text-muted-foreground">全 {totalCount} 件</div>
-      </div>
+      <MutedMessage>全 {totalCount} 件</MutedMessage>
 
-      <section className="pb-8">
-        <DocumentList documents={documents} />
-      </section>
+      <DocumentList documents={documents} />
     </Container>
   )
 }
