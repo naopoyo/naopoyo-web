@@ -34,7 +34,12 @@ export default async function DocsPage(props: DocsPageProps) {
   return (
     <Container className="flex flex-col gap-8 pt-16">
       <PageHeader title={title} description={description} />
-      <div className="flex items-center justify-center gap-4">
+      <div
+        className={`
+          flex flex-col items-center justify-center gap-4
+          md:flex-row
+        `}
+      >
         <Suspense fallback={<Skeleton className="size-8" />}>
           <DocumentTotalCount keyword={keyword} sortBy={sortBy} />
         </Suspense>
