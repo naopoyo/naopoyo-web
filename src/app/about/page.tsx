@@ -37,7 +37,9 @@ export default function AbountPage() {
               <P>そのほかにUnityでのゲーム開発も少しずつ始めています。</P>
               <P>
                 このサイトのソースコードを
-                <Link href="https://github.com/naopoyo/naopoyo-web">GitHub</Link>
+                <Link href="https://github.com/naopoyo/naopoyo-web" icon="external">
+                  GitHub
+                </Link>
                 で公開しているので、Next.jsでブログサイトを作成したい方はぜひ参考にしてみてください。
               </P>
             </div>
@@ -46,7 +48,9 @@ export default function AbountPage() {
           <section>
             <Heading>つくったもの</Heading>
             <P>
-              <Link href="https://hackersheet.com">Hacker Sheet</Link>
+              <Link href="https://hackersheet.com" icon="external">
+                Hacker Sheet
+              </Link>
             </P>
           </section>
 
