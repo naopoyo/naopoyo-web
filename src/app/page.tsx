@@ -5,7 +5,7 @@ import { getPicupSlugs } from '@/actions'
 import { DocumentListSkeleton, PickupDocumentList, RecentDocumentList } from '@/components/document'
 import { Container, Section } from '@/components/layout'
 import { Link } from '@/components/link'
-import { Profile } from '@/components/profile'
+import { Profile } from '@/components/site'
 import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
 
 export const metadata: Metadata = {
