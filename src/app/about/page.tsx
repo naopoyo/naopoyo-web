@@ -4,7 +4,7 @@ import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
 import { Link } from '@/components/link'
 import { Avatar, SnsList } from '@/components/site'
-import { Paragraph as P } from '@/components/typography'
+import { Heading, Paragraph as P } from '@/components/typography'
 import { SITE_DESC } from '@/constants'
 
 const title = 'About'
@@ -17,10 +17,8 @@ export const metadata: Metadata = {
 
 export default function AbountPage() {
   return (
-    <Container>
-      <div className="my-16 flex flex-col items-center gap-4">
-        <PageHeader title={title} description={description} />
-      </div>
+    <Container className="flex flex-col gap-8 pt-16">
+      <PageHeader title={title} description={description} />
 
       <div
         className={`
@@ -33,10 +31,10 @@ export default function AbountPage() {
         </div>
         <div className="flex max-w-sm flex-col items-start gap-8">
           <section>
-            <h2 className="mb-2 text-xl font-bold">naopoyo</h2>
+            <Heading>naopoyo</Heading>
             <div className="text-muted-foreground">
               <P>{SITE_DESC}</P>
-              <p>そのほかにUnityでのゲーム開発も少しずつ始めています。</p>
+              <P>そのほかにUnityでのゲーム開発も少しずつ始めています。</P>
               <P>
                 このサイトのソースコードを
                 <Link href="https://github.com/naopoyo/naopoyo-web">GitHub</Link>
@@ -46,14 +44,14 @@ export default function AbountPage() {
           </section>
 
           <section>
-            <h2 className="mb-2 text-xl font-bold">つくったもの</h2>
+            <Heading>つくったもの</Heading>
             <P>
               <Link href="https://hackersheet.com">Hacker Sheet</Link>
             </P>
           </section>
 
-          <section>
-            <h2 className="mb-2 text-xl font-bold">SNS</h2>
+          <section className="space-y-4">
+            <Heading>SNS</Heading>
             <SnsList />
           </section>
         </div>
