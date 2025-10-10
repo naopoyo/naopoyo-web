@@ -1,3 +1,1 @@
-import NotFoundMessage from './not-found-message'
-
-export { NotFoundMessage }
+export { default as NotFoundMessage } from './not-found-message'

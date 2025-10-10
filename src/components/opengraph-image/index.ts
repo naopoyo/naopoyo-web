@@ -1,3 +1,1 @@
-import DocumentOpengraphImage from './document-opengraph-image'
-
-export { DocumentOpengraphImage }
+export { default as DocumentOpengraphImage } from './document-opengraph-image'

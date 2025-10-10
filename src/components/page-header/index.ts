@@ -1,3 +1,1 @@
-import PageHeader from './page-header'
-
-export { PageHeader }
+export { default as PageHeader } from './page-header'

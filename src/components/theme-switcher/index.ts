@@ -1,3 +1,1 @@
-import ThemeSwitcher from './theme-switcher'
-
-export { ThemeSwitcher }
+export { default as ThemeSwitcher } from './theme-switcher'

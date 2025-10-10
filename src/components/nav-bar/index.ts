@@ -1,3 +1,1 @@
-import NavBar from './nav-bar'
-
-export { NavBar }
+export { default as NavBar } from './nav-bar'

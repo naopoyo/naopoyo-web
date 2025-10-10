@@ -1,7 +1,5 @@
-import DocumentEmoji from './document-emoji'
-import DocumentList from './document-list'
-import DocumentListSkeleton from './document-list-skeleton'
-import PickupDocumentList from './pickup-document-list'
-import RecentDocumentList from './recent-document-list'
-
-export { DocumentEmoji, DocumentListSkeleton, DocumentList, PickupDocumentList, RecentDocumentList }
+export { default as DocumentEmoji } from './document-emoji'
+export { default as DocumentListSkeleton } from './document-list-skeleton'
+export { default as DocumentList } from './document-list'
+export { default as PickupDocumentList } from './pickup-document-list'
+export { default as RecentDocumentList } from './recent-document-list'

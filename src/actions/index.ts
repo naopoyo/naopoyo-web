@@ -1,3 +1,1 @@
-import getPicupSlugs from './get-picup-slugs'
-
-export { getPicupSlugs }
+export { default as getPicupSlugs } from './get-picup-slugs'

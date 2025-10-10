@@ -1,3 +1,1 @@
-import Providers from './providers'
-
-export { Providers }
+export { default as Providers } from './providers'
