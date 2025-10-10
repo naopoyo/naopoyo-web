@@ -1,7 +1,6 @@
 import NextLink from 'next/link'
 import { SiGithub, SiX, SiZenn } from 'react-icons/si'
 
-import { FlexRow } from '@/components/layout'
 import { Button } from '@/components/ui/button'
 
 /**
@@ -11,7 +10,7 @@ import { Button } from '@/components/ui/button'
  */
 export default function SnsList() {
   return (
-    <FlexRow className="gap-2">
+    <div className="flex gap-2">
       <Button className="rounded-full border" variant="ghost" size="icon" asChild>
         <NextLink href="https://github.com/naopoyo" aria-label="GitHubへのLink">
           <SiGithub size={24} />
@@ -34,6 +33,6 @@ export default function SnsList() {
           <SiZenn size={20} />
         </NextLink>
       </Button>
-    </FlexRow>
+    </div>
   )
 }
