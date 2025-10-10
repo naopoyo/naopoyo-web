@@ -1,13 +1,16 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { DocumentList } from '@/components/document'
+import {
+  DocumentDropdownToc,
+  DocumentHeader,
+  DocumentList,
+  DocumentToc,
+} from '@/components/document'
 import { Container } from '@/components/layout'
 import { client, DocumentContent } from '@/lib/hackersheet'
 
-import { DocumentHeader, DocumentToc, DocumentDropdownToc } from './_components'
-
-interface DocumentPageProps {
+type DocumentPageProps = {
   params: Promise<{ documentSlug: string }>
 }
 
