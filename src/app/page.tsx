@@ -1,9 +1,10 @@
 import { Metadata } from 'next'
 import { PropsWithChildren, Suspense } from 'react'
 
-import { DocumentList, DocumentListSkeleton } from '@/components/document'
+import { DocumentList, DocumentListSkeleton, PickupDocumentList } from '@/components/document'
 import { Container } from '@/components/layout'
 import { Link } from '@/components/link'
+import { NotFoundMessage } from '@/components/message'
 import { Profile } from '@/components/profile'
 import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
 import { client } from '@/lib/hackersheet'
@@ -50,20 +51,6 @@ export default async function HomePage() {
   )
 }
 
-async function PickupDocumentList() {
-  const picupSlugs = await getPicupSlugs()
-
-  const { documents, totalCount } = await client.getDocuments({
-    filter: { draft: false, slugs: picupSlugs },
-    sort: { by: 'published_at', order: 'desc' },
-    first: picupSlugs.length,
-  })
-
-  if (totalCount === 0) return <NotFoundMessage>おすすめの記事はありません。</NotFoundMessage>
-
-  return <DocumentList documents={documents} />
-}
-
 async function RecentDocumentList() {
   const picupSlugs = await getPicupSlugs()
   const { documents, totalCount } = await client.getDocuments({
@@ -77,9 +64,7 @@ async function RecentDocumentList() {
   return <DocumentList documents={documents} />
 }
 
-function NotFoundMessage({ children }: PropsWithChildren) {
-  return <p className="text-center text-muted-foreground">{children}</p>
-}
+// NotFoundMessage は共通コンポーネントを使用
 
 function Heading({ children }: PropsWithChildren) {
   return <h2 className="my-4 text-center text-xl font-bold">{children}</h2>
