@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { PropsWithChildren, Suspense } from 'react'
 
+import { getPicupSlugs } from '@/actions'
 import { DocumentList, DocumentListSkeleton, PickupDocumentList } from '@/components/document'
 import { Container } from '@/components/layout'
 import { Link } from '@/components/link'
@@ -66,11 +67,4 @@ async function RecentDocumentList() {
 
 function Heading({ children }: PropsWithChildren) {
   return <h2 className="my-4 text-center text-xl font-bold">{children}</h2>
-}
-
-async function getPicupSlugs() {
-  const { tree } = await client.getTree({ slug: 'pickup' })
-  return (
-    tree?.flatNodes.map((node) => node.document?.slug).filter((slug) => slug !== undefined) ?? []
-  )
 }
