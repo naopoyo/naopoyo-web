@@ -1,4 +1,4 @@
-import { SnsList } from '@/components/sns-list'
+import { SnsList } from '@/components/site'
 import { ThemeSwitcher } from '@/components/theme-switcher'
 
 /**

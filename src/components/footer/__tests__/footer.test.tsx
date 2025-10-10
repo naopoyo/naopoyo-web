@@ -4,7 +4,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 import Footer from '../footer'
 
 // 子コンポーネントを軽量にモックして、Footer がそれらをレンダリングすることを確認する
-vi.mock('@/components/sns-list', () => ({
+vi.mock('@/components/site', () => ({
   SnsList: () => {
     return <div data-testid="mock-sns-list">sns-list</div>
   },

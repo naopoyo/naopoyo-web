@@ -1,3 +1,1 @@
-import SnsList from './sns-list'
-
-export { SnsList }
+export { default as SnsList } from '@/components/site/sns-list'
