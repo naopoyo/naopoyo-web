@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { Container, FlexCol } from '@/components/layout'
+import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
 import { Link } from '@/components/link'
 import { Avatar, SnsList } from '@/components/site'
@@ -22,16 +22,16 @@ export default function AbountPage() {
         <PageHeader title={title} description={description} />
       </div>
 
-      <FlexCol
+      <div
         className={`
-          items-center justify-center gap-8 pb-8
+          flex flex-col items-center justify-center gap-8 pb-8
           md:flex-row md:items-start
         `}
       >
         <div className="w-fit">
           <Avatar size="lg" />
         </div>
-        <FlexCol className="max-w-sm items-start gap-8">
+        <div className="flex max-w-sm flex-col items-start gap-8">
           <section>
             <h2 className="mb-2 text-xl font-bold">naopoyo</h2>
             <div className="text-muted-foreground">
@@ -56,8 +56,8 @@ export default function AbountPage() {
             <h2 className="mb-2 text-xl font-bold">SNS</h2>
             <SnsList />
           </section>
-        </FlexCol>
-      </FlexCol>
+        </div>
+      </div>
     </Container>
   )
 }

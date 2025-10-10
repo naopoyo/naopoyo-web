@@ -2,7 +2,6 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
-import { FlexCol, FlexRow } from '@/components/layout'
 import { client, DocumentContent } from '@/lib/hackersheet'
 
 import { DocumentHeader, DocumentToc, DocumentDropdownToc } from './_components'
@@ -49,11 +48,11 @@ export default async function DocumentPage(props: DocumentPageProps) {
   const showRecentDocuments = resentDocuments.length > 0
 
   return (
-    <FlexCol className="container mx-auto gap-24 px-4 pt-10">
-      <FlexRow className="mx-auto max-w-full gap-14">
-        <FlexCol
+    <div className="container mx-auto flex flex-col gap-24 px-4 pt-10">
+      <div className="mx-auto flex max-w-full gap-14">
+        <div
           className={`
-            w-full gap-14
+            flex w-full flex-col gap-14
             md:w-[768px]
           `}
         >
@@ -61,7 +60,7 @@ export default async function DocumentPage(props: DocumentPageProps) {
           <main>
             <DocumentContent document={document} />
           </main>
-        </FlexCol>
+        </div>
         <aside
           className={`
             hidden w-[300px]
@@ -73,18 +72,18 @@ export default async function DocumentPage(props: DocumentPageProps) {
             <DocumentToc />
           </div>
         </aside>
-      </FlexRow>
+      </div>
       {showInboundLinkDocuments && (
-        <FlexCol className="gap-5">
+        <div className="flex flex-col gap-5">
           <h2 className="text-center text-xl font-bold">この記事にリンクしている記事</h2>
           <DocumentList documents={document.inboundLinkDocuments} />
-        </FlexCol>
+        </div>
       )}
       {showRecentDocuments && (
-        <FlexCol className="gap-5">
+        <div className="flex flex-col gap-5">
           <h2 className="text-center text-xl font-bold">最近公開された記事</h2>
           <DocumentList documents={resentDocuments} />
-        </FlexCol>
+        </div>
       )}
       <div
         className={`
@@ -94,6 +93,6 @@ export default async function DocumentPage(props: DocumentPageProps) {
       >
         <DocumentDropdownToc />
       </div>
-    </FlexCol>
+    </div>
   )
 }

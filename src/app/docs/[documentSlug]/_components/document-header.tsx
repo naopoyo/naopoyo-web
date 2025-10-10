@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
 import { DocumentEmoji } from '@/components/document'
-import { FlexCol, FlexRow } from '@/components/layout'
 import { Link } from '@/components/link'
 import { SmallTag } from '@/components/tag'
 import { HACKERSHEET_GITHUB_REPO_URL } from '@/constants'
@@ -22,42 +21,42 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
   const df = createDateFormat('yyyy-MM-dd')
 
   return (
-    <FlexCol className="gap-10">
-      <FlexCol className="w-full gap-16">
+    <div className="flex flex-col gap-10">
+      <div className="flex w-full flex-col gap-16">
         <div className="text-7xl">
           <DocumentEmoji emoji={document.emoji} />
         </div>
         <h1 className="auto-phrase text-3xl leading-relaxed font-semibold">{document.title}</h1>
-        <FlexCol className="gap-4">
-          <FlexRow
+        <div className="flex flex-col gap-4">
+          <div
             className={`
-              gap-8 text-xs
+              flex gap-8 text-xs
               md:gap-16
             `}
           >
-            <FlexCol className="gap-1">
+            <div className="flex flex-col gap-1">
               <div className="text-muted-foreground">公開日</div>
               <div>{timeAgo(document.publishedAt)}</div>
               <div className="text-muted-foreground">{df(document.publishedAt)}</div>
-            </FlexCol>
+            </div>
             {showModified && (
-              <FlexCol className="gap-1">
+              <div className="flex flex-col gap-1">
                 <div className="text-muted-foreground">更新日</div>
                 <div>{timeAgo(document.modifiedAt)}</div>
                 <div className="text-muted-foreground">{df(document.modifiedAt)}</div>
-              </FlexCol>
+              </div>
             )}
             {historyUrl && (
-              <FlexCol className="gap-1">
+              <div className="flex flex-col gap-1">
                 <div className="text-muted-foreground">更新履歴</div>
                 <div>
                   <Link href={historyUrl} icon="external" iconSize={12}>
                     GitHubで見る
                   </Link>
                 </div>
-              </FlexCol>
+              </div>
             )}
-          </FlexRow>
+          </div>
           {showTags && (
             <ul className="flex flex-row gap-4">
               {document.tags.map((tag) => (
@@ -67,8 +66,8 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
               ))}
             </ul>
           )}
-        </FlexCol>
-      </FlexCol>
+        </div>
+      </div>
       {document.preview && (
         <picture className="mx-[-16px]">
           <Image
@@ -80,6 +79,6 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
           />
         </picture>
       )}
-    </FlexCol>
+    </div>
   )
 }
