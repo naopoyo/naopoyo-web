@@ -25,7 +25,7 @@ export default async function HomePage() {
     <Container className="flex flex-col gap-10">
       <Profile />
       <section>
-        <Heading>最近公開された記事</Heading>
+        <Heading>最近更新された記事</Heading>
         <Suspense fallback={<DocumentListSkeleton length={RECENT_DOCS_COUNT} />}>
           <RecentDocumentList />
         </Suspense>
@@ -56,11 +56,11 @@ async function RecentDocumentList() {
   const picupSlugs = await getPicupSlugs()
   const { documents, totalCount } = await client.getDocuments({
     filter: { draft: false, excludeSlugs: picupSlugs },
-    sort: { by: 'published_at', order: 'desc' },
+    sort: { by: 'updated_at', order: 'desc' },
     first: RECENT_DOCS_COUNT,
   })
 
-  if (totalCount === 0) return <NotFoundMessage>最近公開された記事はありません。</NotFoundMessage>
+  if (totalCount === 0) return <NotFoundMessage>最近更新された記事はありません。</NotFoundMessage>
 
   return <DocumentList documents={documents} />
 }
