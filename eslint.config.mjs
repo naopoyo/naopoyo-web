@@ -4,6 +4,7 @@ import { FlatCompat } from '@eslint/eslintrc'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 import eslintPluginImport from 'eslint-plugin-import'
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports'
+import eslintConfigPrettier from 'eslint-config-prettier'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -25,7 +26,8 @@ const eslintConfig = [
       '**/coverage/**',
     ],
   },
-  ...compat.extends('next/core-web-vitals', 'next/typescript', 'prettier'),
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  eslintConfigPrettier,
   {
     plugins: {
       'better-tailwindcss': eslintPluginBetterTailwindcss,
@@ -35,6 +37,7 @@ const eslintConfig = [
     rules: {
       ...eslintPluginBetterTailwindcss.configs['recommended-error'].rules,
       'better-tailwindcss/no-unregistered-classes': ['error', { detectComponentClasses: true }],
+      'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 100 }],
       'unused-imports/no-unused-imports': 'error',
       'import/order': [
         'error',
