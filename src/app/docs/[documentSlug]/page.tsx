@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
+import { Container } from '@/components/layout'
 import { client, DocumentContent } from '@/lib/hackersheet'
 
 import { DocumentHeader, DocumentToc, DocumentDropdownToc } from './_components'
@@ -48,7 +49,7 @@ export default async function DocumentPage(props: DocumentPageProps) {
   const showRecentDocuments = resentDocuments.length > 0
 
   return (
-    <div className="container mx-auto flex flex-col gap-24 px-4 pt-10">
+    <Container className="flex flex-col gap-24 px-4 pt-10">
       <div className="mx-auto flex max-w-full gap-14">
         <div
           className={`
@@ -93,6 +94,6 @@ export default async function DocumentPage(props: DocumentPageProps) {
       >
         <DocumentDropdownToc />
       </div>
-    </div>
+    </Container>
   )
 }
