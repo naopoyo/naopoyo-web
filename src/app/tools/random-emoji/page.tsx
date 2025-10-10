@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 
-import { Container } from '@/components/layout'
-import { PageHeader } from '@/components/layout'
+import { Container, PageHeader } from '@/components/layout'
 
 import { RandomEmoji } from './_components'
 
@@ -16,13 +15,9 @@ export const revalidate = 60
 
 export default async function RandomEmojiPage() {
   return (
-    <Container>
-      <div className="my-16 flex flex-col items-center gap-4">
-        <PageHeader title={title} />
-      </div>
-      <section className="pb-8">
-        <RandomEmoji />
-      </section>
+    <Container className="flex flex-col items-center gap-16 pt-16">
+      <PageHeader title={title} />
+      <RandomEmoji />
     </Container>
   )
 }
