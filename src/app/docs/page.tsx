@@ -4,6 +4,7 @@ import { getDocuments } from '@/actions'
 import { DocumentList, DocumentFilter } from '@/components/document'
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
+import { MutedMessage } from '@/components/message'
 
 const title = 'Docs'
 const description = 'naopoyo.comのすべての記事の一覧ページです。'
@@ -32,12 +33,12 @@ export default async function DocsPage(props: DocsPageProps) {
       <PageHeader title={title} description={description} />
       <DocumentFilter keyword={keyword} sortBy={sortBy} totalCount={totalCount} />
       <section>
-        {isNotFound ? <DocumentListNotFound /> : <DocumentList documents={documents} />}
+        {isNotFound ? (
+          <MutedMessage>検索結果がありませんでした。</MutedMessage>
+        ) : (
+          <DocumentList documents={documents} />
+        )}
       </section>
     </Container>
   )
-}
-
-function DocumentListNotFound() {
-  return <div className="text-center">検索結果がありませんでした。</div>
 }

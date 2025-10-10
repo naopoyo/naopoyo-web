@@ -1,1 +1,1 @@
-export { default as NotFoundMessage } from './not-found-message'
+export { default as MutedMessage } from './not-found-message'

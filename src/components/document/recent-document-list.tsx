@@ -1,5 +1,5 @@
 import { getPicupSlugs } from '@/actions'
-import { NotFoundMessage } from '@/components/message'
+import { MutedMessage } from '@/components/message'
 import { RECENT_DOCS_COUNT } from '@/constants'
 import { client } from '@/lib/hackersheet'
 
@@ -13,7 +13,7 @@ export default async function RecentDocumentList() {
     first: RECENT_DOCS_COUNT,
   })
 
-  if (totalCount === 0) return <NotFoundMessage>最近更新された記事はありません。</NotFoundMessage>
+  if (totalCount === 0) return <MutedMessage>最近更新された記事はありません。</MutedMessage>
 
   return <DocumentList documents={documents} />
 }

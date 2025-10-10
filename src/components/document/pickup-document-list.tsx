@@ -1,4 +1,4 @@
-import { NotFoundMessage } from '@/components/message'
+import { MutedMessage } from '@/components/message'
 import { client } from '@/lib/hackersheet'
 
 import DocumentList from './document-list'
@@ -15,7 +15,7 @@ export default async function PickupDocumentList() {
     first: picupSlugs.length,
   })
 
-  if (totalCount === 0) return <NotFoundMessage>おすすめの記事はありません。</NotFoundMessage>
+  if (totalCount === 0) return <MutedMessage>おすすめの記事はありません。</MutedMessage>
 
   return <DocumentList documents={documents} />
 }
