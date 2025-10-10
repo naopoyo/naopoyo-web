@@ -64,8 +64,6 @@ async function RecentDocumentList() {
   return <DocumentList documents={documents} />
 }
 
-// NotFoundMessage は共通コンポーネントを使用
-
 function Heading({ children }: PropsWithChildren) {
   return <h2 className="my-4 text-center text-xl font-bold">{children}</h2>
 }
