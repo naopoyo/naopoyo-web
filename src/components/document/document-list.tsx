@@ -24,7 +24,7 @@ export type DocumentListProps = {
  * @returns ドキュメントカードを含む JSX 要素
  */
 export default function DocumentList({ documents }: DocumentListProps) {
-  const df = createDateFormat('yyyy-MM-dd')
+  const df = createDateFormat('yyyy年MM月dd日')
 
   return (
     <div
@@ -39,7 +39,7 @@ export default function DocumentList({ documents }: DocumentListProps) {
           href={`/docs/${document.slug}`}
           className={`
             row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl border bg-card p-6
-            hover:bg-muted/50
+            hover:bg-card/50
           `}
         >
           <div className="flex items-center justify-center">
@@ -61,9 +61,16 @@ export default function DocumentList({ documents }: DocumentListProps) {
           </div>
           <div className="text-lg break-all">{document.title}</div>
           <div className={`flex flex-col gap-4 text-center text-xs text-muted-foreground`}>
-            <div>
-              {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
-            </div>
+            {document.modifiedAt ? (
+              <div>
+                {timeAgo(document.modifiedAt)} - {df(document.modifiedAt)}
+              </div>
+            ) : (
+              <div>
+                {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
+              </div>
+            )}
+
             {document.tags.length > 0 && (
               <ul className="flex flex-row justify-end gap-2">
                 {document.tags.map((tag) => (
