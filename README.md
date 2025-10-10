@@ -1,6 +1,6 @@
 # naopoyo-web
 
-Next.js（App Router）で構築したブログリポジトリ。公開サイト: [https://naopoyo.com/](https://naopoyo.com/)
+Next.js（App Router）で構築したブログサイトのリポジトリ。公開サイト: [https://naopoyo.com/](https://naopoyo.com/)
 
 ## ローカル実行
 
