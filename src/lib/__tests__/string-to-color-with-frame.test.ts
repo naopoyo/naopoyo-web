@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 
-import { stringToColorWithFrame } from './string-to-color-with-frame'
+import { stringToColorWithFrame } from '../string-to-color-with-frame'
 
 describe('stringToColorWithFrame', () => {
   // 基本的な戻り値の形を検証する
