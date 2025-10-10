@@ -31,16 +31,14 @@ export default async function BookmarksPage(props: BookmarksPageProps) {
   })
 
   return (
-    <Container>
-      <div className="my-16 flex flex-col items-center gap-4">
-        <PageHeader title={title} description={description} />
+    <Container className="flex flex-col items-center gap-8 pt-16">
+      <PageHeader title={title} description={description} />
 
-        <div className="w-[348px]">
-          <BookmarkFilter keyword={keyword} />
-        </div>
+      <div className="w-87">
+        <BookmarkFilter keyword={keyword} />
       </div>
 
-      <section className="mx-auto flex max-w-(--breakpoint-md) flex-col gap-4">
+      <section className={`mx-auto flex w-full max-w-(--breakpoint-md) flex-col gap-4`}>
         <Suspense key={suspenseKey} fallback={<BookmarkListSkeleton />}>
           <BookmarkList first={first} after={after} keyword={keyword} />
         </Suspense>
