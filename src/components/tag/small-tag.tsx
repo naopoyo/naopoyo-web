@@ -1,5 +1,4 @@
-import NextLink from 'next/link'
-
+import { NextLink } from '../link'
 import ColorCircle from './color-circle'
 
 /**

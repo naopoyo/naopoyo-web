@@ -1,5 +1,4 @@
-import Link from 'next/link'
-
+import { NextLink } from '../link'
 import ColorCircle from './color-circle'
 
 import type { TagList } from '@/lib/hackersheet'
@@ -25,7 +24,7 @@ export default async function TagList({ tags }: TagListProps) {
       {tags.map(
         (tag) =>
           tag.documentCountInPublished > 0 && (
-            <Link
+            <NextLink
               key={tag.id}
               href={`/tags/${tag.name}`}
               className={`
@@ -40,7 +39,7 @@ export default async function TagList({ tags }: TagListProps) {
                 <div className="flex-auto">{tag.name}</div>
                 <div className="text-muted-foreground">{tag.documentCountInPublished}</div>
               </div>
-            </Link>
+            </NextLink>
           )
       )}
     </div>

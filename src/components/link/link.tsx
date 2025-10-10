@@ -1,9 +1,11 @@
 import { type ClassProp } from 'class-variance-authority/types'
 import { ArrowRightIcon, ExternalLinkIcon } from 'lucide-react'
-import NextLink, { LinkProps as NextLinkProps } from 'next/link'
+import { LinkProps as NextLinkProps } from 'next/link'
 import { PropsWithChildren } from 'react'
 
 import { cn } from '@/lib/shadcn-utils'
+
+import NextLink from './next-link'
 
 /**
  * Link の Props

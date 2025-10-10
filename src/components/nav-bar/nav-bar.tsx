@@ -1,8 +1,7 @@
-import Link from 'next/link'
-
 import { SITE_NAME } from '@/constants'
 
 import NavBarMenu from './nav-bar-menu'
+import { NextLink } from '../link'
 
 /**
  * NavBar コンポーネント - サイト上部のナビゲーションバーを表示します。
@@ -25,7 +24,7 @@ export default function NavBar() {
               hover:text-link
             `}
           >
-            <Link href="/">{SITE_NAME}</Link>
+            <NextLink href="/">{SITE_NAME}</NextLink>
           </div>
 
           <div

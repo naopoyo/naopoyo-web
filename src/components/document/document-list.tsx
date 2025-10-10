@@ -1,8 +1,7 @@
-import Link from 'next/link'
-
 import { createDateFormat, timeAgo } from '@/utils'
 
 import DocumentEmoji from './document-emoji'
+import { NextLink } from '../link'
 
 import type { DocumentList as DocumentListType } from '@/lib/hackersheet'
 
@@ -33,7 +32,7 @@ export default function DocumentList({ documents }: DocumentListProps) {
       `}
     >
       {documents.map((document) => (
-        <Link
+        <NextLink
           key={document.id}
           href={`/docs/${document.slug}`}
           className={`
@@ -83,7 +82,7 @@ export default function DocumentList({ documents }: DocumentListProps) {
               </ul>
             )}
           </div>
-        </Link>
+        </NextLink>
       ))}
     </div>
   )

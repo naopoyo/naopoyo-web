@@ -1,7 +1,8 @@
-import NextLink from 'next/link'
 import { SiGithub, SiX, SiZenn } from 'react-icons/si'
 
 import { Button } from '@/components/ui/button'
+
+import { NextLink } from '../link'
 
 /**
  * SnsList コンポーネント - 外部サービスへのリンクボタン群を表示します。

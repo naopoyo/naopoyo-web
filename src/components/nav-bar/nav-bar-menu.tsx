@@ -1,7 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
+
+import { NextLink } from '../link'
 
 const menuItems = [
   {
@@ -49,7 +50,7 @@ export default function NavBarMenu() {
             hover:text-link
           `}
         >
-          <Link
+          <NextLink
             href={`/${item.segment}`}
             className={`
               inline-block rounded px-4 py-2
@@ -57,7 +58,7 @@ export default function NavBarMenu() {
             `}
           >
             {item.label}
-          </Link>
+          </NextLink>
           {item.isActive && (
             <div className={`absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-link`}></div>
           )}
