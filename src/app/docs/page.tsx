@@ -1,7 +1,12 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
-import { AllDocumentList, DocumentFilter, DocumentListSkeleton } from '@/components/document'
+import {
+  AllDocumentList,
+  DocumentFilter,
+  DocumentTotalCount,
+  DocumentListSkeleton,
+} from '@/components/document'
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -29,9 +34,12 @@ export default async function DocsPage(props: DocsPageProps) {
   return (
     <Container className="flex flex-col gap-8 pt-16">
       <PageHeader title={title} description={description} />
-      <Suspense fallback={<Skeleton className="h-8 w-1/3" />}>
+      <div className="flex items-center justify-center gap-4">
+        <Suspense fallback={<Skeleton className="size-8" />}>
+          <DocumentTotalCount keyword={keyword} sortBy={sortBy} />
+        </Suspense>
         <DocumentFilter keyword={keyword} sortBy={sortBy} />
-      </Suspense>
+      </div>
       <Suspense fallback={<DocumentListSkeleton length={9} />}>
         <AllDocumentList keyword={keyword} sortBy={sortBy} />
       </Suspense>
