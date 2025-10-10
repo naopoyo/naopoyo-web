@@ -1,32 +1,28 @@
 # naopoyo-web
 
-App Routerを使ったNext.jsで構築したブログサイトのリポジトリです。[naopoyo.com](https://naopoyo.com/)で実際に動作しているものを見ることができます。
+Next.js（App Router）で構築したブログリポジトリ。公開サイト: [https://naopoyo.com/](https://naopoyo.com/)
 
-## ローカル環境で実行する
+## ローカル実行
 
-ローカル環境で動かしてみたい場合は、以下の手順で環境構築を行なってください。
-
-### インストール
+依存をインストール:
 
 ```bash
 pnpm install
 ```
 
-### ローカル環境セットアップスクリプトの実行
+初期設定（ローカル）:
 
 ```bash
 pnpm local:setup
 ```
 
-コマンドの実行後に以下のファイルが生成されます。
+このコマンドで以下が生成されます:
 
-- `/.vscode/settings.json`
-- `/.env.development.local`
-- `/.env.production.local`
+- `.vscode/settings.json`
+- `.env.development.local`
+- `.env.production.local`
 
-### 環境変数の設定
-
-`.env.development.local` に次の例ように値を設定します。
+開発用環境変数の例（`.env.development.local`）:
 
 ```ini:.env.development.local
 HACKERSHEET_API_ENDPOINT=https://api.hackersheet.com/example/v1/graphql
@@ -36,18 +32,18 @@ GOOGLE_TAG_ID=
 NEXT_PUBLIC_DOMAIN=localhost:3000
 ```
 
-| キー                                | 説明                                                                                             |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `HACKERSHEET_API_ENDPOINT`          | コンテンツデータAPIのエンドポイントです。例の値はデモ用なのでそのまま使用可能です。              |
-| `HACKERSHEET_API_ACCESS_KEY`        | コンテンツデータAPIのアクセスキーです。例の値はデモ用なのでそのまま使用可能です。                |
-| `HACKERSHEET_GITHUB_REPO_FULL_NAME` | コンテンツデータを管理しているGitHubリポジトリ名です。例の値はデモ用なのでそのまま使用可能です。 |
-| `GOOGLE_TAG_ID`                     | Google AnalyticsのためのGoogle Tag IDです。                                                      |
-| `NEXT_PUBLIC_DOMAIN`                | ローカル環境を localhost:3000 で動作させる場合は変更不要です。                                   |
+主な変数:
 
-### ローカルサーバーを起動
+- `HACKERSHEET_API_ENDPOINT` — コンテンツAPIのエンドポイント（例を使用可）
+- `HACKERSHEET_API_ACCESS_KEY` — APIアクセスキー（例を使用可）
+- `HACKERSHEET_GITHUB_REPO_FULL_NAME` — コンテンツを管理するGitHubリポジトリ名
+- `GOOGLE_TAG_ID` — GoogleタグID（任意）
+- `NEXT_PUBLIC_DOMAIN` — 公開ドメイン（開発時は `localhost:3000`）
+
+開発サーバー起動:
 
 ```bash
 pnpm dev
 ```
 
-[localhost:3000](http://localhost:3000)で実行されます。
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いてください。
