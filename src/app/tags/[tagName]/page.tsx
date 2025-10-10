@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 
 import { DocumentList } from '@/components/document'
 import { Container } from '@/components/layout'
-import { PageHeader } from '@/components/page-header'
+import { PageHeader } from '@/components/layout'
 import { ColorCircle, SmallTag } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
 

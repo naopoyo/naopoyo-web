@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { Container } from '@/components/layout'
-import { PageHeader } from '@/components/page-header'
+import { PageHeader } from '@/components/layout'
 import { TagList } from '@/components/tag'
 import { client } from '@/lib/hackersheet'
 

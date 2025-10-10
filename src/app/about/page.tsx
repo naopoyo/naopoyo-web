@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 import { Container, FlexCol } from '@/components/layout'
+import { PageHeader } from '@/components/layout'
 import { Link } from '@/components/link'
-import { PageHeader } from '@/components/page-header'
 import { Avatar, SnsList } from '@/components/site'
 import { Paragraph as P } from '@/components/typography'
 import { SITE_DESC } from '@/constants'

@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 
 import { DocumentList, DocumentListSkeleton } from '@/components/document'
 import { Container } from '@/components/layout'
-import { PageHeader } from '@/components/page-header'
+import { PageHeader } from '@/components/layout'
 import { Input } from '@/components/ui/input'
 import { client } from '@/lib/hackersheet'
 

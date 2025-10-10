@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { Container } from '@/components/layout'
-import { PageHeader } from '@/components/page-header'
+import { PageHeader } from '@/components/layout'
 import { Input } from '@/components/ui/input'
 import { makeWebsiteQuery } from '@/lib/hackersheet'
 
