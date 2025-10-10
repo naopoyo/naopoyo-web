@@ -51,12 +51,7 @@ export default function RandomEmoji() {
       >
         <section className="flex flex-col gap-4">
           <div className="flex flex-col items-center">
-            <div
-              className={`
-                flex size-32 items-center justify-center rounded-lg border
-                text-7xl
-              `}
-            >
+            <div className={`flex size-32 items-center justify-center rounded-lg border text-7xl`}>
               <div>{emoji}</div>
             </div>
           </div>

@@ -59,11 +59,7 @@ export default function NavBarMenu() {
             {item.label}
           </Link>
           {item.isActive && (
-            <div
-              className={`
-                absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-link
-              `}
-            ></div>
+            <div className={`absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-link`}></div>
           )}
         </li>
       ))}

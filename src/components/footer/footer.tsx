@@ -12,8 +12,7 @@ export default function Footer() {
   return (
     <footer
       className={`
-        container mx-auto flex flex-col-reverse items-center justify-center
-        gap-8 pt-20 pb-4
+        container mx-auto flex flex-col-reverse items-center justify-center gap-8 pt-20 pb-4
         sm:flex-row sm:items-end sm:pt-40
       `}
     >

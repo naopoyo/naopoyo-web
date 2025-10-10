@@ -43,10 +43,7 @@ export function BookmarkListSkeleton() {
     <div className="flex flex-col gap-4">
       <Pagination totalItems={1} pageSize={1} />
       {Array.from({ length: 20 }).map((_, index) => (
-        <Skeleton
-          key={`bookmark-list-skeleton-${index}`}
-          className={`w-full rounded-lg`}
-        >
+        <Skeleton key={`bookmark-list-skeleton-${index}`} className={`w-full rounded-lg`}>
           <div className="h-28 w-full rounded-lg"></div>
         </Skeleton>
       ))}
@@ -69,8 +66,7 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
       <a
         href={url}
         className={`
-          flex max-h-[160px] w-full overflow-hidden rounded-lg border
-          no-underline!
+          flex max-h-[160px] w-full overflow-hidden rounded-lg border no-underline!
           hover:bg-muted/50
         `}
       >
@@ -102,13 +98,7 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
             >
               <img src={faviconUrl} alt={`${domain} favicon`} width={16} height={16} />
             </picture>
-            <div
-              className={`
-                line-clamp-1 text-xs text-nowrap text-muted-foreground
-              `}
-            >
-              {domain}
-            </div>
+            <div className={`line-clamp-1 text-xs text-nowrap text-muted-foreground`}>{domain}</div>
           </div>
         </div>
         {ogImage && ogImage.fileUrl && (

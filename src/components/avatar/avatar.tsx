@@ -33,7 +33,7 @@ export default function Avater(props: AvaterProps) {
       width={size}
       height={size}
       alt="Avater"
-      className="rounded-full border object-cover"
+      className={`rounded-full border object-cover`}
     />
   )
 }

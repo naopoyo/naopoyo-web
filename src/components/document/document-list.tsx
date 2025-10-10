@@ -37,8 +37,7 @@ export default function DocumentList({ documents }: DocumentListProps) {
           key={document.id}
           href={`/docs/${document.slug}`}
           className={`
-            row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl
-            border bg-card p-6
+            row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl border bg-card p-6
             hover:bg-muted/50
           `}
         >
@@ -60,11 +59,7 @@ export default function DocumentList({ documents }: DocumentListProps) {
             )}
           </div>
           <div className="text-lg break-all">{document.title}</div>
-          <div
-            className={`
-              flex flex-col gap-4 text-center text-xs text-muted-foreground
-            `}
-          >
+          <div className={`flex flex-col gap-4 text-center text-xs text-muted-foreground`}>
             <div>
               {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
             </div>
@@ -73,10 +68,7 @@ export default function DocumentList({ documents }: DocumentListProps) {
                 {document.tags.map((tag) => (
                   <li
                     key={tag.id}
-                    className={`
-                      rounded border bg-secondary px-2 py-1 text-xs
-                      text-foreground
-                    `}
+                    className={`rounded border bg-secondary px-2 py-1 text-xs text-foreground`}
                   >
                     {tag.name}
                   </li>
