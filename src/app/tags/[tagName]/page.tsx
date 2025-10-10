@@ -50,16 +50,18 @@ export default async function TagPage(props: TagPageProps) {
   return (
     <Container>
       <div className="my-16 flex flex-col items-center gap-4">
-        <div className="text-lg font-bold text-muted-foreground">Tag</div>
-
-        <PageHeader className="flex items-center gap-4">
-          <div className="size-4">
-            <ColorCircle value={tag.name} />
-          </div>
-          <div>{tag.name}</div>
-        </PageHeader>
-
-        <p className="text-sm text-muted-foreground">{tag.name}に関する記事の一覧ページです。</p>
+        <PageHeader
+          subTitle="Tag"
+          title={
+            <div className="flex items-center justify-center gap-4">
+              <div className="size-4">
+                <ColorCircle value={tag.name} />
+              </div>
+              <div>{tag.name}</div>
+            </div>
+          }
+          description={`${tag.name}に関する記事の一覧ページです。`}
+        ></PageHeader>
       </div>
 
       {tag.relatedTags.length > 0 && (

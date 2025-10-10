@@ -1,12 +1,17 @@
 import { ClassProp } from 'class-variance-authority/types'
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, ReactNode } from 'react'
 
 import { cn } from '@/lib/shadcn-utils'
 
 /**
  * PageHeader の Props
  */
-export type PageHeaderProps = PropsWithChildren & ClassProp
+export type PageHeaderProps = {
+  title: ReactNode
+  subTitle?: ReactNode
+  description?: ReactNode
+} & PropsWithChildren &
+  ClassProp
 
 /**
  * PageHeader コンポーネント - セクションの見出しを表示します。
@@ -14,6 +19,12 @@ export type PageHeaderProps = PropsWithChildren & ClassProp
  * @param props - PageHeaderProps
  * @returns 見出し用の JSX
  */
-export default function PageHeader({ children, className }: PageHeaderProps) {
-  return <h1 className={cn('text-4xl font-bold', className)}>{children}</h1>
+export default function PageHeader({ title, subTitle, description, className }: PageHeaderProps) {
+  return (
+    <header className={cn('flex flex-col gap-4 text-center', className)}>
+      {subTitle && <div className="text-lg font-bold text-muted-foreground">{subTitle}</div>}
+      <h1 className="text-4xl font-bold">{title}</h1>
+      {description && <p className="text-sm text-muted-foreground">{description}</p>}
+    </header>
+  )
 }

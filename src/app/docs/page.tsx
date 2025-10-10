@@ -34,9 +34,7 @@ export default async function DocsPage(props: DocsPageProps) {
   return (
     <Container>
       <div className="my-16 flex flex-col items-center gap-4">
-        <PageHeader>{title}</PageHeader>
-
-        <p className="text-sm text-muted-foreground">{description}</p>
+        <PageHeader title={title} description={description} />
       </div>
       <section
         className={`
