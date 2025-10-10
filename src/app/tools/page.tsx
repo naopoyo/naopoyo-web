@@ -17,10 +17,8 @@ export const revalidate = 60
 
 export default async function ToolsPage() {
   return (
-    <Container>
-      <div className="my-16 flex flex-col items-center gap-4">
-        <PageHeader title={title} description={description} />
-      </div>
+    <Container className="flex flex-col items-center gap-8 pt-16">
+      <PageHeader title={title} description={description} />
       <ul className="text-center">
         <li>
           <Link href="/tools/random-emoji">ランダム絵文字コピー</Link>
