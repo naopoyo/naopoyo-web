@@ -2,8 +2,8 @@ import '@/styles/globals.css'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 
-import { Footer } from '@/components/footer'
 import { NavBar } from '@/components/nav-bar'
+import { Footer } from '@/components/site'
 import { BASE_URL, GTM_ID, isProduction } from '@/constants'
 import { inter, sourceCodePro } from '@/fonts'
 import { cn } from '@/lib/shadcn-utils'
