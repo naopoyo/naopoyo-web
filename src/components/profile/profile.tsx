@@ -1,6 +1,6 @@
 import { Link } from '@/components/link'
-import { Paragraph as P } from '@/components/paragraph'
 import { Avatar } from '@/components/site'
+import { Paragraph as P } from '@/components/typography'
 import { SITE_DESC } from '@/constants'
 
 export default function Profile() {
