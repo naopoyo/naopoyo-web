@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from '@testing-library/react'
 import { describe, test, expect, vi } from 'vitest'
 
-import Avater, { AvaterProps } from '../avatar'
+import Avatar, { AvatarProps } from '../avatar'
 
 // テスト用に next/image をモックして通常の img 要素を返す
 vi.mock('next/image', () => ({
@@ -13,18 +13,18 @@ vi.mock('next/image', () => ({
 }))
 
 describe('Avatar コンポーネント', () => {
-  const sizes: AvaterProps['size'][] = ['xs', 'sm', 'base', 'lg']
+  const sizes: AvatarProps['size'][] = ['xs', 'sm', 'base', 'lg']
 
-  test.each(sizes)('サイズ %s が正しくレンダリングされること', (size: AvaterProps['size']) => {
+  test.each(sizes)('サイズ %s が正しくレンダリングされること', (size: AvatarProps['size']) => {
     // テストの反復ごとに DOM をクリーンにする
     cleanup()
-    render(<Avater size={size} />)
+    render(<Avatar size={size} />)
 
     const img = screen.getByRole('img') as HTMLImageElement
     // このプロジェクト設定では jest-dom の toBeInTheDocument が型の問題を引き起こすことがあるため、
     // 型安全な単純な truthy アサーションを使用する
     expect(img).toBeTruthy()
-    expect(img.alt).toBe('Avater')
+    expect(img.alt).toBe('Avatar')
 
     // width/height プロパティはモックされた img の属性として出力される
     // コンポーネント内の sizeMap: xs:64, sm:128, base:192, lg:256

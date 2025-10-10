@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
 
-import { Avater } from '@/components/avatar'
 import { Container, FlexCol } from '@/components/layout'
 import { Link } from '@/components/link'
 import { PageHeader } from '@/components/page-header'
 import { Paragraph as P } from '@/components/paragraph'
+import { Avatar } from '@/components/site'
 import { SnsList } from '@/components/sns-list'
 import { SITE_DESC } from '@/constants'
 
@@ -32,7 +32,7 @@ export default function AbountPage() {
         `}
       >
         <div className="w-fit">
-          <Avater size="lg" />
+          <Avatar size="lg" />
         </div>
         <FlexCol className="max-w-sm items-start gap-8">
           <section>

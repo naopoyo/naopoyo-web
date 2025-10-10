@@ -7,7 +7,7 @@ import naopoyo2 from '@/public/naopoyo2.png'
  *
  * size - 表示サイズ ('xs' | 'sm' | 'base' | 'lg')
  */
-export type AvaterProps = {
+export type AvatarProps = {
   size: 'xs' | 'sm' | 'base' | 'lg'
 }
 
@@ -21,10 +21,10 @@ const sizeMap = {
 /**
  * Avatar コンポーネント - ユーザーのプロフィール画像を表示します
  *
- * @param props - AvaterProps
+ * @param props - AvatarProps
  * @returns ユーザーのアバターを表す JSX
  */
-export default function Avater(props: AvaterProps) {
+export default function Avatar(props: AvatarProps) {
   const size = sizeMap[props.size]
 
   return (
@@ -32,7 +32,7 @@ export default function Avater(props: AvaterProps) {
       src={naopoyo2}
       width={size}
       height={size}
-      alt="Avater"
+      alt="Avatar"
       className={`rounded-full border object-cover`}
     />
   )
