@@ -14,7 +14,7 @@ export default async function RecentDocumentList(props: RecentDocumentListProps)
   const excludeSlugs = props.excludeSlugs ?? (await getPicupSlugs())
   const { documents, totalCount } = await client.getDocuments({
     filter: { draft: false, excludeSlugs: excludeSlugs },
-    sort: { by: 'updated_at', order: 'desc' },
+    sort: { by: 'modified_at', order: 'desc' },
     first: props.first ?? RECENT_DOCS_COUNT,
   })
 
