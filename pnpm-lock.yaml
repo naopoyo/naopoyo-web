@@ -15,14 +15,14 @@ importers:
         specifier: 0.1.0-alpha.18
         version: 0.1.0-alpha.18(@types/react@19.2.2)(next@15.5.4(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/next-document-content-kifu':
-        specifier: 0.1.0-alpha.10
-        version: 0.1.0-alpha.10(@types/react@19.2.2)(next@15.5.4(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        specifier: 0.1.0-alpha.12
+        version: 0.1.0-alpha.12(@types/react@19.2.2)(next@15.5.4(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/react-document-content':
         specifier: 0.1.0-alpha.13
         version: 0.1.0-alpha.13(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@hackersheet/react-document-content-styles':
-        specifier: 0.1.0-alpha.13
-        version: 0.1.0-alpha.13
+        specifier: 0.1.0-alpha.14
+        version: 0.1.0-alpha.14
       '@heroui/scroll-shadow':
         specifier: 2.3.18
         version: 2.3.18(@heroui/system@2.4.23(@heroui/theme@2.4.23(tailwindcss@4.1.14))(framer-motion@12.23.22(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@heroui/theme@2.4.23(tailwindcss@4.1.14))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -589,8 +589,8 @@ packages:
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.10':
-    resolution: {integrity: sha512-mVYHt5jUx1E0DwllXK3OjBO8ootXP4tejSU8r9BUo23IsyXpzEmsp3dCoLhLa3JFB93qt5rqxici3cwHgvELPg==}
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.12':
+    resolution: {integrity: sha512-iyIbTac43fQ4IJkpyf2rx2FINQMXhG/uoYYZAT0Ol6+XnGdn2Al3lY6kxCGhecXah4RNN/zTzr5fJsKROtEQHw==}
     peerDependencies:
       next: ^15.0.0
       react: ^19.0.0
@@ -598,6 +598,9 @@ packages:
 
   '@hackersheet/react-document-content-styles@0.1.0-alpha.13':
     resolution: {integrity: sha512-9cRHp8eNj7/fSiLmTMNm9Fsxhd8xw9eYQljTO43JfM7Kgka8Kx16QstKun8u+DDlc9X6ftmdZONfwmyUsgg8hg==}
+
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.14':
+    resolution: {integrity: sha512-rrWtUZwZHKAwAbTtyyf70Ai60MSntrTx0vD4CEOcTIMe4/LvGHMCWJkxMR5QJO5pyMY8AWErlTxulc5Qv1nK2g==}
 
   '@hackersheet/react-document-content@0.1.0-alpha.13':
     resolution: {integrity: sha512-ZC1c0Rscr2rl9ZK7umQ1nv5wxaijjGZMilpKzpjQd9i4/gYfmfjgsO3GIAHUBjAluv0AH96Az96c5Ntd48R68g==}
@@ -5114,7 +5117,7 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.10(@types/react@19.2.2)(next@15.5.4(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.12(@types/react@19.2.2)(next@15.5.4(@babel/core@7.28.4)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sass@1.93.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.11
       '@hackersheet/react-document-content': 0.1.0-alpha.13(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -5128,6 +5131,8 @@ snapshots:
       - supports-color
 
   '@hackersheet/react-document-content-styles@0.1.0-alpha.13': {}
+
+  '@hackersheet/react-document-content-styles@0.1.0-alpha.14': {}
 
   '@hackersheet/react-document-content@0.1.0-alpha.13(@types/react@19.2.2)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:

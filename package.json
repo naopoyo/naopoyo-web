@@ -23,9 +23,9 @@
   "dependencies": {
     "@hackersheet/core": "0.1.0-alpha.11",
     "@hackersheet/next-document-content-components": "0.1.0-alpha.18",
-    "@hackersheet/next-document-content-kifu": "0.1.0-alpha.10",
+    "@hackersheet/next-document-content-kifu": "0.1.0-alpha.12",
     "@hackersheet/react-document-content": "0.1.0-alpha.13",
-    "@hackersheet/react-document-content-styles": "0.1.0-alpha.13",
+    "@hackersheet/react-document-content-styles": "0.1.0-alpha.14",
     "@heroui/scroll-shadow": "2.3.18",
     "@heroui/theme": "2.4.23",
     "@next/third-parties": "15.5.4",
