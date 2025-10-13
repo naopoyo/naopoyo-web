@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { revalidatePath } from 'next/dist/server/web/spec-extension/revalidate'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
@@ -36,6 +37,8 @@ export async function generateMetadata(props: DocumentPageProps): Promise<Metada
 }
 
 export default async function DocumentPage(props: DocumentPageProps) {
+  revalidatePath('/docs/[documentSlug]')
+
   const params = await props.params
 
   const { documentSlug } = params

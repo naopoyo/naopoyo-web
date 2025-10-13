@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { revalidatePath } from 'next/cache'
 import { Suspense } from 'react'
 
 import { getPicupSlugs } from '@/actions'
@@ -18,6 +19,8 @@ export const dynamic = 'force-static'
 
 export default async function HomePage() {
   const picupSlugs = await getPicupSlugs()
+
+  revalidatePath('/')
 
   return (
     <Container className="flex flex-col gap-12">
