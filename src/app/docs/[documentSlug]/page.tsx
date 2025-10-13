@@ -17,7 +17,6 @@ type DocumentPageProps = {
   params: Promise<{ documentSlug: string }>
 }
 
-export const dynamic = 'force-static'
 export const revalidate = 60
 
 export async function generateMetadata(props: DocumentPageProps): Promise<Metadata> {

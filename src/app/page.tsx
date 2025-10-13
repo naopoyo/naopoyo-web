@@ -7,13 +7,11 @@ import { Container, Section } from '@/components/layout'
 import { Link } from '@/components/link'
 import { Profile } from '@/components/site'
 import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
-
 export const metadata: Metadata = {
   title: SITE_NAME,
   description: SITE_DESC,
 }
 
-export const dynamic = 'force-static'
 export const revalidate = 60
 
 export default async function HomePage() {
