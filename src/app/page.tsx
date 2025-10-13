@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 }
 
 export const revalidate = 60
+export const dynamic = 'force-static'
 
 export default async function HomePage() {
   const picupSlugs = await getPicupSlugs()
