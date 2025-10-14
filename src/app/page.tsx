@@ -16,8 +16,6 @@ export const metadata: Metadata = {
   description: SITE_DESC,
 }
 
-export const dynamic = 'force-dynamic'
-
 export default async function HomePage() {
   cacheLife('seconds')
 
