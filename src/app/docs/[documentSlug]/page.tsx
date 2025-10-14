@@ -1,4 +1,7 @@
+'use cache'
+
 import { Metadata } from 'next'
+import { unstable_cacheLife as cacheLife } from 'next/cache'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
@@ -17,10 +20,9 @@ type DocumentPageProps = {
   params: Promise<{ documentSlug: string }>
 }
 
-export const revalidate = 60
-export const dynamic = 'force-static'
-
 export async function generateMetadata(props: DocumentPageProps): Promise<Metadata> {
+  cacheLife('minutes')
+
   const params = await props.params
 
   const { documentSlug } = params
@@ -35,6 +37,8 @@ export async function generateMetadata(props: DocumentPageProps): Promise<Metada
 }
 
 export default async function DocumentPage(props: DocumentPageProps) {
+  cacheLife('minutes')
+
   const params = await props.params
 
   const { documentSlug } = params
