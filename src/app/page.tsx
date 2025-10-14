@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
-  cacheLife('minutes')
+  cacheLife('seconds')
 
   const picupSlugs = await getPicupSlugs()
 
