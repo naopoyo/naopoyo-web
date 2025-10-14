@@ -21,7 +21,7 @@ type DocumentPageProps = {
 }
 
 export async function generateMetadata(props: DocumentPageProps): Promise<Metadata> {
-  cacheLife('minutes')
+  cacheLife('seconds')
 
   const params = await props.params
 
@@ -37,7 +37,7 @@ export async function generateMetadata(props: DocumentPageProps): Promise<Metada
 }
 
 export default async function DocumentPage(props: DocumentPageProps) {
-  cacheLife('minutes')
+  cacheLife('seconds')
 
   const params = await props.params
 
