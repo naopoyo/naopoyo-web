@@ -1,5 +1,3 @@
-'use cache'
-
 import { Metadata } from 'next'
 import { unstable_cacheLife as cacheLife } from 'next/cache'
 import { Suspense } from 'react'
@@ -17,6 +15,7 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
+  'use cache'
   cacheLife('seconds')
 
   const picupSlugs = await getPicupSlugs()
