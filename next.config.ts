@@ -22,9 +22,9 @@ const nextConfig: NextConfig = {
   //     },
   //   ]
   // },
-  experimental: {
-    useCache: true,
-  },
+  // experimental: {
+  //   useCache: true,
+  // },
   transpilePackages: [
     '@hackersheet/next-document-content-components',
     '@hackersheet/next-document-content-kifu',
