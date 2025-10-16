@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   description: SITE_DESC,
 }
 
-export const dynamic = 'force-static'
-export const revalidate = 60
+// export const dynamic = 'force-static'
+// export const revalidate = 60
 
 export default async function HomePage() {
   const picupSlugs = await getPicupSlugs()

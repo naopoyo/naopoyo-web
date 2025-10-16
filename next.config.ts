@@ -9,6 +9,19 @@ const withBundleAnalyzer = NextBundleAnalyzer({
 })
 
 const nextConfig: NextConfig = {
+  async headers() {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'max-age=1, s-maxage=1, stale-while-revalidate=59',
+          },
+        ],
+      },
+    ]
+  },
   // async headers() {
   //   return [
   //     {
