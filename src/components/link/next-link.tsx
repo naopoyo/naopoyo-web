@@ -5,7 +5,7 @@ export type NextLinkProps = LinkProps & PropsWithChildren & { className?: string
 
 export default function NextLink(props: NextLinkProps) {
   return (
-    <Link {...props} prefetch={false} className={props.className}>
+    <Link {...props} prefetch={true} className={props.className}>
       {props.children}
     </Link>
   )
