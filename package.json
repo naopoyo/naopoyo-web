@@ -5,7 +5,7 @@
   "scripts": {
     "analyze": "ANALYZE=true next build",
     "build": "next build --turbopack",
-    "check": "pnpm test:run && pnpm tsc && pnpm lint",
+    "check": "pnpm test:run && pnpm tsc --noEmit --incremental && pnpm lint",
     "dev": "next dev --turbopack",
     "dev:debug": "NODE_OPTIONS='--inspect' next dev",
     "format": "pnpm prettier && pnpm lint:fix",
