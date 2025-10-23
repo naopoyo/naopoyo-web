@@ -9,35 +9,7 @@ const withBundleAnalyzer = NextBundleAnalyzer({
 })
 
 const nextConfig: NextConfig = {
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'max-age=1, s-maxage=1, stale-while-revalidate=59',
-          },
-        ],
-      },
-    ]
-  },
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/:path*',
-  //       headers: [
-  //         {
-  //           key: 'Cache-Control',
-  //           value: 'public, s-maxage=1, stale-while-revalidate=59',
-  //         },
-  //       ],
-  //     },
-  //   ]
-  // },
-  // experimental: {
-  //   useCache: true,
-  // },
+  cacheComponents: true,
   transpilePackages: [
     '@hackersheet/next-document-content-components',
     '@hackersheet/next-document-content-kifu',

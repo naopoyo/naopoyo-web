@@ -1,4 +1,7 @@
+'use cache'
+
 import { Metadata } from 'next'
+import { cacheLife } from 'next/cache'
 import { Suspense } from 'react'
 
 import { getPicupSlugs } from '@/actions'
@@ -13,10 +16,12 @@ export const metadata: Metadata = {
   description: SITE_DESC,
 }
 
-export const dynamic = 'force-static'
-export const revalidate = 60
+// export const dynamic = 'force-static'
+// export const revalidate = 60
 
 export default async function HomePage() {
+  cacheLife('minutes')
+
   const picupSlugs = await getPicupSlugs()
 
   return (

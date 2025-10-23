@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import { SITE_NAME } from '@/constants'
 
 import NavBarMenu from './nav-bar-menu'
@@ -33,7 +35,9 @@ export default function NavBar() {
               sm:flex
             `}
           >
-            <NavBarMenu />
+            <Suspense fallback={<div>Loading...</div>}>
+              <NavBarMenu />
+            </Suspense>
           </div>
         </div>
       </header>
@@ -43,7 +47,9 @@ export default function NavBar() {
           sm:hidden
         `}
       >
-        <NavBarMenu />
+        <Suspense fallback={<div>Loading...</div>}>
+          <NavBarMenu />
+        </Suspense>
       </div>
     </>
   )

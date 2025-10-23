@@ -1,32 +1,25 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
+import { defineConfig, globalIgnores } from 'eslint/config'
 import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 import eslintPluginImport from 'eslint-plugin-import'
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports'
 import eslintConfigPrettier from 'eslint-config-prettier'
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import nextTs from 'eslint-config-next/typescript'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
-
-const eslintConfig = [
-  {
-    ignores: [
-      '**/node_modules/**',
-      '**/.next/**',
-      '**/out/**',
-      '**/build/**',
-      '**/next-env.d.ts',
-      '**/*.config.*',
-      '**/*.mjs',
-      '**/coverage/**',
-    ],
-  },
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '**/node_modules/**',
+    '**/.next/**',
+    '**/out/**',
+    '**/build/**',
+    '**/next-env.d.ts',
+    '**/*.config.*',
+    '**/*.mjs',
+    '**/coverage/**',
+  ]),
   eslintConfigPrettier,
   {
     plugins: {
@@ -62,6 +55,6 @@ const eslintConfig = [
       },
     },
   },
-]
+])
 
 export default eslintConfig
