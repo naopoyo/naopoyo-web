@@ -9,8 +9,6 @@ export type AllDocumentListProps = {
 }
 
 export default async function AllDocumentList(props: AllDocumentListProps) {
-  'use cache'
-
   const { keyword, sortBy = 'published_at' } = props
   const { documents, totalCount } = await getDocuments({ keyword, sortBy })
 

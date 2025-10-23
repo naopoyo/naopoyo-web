@@ -9,7 +9,6 @@ const withBundleAnalyzer = NextBundleAnalyzer({
 })
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
   transpilePackages: [
     '@hackersheet/next-document-content-components',
     '@hackersheet/next-document-content-kifu',

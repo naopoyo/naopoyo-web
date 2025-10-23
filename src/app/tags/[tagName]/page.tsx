@@ -1,5 +1,3 @@
-'use cache'
-
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -14,8 +12,8 @@ interface TagPageProps {
   params: Promise<{ tagName: string }>
 }
 
-// export const dynamic = 'force-static'
-// export const revalidate = 60
+export const dynamic = 'force-static'
+export const revalidate = 60
 
 export async function generateMetadata(props: TagPageProps): Promise<Metadata> {
   const params = await props.params
