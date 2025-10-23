@@ -30,6 +30,7 @@ export default function Avatar(props: AvatarProps) {
         width={size}
         height={size}
         alt="Avatar"
+        loading="lazy"
         className={`rounded-full border object-cover`}
       />
     </picture>
