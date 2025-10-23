@@ -28,11 +28,10 @@ export default function Avatar(props: AvatarProps) {
   return (
     <picture>
       <Image
-        src={'./naopoyo2.png'}
+        src={'/naopoyo2.png'}
         width={size}
         height={size}
         alt="Avatar"
-        loading="lazy"
         className={`rounded-full border object-cover`}
       />
     </picture>
