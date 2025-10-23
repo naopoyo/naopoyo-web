@@ -60,7 +60,7 @@ export default async function DocumentPage(props: DocumentPageProps) {
         <div
           className={`
             flex w-full flex-col gap-14
-            md:w-[768px]
+            md:w-3xl
           `}
         >
           <DocumentHeader document={document} />
@@ -75,7 +75,7 @@ export default async function DocumentPage(props: DocumentPageProps) {
           `}
         >
           <h2 className="mb-2 font-bold text-muted-foreground">目次</h2>
-          <div className="sticky top-[64px]">
+          <div className="sticky top-16">
             <DocumentToc />
           </div>
         </aside>
