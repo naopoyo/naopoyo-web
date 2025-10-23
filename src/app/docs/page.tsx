@@ -23,7 +23,7 @@ export interface DocsPageProps {
   searchParams: Promise<{ keyword?: string; by?: string }>
 }
 
-export const revalidate = 60
+// export const revalidate = 60
 
 export default async function DocsPage(props: DocsPageProps) {
   const searchParams = await props.searchParams

@@ -16,11 +16,12 @@ export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true)
   }, [])
 
   if (!mounted || theme === undefined) {
-    return
+    return null
   }
 
   return (
