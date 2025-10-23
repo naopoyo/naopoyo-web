@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 /**
  * Avatar の Props
  *
@@ -25,7 +27,7 @@ export default function Avatar(props: AvatarProps) {
 
   return (
     <picture>
-      <img
+      <Image
         src={'./naopoyo2.png'}
         width={size}
         height={size}
