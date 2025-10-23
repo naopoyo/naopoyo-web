@@ -11,6 +11,8 @@ interface BookmarkListProps {
 }
 
 export async function BookmarkList({ first, after, keyword }: BookmarkListProps) {
+  'use cache'
+
   const { websites, isEmpty, totalCount } = await client.getWebsites({
     first,
     after,

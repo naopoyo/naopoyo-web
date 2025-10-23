@@ -6,6 +6,8 @@ export type DocumentTotalCountProps = {
 }
 
 export default async function DocumentTotalCount({ keyword, sortBy }: DocumentTotalCountProps) {
+  'use cache'
+
   const { totalCount } = await getDocuments({ keyword, sortBy })
 
   return <div className="text-sm text-nowrap text-muted-foreground">全 {totalCount} 件</div>
