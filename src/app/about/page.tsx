@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: description,
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
   return (
     <Container className="flex flex-col gap-8 pt-16">
       <PageHeader title={title} description={description} />
