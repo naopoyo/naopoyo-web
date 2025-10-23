@@ -66,7 +66,7 @@ function BookmarkListItem({ website }: { website: WebsiteListeItem }) {
       <a
         href={url}
         className={`
-          flex max-h-[160px] w-full overflow-hidden rounded-lg border no-underline!
+          flex max-h-40 w-full overflow-hidden rounded-lg border no-underline!
           hover:bg-muted/50
         `}
       >
