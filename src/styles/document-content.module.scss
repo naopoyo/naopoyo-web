@@ -48,6 +48,40 @@
     font-size: 0.7rem;
   }
 
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    a:before {
+      margin-right: 0.5rem;
+      color: var(--hsdc-muted-foreground);
+      font-weight: 400;
+      font-size: 0.8em;
+      vertical-align: baseline;
+    }
+  }
+
+  h2 a:before {
+    content: '##';
+  }
+
+  h3 a:before {
+    content: '###';
+  }
+
+  h4 a:before {
+    content: '####';
+  }
+
+  h5 a:before {
+    content: '#####';
+  }
+
+  h6 a:before {
+    content: '######';
+  }
+
   p {
     margin: 1.8rem 0;
   }
@@ -214,7 +248,7 @@
     }
     &:hover {
       :global(.heading-link-icon) {
-        display: inline-block;
+        display: none;
       }
     }
   }
@@ -488,6 +522,9 @@
       border-left-color: var(--github-alert-note-color);
       :global(.markdown-alert-title) {
         color: var(--github-alert-note-color);
+        svg {
+          fill: var(--github-alert-note-color);
+        }
       }
     }
 
@@ -495,6 +532,9 @@
       border-left-color: var(--github-alert-tip-color);
       :global(.markdown-alert-title) {
         color: var(--github-alert-tip-color);
+        svg {
+          fill: var(--github-alert-tip-color);
+        }
       }
     }
 
@@ -502,6 +542,9 @@
       border-left-color: var(--github-alert-important-color);
       :global(.markdown-alert-title) {
         color: var(--github-alert-important-color);
+        svg {
+          fill: var(--github-alert-important-color);
+        }
       }
     }
 
@@ -509,6 +552,9 @@
       border-left-color: var(--github-alert-warning-color);
       :global(.markdown-alert-title) {
         color: var(--github-alert-warning-color);
+        svg {
+          fill: var(--github-alert-warning-color);
+        }
       }
     }
 
@@ -516,6 +562,9 @@
       border-left-color: var(--github-alert-caution-color);
       :global(.markdown-alert-title) {
         color: var(--github-alert-caution-color);
+        svg {
+          fill: var(--github-alert-caution-color);
+        }
       }
     }
   }
