@@ -9,6 +9,7 @@ const withBundleAnalyzer = NextBundleAnalyzer({
 })
 
 const nextConfig: NextConfig = {
+  reactCompiler: true,
   transpilePackages: [
     '@hackersheet/next-document-content-components',
     '@hackersheet/next-document-content-kifu',
