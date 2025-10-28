@@ -26,4 +26,6 @@ export const TOCBOT_BASE_OPTIONS: tocbot.IStaticOptions = {
   headingSelector: 'h2, h3, h4, h5, h6',
   scrollSmooth: false,
   headingsOffset: 64 + 1 + 16,
+  throttleTimeout: 0,
+  scrollHandlerType: 'throttle',
 }
