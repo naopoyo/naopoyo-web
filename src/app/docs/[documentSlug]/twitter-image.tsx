@@ -12,10 +12,11 @@ export const size = {
 export const contentType = 'image/png'
 
 interface TwitterImageProps {
-  params: { documentSlug: string }
+  params: Promise<{ documentSlug: string }>
 }
 
-export default async function TwitterImage({ params: { documentSlug } }: TwitterImageProps) {
+export default async function TwitterImage({ params }: TwitterImageProps) {
+  const { documentSlug } = await params
   const { document } = await client.getDocument({ slug: documentSlug })
 
   if (!document || document.draft) notFound()

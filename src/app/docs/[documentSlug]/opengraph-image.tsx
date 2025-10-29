@@ -12,10 +12,11 @@ export const size = {
 export const contentType = 'image/png'
 
 interface OpengraphImageProps {
-  params: { documentSlug: string }
+  params: Promise<{ documentSlug: string }>
 }
 
-export default async function OpengraphImage({ params: { documentSlug } }: OpengraphImageProps) {
+export default async function OpengraphImage({ params }: OpengraphImageProps) {
+  const { documentSlug } = await params
   const { document } = await client.getDocument({ slug: documentSlug })
 
   if (!document || document.draft) notFound()
