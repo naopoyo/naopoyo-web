@@ -8,6 +8,9 @@ export const BASE_URL = process.env.NEXT_PUBLIC_DOMAIN
 
 export const GTM_ID = process.env.GOOGLE_TAG_ID!
 
+export const GOOGLE_ADS_CLIENT = process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT!
+export const GOOGLE_ADS_SLOT_BANNER = process.env.NEXT_PUBLIC_GOOGLE_ADS_SLOT_BANNER!
+
 export const SITE_NAME = 'naopoyo.com'
 
 export const SITE_DESC =
