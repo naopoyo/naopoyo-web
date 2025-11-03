@@ -10,7 +10,9 @@ import {
   DocumentToc,
   RecentDocumentList,
 } from '@/components/document'
+import { GoogleAds } from '@/components/google-ads'
 import { Container } from '@/components/layout'
+import { GOOGLE_ADS_SLOT_BANNER } from '@/constants'
 import { client, DocumentContent } from '@/lib/hackersheet'
 
 type DocumentPageProps = {
@@ -57,8 +59,9 @@ export default async function DocumentPage(props: DocumentPageProps) {
           `}
         >
           <DocumentHeader document={document} />
-          <main>
+          <main className="space-y-20">
             <DocumentContent document={document} />
+            <GoogleAds slot={GOOGLE_ADS_SLOT_BANNER} />
           </main>
         </div>
         <aside
@@ -73,6 +76,7 @@ export default async function DocumentPage(props: DocumentPageProps) {
           </div>
         </aside>
       </div>
+
       {showInboundLinkDocuments && (
         <div className="flex flex-col gap-5">
           <h2 className="text-center text-xl font-bold">この記事にリンクしている記事</h2>

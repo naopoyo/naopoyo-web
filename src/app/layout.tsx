@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 
+import { GoogleAdsScript } from '@/components/google-ads'
 import { Footer } from '@/components/layout'
 import { NavBar } from '@/components/nav-bar'
 import { BASE_URL, GTM_ID, isProduction } from '@/constants'
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Providers>
       </body>
       {isProduction && <GoogleAnalytics gaId={GTM_ID} />}
+      <GoogleAdsScript />
     </html>
   )
 }
