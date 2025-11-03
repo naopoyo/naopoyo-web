@@ -29,7 +29,10 @@ const eslintConfig = defineConfig([
     },
     rules: {
       ...eslintPluginBetterTailwindcss.configs['recommended-error'].rules,
-      'better-tailwindcss/no-unregistered-classes': ['error', { detectComponentClasses: true }],
+      'better-tailwindcss/no-unregistered-classes': [
+        'error',
+        { detectComponentClasses: true, ignore: ['adsbygoogle'] },
+      ],
       'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 100 }],
       'unused-imports/no-unused-imports': 'error',
       'import/order': [
