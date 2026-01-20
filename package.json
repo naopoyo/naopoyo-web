@@ -82,5 +82,5 @@
     "vite-tsconfig-paths": "5.1.4",
     "vitest": "3.2.4"
   },
-  "packageManager": "pnpm@10.19.1-oidc-test.2+sha512.b5543daf8ffc33a0ba7fa34cfeca2f91b991406f1c2f5f58b2d109de2f07d0346fdf5ac22c45ecb7542e116b12da1641022e95f562fc06d547e933029d06f7d3"
+  "packageManager": "pnpm@10.28.1+sha512.7d7dbbca9e99447b7c3bf7a73286afaaf6be99251eb9498baefa7d406892f67b879adb3a1d7e687fc4ccc1a388c7175fbaae567a26ab44d1067b54fcb0d6a316"
 }
