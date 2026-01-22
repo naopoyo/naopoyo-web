@@ -2,14 +2,17 @@
 
 import { useCallback, useState } from 'react'
 
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
 const DEFAULT_BASE_PX = 16
 
 export default function RemPxConverter() {
   const [basePx, setBasePx] = useState(DEFAULT_BASE_PX)
-  const [pxValue, setPxValue] = useState('')
-  const [remValue, setRemValue] = useState('')
+  const [pxValue, setPxValue] = useState('16')
+  const [remValue, setRemValue] = useState('1')
+  const [copiedField, setCopiedField] = useState<'px' | 'rem' | null>(null)
 
   const handleBasePxChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,6 +69,14 @@ export default function RemPxConverter() {
     [basePx]
   )
 
+  const copyToClipboard = useCallback((value: string, unit: 'px' | 'rem') => {
+    if (value && navigator.clipboard) {
+      navigator.clipboard.writeText(`${value}${unit}`)
+      setCopiedField(unit)
+      setTimeout(() => setCopiedField(null), 1500)
+    }
+  }, [])
+
   return (
     <div className="flex flex-col gap-8">
       <div
@@ -95,14 +106,31 @@ export default function RemPxConverter() {
             <label htmlFor="px-value" className="text-sm font-medium">
               px
             </label>
-            <Input
-              id="px-value"
-              type="number"
-              value={pxValue}
-              onChange={handlePxChange}
-              placeholder="16"
-              className="w-48"
-            />
+            <div className="flex gap-2">
+              <Input
+                id="px-value"
+                type="number"
+                value={pxValue}
+                onChange={handlePxChange}
+                placeholder="16"
+                className="w-48"
+              />
+              <TooltipProvider>
+                <Tooltip open={copiedField === 'px'}>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => copyToClipboard(pxValue, 'px')}
+                      disabled={!pxValue}
+                    >
+                      Copy
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Copied!</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
           </div>
         </section>
 
@@ -111,14 +139,31 @@ export default function RemPxConverter() {
             <label htmlFor="rem-value" className="text-sm font-medium">
               rem
             </label>
-            <Input
-              id="rem-value"
-              type="number"
-              value={remValue}
-              onChange={handleRemChange}
-              placeholder="1"
-              className="w-48"
-            />
+            <div className="flex gap-2">
+              <Input
+                id="rem-value"
+                type="number"
+                value={remValue}
+                onChange={handleRemChange}
+                placeholder="1"
+                className="w-48"
+              />
+              <TooltipProvider>
+                <Tooltip open={copiedField === 'rem'}>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => copyToClipboard(remValue, 'rem')}
+                      disabled={!remValue}
+                    >
+                      Copy
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Copied!</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
           </div>
         </section>
       </div>
@@ -134,6 +179,7 @@ export default function RemPxConverter() {
           px と rem の相互変換ができます。どちらかに値を入力すると、もう一方が自動的に計算されます。
         </p>
         <p>ベースのフォントサイズはデフォルトで 16px ですが、変更することもできます。</p>
+        <p>Copy ボタンを押すと、単位付きの値がクリップボードにコピーされます。</p>
       </section>
     </div>
   )
