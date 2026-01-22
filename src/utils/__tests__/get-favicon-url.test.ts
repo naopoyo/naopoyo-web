@@ -2,32 +2,30 @@ import { describe, it, expect } from 'vitest'
 
 import getFaviconUrl from '../get-favicon-url'
 
+const BASE_URL = 'https://t1.gstatic.com/faviconV2'
+const FAVICON_PARAMS = 'client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL'
+const DEFAULT_SIZE = '16'
+
+function buildExpectedUrl(domain: string): string {
+  return `${BASE_URL}?${FAVICON_PARAMS}&url=https://${domain}&size=${DEFAULT_SIZE}`
+}
+
 describe('getFaviconUrl', () => {
-  it('ドメイン "example.com" から正しい favicon URL を生成する', () => {
-    const domain = 'example.com'
-    const expected =
-      'https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://example.com&size=16'
-    expect(getFaviconUrl(domain)).toBe(expected)
+  describe('正常系', () => {
+    it.each([
+      ['example.com', '基本的なドメイン'],
+      ['sub.domain.co.jp', 'サブドメインを含むドメイン'],
+      ['example.com/', '末尾にスラッシュがあるドメイン'],
+    ])('ドメイン "%s" から正しい favicon URL を生成する（%s）', (domain) => {
+      expect(getFaviconUrl(domain)).toBe(buildExpectedUrl(domain))
+    })
   })
 
-  it('サブドメインを含むドメイン "sub.domain.co.jp" の場合', () => {
-    const domain = 'sub.domain.co.jp'
-    const expected =
-      'https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://sub.domain.co.jp&size=16'
-    expect(getFaviconUrl(domain)).toBe(expected)
-  })
-
-  it('末尾にスラッシュがあるドメイン "example.com/" を渡した場合、そのまま URL に含まれる', () => {
-    const domain = 'example.com/'
-    const expected =
-      'https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://example.com/&size=16'
-    expect(getFaviconUrl(domain)).toBe(expected)
-  })
-
-  it('空文字列を渡した場合も文字列が返ること（異常値に対する挙動確認）', () => {
-    const domain = ''
-    const result = getFaviconUrl(domain)
-    expect(typeof result).toBe('string')
-    expect(result).toContain('url=https://')
+  describe('エラーハンドリング', () => {
+    it('空文字列を渡した場合も文字列が返ること', () => {
+      const result = getFaviconUrl('')
+      expect(typeof result).toBe('string')
+      expect(result).toContain('url=https://')
+    })
   })
 })

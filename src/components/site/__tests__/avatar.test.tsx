@@ -1,35 +1,43 @@
 import { render, screen, cleanup } from '@testing-library/react'
-import { describe, test, expect, vi } from 'vitest'
+import { describe, it, expect, vi, afterEach } from 'vitest'
 
 import Avatar, { AvatarProps } from '../avatar'
 
-// テスト用に next/image をモックして通常の img 要素を返す
 vi.mock('next/image', () => ({
   default: (props: Record<string, unknown>) => {
-    // モックした img に対して next/no-img-element と alt テキストのアクセシビリティルールを無効化
     // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text, @typescript-eslint/no-explicit-any
     return <img {...(props as any)} />
   },
 }))
 
+const SIZE_MAP: Record<NonNullable<AvatarProps['size']>, string> = {
+  xs: '64',
+  sm: '128',
+  base: '192',
+  lg: '256',
+}
+
+function expectValidAvatarImage(img: HTMLImageElement, expectedSize: string) {
+  expect(img).toBeTruthy()
+  expect(img.alt).toBe('Avatar')
+  expect(img.getAttribute('width')).toBe(expectedSize)
+  expect(img.getAttribute('height')).toBe(expectedSize)
+}
+
 describe('Avatar コンポーネント', () => {
-  const sizes: AvatarProps['size'][] = ['xs', 'sm', 'base', 'lg']
-
-  test.each(sizes)('サイズ %s が正しくレンダリングされること', (size: AvatarProps['size']) => {
-    // テストの反復ごとに DOM をクリーンにする
+  afterEach(() => {
     cleanup()
-    render(<Avatar size={size} />)
+    vi.clearAllMocks()
+  })
 
-    const img = screen.getByRole('img') as HTMLImageElement
-    // このプロジェクト設定では jest-dom の toBeInTheDocument が型の問題を引き起こすことがあるため、
-    // 型安全な単純な truthy アサーションを使用する
-    expect(img).toBeTruthy()
-    expect(img.alt).toBe('Avatar')
-
-    // width/height プロパティはモックされた img の属性として出力される
-    // コンポーネント内の sizeMap: xs:64, sm:128, base:192, lg:256
-    const expected = size === 'xs' ? '64' : size === 'sm' ? '128' : size === 'base' ? '192' : '256'
-    expect(img.getAttribute('width')).toBe(expected)
-    expect(img.getAttribute('height')).toBe(expected)
+  describe('サイズレンダリング', () => {
+    it.each(Object.entries(SIZE_MAP))(
+      'サイズ %s が正しくレンダリングされること',
+      (size, expectedSize) => {
+        render(<Avatar size={size as AvatarProps['size']} />)
+        const img = screen.getByRole('img') as HTMLImageElement
+        expectValidAvatarImage(img, expectedSize)
+      }
+    )
   })
 })

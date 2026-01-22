@@ -3,7 +3,6 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 
 import Footer from '../footer'
 
-// 子コンポーネントを軽量にモックして、Footer がそれらをレンダリングすることを確認する
 vi.mock('@/components/site', () => ({
   SnsList: () => {
     return <div data-testid="mock-sns-list">sns-list</div>
@@ -22,18 +21,30 @@ describe('Footer コンポーネント', () => {
     vi.clearAllMocks()
   })
 
-  it('主要な要素がレンダリングされること（SNSリスト、テーマスイッチャー、著作表示）', () => {
-    render(<Footer />)
+  describe('子コンポーネント', () => {
+    it('SNSリストがレンダリングされること', () => {
+      render(<Footer />)
+      expect(screen.getByTestId('mock-sns-list')).toBeTruthy()
+    })
 
-    // モックした子コンポーネントが存在すること
-    expect(screen.getByTestId('mock-sns-list')).toBeTruthy()
-    expect(screen.getByTestId('mock-theme-switcher')).toBeTruthy()
+    it('テーマスイッチャーがレンダリングされること', () => {
+      render(<Footer />)
+      expect(screen.getByTestId('mock-theme-switcher')).toBeTruthy()
+    })
+  })
 
-    // 著作表示が正しいこと
-    expect(screen.getByText('© naopoyo')).toBeTruthy()
+  describe('コンテンツ', () => {
+    it('著作表示が正しく表示されること', () => {
+      render(<Footer />)
+      expect(screen.getByText('© naopoyo')).toBeTruthy()
+    })
+  })
 
-    // フッター要素自体が存在すること（role が自動付与されない環境でもフォールバック）
-    const footer = screen.queryByRole('contentinfo') || document.querySelector('footer')
-    expect(footer).toBeTruthy()
+  describe('構造', () => {
+    it('footer 要素としてレンダリングされること', () => {
+      render(<Footer />)
+      const footer = screen.queryByRole('contentinfo') || document.querySelector('footer')
+      expect(footer).toBeTruthy()
+    })
   })
 })
