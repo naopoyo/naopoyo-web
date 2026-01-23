@@ -2,7 +2,6 @@ import { defineConfig, defineProject } from 'vitest/config'
 import { playwright } from '@vitest/browser-playwright'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
-import { resolve } from 'path'
 
 export default defineConfig({
   test: {
@@ -16,11 +15,6 @@ export default defineConfig({
       }),
       defineProject({
         plugins: [tsconfigPaths(), react()],
-        resolve: {
-          alias: {
-            '@': resolve(__dirname, 'src'),
-          },
-        },
         test: {
           name: 'browser',
           include: ['**/__tests__/**/*.browser.{test,spec}.ts{,x}'],
