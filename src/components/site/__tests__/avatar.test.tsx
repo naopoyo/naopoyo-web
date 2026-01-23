@@ -3,40 +3,60 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 
 import Avatar, { AvatarProps } from '../avatar'
 
+// next/imageのモック
 vi.mock('next/image', () => ({
-  default: (props: Record<string, unknown>) => {
-    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text, @typescript-eslint/no-explicit-any
-    return <img {...(props as any)} />
-  },
+  __esModule: true,
+  default: vi.fn((props: Record<string, unknown>) => {
+    const { src, alt, width, height, ...rest } = props
+
+    return (
+      <img
+        src={src as string}
+        alt={alt as string}
+        width={width as number}
+        height={height as number}
+        {...rest}
+      />
+    )
+  }),
 }))
 
-const SIZE_MAP: Record<NonNullable<AvatarProps['size']>, string> = {
-  xs: '64',
-  sm: '128',
-  base: '192',
-  lg: '256',
+const SIZE_MAP: Record<NonNullable<AvatarProps['size']>, number> = {
+  xs: 64,
+  sm: 128,
+  base: 192,
+  lg: 256,
 }
 
-function expectValidAvatarImage(img: HTMLImageElement, expectedSize: string) {
-  expect(img).toBeTruthy()
-  expect(img.alt).toBe('Avatar')
-  expect(img.getAttribute('width')).toBe(expectedSize)
-  expect(img.getAttribute('height')).toBe(expectedSize)
-}
-
-describe('Avatar コンポーネント', () => {
+describe('Avatar', () => {
   afterEach(() => {
     cleanup()
     vi.clearAllMocks()
   })
 
-  describe('サイズレンダリング', () => {
+  describe('画像のレンダリング', () => {
+    it('正しいalt属性を持つイメージを表示する', () => {
+      render(<Avatar size="base" />)
+      const img = screen.getByRole('img') as HTMLImageElement
+      expect(img.alt).toBe('Avatar')
+    })
+
+    it('正しい画像ファイルを使用する', () => {
+      render(<Avatar size="base" />)
+      const img = screen.getByRole('img') as HTMLImageElement
+      expect(img.src).toContain('/naopoyo2.png')
+    })
+  })
+
+  describe('サイズ', () => {
     it.each(Object.entries(SIZE_MAP))(
-      'サイズ %s が正しくレンダリングされること',
+      'サイズ "%s" で幅と高さが %s px に設定されている',
       (size, expectedSize) => {
         render(<Avatar size={size as AvatarProps['size']} />)
         const img = screen.getByRole('img') as HTMLImageElement
-        expectValidAvatarImage(img, expectedSize)
+
+        expect(img.width).toBe(expectedSize)
+        expect(img.height).toBe(expectedSize)
       }
     )
   })
