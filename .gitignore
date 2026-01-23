@@ -7,6 +7,8 @@
 
 # testing
 /coverage
+**/__screenshots__
+/test-results
 
 # next.js
 /.next/
