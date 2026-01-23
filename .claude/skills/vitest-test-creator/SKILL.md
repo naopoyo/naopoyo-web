@@ -292,32 +292,40 @@ describe('calculateTotal', () => {
 
 ```typescript
 // ファイル：components/Button/__tests__/Button.browser.test.tsx
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
+import { describe, it, expect, vi, afterEach } from 'vitest'
 import userEvent from '@testing-library/user-event'
+
 import { Button } from '../Button'
 
 describe('Button', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it('ラベルを表示する', () => {
-    render(<Button>Click me</Button>)
-    expect(screen.getByRole('button', { name: 'Click me' })).toBeInTheDocument()
+    const { container } = render(<Button>Click me</Button>)
+    const button = container.querySelector('button')
+    expect(button?.textContent).toBe('Click me')
   })
 
   it('クリックでonClickを呼び出す', async () => {
     const user = userEvent.setup()
     const onClick = vi.fn()
-    render(<Button onClick={onClick}>Click</Button>)
+    const { container } = render(<Button onClick={onClick}>Click</Button>)
+    const button = container.querySelector('button')
 
-    await user.click(screen.getByRole('button'))
+    await user.click(button!)
     expect(onClick).toHaveBeenCalledOnce()
   })
 
   it('disabled時はクリックできない', async () => {
     const user = userEvent.setup()
     const onClick = vi.fn()
-    render(<Button onClick={onClick} disabled>Click</Button>)
+    const { container } = render(<Button onClick={onClick} disabled>Click</Button>)
+    const button = container.querySelector('button') as HTMLButtonElement
 
-    await user.click(screen.getByRole('button'))
+    await user.click(button)
     expect(onClick).not.toHaveBeenCalled()
   })
 })
@@ -326,8 +334,16 @@ describe('Button', () => {
 **特徴：**
 
 - React コンポーネントのレンダリングと操作をテスト
-- ユーザーインタラクション（クリック、入力）を検証
+- `userEvent` でブラウザの実際の動作に近いユーザーインタラクションを検証
 - ブラウザ環境で実行（JSDOM より詳細なテストが可能）
+
+**推奨される API：**
+
+- `container.querySelector()` / `container.querySelectorAll()` - CSS セレクタで要素を取得
+- `userEvent` - ブラウザの実際の動作に近いユーザーイベントをシミュレート（推奨）
+  - `user.click()`, `user.type()`, `user.clear()` など
+- `cleanup()` - テスト後の DOM をクリア（`afterEach` で呼び出す）
+- `screen.getByRole()` / `screen.getByText()` などは複数要素がある場合エラーになるため、具体的に1つの要素が存在する場合のみ使用
 
 ---
 
@@ -455,13 +471,91 @@ describe('fetchData', () => {
 })
 ```
 
+## よくある失敗とトラブルシューティング
+
+### 問題1: カスタムマッチャー（`toBeInTheDocument` など）が見つからない
+
+**エラー：** `Property 'toBeInTheDocument' does not exist on type 'Assertion<HTMLElement>'`
+
+**原因：** `@testing-library/jest-dom` や `vitest-dom` がインストールされていません。
+
+**解決策：** 標準的なマッチャーを使用してください。
+
+```typescript
+// Bad（拡張マッチャーが必要）
+expect(element).toBeInTheDocument()
+expect(element).toHaveAttribute('name', 'keyword')
+expect(element).toHaveClass('text-base')
+
+// Good（標準マッチャー）
+expect(element).toBeTruthy()
+expect(element?.getAttribute('name')).toBe('keyword')
+expect(element?.className).toContain('text-base')
+```
+
+---
+
+### 問題2: `screen.getByRole()` で複数の要素が見つかる
+
+**エラー：** `getMultipleElementsFoundError: Found multiple elements with role "searchbox"`
+
+**原因：** ページに同じロールの要素が複数ある場合、`getByRole()` は失敗します（複数のテストが DOM を共有している場合もあります）。
+
+**解決策：** `container.querySelector()` を使用するか、`cleanup()` で各テスト後に DOM をクリアしてください。
+
+```typescript
+// Bad（複数要素でエラー）
+it('検索フィールドをテストする', () => {
+  render(<Component />)
+  const input = screen.getByRole('searchbox') // 複数ある場合失敗
+})
+
+// Good（セレクタで明確に指定）
+it('検索フィールドをテストする', () => {
+  const { container } = render(<Component />)
+  const input = container.querySelector('input[type="search"]')
+  expect(input).toBeTruthy()
+})
+
+// または、afterEach で cleanup を呼び出す
+describe('Component', () => {
+  afterEach(() => {
+    cleanup() // 各テスト後に DOM をクリア
+  })
+
+  it('テスト1', () => {
+    render(<Component />)
+  })
+
+  it('テスト2', () => {
+    render(<Component />)
+  })
+})
+```
+
+---
+
 ## ベストプラクティス
 
-1. **1テスト1アサーション**: 1つのテストでは1つの振る舞いを検証
+1. **1テスト1振る舞い**: 1つのテストでは1つの振る舞いを検証する。関連する複数の検証が必要な場合は複数のアサーションでも構わない。
+
+   ```typescript
+   // Good: 検索フィールドのすべての属性を1つのテストで検証
+   it('検索フィールドの属性が正しく設定されている', () => {
+     const { container } = render(<BookmarkFilter />)
+     const input = container.querySelector('input[type="search"]') as HTMLInputElement
+
+     expect(input).toBeTruthy()
+     expect(input.name).toBe('keyword')
+     expect(input.placeholder).toBe('キーワードを入力して検索')
+     expect(input.className).toContain('text-base')
+   })
+   ```
+
 2. **AAA パターン**: Arrange（準備）→ Act（実行）→ Assert（検証）
 3. **実装ではなく振る舞いをテスト**: 内部実装に依存しない
-4. **テストデータの独立性**: 各テストは他のテストに依存しない
-5. **エッジケースをカバー**: 空配列、null、境界値など
+4. **テストデータの独立性**: 各テストは他のテストに依存しない。`afterEach(() => cleanup())` で DOM をクリア
+5. **エッジケースをカバー**: 空文字列、null、境界値など
 6. **モックは最小限に**: 必要な依存のみモック化
 
 ## テストのリファクタリング
