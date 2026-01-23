@@ -11,6 +11,10 @@ Vitestを使用したテストコード作成のガイド。
 
 ### ファイル配置
 
+テストファイルは対象ファイルと同じ階層に`__tests__`ディレクトリを作成して配置します。
+
+#### パターン1: コンポーネント1つ = 独立したフォルダ
+
 ```text
 src/
 ├── utils/
@@ -36,7 +40,21 @@ src/
     └── useTheme.ts
 ```
 
-- テストファイルは対象ファイルと同じ階層に`__tests__`ディレクトリを作成して配置
+#### パターン2: 複数のコンポーネント/ファイル = 共通の親フォルダ
+
+```text
+src/
+├── components/
+│   ├── bookmark/
+│   │   ├── __tests__/
+│   │   │   ├── bookmark-filter.browser.test.tsx
+│   │   │   └── bookmark-list.browser.test.tsx
+│   │   ├── bookmark-filter.tsx
+│   │   ├── bookmark-list.tsx
+│   │   └── bookmark-card.tsx
+```
+
+関連する複数のコンポーネントが同じフォルダにある場合、親フォルダに`__tests__`を1つ作成し、すべてのテストをそこに配置します。
 
 ### テストファイルの命名規則
 
@@ -80,9 +98,10 @@ describe('createDateFormat', () => {
 - **ディレクトリ：** `components/`, `hooks/` 内のファイル
 - **内容：** React コンポーネント、カスタム hooks（DOM 操作を含む）
 - **例：**
-  - `components/theme-switcher/theme-switcher.tsx` → `theme-switcher.browser.test.tsx`
-  - `components/Button/Button.tsx` → `Button.browser.test.tsx`
-  - `hooks/useTheme.ts` → `useTheme.browser.test.ts`
+  - `components/theme-switcher/theme-switcher.tsx` → `components/theme-switcher/__tests__/theme-switcher.browser.test.tsx`
+  - `components/Button/Button.tsx` → `components/Button/__tests__/Button.browser.test.tsx`
+  - `components/bookmark/bookmark-filter.tsx` → `components/bookmark/__tests__/bookmark-filter.browser.test.tsx`
+  - `hooks/useTheme.ts` → `hooks/__tests__/useTheme.browser.test.ts`
 
 ```typescript
 // ブラウザテストの例
