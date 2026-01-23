@@ -535,6 +535,187 @@ describe('Component', () => {
 
 ---
 
+## テスト実行ワークフロー（開発中のテスト実行と修正）
+
+開発中に特定のテストファイルを実行しながら修正する標準的なワークフローです。
+
+### テスト実行コマンド
+
+#### 特定ファイルのテストを実行（推奨：開発中）
+
+```bash
+pnpm test:run src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+```
+
+**特徴：**
+
+- 指定したテストファイルのみを実行
+- 1回実行して結果を表示
+- 修正後に何度でも再実行可能
+- 他のテストに影響されない
+
+**使用場面：**
+
+- 1つのコンポーネント・関数を開発・修正中
+- テストを追加しながら動作確認
+- 修正内容の確認
+
+#### パターンマッチで複数ファイル実行
+
+```bash
+# パターンを含むすべてのテストを実行
+pnpm test:run bookmark
+
+# ディレクトリ内すべてのテストを実行
+pnpm test:run src/components/bookmark/__tests__
+```
+
+#### 全テスト実行（検証用）
+
+```bash
+pnpm test:run
+```
+
+**使用場面：**
+
+- PR 作成前の全テスト実行
+- CI での自動検証
+- ビルド時のテスト確認（`pnpm check` に含まれている）
+
+#### カバレッジ付き実行
+
+```bash
+pnpm test:coverage
+```
+
+**特徴：**
+
+- テスト実行とカバレッジ測定
+- `coverage/` ディレクトリにレポート生成
+
+### 標準的な開発フロー
+
+1つのファイルを修正する際の推奨フロー：
+
+#### ステップ 1：テストファイルを確認する
+
+```bash
+# テストファイルの内容を確認
+# src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+```
+
+#### ステップ 2：テストを実行して現在の状態を確認
+
+```bash
+pnpm test:run src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+```
+
+失敗しているテストを確認します。
+
+#### ステップ 3：実装ファイルを修正
+
+```typescript
+// src/components/bookmark/bookmark-filter.tsx
+export function BookmarkFilter() {
+  return (
+    <input
+      type="search"
+      name="keyword"
+      placeholder="キーワードを入力して検索"
+      className="text-base"
+    />
+  )
+}
+```
+
+#### ステップ 4：再度テストを実行して確認
+
+```bash
+pnpm test:run src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+```
+
+テストが成功するまでステップ 3-4 を繰り返します。
+
+### 実践的なワークフロー例
+
+#### シナリオ 1：コンポーネント開発
+
+```bash
+# 1. テストファイルを作成して実行
+pnpm test:run src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+# → 失敗を確認
+
+# 2. コンポーネントを実装
+# src/components/bookmark/bookmark-filter.tsx を編集
+
+# 3. テストを再実行
+pnpm test:run src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+# → 成功を確認
+
+# 4. テストを追加して新しい機能をテスト
+# src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx に追加
+
+# 5. テストを再実行
+pnpm test:run src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+# → 新テストが失敗
+
+# 6. コンポーネントに新機能を実装
+
+# 7. テストを再実行
+pnpm test:run src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+# → すべて成功を確認
+```
+
+#### シナリオ 2：ユーティリティ関数の修正
+
+```bash
+# 1. テストを実行
+pnpm test:run src/utils/__tests__/create-date-format.unit.test.ts
+# → 失敗を確認
+
+# 2. 関数を修正
+# src/utils/create-date-format.ts を編集
+
+# 3. テストを再実行
+pnpm test:run src/utils/__tests__/create-date-format.unit.test.ts
+# → 結果を確認して必要に応じて修正繰り返す
+```
+
+#### シナリオ 3：複数ファイルの修正
+
+```bash
+# 同じディレクトリの複数テストを実行
+pnpm test:run src/components/bookmark/__tests__
+
+# パターンで実行
+pnpm test:run bookmark
+
+# すべてのテストが成功したら全体実行
+pnpm test:run
+```
+
+### テストを実行する際のコマンド記録
+
+開発中に何度も実行するコマンドを短縮する方法：
+
+```bash
+# bashrcやzshrcにエイリアスを追加
+alias test-bookmark='pnpm test:run src/components/bookmark/__tests__'
+
+# 使用時
+test-bookmark
+```
+
+### チェックリスト：修正前の確認
+
+修正を開始する前に確認：
+
+- [ ] テストファイルが正しい場所に配置されているか（`__tests__/` ディレクトリ）
+- [ ] ファイル名が正しい命名規則に従っているか（`.unit.test.ts` または `.browser.test.tsx`）
+- [ ] テストが `describe` でグループ化されているか
+- [ ] `afterEach` で `cleanup()` が呼ばれているか（ブラウザテスト）
+- [ ] モックが `beforeEach` でリセットされているか
+
 ## ベストプラクティス
 
 1. **1テスト1振る舞い**: 1つのテストでは1つの振る舞いを検証する。関連する複数の検証が必要な場合は複数のアサーションでも構わない。
@@ -553,10 +734,16 @@ describe('Component', () => {
    ```
 
 2. **AAA パターン**: Arrange（準備）→ Act（実行）→ Assert（検証）
+
 3. **実装ではなく振る舞いをテスト**: 内部実装に依存しない
+
 4. **テストデータの独立性**: 各テストは他のテストに依存しない。`afterEach(() => cleanup())` で DOM をクリア
+
 5. **エッジケースをカバー**: 空文字列、null、境界値など
+
 6. **モックは最小限に**: 必要な依存のみモック化
+
+7. **テスト実行を頻繁に**: 開発中は修正のたびに `pnpm test:run` で対象ファイルを実行し、すぐにフィードバックを得る
 
 ## テストのリファクタリング
 
