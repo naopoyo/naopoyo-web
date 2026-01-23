@@ -1,6 +1,5 @@
 'use client'
 
-import { ScrollShadow } from '@heroui/scroll-shadow'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
@@ -67,7 +66,7 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
 
   return (
     <nav aria-label="Pagination" className="flex flex-row items-center gap-2">
-      <ScrollShadow ref={scrollContainerRef} orientation="horizontal" size={80}>
+      <div ref={scrollContainerRef} className="overflow-x-auto">
         <UIPagination className="justify-start">
           <PaginationContent>
             {pageItems.map((pageItem) => (
@@ -84,7 +83,7 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
             ))}
           </PaginationContent>
         </UIPagination>
-      </ScrollShadow>
+      </div>
       <div className="text-sm text-nowrap text-muted-foreground">
         {totalItems} 件中 {start} - {end}
       </div>
