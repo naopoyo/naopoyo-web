@@ -29,9 +29,9 @@ const eslintConfig = defineConfig([
     },
     rules: {
       ...eslintPluginBetterTailwindcss.configs['recommended-error'].rules,
-      'better-tailwindcss/no-unregistered-classes': [
+      'better-tailwindcss/no-unknown-classes': [
         'error',
-        { detectComponentClasses: true, ignore: ['adsbygoogle'] },
+        { ignore: ['adsbygoogle', 'auto-phrase'] },
       ],
       'better-tailwindcss/enforce-consistent-line-wrapping': ['warn', { printWidth: 100 }],
       'unused-imports/no-unused-imports': 'error',
