@@ -9,7 +9,7 @@
     "dev": "next dev --turbopack",
     "dev:debug": "NODE_OPTIONS='--inspect' next dev",
     "format": "pnpm prettier && pnpm lint:fix",
-    "format:package": "pnpm dlx sort-package-json",
+    "format:package": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' pnpm dlx sort-package-json",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "local:setup": "sh scripts/setup_local.sh",
