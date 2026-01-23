@@ -24,7 +24,7 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
         <div className="text-7xl">
           <DocumentEmoji emoji={document.emoji} />
         </div>
-        <h1 className="auto-phrase text-3xl leading-relaxed font-semibold">{document.title}</h1>
+        <h1 className="auto-phrase text-3xl/relaxed font-semibold">{document.title}</h1>
         <div className="flex flex-col gap-4">
           <div
             className={`
@@ -67,7 +67,7 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
         </div>
       </div>
       {document.preview && (
-        <picture className="mx-[-16px]">
+        <picture className="-mx-4">
           <img
             src={document.preview.fileUrl}
             width={document.preview.width}

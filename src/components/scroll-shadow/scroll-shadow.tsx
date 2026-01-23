@@ -79,8 +79,8 @@ const ScrollShadow = forwardRef<HTMLDivElement, ScrollShadowProps>(
           className={cn(
             'pointer-events-none absolute z-10 transition-opacity duration-200',
             isHorizontal
-              ? 'top-0 bottom-0 left-0 w-8 bg-linear-to-r from-background to-transparent'
-              : 'top-0 right-0 left-0 h-8 bg-linear-to-b from-background to-transparent',
+              ? 'inset-y-0 left-0 w-8 bg-linear-to-r from-background to-transparent'
+              : 'inset-x-0 top-0 h-8 bg-linear-to-b from-background to-transparent',
             showStartShadow ? 'opacity-100' : 'opacity-0'
           )}
         />
@@ -101,8 +101,8 @@ const ScrollShadow = forwardRef<HTMLDivElement, ScrollShadowProps>(
           className={cn(
             'pointer-events-none absolute z-10 transition-opacity duration-200',
             isHorizontal
-              ? 'top-0 right-0 bottom-0 w-8 bg-linear-to-l from-background to-transparent'
-              : 'right-0 bottom-0 left-0 h-8 bg-linear-to-t from-background to-transparent',
+              ? 'inset-y-0 right-0 w-8 bg-linear-to-l from-background to-transparent'
+              : 'inset-x-0 bottom-0 h-8 bg-linear-to-t from-background to-transparent',
             showEndShadow ? 'opacity-100' : 'opacity-0'
           )}
         />

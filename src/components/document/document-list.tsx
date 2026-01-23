@@ -74,7 +74,7 @@ export default function DocumentList({ documents }: DocumentListProps) {
                 {document.tags.map((tag) => (
                   <li
                     key={tag.id}
-                    className={`rounded border bg-secondary px-2 py-1 text-xs text-foreground`}
+                    className={`rounded-sm border bg-secondary px-2 py-1 text-xs text-foreground`}
                   >
                     {tag.name}
                   </li>

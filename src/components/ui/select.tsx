@@ -24,7 +24,7 @@ const SelectTrigger = React.forwardRef<
         px-3 py-2 text-sm ring-offset-background
         focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none
         disabled:cursor-not-allowed disabled:opacity-50
-        data-[placeholder]:text-muted-foreground
+        data-placeholder:text-muted-foreground
         [&>span]:line-clamp-1
       `,
       className
@@ -33,7 +33,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 opacity-50" />
+      <ChevronDown className="size-4 opacity-50" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ))
@@ -48,7 +48,7 @@ const SelectScrollUpButton = React.forwardRef<
     className={cn('flex cursor-default items-center justify-center py-1', className)}
     {...props}
   >
-    <ChevronUp className="h-4 w-4" />
+    <ChevronUp className="size-4" />
   </SelectPrimitive.ScrollUpButton>
 ))
 SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName
@@ -62,7 +62,7 @@ const SelectScrollDownButton = React.forwardRef<
     className={cn('flex cursor-default items-center justify-center py-1', className)}
     {...props}
   >
-    <ChevronDown className="h-4 w-4" />
+    <ChevronDown className="size-4" />
   </SelectPrimitive.ScrollDownButton>
 ))
 SelectScrollDownButton.displayName = SelectPrimitive.ScrollDownButton.displayName
@@ -76,8 +76,8 @@ const SelectContent = React.forwardRef<
       ref={ref}
       className={cn(
         `
-          relative z-50 max-h-[--radix-select-content-available-height] min-w-[8rem]
-          origin-[--radix-select-content-transform-origin] overflow-x-hidden overflow-y-auto
+          relative z-50 max-h-(--radix-select-content-available-height) min-w-32
+          origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto
           rounded-md border bg-popover text-popover-foreground shadow-md
           data-[side=bottom]:slide-in-from-top-2
           data-[side=left]:slide-in-from-right-2
@@ -104,10 +104,7 @@ const SelectContent = React.forwardRef<
         className={cn(
           'p-1',
           position === 'popper' &&
-            `
-              h-[var(--radix-select-trigger-height)] w-full
-              min-w-[var(--radix-select-trigger-width)]
-            `
+            `h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width)`
         )}
       >
         {children}
@@ -141,15 +138,15 @@ const SelectItem = React.forwardRef<
         relative flex w-full cursor-default items-center rounded-sm py-1.5 pr-2 pl-8 text-sm
         outline-none select-none
         focus:bg-accent focus:text-accent-foreground
-        data-[disabled]:pointer-events-none data-[disabled]:opacity-50
+        data-disabled:pointer-events-none data-disabled:opacity-50
       `,
       className
     )}
     {...props}
   >
-    <span className={`absolute left-2 flex h-3.5 w-3.5 items-center justify-center`}>
+    <span className={`absolute left-2 flex size-3.5 items-center justify-center`}>
       <SelectPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
+        <Check className="size-4" />
       </SelectPrimitive.ItemIndicator>
     </span>
 

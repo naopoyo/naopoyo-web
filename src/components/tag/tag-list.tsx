@@ -36,9 +36,7 @@ export default async function TagList({ tags }: TagListProps) {
                 <div className="size-3">
                   <ColorCircle value={tag.name} />
                 </div>
-                <div className="flex-auto overflow-hidden text-ellipsis whitespace-nowrap">
-                  {tag.name}
-                </div>
+                <div className="flex-auto truncate">{tag.name}</div>
                 <div className="text-muted-foreground">{tag.documentCountInPublished}</div>
               </div>
             </NextLink>

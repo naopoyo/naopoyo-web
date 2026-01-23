@@ -53,7 +53,7 @@ export default function NavBarMenu() {
           <NextLink
             href={`/${item.segment}`}
             className={`
-              inline-block rounded px-4 py-2
+              inline-block rounded-sm px-4 py-2
               hover:bg-muted/50
             `}
           >
