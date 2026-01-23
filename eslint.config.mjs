@@ -58,6 +58,12 @@ const eslintConfig = defineConfig([
       },
     },
   },
+  {
+    files: ['**/__tests__/**/*.{ts,tsx}', '**/*.test.{ts,tsx}'],
+    rules: {
+      '@next/next/no-img-element': 'off',
+    },
+  },
 ])
 
 export default eslintConfig
