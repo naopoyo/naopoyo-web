@@ -67,9 +67,9 @@ describe('formatDate', () => {
 
 ```typescript
 // 等価性
-expect(value).toBe(expected)           // 厳密等価 (===)
-expect(value).toEqual(expected)        // 深い等価（オブジェクト/配列）
-expect(value).toStrictEqual(expected)  // undefinedプロパティも含めて比較
+expect(value).toBe(expected) // 厳密等価 (===)
+expect(value).toEqual(expected) // 深い等価（オブジェクト/配列）
+expect(value).toStrictEqual(expected) // undefinedプロパティも含めて比較
 
 // 真偽値
 expect(value).toBeTruthy()
@@ -81,7 +81,7 @@ expect(value).toBeDefined()
 // 数値
 expect(value).toBeGreaterThan(3)
 expect(value).toBeLessThanOrEqual(5)
-expect(value).toBeCloseTo(0.3, 5)  // 浮動小数点
+expect(value).toBeCloseTo(0.3, 5) // 浮動小数点
 
 // 文字列
 expect(value).toMatch(/pattern/)
@@ -189,7 +189,7 @@ const spy = vi.spyOn(object, 'method')
 
 // リセット
 beforeEach(() => {
-  vi.clearAllMocks()  // 呼び出し履歴をクリア
+  vi.clearAllMocks() // 呼び出し履歴をクリア
 })
 ```
 
@@ -285,7 +285,11 @@ describe('UserService', () => {
     user = { id: 1, name: 'Taro' }
   })
 
-  it('test1', () => { /* ... */ })
-  it('test2', () => { /* ... */ })
+  it('test1', () => {
+    /* ... */
+  })
+  it('test2', () => {
+    /* ... */
+  })
 })
 ```

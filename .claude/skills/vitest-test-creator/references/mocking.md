@@ -37,10 +37,7 @@ describe('vi.fn()', () => {
 
   it('一度だけ戻り値を設定', () => {
     const mockFn = vi.fn()
-    mockFn
-      .mockReturnValueOnce('first')
-      .mockReturnValueOnce('second')
-      .mockReturnValue('default')
+    mockFn.mockReturnValueOnce('first').mockReturnValueOnce('second').mockReturnValue('default')
 
     expect(mockFn()).toBe('first')
     expect(mockFn()).toBe('second')
@@ -120,7 +117,7 @@ describe('vi.spyOn()', () => {
 
     const result = calculator.add(2, 3)
 
-    expect(result).toBe(5)  // 元の実装が動く
+    expect(result).toBe(5) // 元の実装が動く
     expect(spy).toHaveBeenCalledWith(2, 3)
   })
 
@@ -334,8 +331,8 @@ afterEach(() => {
 
 ### 各メソッドの違い
 
-| メソッド | 呼び出し履歴 | 戻り値設定 | 実装 |
-|---------|------------|----------|------|
-| `clearAllMocks()` | クリア | クリア | 保持 |
-| `resetAllMocks()` | クリア | クリア | リセット |
-| `restoreAllMocks()` | クリア | クリア | 元に戻す |
+| メソッド            | 呼び出し履歴 | 戻り値設定 | 実装     |
+| ------------------- | ------------ | ---------- | -------- |
+| `clearAllMocks()`   | クリア       | クリア     | 保持     |
+| `resetAllMocks()`   | クリア       | クリア     | リセット |
+| `restoreAllMocks()` | クリア       | クリア     | 元に戻す |

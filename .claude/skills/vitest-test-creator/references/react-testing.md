@@ -103,11 +103,11 @@ screen.getAllByRole('listitem')
 
 ### get / query / find の違い
 
-| メソッド | 見つからない場合 | 用途 |
-|---------|---------------|------|
-| `getBy*` | エラー | 要素が必ず存在する |
-| `queryBy*` | null | 要素が存在しないことを確認 |
-| `findBy*` | Promise (reject) | 非同期で表示される要素 |
+| メソッド   | 見つからない場合 | 用途                       |
+| ---------- | ---------------- | -------------------------- |
+| `getBy*`   | エラー           | 要素が必ず存在する         |
+| `queryBy*` | null             | 要素が存在しないことを確認 |
+| `findBy*`  | Promise (reject) | 非同期で表示される要素     |
 
 ```typescript
 // 要素が存在することを確認
@@ -165,11 +165,11 @@ await user.type(input, 'New value')
 
 // キーボード
 await user.keyboard('{Enter}')
-await user.keyboard('{Shift>}A{/Shift}')  // Shift+A
+await user.keyboard('{Shift>}A{/Shift}') // Shift+A
 
 // セレクト
 await user.selectOptions(select, 'option1')
-await user.selectOptions(select, ['option1', 'option2'])  // 複数選択
+await user.selectOptions(select, ['option1', 'option2']) // 複数選択
 
 // ホバー
 await user.hover(element)
@@ -355,10 +355,9 @@ describe('useCounter', () => {
   })
 
   it('propsの変更に対応する', () => {
-    const { result, rerender } = renderHook(
-      ({ initialCount }) => useCounter(initialCount),
-      { initialProps: { initialCount: 0 } }
-    )
+    const { result, rerender } = renderHook(({ initialCount }) => useCounter(initialCount), {
+      initialProps: { initialCount: 0 },
+    })
 
     expect(result.current.count).toBe(0)
 

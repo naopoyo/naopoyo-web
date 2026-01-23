@@ -110,9 +110,7 @@ export const revalidate = 60
 すべてのページは `Container` コンポーネントでラップしてください。
 
 ```tsx
-<Container className="flex flex-col items-center gap-8 pt-16">
-  {/* コンテンツ */}
-</Container>
+<Container className="flex flex-col items-center gap-8 pt-16">{/* コンテンツ */}</Container>
 ```
 
 ### PageHeader
@@ -225,9 +223,7 @@ export default async function DocsPage(props: DocsPageProps) {
   return (
     <Container className="flex flex-col items-center gap-8 pt-16">
       <PageHeader title={title} description={description} />
-      <Suspense fallback={<div>Loading...</div>}>
-        {/* 非同期コンテンツ */}
-      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>{/* 非同期コンテンツ */}</Suspense>
     </Container>
   )
 }
