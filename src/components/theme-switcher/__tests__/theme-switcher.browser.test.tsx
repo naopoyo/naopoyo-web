@@ -59,7 +59,6 @@ describe('ThemeSwitcher', () => {
       })
     })
 
-
     it('現在のテーマに対応するボタンが選択状態になる', async () => {
       setupMockTheme('dark')
 
