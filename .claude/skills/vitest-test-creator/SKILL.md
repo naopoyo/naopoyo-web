@@ -716,6 +716,69 @@ test-bookmark
 - [ ] `afterEach` で `cleanup()` が呼ばれているか（ブラウザテスト）
 - [ ] モックが `beforeEach` でリセットされているか
 
+### テスト実行とlintエラー確認
+
+テストファイル作成後は、必ずlintエラーも確認してください：
+
+#### テスト実行 + lint確認の手順
+
+```bash
+# 1. テストを実行
+pnpm test:run src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+
+# 2. lint確認を実行（ESLintとTypeScriptエラー）
+pnpm lint src/components/bookmark/__tests__/bookmark-filter.browser.test.tsx
+
+# 3. 型チェック確認（必要に応じて）
+pnpm check
+```
+
+#### よくあるlintエラーと修正方法
+
+##### any 型の使用
+
+```typescript
+// Bad
+const Component = ({ props }: any) => {}
+
+// Good - 具体的な型を定義
+interface ComponentProps {
+  prop1: string
+  prop2?: number
+}
+
+const Component = ({ prop1, prop2 }: ComponentProps) => {}
+```
+
+##### import順序エラー
+
+```typescript
+// 正しい順序（ESLintルールに従う）
+import { render } from '@testing-library/react'  // 外部ライブラリ
+import { ReactNode } from 'react'                 // React
+import { describe } from 'vitest'                 // テストライブラリ
+```
+
+##### 未使用の変数
+
+```typescript
+// Bad
+const unusedVar = 'test'
+const { container } = render(<Component />)
+
+// Good - 使用する変数のみ定義
+const { container } = render(<Component />)
+```
+
+##### テスト作成完了時の確認
+
+- [ ] テストが成功しているか（`pnpm test:run`）
+- [ ] lintエラーがないか（`pnpm lint`）
+- [ ] 型チェックが通っているか（`pnpm check`）
+- [ ] import順序が正しいか
+- [ ] `any` 型を使用していないか
+- [ ] 未使用の変数がないか
+
 ## ベストプラクティス
 
 1. **1テスト1振る舞い**: 1つのテストでは1つの振る舞いを検証する。関連する複数の検証が必要な場合は複数のアサーションでも構わない。
