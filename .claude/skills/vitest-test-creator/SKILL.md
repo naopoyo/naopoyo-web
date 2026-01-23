@@ -7,29 +7,116 @@ description: Vitestを使用したテストコード作成・リファクタリ�
 
 Vitestを使用したテストコード作成のガイド。
 
-## テストファイルの配置
+## テストファイルの配置と命名規則
+
+### ファイル配置
 
 ```
 src/
 ├── utils/
 │   ├── __tests__/
-│   │   └── format.test.ts   # __tests__ディレクトリに配置
-│   └── format.ts
-├── components/
+│   │   └── create-date-format.unit.test.ts   # ユニットテスト
+│   └── create-date-format.ts
+├── lib/
 │   ├── __tests__/
-│   │   └── Button.test.tsx
-│   └── Button.tsx
+│   │   └── string-to-color.unit.test.ts      # ユニットテスト
+│   └── string-to-color.ts
+├── components/
+│   ├── theme-switcher/
+│   │   ├── __tests__/
+│   │   │   └── theme-switcher.browser.test.tsx  # ブラウザテスト
+│   │   └── theme-switcher.tsx
+│   └── Button/
+│       ├── __tests__/
+│       │   └── Button.browser.test.tsx        # ブラウザテスト
+│       └── Button.tsx
+└── hooks/
+    ├── __tests__/
+    │   └── useTheme.browser.test.ts           # ブラウザテスト（hooks）
+    └── useTheme.ts
 ```
 
 - テストファイルは対象ファイルと同じ階層に`__tests__`ディレクトリを作成して配置
-- ファイル名は`対象ファイル名.test.ts`または`対象ファイル名.test.tsx`
+
+### テストファイルの命名規則
+
+**ファイル名の形式：** `対象ファイル名.{unit|browser}.{test|spec}.{ts|tsx}`
+
+| テストタイプ | ファイルパターン | 実行環境 | 対象 | 例 |
+|------------|----------------|--------|------|-----|
+| **ユニットテスト** | `*.unit.test.ts` | Node.js | 純粋なロジック関数、ユーティリティ | `create-date-format.unit.test.ts` |
+| **ブラウザテスト** | `*.browser.test.tsx` | Playwright (Chromium) | React コンポーネント、カスタム hooks | `theme-switcher.browser.test.tsx` |
+
+### どのテストタイプを使い分けるか
+
+#### ✅ ユニットテスト（`.unit.test.ts`）を使う
+
+テスト対象が以下の場合：
+- **ディレクトリ：** `utils/`, `lib/`, `constants/` 内のファイル
+- **内容：** 純粋な関数、ロジック処理、計算、フォーマット
+- **例：**
+  - `utils/create-date-format.ts` → `create-date-format.unit.test.ts`
+  - `lib/string-to-color.ts` → `string-to-color.unit.test.ts`
+  - `utils/get-favicon-url.ts` → `get-favicon-url.unit.test.ts`
+
+```typescript
+// ユニットテストの例
+import { describe, it, expect } from 'vitest'
+import { createDateFormat } from './create-date-format'
+
+describe('createDateFormat', () => {
+  it('ISO形式の日付を日本語形式に変換する', () => {
+    const result = createDateFormat('2024-01-15')
+    expect(result).toBe('2024年1月15日')
+  })
+})
+```
+
+#### ✅ ブラウザテスト（`.browser.test.tsx`）を使う
+
+テスト対象が以下の場合：
+- **ディレクトリ：** `components/`, `hooks/` 内のファイル
+- **内容：** React コンポーネント、カスタム hooks（DOM 操作を含む）
+- **例：**
+  - `components/theme-switcher/theme-switcher.tsx` → `theme-switcher.browser.test.tsx`
+  - `components/Button/Button.tsx` → `Button.browser.test.tsx`
+  - `hooks/useTheme.ts` → `useTheme.browser.test.ts`
+
+```typescript
+// ブラウザテストの例
+import { describe, it, expect } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import { ThemeSwitcher } from './theme-switcher'
+
+describe('ThemeSwitcher', () => {
+  it('テーマ切り替えボタンを表示する', () => {
+    render(<ThemeSwitcher />)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
+})
+```
+
+### Vitest 設定での自動検出
+
+`vitest.config.mts` の設定により、ファイル名で自動的にテストタイプが判定されます：
+
+```typescript
+// ユニットテスト（Node.js環境）
+include: ['**/__tests__/**/*.unit.{test,spec}.ts']
+
+// ブラウザテスト（Playwright環境）
+include: ['**/__tests__/**/*.browser.{test,spec}.ts{,x}']
+```
 
 ## 基本構造
 
+### ユニットテストの基本構造（`.unit.test.ts`）
+
 ```typescript
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
+import { targetFunction } from '../target-file'
 
-describe('対象の名前', () => {
+describe('targetFunction', () => {
   beforeEach(() => {
     // 各テスト前のセットアップ
   })
@@ -39,14 +126,45 @@ describe('対象の名前', () => {
   })
 
   it('期待する動作を説明', () => {
-    // Arrange
+    // Arrange（準備）
     const input = 'test'
 
-    // Act
+    // Act（実行）
     const result = targetFunction(input)
 
-    // Assert
+    // Assert（検証）
     expect(result).toBe('expected')
+  })
+})
+```
+
+### ブラウザテストの基本構造（`.browser.test.tsx`）
+
+```typescript
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { TargetComponent } from '../TargetComponent'
+
+describe('TargetComponent', () => {
+  beforeEach(() => {
+    // 各テスト前のセットアップ
+  })
+
+  afterEach(() => {
+    // 各テスト後のクリーンアップ
+  })
+
+  it('期待する動作を説明', async () => {
+    // Arrange（準備）
+    const user = userEvent.setup()
+    render(<TargetComponent />)
+
+    // Act（実行）
+    await user.click(screen.getByRole('button'))
+
+    // Assert（検証）
+    expect(screen.getByText('result')).toBeInTheDocument()
   })
 })
 ```
@@ -104,11 +222,16 @@ await expect(asyncFn()).rejects.toThrow()
 
 ## テストタイプ別ガイド
 
-### 関数のユニットテスト
+### ユニットテスト（`.unit.test.ts`）
+
+**📁 対象ファイル：** `utils/`, `lib/` などの純粋な関数
+
+**⚙️ 実行環境：** Node.js
 
 ```typescript
+// ファイル：utils/__tests__/calculate.unit.test.ts
 import { describe, it, expect } from 'vitest'
-import { calculateTotal } from './calculate'
+import { calculateTotal } from '../calculate'
 
 describe('calculateTotal', () => {
   it('商品の合計金額を計算する', () => {
@@ -130,15 +253,27 @@ describe('calculateTotal', () => {
 })
 ```
 
-### Reactコンポーネントテスト
+**特徴：**
+- DOM や React は不要（Node.js で実行）
+- ロジックの正確性をテスト
+- 高速に実行可能
+
+---
+
+### ブラウザテスト（`.browser.test.tsx`）
+
+**📁 対象ファイル：** `components/`, `hooks/` の React コンポーネント
+
+**⚙️ 実行環境：** Playwright (Chromium ブラウザ)
 
 詳細は [references/react-testing.md](references/react-testing.md) を参照。
 
 ```typescript
+// ファイル：components/Button/__tests__/Button.browser.test.tsx
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Button } from './Button'
+import { Button } from '../Button'
 
 describe('Button', () => {
   it('ラベルを表示する', () => {
@@ -162,6 +297,39 @@ describe('Button', () => {
 
     await user.click(screen.getByRole('button'))
     expect(onClick).not.toHaveBeenCalled()
+  })
+})
+```
+
+**特徴：**
+- React コンポーネントのレンダリングと操作をテスト
+- ユーザーインタラクション（クリック、入力）を検証
+- ブラウザ環境で実行（JSDOM より詳細なテストが可能）
+
+---
+
+### カスタム Hooks のテスト（`.browser.test.ts`）
+
+Hooks は DOM 操作を含むため、ブラウザテストを使用：
+
+```typescript
+// ファイル：hooks/__tests__/useTheme.browser.test.ts
+import { describe, it, expect } from 'vitest'
+import { renderHook, act } from '@testing-library/react'
+import { useTheme } from '../useTheme'
+
+describe('useTheme', () => {
+  it('テーマの状態を返す', () => {
+    const { result } = renderHook(() => useTheme())
+    expect(result.current.theme).toBe('light')
+  })
+
+  it('テーマを切り替える', () => {
+    const { result } = renderHook(() => useTheme())
+    act(() => {
+      result.current.toggleTheme()
+    })
+    expect(result.current.theme).toBe('dark')
   })
 })
 ```
@@ -190,6 +358,61 @@ const spy = vi.spyOn(object, 'method')
 // リセット
 beforeEach(() => {
   vi.clearAllMocks() // 呼び出し履歴をクリア
+})
+```
+
+#### ユニットテストでのモック例
+
+```typescript
+// ユーティリティ関数のユニットテスト（.unit.test.ts）
+import { vi, describe, it, expect, beforeEach } from 'vitest'
+import { fetchUserData } from './fetch-user'
+
+// モジュール全体をモック
+vi.mock('./api', () => ({
+  fetchFromAPI: vi.fn(),
+}))
+
+describe('fetchUserData', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
+  it('APIからユーザーデータを取得する', async () => {
+    const { fetchFromAPI } = await import('./api')
+    vi.mocked(fetchFromAPI).mockResolvedValueOnce({ id: 1, name: 'Test' })
+
+    const result = await fetchUserData(1)
+    expect(result).toEqual({ id: 1, name: 'Test' })
+  })
+})
+```
+
+#### ブラウザテストでのモック例
+
+```typescript
+// React コンポーネントのブラウザテスト（.browser.test.tsx）
+import { vi, describe, it, expect, beforeEach } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import { UserProfile } from './UserProfile'
+
+// next-themes などの外部ライブラリをモック
+vi.mock('next-themes', () => ({
+  useTheme: vi.fn(() => ({
+    theme: 'light',
+    setTheme: vi.fn(),
+  })),
+}))
+
+describe('UserProfile', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
+  it('ユーザー情報を表示する', () => {
+    render(<UserProfile userId={1} />)
+    expect(screen.getByText('User Profile')).toBeInTheDocument()
+  })
 })
 ```
 
