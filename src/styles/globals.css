@@ -11,6 +11,8 @@
     var(--font-inter), 'Hiragino Kaku Gothic ProN', 'Helvetica', 'Helvetica Neue', 'Arial',
     'Meiryo', 'Hiragino Sans', sans-serif;
   --color-link: var(--link);
+  --color-skeleton: var(--skeleton);
+  --color-skeleton-foreground: var(--skeleton-foreground);
 }
 
 /* shadcn ui theme */
@@ -157,10 +159,14 @@
 /* my theme */
 :root {
   --link: oklch(0.623 0.214 259.815);
+  --skeleton: oklch(0.8 0.01 286.32);
+  --skeleton-foreground: oklch(0.8 0.01 286.32);
 }
 
 .dark {
   --link: oklch(0.7875 0.1022 249.65);
+  --skeleton: oklch(0.3 0.01 286.32);
+  --skeleton-foreground: oklch(0.3 0.01 286.32);
 }
 
 :root {

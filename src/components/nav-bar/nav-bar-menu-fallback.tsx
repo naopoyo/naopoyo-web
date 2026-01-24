@@ -4,12 +4,5 @@
  * @returns 読み込み中のUI
  */
 export default function NavBarMenuFallback() {
-  return (
-    <div
-      className="
-        h-6 animate-pulse rounded-sm bg-gray-300
-        dark:bg-gray-700
-      "
-    />
-  )
+  return <div className="h-6 animate-pulse rounded-sm bg-skeleton" />
 }
