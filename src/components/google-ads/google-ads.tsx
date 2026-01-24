@@ -17,7 +17,7 @@ declare global {
 }
 
 /**
- * プロパティス for the GoogleAds component
+ * Props for the GoogleAds component
  */
 export type GoogleAdProps = {
   /**
@@ -61,11 +61,7 @@ export type GoogleAdProps = {
  * - クライアント側でのみマウント後に動作
  * - パスの変更を検出して広告を再読み込み
  */
-export default function GoogleAds({
-  slot,
-  format = 'auto',
-  responsive = 'true',
-}: GoogleAdProps) {
+export default function GoogleAds({ slot, format = 'auto', responsive = 'true' }: GoogleAdProps) {
   const pathname = usePathname() ?? ''
   const { mounted } = useClientOnly()
 
