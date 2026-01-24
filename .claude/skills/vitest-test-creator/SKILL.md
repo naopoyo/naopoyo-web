@@ -575,12 +575,12 @@ describe('NavBarMenu', () => {
 
 ##### Next.js hook のモック一覧
 
-| Hook | モック例 |
-| --- | --- |
-| `useRouter` | `mockRouter.mockReturnValue({ push: vi.fn(), ... })` |
-| `usePathname` | `mockPathname.mockReturnValue('/docs')` |
-| `useSearchParams` | `mockSearchParams.mockReturnValue(new URLSearchParams())` |
-| `useSelectedLayoutSegment` | `mockSegment.mockReturnValue('docs')` |
+| Hook                       | モック例                                                  |
+| -------------------------- | --------------------------------------------------------- |
+| `useRouter`                | `mockRouter.mockReturnValue({ push: vi.fn(), ... })`      |
+| `usePathname`              | `mockPathname.mockReturnValue('/docs')`                   |
+| `useSearchParams`          | `mockSearchParams.mockReturnValue(new URLSearchParams())` |
+| `useSelectedLayoutSegment` | `mockSegment.mockReturnValue('docs')`                     |
 
 ##### 複数の hooks を同時にモック
 
