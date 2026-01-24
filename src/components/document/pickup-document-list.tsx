@@ -3,6 +3,15 @@ import { client } from '@/lib/hackersheet'
 
 import DocumentList from './document-list'
 
+/**
+ * PickupDocumentList コンポーネント - ピックアップされたドキュメントを表示します
+ *
+ * 'pickup' スラッグのドキュメントツリーから、ピックアップされたドキュメント一覧を
+ * サーバーサイドで取得して表示します。
+ * ピックアップドキュメントがない場合は、メッセージを表示します。
+ *
+ * @returns ピックアップドキュメント一覧またはメッセージを表示する JSX 要素
+ */
 export default async function PickupDocumentList() {
   const { tree } = await client.getTree({ slug: 'pickup' })
   const picupSlugs = (tree?.flatNodes

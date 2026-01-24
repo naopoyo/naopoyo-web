@@ -4,9 +4,9 @@ import twemoji from '@twemoji/api'
 import { useMemo } from 'react'
 
 /**
- * DocumentEmoji の Props
+ * DocumentEmoji コンポーネントの Props
  *
- * emoji - 画像としてレンダリングする絵文字文字列
+ * @property {string} emoji - 表示する絵文字文字列
  */
 export type DocumentEmojiProps = {
   /** 表示する絵文字文字列 */
@@ -14,11 +14,13 @@ export type DocumentEmojiProps = {
 }
 
 /**
- * DocumentEmoji コンポーネント - Twemoji を利用して絵文字を SVG として表示します。
+ * DocumentEmoji コンポーネント - Twemoji を利用して絵文字を SVG として表示します
  *
- * - 絵文字が不正な場合は空の文字列を alt にセットして画像表示を回避します。
- * - src の生成は memoize して不要な再計算を避けます。
- * - 表示サイズは design token の `size-18`（72px）を使用します。
+ * Unicode 絵文字文字列を受け取り、Twemoji ライブラリを使用して対応する SVG 画像に変換・表示します。
+ *
+ * - 絵文字が不正な場合は空のスペーサーを表示して画像表示を回避
+ * - src の生成は useMemo でメモ化して不要な再計算を避ける
+ * - 表示サイズは 72px × 72px（design token の `size-18`）を使用
  *
  * @param props - DocumentEmojiProps
  * @returns 絵文字を表す JSX 要素
