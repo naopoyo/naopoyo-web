@@ -6,17 +6,33 @@ import { createDateFormat, timeAgo } from '@/utils'
 
 import type { Document } from '@/lib/hackersheet'
 
+/**
+ * DocumentHeader コンポーネントの Props
+ *
+ * @property {Document} document - 表示するドキュメント
+ */
 export interface DocumentHeaderProps {
+  /** 表示するドキュメント */
   document: Document
 }
 
+const DATE_FORMAT = createDateFormat('yyyy-MM-dd')
+
+/**
+ * DocumentHeader コンポーネント - ドキュメントのタイトルと基本情報を表示します
+ *
+ * ドキュメントのタイトル、絵文字、公開日、更新日、タグなどのメタデータを表示します。
+ * プレビュー画像がある場合は表示し、GitHub の履歴ページへのリンクも提供します。
+ *
+ * @param props - DocumentHeaderProps
+ * @returns ドキュメント情報とメタデータを表示する JSX 要素
+ */
 export default function DocumentHeader({ document }: DocumentHeaderProps) {
   const showModified = document.publishedAt !== document.modifiedAt
   const showTags = document.tags.length > 0
   const historyUrl = HACKERSHEET_GITHUB_REPO_URL
     ? HACKERSHEET_GITHUB_REPO_URL + '/commits/main/' + document.path
     : undefined
-  const df = createDateFormat('yyyy-MM-dd')
 
   return (
     <div className="flex flex-col gap-10">
@@ -35,13 +51,13 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
             <div className="flex flex-col gap-1">
               <div className="text-muted-foreground">公開日</div>
               <div>{timeAgo(document.publishedAt)}</div>
-              <div className="text-muted-foreground">{df(document.publishedAt)}</div>
+              <div className="text-muted-foreground">{DATE_FORMAT(document.publishedAt)}</div>
             </div>
             {showModified && (
               <div className="flex flex-col gap-1">
                 <div className="text-muted-foreground">更新日</div>
                 <div>{timeAgo(document.modifiedAt)}</div>
-                <div className="text-muted-foreground">{df(document.modifiedAt)}</div>
+                <div className="text-muted-foreground">{DATE_FORMAT(document.modifiedAt)}</div>
               </div>
             )}
             {historyUrl && (

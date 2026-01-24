@@ -6,40 +6,42 @@ import { NextLink } from '../link'
 import type { DocumentList as DocumentListType } from '@/lib/hackersheet'
 
 /**
- * DocumentList の Props
+ * DocumentList コンポーネントの Props
  *
- * documents - レンダリングするドキュメント配列
+ * @property {DocumentListType} documents - レンダリングするドキュメント配列
  */
 export type DocumentListProps = {
   /** レンダリング対象のドキュメント配列 */
   documents: DocumentListType
 }
 
+const DATE_FORMAT = createDateFormat('yyyy年MM月dd日')
+const GRID_CONTAINER_CLASS = `
+  grid grid-cols-1 gap-8
+  md:grid-cols-3
+`
+const CARD_CLASS = `
+  row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl border bg-card p-6
+  hover:bg-card/50
+`
+const TAG_CLASS = 'rounded-sm border bg-secondary px-2 py-1 text-xs text-foreground'
+const METADATA_CLASS = 'flex flex-col gap-4 text-center text-xs text-muted-foreground'
+
 /**
- * DocumentList コンポーネント - ドキュメントカードのグリッドを表示します。
+ * DocumentList コンポーネント - ドキュメントカードのグリッドを表示します
+ *
+ * ドキュメントをカード形式でグリッド表示し、プレビュー画像、タイトル、
+ * 公開日・更新日、タグなどの情報を表示します。
+ * レスポンシブデザイン対応で、モバイルでは1列、デスクトップでは3列表示です。
  *
  * @param props - DocumentListProps
- * @returns ドキュメントカードを含む JSX 要素
+ * @returns ドキュメントカードを含むグリッド要素
  */
 export default function DocumentList({ documents }: DocumentListProps) {
-  const df = createDateFormat('yyyy年MM月dd日')
-
   return (
-    <div
-      className={`
-        grid grid-cols-1 gap-8
-        md:grid-cols-3
-      `}
-    >
+    <div className={GRID_CONTAINER_CLASS}>
       {documents.map((document) => (
-        <NextLink
-          key={document.id}
-          href={`/docs/${document.slug}`}
-          className={`
-            row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl border bg-card p-6
-            hover:bg-card/50
-          `}
-        >
+        <NextLink key={document.id} href={`/docs/${document.slug}`} className={CARD_CLASS}>
           <div className="flex items-center justify-center">
             {document.preview ? (
               <picture className="-mx-6 -mt-6">
@@ -58,24 +60,21 @@ export default function DocumentList({ documents }: DocumentListProps) {
             )}
           </div>
           <div className="text-lg break-all">{document.title}</div>
-          <div className={`flex flex-col gap-4 text-center text-xs text-muted-foreground`}>
+          <div className={METADATA_CLASS}>
             {document.modifiedAt ? (
               <div>
-                {timeAgo(document.modifiedAt)} - {df(document.modifiedAt)}
+                {timeAgo(document.modifiedAt)} - {DATE_FORMAT(document.modifiedAt)}
               </div>
             ) : (
               <div>
-                {timeAgo(document.publishedAt)} - {df(document.publishedAt)}
+                {timeAgo(document.publishedAt)} - {DATE_FORMAT(document.publishedAt)}
               </div>
             )}
 
             {document.tags.length > 0 && (
               <ul className="flex flex-row justify-end gap-2">
                 {document.tags.map((tag) => (
-                  <li
-                    key={tag.id}
-                    className={`rounded-sm border bg-secondary px-2 py-1 text-xs text-foreground`}
-                  >
+                  <li key={tag.id} className={TAG_CLASS}>
                     {tag.name}
                   </li>
                 ))}
