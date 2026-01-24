@@ -94,12 +94,7 @@ function BookmarkListItem({ website }: BookmarkListItemProps) {
           <div className={BOOKMARK_DESCRIPTION_CLASS}>{description}</div>
           <div className="flex items-center gap-2">
             <picture className={BOOKMARK_FAVICON_CLASS}>
-              <img
-                src={getFaviconUrl(domain)}
-                alt={`${domain} favicon`}
-                width={16}
-                height={16}
-              />
+              <img src={getFaviconUrl(domain)} alt={`${domain} favicon`} width={16} height={16} />
             </picture>
             <div className={BOOKMARK_DOMAIN_CLASS}>{domain}</div>
           </div>
