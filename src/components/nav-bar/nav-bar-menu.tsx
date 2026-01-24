@@ -4,7 +4,7 @@ import { useSelectedLayoutSegment } from 'next/navigation'
 
 import { NextLink } from '../link'
 
-const menuItems = [
+const MENU_ITEMS = [
   {
     label: 'Docs',
     segment: 'docs',
@@ -25,7 +25,7 @@ const menuItems = [
     label: 'About',
     segment: 'about',
   },
-]
+] as const
 
 /**
  * NavBarMenu コンポーネント - ナビゲーションのメニューリストを表示します（クライアントコンポーネント）。
@@ -35,35 +35,33 @@ const menuItems = [
 export default function NavBarMenu() {
   const segment = useSelectedLayoutSegment()
 
-  const items = menuItems.map((item) => ({
-    ...item,
-    isActive: segment === item.segment,
-  }))
-
   return (
     <ul className="flex items-center gap-2">
-      {items.map((item, i) => (
-        <li
-          key={`menu-item-${i}`}
-          className={`
-            relative text-sm text-muted-foreground
-            hover:text-link
-          `}
-        >
-          <NextLink
-            href={`/${item.segment}`}
+      {MENU_ITEMS.map((item) => {
+        const isActive = segment === item.segment
+        return (
+          <li
+            key={item.segment}
             className={`
-              inline-block rounded-sm px-4 py-2
-              hover:bg-muted/50
+              relative text-sm text-muted-foreground
+              hover:text-link
             `}
           >
-            {item.label}
-          </NextLink>
-          {item.isActive && (
-            <div className={`absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-link`}></div>
-          )}
-        </li>
-      ))}
+            <NextLink
+              href={`/${item.segment}`}
+              className={`
+                inline-block rounded-sm px-4 py-2
+                hover:bg-muted/50
+              `}
+            >
+              {item.label}
+            </NextLink>
+            {isActive && (
+              <div className="absolute inset-x-0 bottom-0 mx-auto w-6 border-b border-link" />
+            )}
+          </li>
+        )
+      })}
     </ul>
   )
 }
