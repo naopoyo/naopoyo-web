@@ -455,6 +455,167 @@ describe('UserProfile', () => {
 })
 ```
 
+#### Next.js 関連のモック
+
+Next.js のコンポーネント（`next/link`, `next/image` など）と hooks（`next/navigation` など）のモック方法。
+
+##### next/link のモック
+
+`next/link` コンポーネントはテスト環境では単純な `<a>` タグとしてモック化します。
+
+```typescript
+import { render, cleanup } from '@testing-library/react'
+import { describe, it, expect, vi, afterEach } from 'vitest'
+import { PropsWithChildren } from 'react'
+
+import NavBarMenu from '../nav-bar-menu'
+
+interface MockLinkProps extends PropsWithChildren {
+  href: string
+  className?: string
+}
+
+// next/link をモック化 - シンプルな a タグに置き換え
+vi.mock('next/link', () => ({
+  __esModule: true,
+  default: ({ children, href, className }: MockLinkProps) => (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  ),
+}))
+
+describe('NavBarMenu', () => {
+  afterEach(() => {
+    cleanup()
+    vi.clearAllMocks()
+  })
+
+  it('リンクが正しい href を持つ', () => {
+    const { container } = render(<NavBarMenu />)
+    const links = container.querySelectorAll('a')
+    const hrefs = Array.from(links).map((link) => link.getAttribute('href'))
+    expect(hrefs).toEqual(['/docs', '/tags', '/bookmarks'])
+  })
+})
+```
+
+**ポイント：**
+
+- `__esModule: true` を設定して、デフォルトエクスポートとして動作させる
+- モック化したコンポーネントには必要な props（`href`, `className`, `children`）のインターフェース定義
+- テスト環境では簡潔な `<a>` タグに置き換え
+
+##### next/navigation hooks のモック
+
+`useRouter`, `usePathname`, `useSelectedLayoutSegment` などの navigation hooks をモック化します。
+
+```typescript
+import { render, cleanup } from '@testing-library/react'
+import { useSelectedLayoutSegment } from 'next/navigation'
+import { describe, it, expect, vi, afterEach } from 'vitest'
+
+import NavBarMenu from '../nav-bar-menu'
+
+// next/navigation の hooks をモック化
+vi.mock('next/navigation', () => ({
+  useSelectedLayoutSegment: vi.fn(),
+}))
+
+// モック関数に型をつけて取得
+const mockUseSelectedLayoutSegment = vi.mocked(useSelectedLayoutSegment)
+
+describe('NavBarMenu', () => {
+  afterEach(() => {
+    cleanup()
+    vi.clearAllMocks() // モックの状態をリセット
+  })
+
+  it('アクティブなセグメント下部に下線を表示する', () => {
+    // hook の戻り値を制御
+    mockUseSelectedLayoutSegment.mockReturnValue('docs')
+
+    const { container } = render(<NavBarMenu />)
+    const underline = container.querySelector('li:first-child div.border-b')
+    expect(underline).toBeTruthy()
+  })
+
+  it('セグメント null の場合、下線を表示しない', () => {
+    mockUseSelectedLayoutSegment.mockReturnValue(null)
+
+    const { container } = render(<NavBarMenu />)
+    const underlines = container.querySelectorAll('div.border-b')
+    expect(underlines).toHaveLength(0)
+  })
+
+  it('セグメントを切り替えると下線が移動する', () => {
+    mockUseSelectedLayoutSegment.mockReturnValue('docs')
+    const { container, rerender } = render(<NavBarMenu />)
+
+    let items = container.querySelectorAll('li')
+    expect(items[0]?.querySelector('div.border-b')).toBeTruthy()
+
+    // hook の戻り値を変更して再レンダリング
+    mockUseSelectedLayoutSegment.mockReturnValue('tags')
+    rerender(<NavBarMenu />)
+
+    items = container.querySelectorAll('li')
+    expect(items[0]?.querySelector('div.border-b')).toBeFalsy()
+    expect(items[1]?.querySelector('div.border-b')).toBeTruthy()
+  })
+})
+```
+
+**ポイント：**
+
+- `vi.mocked()` で型付きのモック関数を取得（TypeScript で型チェック可能）
+- `mockReturnValue()` で hook の戻り値を制御
+- `mockResolvedValue()` で async 関数の場合は Promise の解決値を指定
+- `afterEach(() => vi.clearAllMocks())` で各テスト後にモック状態をリセット
+
+##### Next.js hook のモック一覧
+
+| Hook | モック例 |
+| --- | --- |
+| `useRouter` | `mockRouter.mockReturnValue({ push: vi.fn(), ... })` |
+| `usePathname` | `mockPathname.mockReturnValue('/docs')` |
+| `useSearchParams` | `mockSearchParams.mockReturnValue(new URLSearchParams())` |
+| `useSelectedLayoutSegment` | `mockSegment.mockReturnValue('docs')` |
+
+##### 複数の hooks を同時にモック
+
+複数の Next.js hooks をモック化する場合：
+
+```typescript
+import { useRouter, usePathname } from 'next/navigation'
+
+vi.mock('next/navigation', () => ({
+  useRouter: vi.fn(),
+  usePathname: vi.fn(),
+}))
+
+const mockUseRouter = vi.mocked(useRouter)
+const mockUsePathname = vi.mocked(usePathname)
+
+describe('Component', () => {
+  beforeEach(() => {
+    mockUseRouter.mockReturnValue({
+      push: vi.fn(),
+      pathname: '/docs',
+    })
+    mockUsePathname.mockReturnValue('/docs')
+  })
+
+  afterEach(() => {
+    vi.clearAllMocks()
+  })
+
+  it('hooks が正しく動作する', () => {
+    // テスト内容
+  })
+})
+```
+
 ### 非同期テスト
 
 ```typescript
