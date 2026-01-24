@@ -26,7 +26,7 @@ export default function SortBySelect({ sortBy }: SortBySelectProps) {
 
   return (
     <Select value={sortBy} onValueChange={handleValueChange}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-45">
         <SelectValue placeholder="並び順" />
       </SelectTrigger>
       <SelectContent>
