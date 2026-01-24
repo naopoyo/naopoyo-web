@@ -33,12 +33,5 @@ export default function GoogleAdsScript() {
   const params = new URLSearchParams({ client: `ca-pub-${GOOGLE_ADS_CLIENT}` })
   const scriptSrc = `${GOOGLE_ADS_BASE_URL}?${params.toString()}`
 
-  return (
-    <Script
-      async
-      src={scriptSrc}
-      crossOrigin="anonymous"
-      strategy="afterInteractive"
-    />
-  )
+  return <Script async src={scriptSrc} crossOrigin="anonymous" strategy="afterInteractive" />
 }
