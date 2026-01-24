@@ -754,9 +754,9 @@ const Component = ({ prop1, prop2 }: ComponentProps) => {}
 
 ```typescript
 // 正しい順序（ESLintルールに従う）
-import { render } from '@testing-library/react'  // 外部ライブラリ
-import { ReactNode } from 'react'                 // React
-import { describe } from 'vitest'                 // テストライブラリ
+import { render } from '@testing-library/react' // 外部ライブラリ
+import { ReactNode } from 'react' // React
+import { describe } from 'vitest' // テストライブラリ
 ```
 
 ##### 未使用の変数
