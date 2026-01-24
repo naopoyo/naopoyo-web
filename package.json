@@ -6,7 +6,7 @@
     "analyze": "ANALYZE=true next build",
     "build": "next build --turbopack",
     "check": "pnpm test:run && pnpm tsc --noEmit --incremental && pnpm lint",
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 3001",
     "dev:debug": "NODE_OPTIONS='--inspect' next dev",
     "format": "pnpm prettier && pnpm lint:fix",
     "format:package": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' pnpm dlx sort-package-json",
