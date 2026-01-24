@@ -55,6 +55,17 @@ const eslintConfig = defineConfig([
     settings: {
       'better-tailwindcss': {
         entryPoint: 'src/styles/globals.css',
+        // 定数変数をlint対象に含める
+        variables: [
+          [
+            '^.*_CLASS$',
+            [
+              {
+                match: 'strings',
+              },
+            ],
+          ],
+        ],
       },
     },
   },

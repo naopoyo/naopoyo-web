@@ -6,12 +6,22 @@ import NavBarMenu from './nav-bar-menu'
 import NavBarMenuFallback from './nav-bar-menu-fallback'
 import { NextLink } from '../link'
 
-const HEADER_CLASS =
-  'container mx-auto flex h-16 flex-row justify-center px-4 backdrop-blur-xl sm:sticky sm:top-0 sm:z-10'
-const LOGO_CLASS = 'text-2xl font-bold hover:text-link'
-const DESKTOP_MENU_CLASS = 'hidden flex-auto justify-end sm:flex'
-const MOBILE_MENU_WRAPPER_CLASS =
-  'sticky top-0 z-10 container overflow-auto py-2 backdrop-blur-xl sm:hidden'
+const HEADER_CLASS = `
+  container mx-auto flex h-16 flex-row justify-center px-4 backdrop-blur-xl
+  sm:sticky sm:top-0 sm:z-10
+`
+const LOGO_CLASS = `
+  text-2xl font-bold
+  hover:text-link
+`
+const DESKTOP_MENU_CLASS = `
+  hidden flex-auto justify-end
+  sm:flex
+`
+const MOBILE_MENU_WRAPPER_CLASS = `
+  sticky top-0 z-10 container overflow-auto py-2 backdrop-blur-xl
+  sm:hidden
+`
 
 /**
  * NavBar コンポーネント - サイト上部のナビゲーションバーを表示します。
