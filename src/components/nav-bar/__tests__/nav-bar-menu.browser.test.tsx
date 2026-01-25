@@ -69,7 +69,7 @@ describe('NavBarMenu', () => {
     const firstItem = items[0]
 
     const underline = firstItem?.querySelector('div.border-b')
-    expect(underline).toBeTruthy()
+    expect(underline).toBeInTheDocument()
   })
 
   it('非アクティブなセグメント下部には下線を表示しない', () => {
@@ -81,7 +81,7 @@ describe('NavBarMenu', () => {
     // Docsはアクティブ、他は非アクティブ
     for (let i = 1; i < items.length; i++) {
       const underline = items[i]?.querySelector('div.border-b')
-      expect(underline).toBeFalsy()
+      expect(underline).not.toBeInTheDocument()
     }
   })
 
@@ -90,16 +90,16 @@ describe('NavBarMenu', () => {
     const { container, rerender } = render(<NavBarMenu />)
 
     let items = container.querySelectorAll('li')
-    expect(items[0]?.querySelector('div.border-b')).toBeTruthy()
-    expect(items[1]?.querySelector('div.border-b')).toBeFalsy()
+    expect(items[0]?.querySelector('div.border-b')).toBeInTheDocument()
+    expect(items[1]?.querySelector('div.border-b')).not.toBeInTheDocument()
 
     // セグメントを'tags'に切り替え
     mockUseSelectedLayoutSegment.mockReturnValue('tags')
     rerender(<NavBarMenu />)
 
     items = container.querySelectorAll('li')
-    expect(items[0]?.querySelector('div.border-b')).toBeFalsy()
-    expect(items[1]?.querySelector('div.border-b')).toBeTruthy()
+    expect(items[0]?.querySelector('div.border-b')).not.toBeInTheDocument()
+    expect(items[1]?.querySelector('div.border-b')).toBeInTheDocument()
   })
 
   it('セグメントが null の場合、下線を表示しない', () => {
@@ -126,7 +126,7 @@ describe('NavBarMenu', () => {
     const { container } = render(<NavBarMenu />)
     const ul = container.querySelector('ul')
 
-    expect(ul).toBeTruthy()
+    expect(ul).toBeInTheDocument()
   })
 
   it('flexレイアウトでスタイリングされている', () => {
@@ -135,9 +135,9 @@ describe('NavBarMenu', () => {
     const { container } = render(<NavBarMenu />)
     const ul = container.querySelector('ul')
 
-    expect(ul?.className).toContain('flex')
-    expect(ul?.className).toContain('items-center')
-    expect(ul?.className).toContain('gap-2')
+    expect(ul).toHaveClass('flex')
+    expect(ul).toHaveClass('items-center')
+    expect(ul).toHaveClass('gap-2')
   })
 
   it('各リンク要素に適切なクラスが設定されている', () => {
@@ -147,10 +147,10 @@ describe('NavBarMenu', () => {
     const links = container.querySelectorAll('a')
 
     links.forEach((link) => {
-      expect(link.className).toContain('inline-block')
-      expect(link.className).toContain('rounded-sm')
-      expect(link.className).toContain('px-4')
-      expect(link.className).toContain('py-2')
+      expect(link).toHaveClass('inline-block')
+      expect(link).toHaveClass('rounded-sm')
+      expect(link).toHaveClass('px-4')
+      expect(link).toHaveClass('py-2')
     })
   })
 })

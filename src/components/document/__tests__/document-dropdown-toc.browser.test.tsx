@@ -38,7 +38,7 @@ describe('DocumentDropdownToc', () => {
     const { container } = render(<DocumentDropdownToc />)
     const button = container.querySelector('button')
 
-    expect(button).toBeTruthy()
+    expect(button).toBeInTheDocument()
     expect(button?.textContent).toBe('目次')
   })
 
@@ -47,7 +47,7 @@ describe('DocumentDropdownToc', () => {
     const { container } = render(<DocumentDropdownToc />)
     const button = container.querySelector('button')
 
-    expect(button).toBeTruthy()
+    expect(button).toBeInTheDocument()
     await user.click(button!)
   })
 
@@ -71,16 +71,16 @@ describe('DocumentDropdownToc', () => {
 
     // ボタンが存在することを確認
     const button = container.querySelector('button')
-    expect(button).toBeTruthy()
+    expect(button).toBeInTheDocument()
     expect(button?.textContent).toContain('目次')
   })
 
   it('ボタンのサイズとバリアントが設定されている', () => {
     const { container } = render(<DocumentDropdownToc />)
-    const button = container.querySelector('button') as HTMLButtonElement
+    const button = container.querySelector('button')
 
-    expect(button).toBeTruthy()
-    expect(button.className).toContain('h-')
-    expect(button.className).toContain('px-')
+    expect(button).toBeInTheDocument()
+    expect(button?.className).toContain('h-')
+    expect(button?.className).toContain('px-')
   })
 })

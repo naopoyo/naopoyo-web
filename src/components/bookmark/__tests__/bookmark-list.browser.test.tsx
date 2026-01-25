@@ -48,20 +48,20 @@ describe('BookmarkListSkeleton', () => {
   it('スケルトンコンポーネントをレンダリングする', () => {
     const { container } = render(<BookmarkListSkeleton />)
     const wrapper = container.querySelector('div')
-    expect(wrapper).toBeTruthy()
+    expect(wrapper).toBeInTheDocument()
   })
 
   it('flexレイアウトクラスを持つ', () => {
     const { container } = render(<BookmarkListSkeleton />)
     const wrapper = container.querySelector('div')
-    expect(wrapper?.className).toContain('flex')
-    expect(wrapper?.className).toContain('flex-col')
+    expect(wrapper).toHaveClass('flex')
+    expect(wrapper).toHaveClass('flex-col')
   })
 
   it('gap-4クラスを持つ', () => {
     const { container } = render(<BookmarkListSkeleton />)
     const wrapper = container.querySelector('div')
-    expect(wrapper?.className).toContain('gap-4')
+    expect(wrapper).toHaveClass('gap-4')
   })
 
   it('Paginationコンポーネントを2つレンダリングする', () => {
@@ -85,7 +85,7 @@ describe('BookmarkListSkeleton', () => {
   it('スケルトンの高さがh-28に設定されている', () => {
     const { container } = render(<BookmarkListSkeleton />)
     const heightElement = container.querySelector('[class*="h-28"]')
-    expect(heightElement).toBeTruthy()
+    expect(heightElement).toBeInTheDocument()
   })
 
   it('スケルトンの幅がw-fullに設定されている', () => {

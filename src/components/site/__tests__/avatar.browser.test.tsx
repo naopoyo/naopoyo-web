@@ -37,14 +37,14 @@ describe('Avatar', () => {
   describe('画像のレンダリング', () => {
     it('正しいalt属性を持つイメージを表示する', () => {
       render(<Avatar size="base" />)
-      const img = screen.getByRole('img') as HTMLImageElement
-      expect(img.alt).toBe('Avatar')
+      const img = screen.getByRole('img')
+      expect(img).toHaveAttribute('alt', 'Avatar')
     })
 
     it('正しい画像ファイルを使用する', () => {
       render(<Avatar size="base" />)
-      const img = screen.getByRole('img') as HTMLImageElement
-      expect(img.src).toContain('/naopoyo2.png')
+      const img = screen.getByRole('img')
+      expect(img).toHaveAttribute('src', expect.stringContaining('/naopoyo2.png'))
     })
   })
 

@@ -27,7 +27,7 @@ const getThemeButton = (theme: string) => {
 const waitForThemeButtons = async () => {
   await waitFor(() => {
     THEMES.forEach((theme) => {
-      expect(getThemeButton(theme)).toBeTruthy()
+      expect(getThemeButton(theme)).toBeInTheDocument()
     })
   })
 }
@@ -67,7 +67,7 @@ describe('ThemeSwitcher', () => {
 
       await waitFor(() => {
         const darkButton = getThemeButton('dark')
-        expect(darkButton.getAttribute('data-state')).toBe('on')
+        expect(darkButton).toHaveAttribute('data-state', 'on')
       })
     })
   })

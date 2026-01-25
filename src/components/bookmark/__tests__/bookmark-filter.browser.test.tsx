@@ -12,35 +12,38 @@ describe('BookmarkFilter', () => {
   it('フォームをレンダリングする', () => {
     const { container } = render(<BookmarkFilter />)
     const form = container.querySelector('form')
-    expect(form).toBeTruthy()
-    expect(form?.getAttribute('action')).toBe('/bookmarks')
-    expect(form?.getAttribute('method')).toBe('get')
+    expect(form).toBeInTheDocument()
+    expect(form).toHaveAttribute('action', '/bookmarks')
+    expect(form).toHaveAttribute('method', 'get')
   })
 
   it('検索入力フィールドの属性が正しく設定されている', () => {
     const { container } = render(<BookmarkFilter />)
-    const input = container.querySelector('input[type="search"]') as HTMLInputElement
-    expect(input).toBeTruthy()
-    expect(input.name).toBe('keyword')
-    expect(input.placeholder).toBe('キーワードを入力して検索')
-    expect(input.className).toContain('text-base')
+    const input = container.querySelector('input[type="search"]')
+    expect(input).toBeInTheDocument()
+    expect(input).toHaveAttribute('name', 'keyword')
+    expect(input).toHaveAttribute('placeholder', 'キーワードを入力して検索')
+    expect(input).toHaveClass('text-base')
   })
 
   it('keywordが提供されていない場合、入力フィールドは空である', () => {
     const { container } = render(<BookmarkFilter />)
     const input = container.querySelector('input[type="search"]') as HTMLInputElement
+    expect(input).toBeInTheDocument()
     expect(input.value).toBe('')
   })
 
   it('keywordが提供されている場合、デフォルト値として表示される', () => {
     const { container } = render(<BookmarkFilter keyword="テスト" />)
     const input = container.querySelector('input[type="search"]') as HTMLInputElement
+    expect(input).toBeInTheDocument()
     expect(input.value).toBe('テスト')
   })
 
   it('keywordが空文字列の場合、入力フィールドは空である', () => {
     const { container } = render(<BookmarkFilter keyword="" />)
     const input = container.querySelector('input[type="search"]') as HTMLInputElement
+    expect(input).toBeInTheDocument()
     expect(input.value).toBe('')
   })
 
@@ -49,6 +52,7 @@ describe('BookmarkFilter', () => {
     const { container } = render(<BookmarkFilter />)
     const input = container.querySelector('input[type="search"]') as HTMLInputElement
 
+    expect(input).toBeInTheDocument()
     await user.type(input, 'テスト検索')
     expect(input.value).toBe('テスト検索')
   })
@@ -58,6 +62,7 @@ describe('BookmarkFilter', () => {
     const { container } = render(<BookmarkFilter keyword="初期値" />)
     const input = container.querySelector('input[type="search"]') as HTMLInputElement
 
+    expect(input).toBeInTheDocument()
     await user.clear(input)
     expect(input.value).toBe('')
   })

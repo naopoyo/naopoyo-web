@@ -24,19 +24,19 @@ describe('Footer コンポーネント', () => {
   describe('子コンポーネント', () => {
     it('SNSリストがレンダリングされること', () => {
       render(<Footer />)
-      expect(screen.getByTestId('mock-sns-list')).toBeTruthy()
+      expect(screen.getByTestId('mock-sns-list')).toBeInTheDocument()
     })
 
     it('テーマスイッチャーがレンダリングされること', () => {
       render(<Footer />)
-      expect(screen.getByTestId('mock-theme-switcher')).toBeTruthy()
+      expect(screen.getByTestId('mock-theme-switcher')).toBeInTheDocument()
     })
   })
 
   describe('コンテンツ', () => {
     it('著作表示が正しく表示されること', () => {
       render(<Footer />)
-      expect(screen.getByText('© naopoyo')).toBeTruthy()
+      expect(screen.getByText('© naopoyo')).toBeInTheDocument()
     })
   })
 
@@ -44,7 +44,7 @@ describe('Footer コンポーネント', () => {
     it('footer 要素としてレンダリングされること', () => {
       render(<Footer />)
       const footer = screen.queryByRole('contentinfo') || document.querySelector('footer')
-      expect(footer).toBeTruthy()
+      expect(footer).toBeInTheDocument()
     })
   })
 })

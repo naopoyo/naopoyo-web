@@ -50,8 +50,8 @@ describe('NavBar', () => {
       const header = container.querySelector('header')
       const mobileMenuWrapper = container.querySelector('div.sticky')
 
-      expect(header).toBeTruthy()
-      expect(mobileMenuWrapper).toBeTruthy()
+      expect(header).toBeInTheDocument()
+      expect(mobileMenuWrapper).toBeInTheDocument()
     })
 
     it('ロゴが「naopoyo.com」を表示する', () => {
@@ -65,11 +65,11 @@ describe('NavBar', () => {
       const { container } = render(<NavBar />)
 
       const header = container.querySelector('header')
-      expect(header?.className).toContain('container')
-      expect(header?.className).toContain('mx-auto')
-      expect(header?.className).toContain('flex')
-      expect(header?.className).toContain('h-16')
-      expect(header?.className).toContain('backdrop-blur-xl')
+      expect(header).toHaveClass('container')
+      expect(header).toHaveClass('mx-auto')
+      expect(header).toHaveClass('flex')
+      expect(header).toHaveClass('h-16')
+      expect(header).toHaveClass('backdrop-blur-xl')
     })
   })
 
@@ -78,14 +78,14 @@ describe('NavBar', () => {
       const { container } = render(<NavBar />)
 
       const desktopMenu = container.querySelector('div.hidden.sm\\:flex')
-      expect(desktopMenu).toBeTruthy()
+      expect(desktopMenu).toBeInTheDocument()
     })
 
     it('モバイル表示では非表示になる', () => {
       const { container } = render(<NavBar />)
 
       const desktopMenu = container.querySelector('div.hidden.sm\\:flex')
-      expect(desktopMenu?.className).toContain('hidden')
+      expect(desktopMenu).toHaveClass('hidden')
     })
   })
 
@@ -94,17 +94,17 @@ describe('NavBar', () => {
       const { container } = render(<NavBar />)
 
       const mobileMenu = container.querySelector('div.sm\\:hidden')
-      expect(mobileMenu).toBeTruthy()
+      expect(mobileMenu).toBeInTheDocument()
     })
 
     it('モバイルメニューが正しいクラス名を持つ', () => {
       const { container } = render(<NavBar />)
 
       const mobileMenu = container.querySelector('div.sm\\:hidden')
-      expect(mobileMenu?.className).toContain('sticky')
-      expect(mobileMenu?.className).toContain('top-0')
-      expect(mobileMenu?.className).toContain('z-10')
-      expect(mobileMenu?.className).toContain('backdrop-blur-xl')
+      expect(mobileMenu).toHaveClass('sticky')
+      expect(mobileMenu).toHaveClass('top-0')
+      expect(mobileMenu).toHaveClass('z-10')
+      expect(mobileMenu).toHaveClass('backdrop-blur-xl')
     })
   })
 
@@ -113,7 +113,7 @@ describe('NavBar', () => {
       const { container } = render(<NavBar />)
 
       const ulElement = container.querySelector('ul')
-      expect(ulElement).toBeTruthy()
+      expect(ulElement).toBeInTheDocument()
     })
   })
 
@@ -121,17 +121,17 @@ describe('NavBar', () => {
     it('ロゴが正しいhrefを持つ', () => {
       const { container } = render(<NavBar />)
 
-      const logoLink = container.querySelector('a[href="/"]') as HTMLAnchorElement
-      expect(logoLink).toBeTruthy()
-      expect(logoLink.href).toContain('/')
+      const logoLink = container.querySelector('a[href="/"]')
+      expect(logoLink).toBeInTheDocument()
+      expect(logoLink).toHaveAttribute('href', '/')
     })
 
     it('ロゴが正しいクラス名を持つ', () => {
       const { container } = render(<NavBar />)
 
       const logoDiv = container.querySelector('div.text-2xl')
-      expect(logoDiv?.className).toContain('text-2xl')
-      expect(logoDiv?.className).toContain('font-bold')
+      expect(logoDiv).toHaveClass('text-2xl')
+      expect(logoDiv).toHaveClass('font-bold')
     })
   })
 
@@ -140,23 +140,23 @@ describe('NavBar', () => {
       const { container } = render(<NavBar />)
 
       const header = container.querySelector('header')
-      expect(header?.className).toContain('sm:sticky')
-      expect(header?.className).toContain('sm:top-0')
-      expect(header?.className).toContain('sm:z-10')
+      expect(header).toHaveClass('sm:sticky')
+      expect(header).toHaveClass('sm:top-0')
+      expect(header).toHaveClass('sm:z-10')
     })
 
     it('モバイルメニューが sm サイズで非表示になる', () => {
       const { container } = render(<NavBar />)
 
       const mobileMenu = container.querySelector('div.sm\\:hidden')
-      expect(mobileMenu?.className).toContain('sm:hidden')
+      expect(mobileMenu).toHaveClass('sm:hidden')
     })
 
     it('デスクトップメニューが sm サイズで表示される', () => {
       const { container } = render(<NavBar />)
 
       const desktopMenu = container.querySelector('div.hidden.sm\\:flex')
-      expect(desktopMenu?.className).toContain('sm:flex')
+      expect(desktopMenu).toHaveClass('sm:flex')
     })
   })
 })
