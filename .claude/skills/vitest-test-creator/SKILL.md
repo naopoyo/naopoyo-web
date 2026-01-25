@@ -106,13 +106,14 @@ describe('createDateFormat', () => {
 ```typescript
 // ブラウザテストの例
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { ThemeSwitcher } from './theme-switcher'
 
 describe('ThemeSwitcher', () => {
   it('テーマ切り替えボタンを表示する', () => {
-    render(<ThemeSwitcher />)
-    expect(screen.getByRole('button')).toBeInTheDocument()
+    const { container } = render(<ThemeSwitcher />)
+    const button = container.querySelector('button')
+    expect(button).toBeInTheDocument()
   })
 })
 ```
@@ -163,7 +164,7 @@ describe('targetFunction', () => {
 
 ```typescript
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { TargetComponent } from '../TargetComponent'
 
@@ -174,18 +175,20 @@ describe('TargetComponent', () => {
 
   afterEach(() => {
     // 各テスト後のクリーンアップ
+    cleanup()
   })
 
   it('期待する動作を説明', async () => {
     // Arrange（準備）
     const user = userEvent.setup()
-    render(<TargetComponent />)
+    const { container } = render(<TargetComponent />)
 
     // Act（実行）
-    await user.click(screen.getByRole('button'))
+    const button = container.querySelector('button')
+    await user.click(button!)
 
-    // Assert（検証）
-    expect(screen.getByText('result')).toBeInTheDocument()
+    // Assert（検証）- jest-dom マッチャー推奨
+    expect(container.querySelector('[data-result]')).toBeInTheDocument()
   })
 })
 ```
@@ -203,6 +206,8 @@ describe('formatDate', () => {
 ```
 
 ## アサーション
+
+### 基本的なマッチャー
 
 ```typescript
 // 等価性
@@ -240,6 +245,32 @@ expect(() => fn()).toThrow(ErrorClass)
 await expect(asyncFn()).resolves.toBe(value)
 await expect(asyncFn()).rejects.toThrow()
 ```
+
+### jest-dom マッチャー（ブラウザテスト推奨）
+
+このプロジェクトでは `@testing-library/jest-dom/vitest` がセットアップされており、以下のマッチャーが使用できます：
+
+```typescript
+// DOM 要素の存在確認（推奨）
+expect(element).toBeInTheDocument() // 要素が DOM に存在
+expect(element).not.toBeInTheDocument() // 要素が DOM に存在しない
+
+// 属性チェック
+expect(element).toHaveAttribute('name', 'keyword')
+expect(element).toHaveAttribute('href', '/')
+expect(element).toHaveAttribute('aria-label', expect.stringContaining('search'))
+
+// クラス名チェック（推奨）
+expect(element).toHaveClass('text-base')
+expect(element).toHaveClass('flex', 'items-center') // 複数クラス
+
+// 表示・可視性
+expect(element).toBeVisible()
+expect(element).toBeDisabled()
+expect(element).toBeChecked()
+```
+
+**推奨パターン：** ブラウザテストではこれら jest-dom マッチャーを活用することで、テストの可読性が向上します。
 
 ## テストタイプ別ガイド
 
@@ -306,6 +337,7 @@ describe('Button', () => {
   it('ラベルを表示する', () => {
     const { container } = render(<Button>Click me</Button>)
     const button = container.querySelector('button')
+    expect(button).toBeInTheDocument()
     expect(button?.textContent).toBe('Click me')
   })
 
@@ -315,6 +347,7 @@ describe('Button', () => {
     const { container } = render(<Button onClick={onClick}>Click</Button>)
     const button = container.querySelector('button')
 
+    expect(button).toBeInTheDocument()
     await user.click(button!)
     expect(onClick).toHaveBeenCalledOnce()
   })
@@ -323,9 +356,10 @@ describe('Button', () => {
     const user = userEvent.setup()
     const onClick = vi.fn()
     const { container } = render(<Button onClick={onClick} disabled>Click</Button>)
-    const button = container.querySelector('button') as HTMLButtonElement
+    const button = container.querySelector('button')
 
-    await user.click(button)
+    expect(button).toBeDisabled()
+    await user.click(button!)
     expect(onClick).not.toHaveBeenCalled()
   })
 })
@@ -343,6 +377,11 @@ describe('Button', () => {
 - `userEvent` - ブラウザの実際の動作に近いユーザーイベントをシミュレート（推奨）
   - `user.click()`, `user.type()`, `user.clear()` など
 - `cleanup()` - テスト後の DOM をクリア（`afterEach` で呼び出す）
+- **jest-dom マッチャー**（推奨）
+  - `toBeInTheDocument()` - 要素が DOM に存在することを確認
+  - `toHaveAttribute()` - 属性値をチェック
+  - `toHaveClass()` - クラス名をチェック
+  - `toBeDisabled()`, `toBeVisible()` など
 - `screen.getByRole()` / `screen.getByText()` などは複数要素がある場合エラーになるため、具体的に1つの要素が存在する場合のみ使用
 
 ---
@@ -632,27 +671,70 @@ describe('fetchData', () => {
 })
 ```
 
+## jest-dom マッチャーのセットアップ
+
+### 必要な設定
+
+このプロジェクトでは `@testing-library/jest-dom/vitest` がセットアップされています。セットアップ内容：
+
+1. **vitest.setup.ts** - jest-dom マッチャーを初期化
+
+```typescript
+import '@testing-library/jest-dom/vitest'
+```
+
+2. **vitest.config.mts** - ブラウザテストプロジェクトで setupFiles を指定
+
+```typescript
+defineProject({
+  test: {
+    setupFiles: ['./vitest.setup.ts'],
+    // ... 他の設定
+  },
+})
+```
+
+これでブラウザテスト（`.browser.test.tsx`）で jest-dom マッチャーが使用できます。
+
+### ブラウザテストでの推奨パターン
+
+```typescript
+// ✅ Good: jest-dom マッチャーを活用
+it('入力フィールドの属性が正しく設定されている', () => {
+  const { container } = render(<BookmarkFilter />)
+  const input = container.querySelector('input[type="search"]')
+
+  expect(input).toBeInTheDocument()
+  expect(input).toHaveAttribute('name', 'keyword')
+  expect(input).toHaveAttribute('placeholder', 'キーワードを入力して検索')
+  expect(input).toHaveClass('text-base')
+})
+
+// ❌ Bad: 標準マッチャーのみで冗長
+it('入力フィールドの属性が正しく設定されている', () => {
+  const { container } = render(<BookmarkFilter />)
+  const input = container.querySelector('input[type="search"]') as HTMLInputElement
+
+  expect(input).toBeTruthy()
+  expect(input.getAttribute('name')).toBe('keyword')
+  expect(input.getAttribute('placeholder')).toBe('キーワードを入力して検索')
+  expect(input.className).toContain('text-base')
+})
+```
+
 ## よくある失敗とトラブルシューティング
 
-### 問題1: カスタムマッチャー（`toBeInTheDocument` など）が見つからない
+### 問題1: jest-dom マッチャーが見つからない場合
 
 **エラー：** `Property 'toBeInTheDocument' does not exist on type 'Assertion<HTMLElement>'`
 
-**原因：** `@testing-library/jest-dom` や `vitest-dom` がインストールされていません。
+**原因：** 通常、このプロジェクトではセットアップが済んでいるため発生しませんが、新しいテストファイルで発生した場合は以下を確認してください。
 
-**解決策：** 標準的なマッチャーを使用してください。
+**確認事項：**
 
-```typescript
-// Bad（拡張マッチャーが必要）
-expect(element).toBeInTheDocument()
-expect(element).toHaveAttribute('name', 'keyword')
-expect(element).toHaveClass('text-base')
-
-// Good（標準マッチャー）
-expect(element).toBeTruthy()
-expect(element?.getAttribute('name')).toBe('keyword')
-expect(element?.className).toContain('text-base')
-```
+- [ ] テストファイルが `.browser.test.tsx` 拡張子になっているか（ユニットテストは `.unit.test.ts`）
+- [ ] `vitest.config.mts` で ブラウザテストプロジェクトに `setupFiles: ['./vitest.setup.ts']` が設定されているか
+- [ ] `vitest.setup.ts` に `import '@testing-library/jest-dom/vitest'` が存在するか
 
 ---
 
