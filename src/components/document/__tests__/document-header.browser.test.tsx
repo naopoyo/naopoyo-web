@@ -181,8 +181,8 @@ describe('DocumentHeader', () => {
 
     it('プレビュー画像がない場合は表示しない', () => {
       const { container } = render(<DocumentHeader document={mockDocument} />)
-      const imgs = Array.from(container.querySelectorAll('img')).filter(
-        (img) => img.src.includes('example.com/preview')
+      const imgs = Array.from(container.querySelectorAll('img')).filter((img) =>
+        img.src.includes('example.com/preview')
       )
 
       expect(imgs.length).toBe(0)

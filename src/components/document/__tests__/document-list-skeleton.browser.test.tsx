@@ -4,7 +4,9 @@ import { describe, it, expect, afterEach, vi } from 'vitest'
 import DocumentListSkeleton from '../document-list-skeleton'
 
 vi.mock('@/components/ui/skeleton', () => ({
-  Skeleton: ({ className }: { className: string }) => <div data-testid="skeleton" className={className} />,
+  Skeleton: ({ className }: { className: string }) => (
+    <div data-testid="skeleton" className={className} />
+  ),
 }))
 
 describe('DocumentListSkeleton', () => {
