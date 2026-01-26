@@ -7,24 +7,46 @@ import type { DocumentList as DocumentListType } from '@/lib/hackersheet'
 
 /**
  * DocumentList コンポーネントの Props
- *
- * @property {DocumentListType} documents - レンダリングするドキュメント配列
  */
 export type DocumentListProps = {
   /** レンダリング対象のドキュメント配列 */
   documents: DocumentListType
 }
 
+/**
+ * 日付フォーマッター
+ * @internal
+ */
 const DATE_FORMAT = createDateFormat('yyyy年MM月dd日')
+
+/**
+ * グリッドコンテナの CSS クラス
+ * @internal
+ */
 const GRID_CONTAINER_CLASS = `
   grid grid-cols-1 gap-8
   md:grid-cols-3
 `
+
+/**
+ * ドキュメントカードの CSS クラス
+ * @internal
+ */
 const CARD_CLASS = `
   row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl border bg-card p-6
   hover:bg-card/50
 `
+
+/**
+ * タグの CSS クラス
+ * @internal
+ */
 const TAG_CLASS = 'rounded-sm border bg-secondary px-2 py-1 text-xs text-foreground'
+
+/**
+ * メタデータの CSS クラス
+ * @internal
+ */
 const METADATA_CLASS = 'flex flex-col gap-4 text-center text-xs text-muted-foreground'
 
 /**

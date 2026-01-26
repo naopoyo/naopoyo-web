@@ -2,14 +2,16 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 /**
  * DocumentListSkeleton コンポーネントの Props
- *
- * @property {number} length - レンダリングするスケルトンの数
  */
 export type DocumentListSkeletonProps = {
   /** レンダリングするスケルトン数 */
   length: number
 }
 
+/**
+ * グリッドコンテナの CSS クラス
+ * @internal
+ */
 const GRID_CONTAINER_CLASS = `
   grid grid-cols-1 gap-8
   md:grid-cols-3

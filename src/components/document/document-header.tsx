@@ -8,15 +8,53 @@ import type { Document } from '@/lib/hackersheet'
 
 /**
  * DocumentHeader コンポーネントの Props
- *
- * @property {Document} document - 表示するドキュメント
  */
 export interface DocumentHeaderProps {
   /** 表示するドキュメント */
   document: Document
 }
 
+/**
+ * 日付フォーマッター
+ * @internal
+ */
 const DATE_FORMAT = createDateFormat('yyyy-MM-dd')
+
+/**
+ * ドキュメント更新日が公開日と異なるかを判定します。
+ *
+ * @param document - ドキュメント
+ * @returns 更新日が公開日と異なる場合は true
+ * @internal
+ */
+function shouldShowModifiedDate(document: Document): boolean {
+  return document.publishedAt !== document.modifiedAt
+}
+
+/**
+ * ドキュメントがタグを持つかを判定します。
+ *
+ * @param document - ドキュメント
+ * @returns タグが存在する場合は true
+ * @internal
+ */
+function shouldShowTags(document: Document): boolean {
+  return document.tags.length > 0
+}
+
+/**
+ * GitHub 履歴ページの URL を生成します。
+ *
+ * @param document - ドキュメント
+ * @returns GitHub URL、または undefined（リポジトリ URL が未設定の場合）
+ * @internal
+ */
+function generateHistoryUrl(document: Document): string | undefined {
+  if (!HACKERSHEET_GITHUB_REPO_URL) {
+    return undefined
+  }
+  return `${HACKERSHEET_GITHUB_REPO_URL}/commits/main/${document.path}`
+}
 
 /**
  * DocumentHeader コンポーネント - ドキュメントのタイトルと基本情報を表示します
@@ -28,11 +66,9 @@ const DATE_FORMAT = createDateFormat('yyyy-MM-dd')
  * @returns ドキュメント情報とメタデータを表示する JSX 要素
  */
 export default function DocumentHeader({ document }: DocumentHeaderProps) {
-  const showModified = document.publishedAt !== document.modifiedAt
-  const showTags = document.tags.length > 0
-  const historyUrl = HACKERSHEET_GITHUB_REPO_URL
-    ? HACKERSHEET_GITHUB_REPO_URL + '/commits/main/' + document.path
-    : undefined
+  const showModified = shouldShowModifiedDate(document)
+  const showTags = shouldShowTags(document)
+  const historyUrl = generateHistoryUrl(document)
 
   return (
     <div className="flex flex-col gap-10">

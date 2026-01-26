@@ -3,9 +3,6 @@ import { Input } from '../ui/input'
 
 /**
  * DocumentFilter コンポーネントの Props
- *
- * @property {string} [keyword] - 検索キーワード
- * @property {string} [sortBy] - ドキュメントのソート順
  */
 export type DocumentFilterProps = {
   /** 検索キーワード */
@@ -14,6 +11,10 @@ export type DocumentFilterProps = {
   sortBy?: string
 }
 
+/**
+ * フィルターコンテナの CSS クラス
+ * @internal
+ */
 const FILTER_CONTAINER_CLASS = `
   flex flex-col items-center justify-center gap-4
   md:flex-row

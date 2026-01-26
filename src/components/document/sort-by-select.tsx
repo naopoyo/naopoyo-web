@@ -16,14 +16,16 @@ import { useCreateQueryString } from '@/hooks'
 
 /**
  * SortBySelect コンポーネントの Props
- *
- * @property {string} [sortBy] - 現在選択されているソート順
  */
 export type SortBySelectProps = {
   /** 現在選択されているソート順（'published_at' または 'modified_at'） */
   sortBy?: string
 }
 
+/**
+ * ドキュメントの並び順オプション
+ * @internal
+ */
 const SORT_OPTIONS = [
   { value: 'published_at', label: '最近公開された' },
   { value: 'modified_at', label: '最近更新された' },

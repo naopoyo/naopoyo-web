@@ -7,7 +7,16 @@ import { TOCBOT_BASE_OPTIONS } from '@/constants'
 import { documentContentStyle } from '@/lib/hackersheet/style'
 import tocStyles from '@/styles/document-toc.module.scss'
 
+/**
+ * 目次用の DOM セレクタ
+ * @internal
+ */
 const TOC_SELECTOR = `.${tocStyles.main}`
+
+/**
+ * ドキュメントコンテンツ用の DOM セレクタ
+ * @internal
+ */
 const CONTENT_SELECTOR = `.${documentContentStyle.main}`
 
 /**
