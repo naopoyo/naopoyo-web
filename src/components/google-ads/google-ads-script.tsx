@@ -2,6 +2,8 @@ import Script from 'next/script'
 
 import { GOOGLE_ADS_CLIENT, isProduction } from '@/constants'
 
+import type { ReactElement } from 'react'
+
 /**
  * Google AdSenseスクリプトローダーコンポーネント
  *
@@ -14,8 +16,6 @@ import { GOOGLE_ADS_CLIENT, isProduction } from '@/constants'
  * <GoogleAdsScript />
  * ```
  *
- * @returns {JSX.Element | null} Script要素、またはスキップ条件下ではnull
- *
  * @remarks
  * - 本番環境（isProduction）でのみスクリプトを読み込み
  * - GOOGLE_ADS_CLIENTが設定されている必要があります
@@ -24,7 +24,7 @@ import { GOOGLE_ADS_CLIENT, isProduction } from '@/constants'
  *
  * @see https://support.google.com/adsense/answer/7670025
  */
-export default function GoogleAdsScript() {
+export default function GoogleAdsScript(): ReactElement | null {
   if (!isProduction || !GOOGLE_ADS_CLIENT) {
     return null
   }
