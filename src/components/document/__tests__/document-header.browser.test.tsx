@@ -1,7 +1,12 @@
 import { render, cleanup } from '@testing-library/react'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 
-import { documentFactory, documentWithTagsFactory, documentWithPreviewFactory, documentWithModifiedDateFactory } from '@tests/factories/document'
+import {
+  documentFactory,
+  documentWithTagsFactory,
+  documentWithPreviewFactory,
+  documentWithModifiedDateFactory,
+} from '@tests/factories/document'
 
 import DocumentHeader from '../document-header'
 
