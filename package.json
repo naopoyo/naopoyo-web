@@ -54,6 +54,7 @@
     "tocbot": "4.36.4"
   },
   "devDependencies": {
+    "@faker-js/faker": "10.2.0",
     "@next/bundle-analyzer": "16.1.4",
     "@tailwindcss/postcss": "4.1.18",
     "@testing-library/dom": "10.4.1",
@@ -74,6 +75,7 @@
     "eslint-plugin-better-tailwindcss": "4.0.1",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-unused-imports": "4.3.0",
+    "fishery": "2.4.0",
     "msw": "2.12.7",
     "postcss": "8.5.6",
     "prettier": "3.8.1",
