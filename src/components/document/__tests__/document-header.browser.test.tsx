@@ -1,6 +1,8 @@
 import { render, cleanup } from '@testing-library/react'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 
+import { documentFactory, documentWithTagsFactory, documentWithPreviewFactory, documentWithModifiedDateFactory } from '@tests/factories/document'
+
 import DocumentHeader from '../document-header'
 
 import type { Document } from '@/lib/hackersheet'
@@ -38,24 +40,9 @@ vi.mock('@/utils', () => ({
   },
 }))
 
-const publishedDateStr = '2024-01-01T00:00:00Z'
-
-const mockDocument = {
-  id: '1',
-  title: 'Test Document',
-  emoji: '😀',
-  slug: 'test-document',
-  path: 'test-document.md',
-  description: 'Test description',
-  content: 'Test content',
-  publishedAt: publishedDateStr,
-  modifiedAt: publishedDateStr,
-  preview: null,
-  tags: [],
-} as unknown as Document
-
-const renderComponent = (document = mockDocument) => {
-  return render(<DocumentHeader document={document} />)
+const renderComponent = (document?: Document) => {
+  const testDoc = document || documentFactory.build()
+  return render(<DocumentHeader document={testDoc} />)
 }
 
 describe('DocumentHeader', () => {
@@ -66,18 +53,20 @@ describe('DocumentHeader', () => {
 
   describe('基本動作', () => {
     it('ドキュメントのタイトルを表示する', () => {
-      const { container } = renderComponent()
+      const title = 'Test Document Title'
+      const { container } = renderComponent(documentFactory.build({ title }))
       const heading = container.querySelector('h1')
 
-      expect(heading?.textContent).toContain('Test Document')
+      expect(heading?.textContent).toContain(title)
     })
 
     it('ドキュメントの絵文字を表示する', () => {
-      const { container } = renderComponent()
-      const emoji = container.querySelector('[data-testid="emoji"]')
+      const emoji = '😀'
+      const { container } = renderComponent(documentFactory.build({ emoji }))
+      const emojiElement = container.querySelector('[data-testid="emoji"]')
 
-      expect(emoji).toBeInTheDocument()
-      expect(emoji?.textContent).toBe('😀')
+      expect(emojiElement).toBeInTheDocument()
+      expect(emojiElement?.textContent).toBe(emoji)
     })
 
     it('公開日を表示する', () => {
@@ -90,14 +79,7 @@ describe('DocumentHeader', () => {
 
   describe('更新日の表示', () => {
     it('更新日が公開日と異なる場合は更新日を表示する', () => {
-      const publishedDateStr = '2024-01-01T00:00:00Z'
-      const modifiedDateStr = '2024-01-15T00:00:00Z'
-
-      const docWithModified = {
-        ...mockDocument,
-        publishedAt: publishedDateStr,
-        modifiedAt: modifiedDateStr,
-      } as unknown as Document
+      const docWithModified = documentWithModifiedDateFactory.build()
 
       const { container } = renderComponent(docWithModified)
       const allText = container.textContent || ''
@@ -106,13 +88,7 @@ describe('DocumentHeader', () => {
     })
 
     it('更新日が公開日と同じ場合は更新日を表示しない', () => {
-      const sameDateStr = '2024-01-01T00:00:00Z'
-
-      const docWithoutModified = {
-        ...mockDocument,
-        publishedAt: sameDateStr,
-        modifiedAt: sameDateStr,
-      } as unknown as Document
+      const docWithoutModified = documentFactory.build()
 
       const { container } = renderComponent(docWithoutModified)
       const allText = container.textContent || ''
@@ -123,13 +99,7 @@ describe('DocumentHeader', () => {
 
   describe('タグの表示', () => {
     it('タグがある場合はタグを表示する', () => {
-      const docWithTags = {
-        ...mockDocument,
-        tags: [
-          { id: '1', name: 'JavaScript' },
-          { id: '2', name: 'React' },
-        ],
-      } as unknown as Document
+      const docWithTags = documentWithTagsFactory.build()
 
       const { container } = renderComponent(docWithTags)
       const tags = container.querySelectorAll('[data-testid="tag"]')
@@ -140,7 +110,8 @@ describe('DocumentHeader', () => {
     })
 
     it('タグがない場合はタグセクションを表示しない', () => {
-      const { container } = renderComponent()
+      const docWithoutTags = documentFactory.build({ tags: [] })
+      const { container } = renderComponent(docWithoutTags)
       const tags = container.querySelectorAll('[data-testid="tag"]')
 
       expect(tags.length).toBe(0)
@@ -157,40 +128,32 @@ describe('DocumentHeader', () => {
     })
 
     it('GitHub リンクが正しい URL を持つ', () => {
-      const { container } = renderComponent()
+      const path = 'test-document.md'
+      const { container } = renderComponent(documentFactory.build({ path }))
       const link = container.querySelector('[data-testid="github-link"]') as HTMLAnchorElement
 
       expect(link?.href).toContain('https://github.com/example/repo')
-      expect(link?.href).toContain('test-document.md')
+      expect(link?.href).toContain(path)
     })
   })
 
   describe('プレビュー画像', () => {
     it('プレビュー画像がある場合は表示する', () => {
-      const docWithPreview: Document = {
-        ...mockDocument,
-        preview: {
-          id: 'preview-1',
-          fileUrl: 'https://example.com/preview.jpg',
-          width: 800,
-          height: 600,
-        },
-      } as Document
+      const docWithPreview = documentWithPreviewFactory.build()
 
       const { container } = renderComponent(docWithPreview)
       const img = container.querySelector('img')
 
       expect(img).toBeInTheDocument()
-      expect(img?.src).toBe('https://example.com/preview.jpg')
+      expect(img?.src).toBe(docWithPreview.preview?.fileUrl)
       expect(img?.getAttribute('width')).toBe('800')
       expect(img?.getAttribute('height')).toBe('600')
     })
 
     it('プレビュー画像がない場合は表示しない', () => {
-      const { container } = renderComponent()
-      const imgs = Array.from(container.querySelectorAll('img')).filter((img) =>
-        img.src.includes('example.com/preview')
-      )
+      const docWithoutPreview = documentFactory.build({ preview: null })
+      const { container } = renderComponent(docWithoutPreview)
+      const imgs = container.querySelectorAll('img')
 
       expect(imgs.length).toBe(0)
     })

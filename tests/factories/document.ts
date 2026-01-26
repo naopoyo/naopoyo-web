@@ -10,6 +10,7 @@ import type { Document } from '@hackersheet/core'
 export const documentFactory = Factory.define<Document>(() => {
   const title = faker.lorem.sentence()
   const slug = faker.helpers.slugify(title).toLowerCase()
+  const publishedAt = faker.date.past({ years: 1 }).toISOString()
 
   return {
     id: faker.string.uuid(),
@@ -19,15 +20,46 @@ export const documentFactory = Factory.define<Document>(() => {
     draft: faker.datatype.boolean({ probability: 0.2 }),
     content: faker.lorem.paragraphs(3, '\n\n'),
     path: `${slug}.md`,
-    publishedAt: faker.date.past({ years: 1 }).toISOString(),
-    modifiedAt: faker.date.recent().toISOString(),
+    publishedAt,
+    modifiedAt: publishedAt,
     tags: Array.from({ length: faker.number.int({ min: 0, max: 3 }) }, () => ({
       id: faker.string.uuid(),
       name: faker.lorem.word(),
     })),
+    description: faker.lorem.sentence(),
+    preview: null,
     assets: [],
     outboundLinkDocuments: [],
     inboundLinkDocuments: [],
     websites: [],
   }
+})
+
+/**
+ * プレビュー画像付きのドキュメント
+ */
+export const documentWithPreviewFactory = documentFactory.params({
+  preview: {
+    id: faker.string.uuid(),
+    fileUrl: faker.image.url(),
+    width: 800,
+    height: 600,
+  },
+})
+
+/**
+ * 複数のタグを持つドキュメント
+ */
+export const documentWithTagsFactory = documentFactory.params({
+  tags: [
+    { id: faker.string.uuid(), name: 'JavaScript' },
+    { id: faker.string.uuid(), name: 'React' },
+  ],
+})
+
+/**
+ * 更新日が異なるドキュメント
+ */
+export const documentWithModifiedDateFactory = documentFactory.params({
+  modifiedAt: faker.date.recent().toISOString(),
 })
