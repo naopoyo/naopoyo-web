@@ -209,6 +209,43 @@ vi.mock('next/link', () => ({
 
 ---
 
+## テストデータファクトリー
+
+fisheryと@faker-js/fakerを使用して、再利用可能で現実的なテストデータを生成：
+
+```typescript
+// tests/factories/user.ts
+import { faker } from '@faker-js/faker'
+import { Factory } from 'fishery'
+import type { User } from '@/types'
+
+export const userFactory = Factory.define<User>(() => ({
+  id: faker.string.uuid(),
+  email: faker.internet.email(),
+  name: faker.person.fullName(),
+  role: faker.helpers.arrayElement(['user', 'admin']),
+  createdAt: faker.date.past().toISOString(),
+}))
+```
+
+テストでの使用：
+
+```typescript
+const user = userFactory.build() // デフォルト値で生成
+const adminUser = userFactory.build({ role: 'admin' }) // フィールドをオーバーライド
+const users = userFactory.buildList(5) // 複数生成
+```
+
+**利点:**
+- ✅ テストデータを一元管理
+- ✅ 現実的でランダムなデータ生成
+- ✅ テスト間での一貫性確保
+- ✅ 複雑なオブジェクト構築の簡潔化
+
+詳細は [test-data-factories.md](references/test-data-factories.md) を参照。
+
+---
+
 ## ファイル配置・命名規則
 
 テストファイルは対象と同じ階層の `__tests__/` に配置：
@@ -236,6 +273,7 @@ src/
 
 - **ユニットテスト詳細** → [unit-testing.md](references/unit-testing.md)
 - **ブラウザテスト詳細** → [browser-testing.md](references/browser-testing.md)
+- **テストデータファクトリー** → [test-data-factories.md](references/test-data-factories.md)
 - **モック完全ガイド** → [mocking.md](references/mocking.md)
 - **jest-dom マッチャー** → [jest-dom-matchers.md](references/jest-dom-matchers.md)
 - **開発ワークフロー** → [workflow.md](references/workflow.md)

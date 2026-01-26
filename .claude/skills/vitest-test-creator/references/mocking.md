@@ -155,6 +155,42 @@ describe('fetchData', () => {
 })
 ```
 
+## ファクトリーとモックの組み合わせ
+
+テストデータの生成にはファクトリーを、依存関係のモックには`vi.fn()`を使い分け：
+
+```typescript
+import { userFactory } from '@tests/factories/user'
+import { UserService } from './user-service'
+
+describe('UserService', () => {
+  it('ユーザー情報を更新する', async () => {
+    const mockRepository = {
+      save: vi.fn().mockResolvedValue(true),
+    }
+    const service = new UserService(mockRepository)
+
+    // ファクトリーで現実的なテストデータを生成
+    const user = userFactory.build()
+    user.name = 'Updated Name'
+
+    const result = await service.updateUser(user)
+
+    expect(result).toBe(true)
+    expect(mockRepository.save).toHaveBeenCalledWith(user)
+  })
+})
+```
+
+**使い分け:**
+
+- **ファクトリー** - テスト対象のモデル・エンティティ
+- **モック関数** - API呼び出し、データベース操作、外部サービス
+
+詳細は [test-data-factories.md](test-data-factories.md) を参照。
+
+---
+
 ## ベストプラクティス
 
 ### 1. モックは最小限に
