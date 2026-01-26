@@ -38,35 +38,42 @@ vi.mock('@/utils', () => ({
   },
 }))
 
+const publishedDateStr = '2024-01-01T00:00:00Z'
+
+const mockDocument = {
+  id: '1',
+  title: 'Test Document',
+  emoji: '😀',
+  slug: 'test-document',
+  path: 'test-document.md',
+  description: 'Test description',
+  content: 'Test content',
+  publishedAt: publishedDateStr,
+  modifiedAt: publishedDateStr,
+  preview: null,
+  tags: [],
+} as unknown as Document
+
+const renderComponent = (document = mockDocument) => {
+  return render(<DocumentHeader document={document} />)
+}
+
 describe('DocumentHeader', () => {
-  afterEach(() => cleanup())
-
-  const publishedDateStr = '2024-01-01T00:00:00Z'
-
-  const mockDocument = {
-    id: '1',
-    title: 'Test Document',
-    emoji: '😀',
-    slug: 'test-document',
-    path: 'test-document.md',
-    description: 'Test description',
-    content: 'Test content',
-    publishedAt: publishedDateStr,
-    modifiedAt: publishedDateStr,
-    preview: null,
-    tags: [],
-  } as unknown as Document
+  afterEach(() => {
+    cleanup()
+    vi.clearAllMocks()
+  })
 
   describe('基本動作', () => {
     it('ドキュメントのタイトルを表示する', () => {
-      const { container } = render(<DocumentHeader document={mockDocument} />)
+      const { container } = renderComponent()
       const heading = container.querySelector('h1')
 
       expect(heading?.textContent).toContain('Test Document')
     })
 
     it('ドキュメントの絵文字を表示する', () => {
-      const { container } = render(<DocumentHeader document={mockDocument} />)
+      const { container } = renderComponent()
       const emoji = container.querySelector('[data-testid="emoji"]')
 
       expect(emoji).toBeInTheDocument()
@@ -74,7 +81,7 @@ describe('DocumentHeader', () => {
     })
 
     it('公開日を表示する', () => {
-      const { container } = render(<DocumentHeader document={mockDocument} />)
+      const { container } = renderComponent()
       const dateElements = container.querySelectorAll('div')
 
       expect(Array.from(dateElements).some((el) => el.textContent?.includes('公開日'))).toBe(true)
@@ -92,7 +99,7 @@ describe('DocumentHeader', () => {
         modifiedAt: modifiedDateStr,
       } as unknown as Document
 
-      const { container } = render(<DocumentHeader document={docWithModified} />)
+      const { container } = renderComponent(docWithModified)
       const allText = container.textContent || ''
 
       expect(allText.includes('更新日')).toBe(true)
@@ -107,7 +114,7 @@ describe('DocumentHeader', () => {
         modifiedAt: sameDateStr,
       } as unknown as Document
 
-      const { container } = render(<DocumentHeader document={docWithoutModified} />)
+      const { container } = renderComponent(docWithoutModified)
       const allText = container.textContent || ''
 
       expect(allText.includes('更新日')).toBe(false)
@@ -124,7 +131,7 @@ describe('DocumentHeader', () => {
         ],
       } as unknown as Document
 
-      const { container } = render(<DocumentHeader document={docWithTags} />)
+      const { container } = renderComponent(docWithTags)
       const tags = container.querySelectorAll('[data-testid="tag"]')
 
       expect(tags.length).toBe(2)
@@ -133,7 +140,7 @@ describe('DocumentHeader', () => {
     })
 
     it('タグがない場合はタグセクションを表示しない', () => {
-      const { container } = render(<DocumentHeader document={mockDocument} />)
+      const { container } = renderComponent()
       const tags = container.querySelectorAll('[data-testid="tag"]')
 
       expect(tags.length).toBe(0)
@@ -142,7 +149,7 @@ describe('DocumentHeader', () => {
 
   describe('GitHub リンク', () => {
     it('GitHub リンクを表示する', () => {
-      const { container } = render(<DocumentHeader document={mockDocument} />)
+      const { container } = renderComponent()
       const link = container.querySelector('[data-testid="github-link"]')
 
       expect(link).toBeInTheDocument()
@@ -150,7 +157,7 @@ describe('DocumentHeader', () => {
     })
 
     it('GitHub リンクが正しい URL を持つ', () => {
-      const { container } = render(<DocumentHeader document={mockDocument} />)
+      const { container } = renderComponent()
       const link = container.querySelector('[data-testid="github-link"]') as HTMLAnchorElement
 
       expect(link?.href).toContain('https://github.com/example/repo')
@@ -170,7 +177,7 @@ describe('DocumentHeader', () => {
         },
       } as Document
 
-      const { container } = render(<DocumentHeader document={docWithPreview} />)
+      const { container } = renderComponent(docWithPreview)
       const img = container.querySelector('img')
 
       expect(img).toBeInTheDocument()
@@ -180,7 +187,7 @@ describe('DocumentHeader', () => {
     })
 
     it('プレビュー画像がない場合は表示しない', () => {
-      const { container } = render(<DocumentHeader document={mockDocument} />)
+      const { container } = renderComponent()
       const imgs = Array.from(container.querySelectorAll('img')).filter((img) =>
         img.src.includes('example.com/preview')
       )

@@ -28,6 +28,10 @@ const SIZE_MAP: Record<NonNullable<AvatarProps['size']>, number> = {
   lg: 256,
 }
 
+const renderComponent = (props: Partial<AvatarProps> = {}) => {
+  return render(<Avatar size={props.size ?? 'base'} {...props} />)
+}
+
 describe('Avatar', () => {
   afterEach(() => {
     cleanup()
@@ -36,13 +40,13 @@ describe('Avatar', () => {
 
   describe('画像のレンダリング', () => {
     it('正しいalt属性を持つイメージを表示する', () => {
-      render(<Avatar size="base" />)
+      renderComponent()
       const img = screen.getByRole('img')
       expect(img).toHaveAttribute('alt', 'Avatar')
     })
 
     it('正しい画像ファイルを使用する', () => {
-      render(<Avatar size="base" />)
+      renderComponent()
       const img = screen.getByRole('img')
       expect(img).toHaveAttribute('src', expect.stringContaining('/naopoyo2.png'))
     })
@@ -52,7 +56,7 @@ describe('Avatar', () => {
     it.each(Object.entries(SIZE_MAP))(
       'サイズ "%s" で幅と高さが %s px に設定されている',
       (size, expectedSize) => {
-        render(<Avatar size={size as AvatarProps['size']} />)
+        renderComponent({ size: size as AvatarProps['size'] })
         const img = screen.getByRole('img') as HTMLImageElement
 
         expect(img.width).toBe(expectedSize)

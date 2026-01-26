@@ -1,5 +1,5 @@
 import { render, cleanup } from '@testing-library/react'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { describe, it, expect, afterEach, vi } from 'vitest'
 
 import { documentFactory } from '@tests/factories/document'
 
@@ -56,16 +56,19 @@ vi.mock('../../hackersheet/style', () => ({
   },
 }))
 
-describe('DocumentContent', () => {
-  afterEach(() => cleanup())
+/**
+ * テスト対象コンポーネントをレンダリングするヘルパー関数
+ */
+const renderComponent = (overrides = {}) => {
+  const document = documentFactory.build(overrides)
+  return render(<DocumentContent document={document} />)
+}
 
-  /**
-   * テスト対象コンポーネントをレンダリングするヘルパー関数
-   */
-  const renderComponent = (overrides = {}) => {
-    const document = documentFactory.build(overrides)
-    return render(<DocumentContent document={document} />)
-  }
+describe('DocumentContent', () => {
+  afterEach(() => {
+    cleanup()
+    vi.clearAllMocks()
+  })
 
   describe('基本動作', () => {
     it('ドキュメントを表示する', () => {

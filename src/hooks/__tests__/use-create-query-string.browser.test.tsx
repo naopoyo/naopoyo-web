@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 
 import { useCreateQueryString } from '../use-create-query-string'
 
@@ -15,6 +15,10 @@ const mockUseSearchParams = vi.mocked(useSearchParams)
 
 describe('useCreateQueryString', () => {
   beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
+  afterEach(() => {
     vi.clearAllMocks()
   })
 

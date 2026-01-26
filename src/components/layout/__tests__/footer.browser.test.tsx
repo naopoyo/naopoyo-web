@@ -15,7 +15,11 @@ vi.mock('@/components/theme-switcher', () => ({
   },
 }))
 
-describe('Footer コンポーネント', () => {
+const renderComponent = () => {
+  return render(<Footer />)
+}
+
+describe('Footer', () => {
   afterEach(() => {
     cleanup()
     vi.clearAllMocks()
@@ -23,26 +27,26 @@ describe('Footer コンポーネント', () => {
 
   describe('子コンポーネント', () => {
     it('SNSリストがレンダリングされること', () => {
-      render(<Footer />)
+      renderComponent()
       expect(screen.getByTestId('mock-sns-list')).toBeInTheDocument()
     })
 
     it('テーマスイッチャーがレンダリングされること', () => {
-      render(<Footer />)
+      renderComponent()
       expect(screen.getByTestId('mock-theme-switcher')).toBeInTheDocument()
     })
   })
 
   describe('コンテンツ', () => {
     it('著作表示が正しく表示されること', () => {
-      render(<Footer />)
+      renderComponent()
       expect(screen.getByText('© naopoyo')).toBeInTheDocument()
     })
   })
 
   describe('構造', () => {
     it('footer 要素としてレンダリングされること', () => {
-      render(<Footer />)
+      renderComponent()
       const footer = screen.queryByRole('contentinfo') || document.querySelector('footer')
       expect(footer).toBeInTheDocument()
     })

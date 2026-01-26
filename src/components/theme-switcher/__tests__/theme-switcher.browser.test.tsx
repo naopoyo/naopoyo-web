@@ -32,6 +32,10 @@ const waitForThemeButtons = async () => {
   })
 }
 
+const renderComponent = () => {
+  return render(<ThemeSwitcher />)
+}
+
 describe('ThemeSwitcher', () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -39,13 +43,14 @@ describe('ThemeSwitcher', () => {
 
   afterEach(() => {
     cleanup()
+    vi.clearAllMocks()
   })
 
   describe('レンダリング', () => {
     it('テーマが設定されていると3つのテーマボタンを表示する', async () => {
       setupMockTheme('light')
 
-      render(<ThemeSwitcher />)
+      renderComponent()
 
       await waitForThemeButtons()
     })
@@ -53,7 +58,7 @@ describe('ThemeSwitcher', () => {
     it('マウント後にテーマが未定義の場合はnullを返す', async () => {
       setupMockTheme(undefined as unknown as string)
 
-      const { container } = render(<ThemeSwitcher />)
+      const { container } = renderComponent()
 
       await waitFor(() => {
         expect(container.firstChild).toBeNull()
@@ -63,7 +68,7 @@ describe('ThemeSwitcher', () => {
     it('現在のテーマに対応するボタンが選択状態になる', async () => {
       setupMockTheme('dark')
 
-      render(<ThemeSwitcher />)
+      renderComponent()
 
       await waitFor(() => {
         const darkButton = getThemeButton('dark')
@@ -76,7 +81,7 @@ describe('ThemeSwitcher', () => {
     const testThemeClick = async (fromTheme: string, toTheme: string) => {
       setupMockTheme(fromTheme)
 
-      render(<ThemeSwitcher />)
+      renderComponent()
 
       await waitForThemeButtons()
 
@@ -103,7 +108,7 @@ describe('ThemeSwitcher', () => {
     it('異なるテーマを順番にクリックするとsetThemeが呼ばれる', async () => {
       setupMockTheme('light')
 
-      render(<ThemeSwitcher />)
+      renderComponent()
 
       await waitForThemeButtons()
 
@@ -120,7 +125,7 @@ describe('ThemeSwitcher', () => {
     it('各ボタンに正しいアイコンが表示される', async () => {
       setupMockTheme('light')
 
-      render(<ThemeSwitcher />)
+      renderComponent()
 
       await waitForThemeButtons()
     })

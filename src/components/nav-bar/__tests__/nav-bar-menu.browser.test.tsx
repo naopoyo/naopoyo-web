@@ -1,7 +1,7 @@
 import { render, cleanup } from '@testing-library/react'
 import { useSelectedLayoutSegment } from 'next/navigation'
 import { PropsWithChildren } from 'react'
-import { describe, it, expect, afterEach, vi } from 'vitest'
+import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 
 import NavBarMenu from '../nav-bar-menu'
 
@@ -26,131 +26,145 @@ vi.mock('next/navigation', () => ({
 
 const mockUseSelectedLayoutSegment = vi.mocked(useSelectedLayoutSegment)
 
+const renderComponent = () => {
+  return render(<NavBarMenu />)
+}
+
 describe('NavBarMenu', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
   afterEach(() => {
     cleanup()
     vi.clearAllMocks()
   })
 
-  it('メニューアイテムを5個表示する', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue(null)
+  describe('レンダリング', () => {
+    it('メニューアイテムを5個表示する', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue(null)
 
-    const { container } = render(<NavBarMenu />)
-    const items = container.querySelectorAll('li')
+      const { container } = renderComponent()
+      const items = container.querySelectorAll('li')
 
-    expect(items).toHaveLength(5)
+      expect(items).toHaveLength(5)
+    })
+
+    it('正しいメニューラベルを表示する', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue(null)
+
+      const { container } = renderComponent()
+      const links = container.querySelectorAll('a')
+
+      const labels = Array.from(links).map((link) => link.textContent)
+      expect(labels).toEqual(['Docs', 'Tags', 'Bookmarks', 'Tools', 'About'])
+    })
+
+    it('各メニューアイテムに正しいhref属性を設定する', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue(null)
+
+      const { container } = renderComponent()
+      const links = container.querySelectorAll('a')
+
+      const hrefs = Array.from(links).map((link) => link.getAttribute('href'))
+      expect(hrefs).toEqual(['/docs', '/tags', '/bookmarks', '/tools', '/about'])
+    })
   })
 
-  it('正しいメニューラベルを表示する', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue(null)
+  describe('アクティブ状態', () => {
+    it('アクティブなセグメント下部に下線を表示する', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue('docs')
 
-    const { container } = render(<NavBarMenu />)
-    const links = container.querySelectorAll('a')
+      const { container } = renderComponent()
+      const items = container.querySelectorAll('li')
+      const firstItem = items[0]
 
-    const labels = Array.from(links).map((link) => link.textContent)
-    expect(labels).toEqual(['Docs', 'Tags', 'Bookmarks', 'Tools', 'About'])
+      const underline = firstItem?.querySelector('div.border-b')
+      expect(underline).toBeInTheDocument()
+    })
+
+    it('非アクティブなセグメント下部には下線を表示しない', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue('docs')
+
+      const { container } = renderComponent()
+      const items = container.querySelectorAll('li')
+
+      // Docsはアクティブ、他は非アクティブ
+      for (let i = 1; i < items.length; i++) {
+        const underline = items[i]?.querySelector('div.border-b')
+        expect(underline).not.toBeInTheDocument()
+      }
+    })
+
+    it('異なるセグメントに切り替えると下線が移動する', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue('docs')
+      const { container, rerender } = renderComponent()
+
+      let items = container.querySelectorAll('li')
+      expect(items[0]?.querySelector('div.border-b')).toBeInTheDocument()
+      expect(items[1]?.querySelector('div.border-b')).not.toBeInTheDocument()
+
+      // セグメントを'tags'に切り替え
+      mockUseSelectedLayoutSegment.mockReturnValue('tags')
+      rerender(<NavBarMenu />)
+
+      items = container.querySelectorAll('li')
+      expect(items[0]?.querySelector('div.border-b')).not.toBeInTheDocument()
+      expect(items[1]?.querySelector('div.border-b')).toBeInTheDocument()
+    })
+
+    it('セグメントが null の場合、下線を表示しない', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue(null)
+
+      const { container } = renderComponent()
+      const underlines = container.querySelectorAll('div.border-b')
+
+      expect(underlines).toHaveLength(0)
+    })
+
+    it('存在しないセグメントの場合、下線を表示しない', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue('nonexistent')
+
+      const { container } = renderComponent()
+      const underlines = container.querySelectorAll('div.border-b')
+
+      expect(underlines).toHaveLength(0)
+    })
   })
 
-  it('各メニューアイテムに正しいhref属性を設定する', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue(null)
+  describe('スタイリング', () => {
+    it('ul要素でレンダリングされる', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue(null)
 
-    const { container } = render(<NavBarMenu />)
-    const links = container.querySelectorAll('a')
+      const { container } = renderComponent()
+      const ul = container.querySelector('ul')
 
-    const hrefs = Array.from(links).map((link) => link.getAttribute('href'))
-    expect(hrefs).toEqual(['/docs', '/tags', '/bookmarks', '/tools', '/about'])
-  })
+      expect(ul).toBeInTheDocument()
+    })
 
-  it('アクティブなセグメント下部に下線を表示する', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue('docs')
+    it('flexレイアウトでスタイリングされている', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue(null)
 
-    const { container } = render(<NavBarMenu />)
-    const items = container.querySelectorAll('li')
-    const firstItem = items[0]
+      const { container } = renderComponent()
+      const ul = container.querySelector('ul')
 
-    const underline = firstItem?.querySelector('div.border-b')
-    expect(underline).toBeInTheDocument()
-  })
+      expect(ul).toHaveClass('flex')
+      expect(ul).toHaveClass('items-center')
+      expect(ul).toHaveClass('gap-2')
+    })
 
-  it('非アクティブなセグメント下部には下線を表示しない', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue('docs')
+    it('各リンク要素に適切なクラスが設定されている', () => {
+      mockUseSelectedLayoutSegment.mockReturnValue(null)
 
-    const { container } = render(<NavBarMenu />)
-    const items = container.querySelectorAll('li')
+      const { container } = renderComponent()
+      const links = container.querySelectorAll('a')
 
-    // Docsはアクティブ、他は非アクティブ
-    for (let i = 1; i < items.length; i++) {
-      const underline = items[i]?.querySelector('div.border-b')
-      expect(underline).not.toBeInTheDocument()
-    }
-  })
-
-  it('異なるセグメントに切り替えると下線が移動する', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue('docs')
-    const { container, rerender } = render(<NavBarMenu />)
-
-    let items = container.querySelectorAll('li')
-    expect(items[0]?.querySelector('div.border-b')).toBeInTheDocument()
-    expect(items[1]?.querySelector('div.border-b')).not.toBeInTheDocument()
-
-    // セグメントを'tags'に切り替え
-    mockUseSelectedLayoutSegment.mockReturnValue('tags')
-    rerender(<NavBarMenu />)
-
-    items = container.querySelectorAll('li')
-    expect(items[0]?.querySelector('div.border-b')).not.toBeInTheDocument()
-    expect(items[1]?.querySelector('div.border-b')).toBeInTheDocument()
-  })
-
-  it('セグメントが null の場合、下線を表示しない', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue(null)
-
-    const { container } = render(<NavBarMenu />)
-    const underlines = container.querySelectorAll('div.border-b')
-
-    expect(underlines).toHaveLength(0)
-  })
-
-  it('存在しないセグメントの場合、下線を表示しない', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue('nonexistent')
-
-    const { container } = render(<NavBarMenu />)
-    const underlines = container.querySelectorAll('div.border-b')
-
-    expect(underlines).toHaveLength(0)
-  })
-
-  it('ul要素でレンダリングされる', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue(null)
-
-    const { container } = render(<NavBarMenu />)
-    const ul = container.querySelector('ul')
-
-    expect(ul).toBeInTheDocument()
-  })
-
-  it('flexレイアウトでスタイリングされている', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue(null)
-
-    const { container } = render(<NavBarMenu />)
-    const ul = container.querySelector('ul')
-
-    expect(ul).toHaveClass('flex')
-    expect(ul).toHaveClass('items-center')
-    expect(ul).toHaveClass('gap-2')
-  })
-
-  it('各リンク要素に適切なクラスが設定されている', () => {
-    mockUseSelectedLayoutSegment.mockReturnValue(null)
-
-    const { container } = render(<NavBarMenu />)
-    const links = container.querySelectorAll('a')
-
-    links.forEach((link) => {
-      expect(link).toHaveClass('inline-block')
-      expect(link).toHaveClass('rounded-sm')
-      expect(link).toHaveClass('px-4')
-      expect(link).toHaveClass('py-2')
+      links.forEach((link) => {
+        expect(link).toHaveClass('inline-block')
+        expect(link).toHaveClass('rounded-sm')
+        expect(link).toHaveClass('px-4')
+        expect(link).toHaveClass('py-2')
+      })
     })
   })
 })

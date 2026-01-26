@@ -2,10 +2,9 @@ import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 
 describe('SortBySelect', () => {
   afterEach(() => {
-    // cleanup
+    vi.clearAllMocks()
   })
 
-  // モック設定後にインポート
   beforeEach(() => {
     vi.resetModules()
   })

@@ -33,48 +33,55 @@ vi.mock('@/utils', () => ({
   },
 }))
 
-describe('DocumentList', () => {
-  afterEach(() => cleanup())
+const mockDocuments = [
+  {
+    id: '1',
+    title: 'Document 1',
+    emoji: '😀',
+    slug: 'doc-1',
+    path: 'doc-1.md',
+    description: 'Description 1',
+    content: 'Content 1',
+    publishedAt: '2024-01-01T00:00:00Z',
+    modifiedAt: '2024-01-01T00:00:00Z',
+    preview: null,
+    tags: [],
+  },
+  {
+    id: '2',
+    title: 'Document 2',
+    emoji: '🎉',
+    slug: 'doc-2',
+    path: 'doc-2.md',
+    description: 'Description 2',
+    content: 'Content 2',
+    publishedAt: '2024-01-02T00:00:00Z',
+    modifiedAt: '2024-01-02T00:00:00Z',
+    preview: null,
+    tags: [{ id: '1', name: 'React' }],
+  },
+] as unknown as DocumentListType
 
-  const mockDocuments = [
-    {
-      id: '1',
-      title: 'Document 1',
-      emoji: '😀',
-      slug: 'doc-1',
-      path: 'doc-1.md',
-      description: 'Description 1',
-      content: 'Content 1',
-      publishedAt: '2024-01-01T00:00:00Z',
-      modifiedAt: '2024-01-01T00:00:00Z',
-      preview: null,
-      tags: [],
-    },
-    {
-      id: '2',
-      title: 'Document 2',
-      emoji: '🎉',
-      slug: 'doc-2',
-      path: 'doc-2.md',
-      description: 'Description 2',
-      content: 'Content 2',
-      publishedAt: '2024-01-02T00:00:00Z',
-      modifiedAt: '2024-01-02T00:00:00Z',
-      preview: null,
-      tags: [{ id: '1', name: 'React' }],
-    },
-  ] as unknown as DocumentListType
+const renderComponent = (documents = mockDocuments) => {
+  return render(<DocumentList documents={documents} />)
+}
+
+describe('DocumentList', () => {
+  afterEach(() => {
+    cleanup()
+    vi.clearAllMocks()
+  })
 
   describe('基本動作', () => {
     it('グリッドコンテナが表示される', () => {
-      const { container } = render(<DocumentList documents={mockDocuments} />)
+      const { container } = renderComponent()
       const grid = container.querySelector('div.grid')
 
       expect(grid).toBeInTheDocument()
     })
 
     it('各ドキュメントがカードとして表示される', () => {
-      const { container } = render(<DocumentList documents={mockDocuments} />)
+      const { container } = renderComponent()
       const links = container.querySelectorAll('[data-testid="doc-link"]')
 
       expect(links.length).toBe(2)
@@ -83,7 +90,7 @@ describe('DocumentList', () => {
 
   describe('ドキュメント情報の表示', () => {
     it('ドキュメントのタイトルが表示される', () => {
-      const { container } = render(<DocumentList documents={mockDocuments} />)
+      const { container } = renderComponent()
       const text = container.textContent
 
       expect(text).toContain('Document 1')
@@ -91,7 +98,7 @@ describe('DocumentList', () => {
     })
 
     it('ドキュメントの絵文字が表示される', () => {
-      const { container } = render(<DocumentList documents={mockDocuments} />)
+      const { container } = renderComponent()
       const emojis = container.querySelectorAll('[data-testid="emoji"]')
 
       expect(emojis.length).toBe(2)
@@ -100,7 +107,7 @@ describe('DocumentList', () => {
     })
 
     it('タグがある場合は表示される', () => {
-      const { container } = render(<DocumentList documents={mockDocuments} />)
+      const { container } = renderComponent()
       const text = container.textContent
 
       expect(text).toContain('React')
@@ -109,7 +116,7 @@ describe('DocumentList', () => {
 
   describe('リンク', () => {
     it('各ドキュメントは正しい URL にリンクする', () => {
-      const { container } = render(<DocumentList documents={mockDocuments} />)
+      const { container } = renderComponent()
       const links = container.querySelectorAll('[data-testid="doc-link"]')
 
       expect((links[0] as HTMLAnchorElement).href).toContain('/docs/doc-1')
@@ -119,7 +126,7 @@ describe('DocumentList', () => {
 
   describe('空の配列', () => {
     it('ドキュメント配列が空の場合は何も表示しない', () => {
-      const { container } = render(<DocumentList documents={[]} />)
+      const { container } = renderComponent([])
       const links = container.querySelectorAll('[data-testid="doc-link"]')
 
       expect(links.length).toBe(0)

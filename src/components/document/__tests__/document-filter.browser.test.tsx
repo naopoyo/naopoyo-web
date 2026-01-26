@@ -30,26 +30,33 @@ vi.mock('@/components/ui/input', () => ({
   ),
 }))
 
+const renderComponent = (props = {}) => {
+  return render(<DocumentFilter {...props} />)
+}
+
 describe('DocumentFilter', () => {
-  afterEach(() => cleanup())
+  afterEach(() => {
+    cleanup()
+    vi.clearAllMocks()
+  })
 
   describe('基本動作', () => {
     it('フィルターフォームが表示される', () => {
-      const { container } = render(<DocumentFilter />)
+      const { container } = renderComponent()
       const form = container.querySelector('form')
 
       expect(form).toBeInTheDocument()
     })
 
     it('検索入力フィールドが表示される', () => {
-      const { container } = render(<DocumentFilter />)
+      const { container } = renderComponent()
       const input = container.querySelector('input[type="search"]')
 
       expect(input).toBeInTheDocument()
     })
 
     it('SortBySelect コンポーネントが表示される', () => {
-      const { container } = render(<DocumentFilter />)
+      const { container } = renderComponent()
       const sortBySelect = container.querySelector('[data-testid="sort-by-select"]')
 
       expect(sortBySelect).toBeInTheDocument()
@@ -58,14 +65,14 @@ describe('DocumentFilter', () => {
 
   describe('Props の設定', () => {
     it('キーワードが設定されている場合は入力フィールドに反映される', () => {
-      const { container } = render(<DocumentFilter keyword="test" />)
+      const { container } = renderComponent({ keyword: 'test' })
       const input = container.querySelector('input[type="search"]') as HTMLInputElement
 
       expect(input?.defaultValue).toBe('test')
     })
 
     it('sortBy が設定されている場合は hidden フィールドに設定される', () => {
-      const { container } = render(<DocumentFilter sortBy="modified_at" />)
+      const { container } = renderComponent({ sortBy: 'modified_at' })
       const hiddenInput = container.querySelector('input[type="hidden"]')
 
       expect(hiddenInput?.getAttribute('value')).toBe('modified_at')
@@ -74,7 +81,7 @@ describe('DocumentFilter', () => {
 
   describe('フォーム属性', () => {
     it('フォームが /docs に GET リクエストを送信する', () => {
-      const { container } = render(<DocumentFilter />)
+      const { container } = renderComponent()
       const form = container.querySelector('form')
 
       expect(form?.getAttribute('action')).toBe('/docs')

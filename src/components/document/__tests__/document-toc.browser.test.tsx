@@ -27,19 +27,26 @@ vi.mock('@/constants', () => ({
   },
 }))
 
+const renderComponent = () => {
+  return render(<DocumentToc />)
+}
+
 describe('DocumentToc', () => {
-  afterEach(() => cleanup())
+  afterEach(() => {
+    cleanup()
+    vi.clearAllMocks()
+  })
 
   describe('基本動作', () => {
     it('nav 要素を表示する', () => {
-      const { container } = render(<DocumentToc />)
+      const { container } = renderComponent()
       const nav = container.querySelector('nav')
 
       expect(nav).toBeInTheDocument()
     })
 
     it('nav 要素が正しいクラス名を持つ', () => {
-      const { container } = render(<DocumentToc />)
+      const { container } = renderComponent()
       const nav = container.querySelector('nav')
 
       expect(nav?.className).toContain('toc-main')
@@ -48,7 +55,7 @@ describe('DocumentToc', () => {
 
   describe('セレクタ設定', () => {
     it('DOM 構造が正しく レンダリングされている', () => {
-      const { container } = render(<DocumentToc />)
+      const { container } = renderComponent()
 
       expect(container.querySelector('nav')).toBeInTheDocument()
     })
@@ -56,12 +63,12 @@ describe('DocumentToc', () => {
 
   describe('マウント・アンマウント', () => {
     it('マウント時に nav 要素が存在する', () => {
-      const { container } = render(<DocumentToc />)
+      const { container } = renderComponent()
       expect(container.querySelector('nav')).toBeInTheDocument()
     })
 
     it('アンマウント時にメモリリークがない', () => {
-      const { unmount } = render(<DocumentToc />)
+      const { unmount } = renderComponent()
       expect(() => unmount()).not.toThrow()
     })
   })

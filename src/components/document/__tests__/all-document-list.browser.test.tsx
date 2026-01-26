@@ -24,7 +24,10 @@ vi.mock('./document-list', () => ({
 }))
 
 describe('AllDocumentList', () => {
-  afterEach(() => cleanup())
+  afterEach(() => {
+    cleanup()
+    vi.clearAllMocks()
+  })
 
   it('Server Component のマウント構造をテストする', () => {
     // Server Component の非同期処理のテストは統合テストで行われるべき

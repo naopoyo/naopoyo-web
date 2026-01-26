@@ -40,57 +40,65 @@ const BookmarkListSkeleton = () => {
   )
 }
 
+const renderComponent = () => {
+  return render(<BookmarkListSkeleton />)
+}
+
 describe('BookmarkListSkeleton', () => {
   afterEach(() => {
     cleanup()
   })
 
-  it('スケルトンコンポーネントをレンダリングする', () => {
-    const { container } = render(<BookmarkListSkeleton />)
-    const wrapper = container.querySelector('div')
-    expect(wrapper).toBeInTheDocument()
+  describe('レンダリング', () => {
+    it('スケルトンコンポーネントをレンダリングする', () => {
+      const { container } = renderComponent()
+      const wrapper = container.querySelector('div')
+      expect(wrapper).toBeInTheDocument()
+    })
+
+    it('Paginationコンポーネントを2つレンダリングする', () => {
+      const { container } = renderComponent()
+      const paginationElements = container.querySelectorAll('[data-testid="pagination"]')
+      expect(paginationElements.length).toBe(2)
+    })
+
+    it('20個のスケルトンプレースホルダーを持つ', () => {
+      const { container } = renderComponent()
+      const skeletonElements = container.querySelectorAll('[data-testid="skeleton"]')
+      expect(skeletonElements.length).toBe(20)
+    })
   })
 
-  it('flexレイアウトクラスを持つ', () => {
-    const { container } = render(<BookmarkListSkeleton />)
-    const wrapper = container.querySelector('div')
-    expect(wrapper).toHaveClass('flex')
-    expect(wrapper).toHaveClass('flex-col')
-  })
+  describe('スタイリング', () => {
+    it('flexレイアウトクラスを持つ', () => {
+      const { container } = renderComponent()
+      const wrapper = container.querySelector('div')
+      expect(wrapper).toHaveClass('flex')
+      expect(wrapper).toHaveClass('flex-col')
+    })
 
-  it('gap-4クラスを持つ', () => {
-    const { container } = render(<BookmarkListSkeleton />)
-    const wrapper = container.querySelector('div')
-    expect(wrapper).toHaveClass('gap-4')
-  })
+    it('gap-4クラスを持つ', () => {
+      const { container } = renderComponent()
+      const wrapper = container.querySelector('div')
+      expect(wrapper).toHaveClass('gap-4')
+    })
 
-  it('Paginationコンポーネントを2つレンダリングする', () => {
-    const { container } = render(<BookmarkListSkeleton />)
-    const paginationElements = container.querySelectorAll('[data-testid="pagination"]')
-    expect(paginationElements.length).toBe(2)
-  })
+    it('各スケルトンアイテムがrounded-lgクラスを持つ', () => {
+      const { container } = renderComponent()
+      const roundedElements = container.querySelectorAll('[class*="rounded-lg"]')
+      expect(roundedElements.length).toBeGreaterThan(0)
+    })
 
-  it('20個のスケルトンプレースホルダーを持つ', () => {
-    const { container } = render(<BookmarkListSkeleton />)
-    const skeletonElements = container.querySelectorAll('[data-testid="skeleton"]')
-    expect(skeletonElements.length).toBe(20)
-  })
+    it('スケルトンの高さがh-28に設定されている', () => {
+      const { container } = renderComponent()
+      const heightElement = container.querySelector('[class*="h-28"]')
+      expect(heightElement).toBeInTheDocument()
+    })
 
-  it('各スケルトンアイテムがrounded-lgクラスを持つ', () => {
-    const { container } = render(<BookmarkListSkeleton />)
-    const roundedElements = container.querySelectorAll('[class*="rounded-lg"]')
-    expect(roundedElements.length).toBeGreaterThan(0)
-  })
-
-  it('スケルトンの高さがh-28に設定されている', () => {
-    const { container } = render(<BookmarkListSkeleton />)
-    const heightElement = container.querySelector('[class*="h-28"]')
-    expect(heightElement).toBeInTheDocument()
-  })
-
-  it('スケルトンの幅がw-fullに設定されている', () => {
-    const { container } = render(<BookmarkListSkeleton />)
-    const widthElements = container.querySelectorAll('[class*="w-full"]')
-    expect(widthElements.length).toBeGreaterThan(0)
+    it('スケルトンの幅がw-fullに設定されている', () => {
+      const { container } = renderComponent()
+      const widthElements = container.querySelectorAll('[class*="w-full"]')
+      expect(widthElements.length).toBeGreaterThan(0)
+    })
   })
 })
