@@ -1,5 +1,6 @@
 import { render, cleanup } from '@testing-library/react'
-import { describe, it, expect, afterEach, vi } from 'vitest'
+import { documentFactory } from '@tests/factories/document'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { DocumentContent } from '../document-content'
 
@@ -57,73 +58,50 @@ vi.mock('../../hackersheet/style', () => ({
 describe('DocumentContent', () => {
   afterEach(() => cleanup())
 
+  /**
+   * テスト対象コンポーネントをレンダリングするヘルパー関数
+   */
+  const renderComponent = (overrides = {}) => {
+    const document = documentFactory.build(overrides)
+    return render(<DocumentContent document={document} />)
+  }
+
   describe('基本動作', () => {
     it('ドキュメントを表示する', () => {
-      const mockDocument = {
-        title: 'Test Document',
-      }
-
-      // @ts-expect-error: mockDocument type is simplified for test
-      const { container } = render(<DocumentContent document={mockDocument} />)
+      const { container } = renderComponent()
       expect(container.querySelector('[data-testid="document-content"]')).toBeInTheDocument()
     })
 
     it('ドキュメントのタイトルを表示する', () => {
-      const mockDocument = {
-        title: 'Test Document Title',
-      }
-
-      // @ts-expect-error: mockDocument type is simplified for test
-      const { container } = render(<DocumentContent document={mockDocument} />)
+      const { container } = renderComponent({ title: 'Custom Document Title' })
       const titleElement = container.querySelector('[data-testid="document-title"]')
-      expect(titleElement?.textContent).toBe('Test Document Title')
+      expect(titleElement).toHaveTextContent('Custom Document Title')
     })
 
     it('スタイルが読み込まれている', () => {
-      const mockDocument = {
-        title: 'Test Document',
-      }
-
-      // @ts-expect-error: mockDocument type is simplified for test
-      const { container } = render(<DocumentContent document={mockDocument} />)
+      const { container } = renderComponent()
       const styleElement = container.querySelector('[data-testid="style"]')
-      expect(styleElement?.textContent).toBe('Style loaded')
+      expect(styleElement).toHaveTextContent('Style loaded')
     })
   })
 
   describe('Props の設定', () => {
     it('パーマリンクフォーマットが正しく設定されている', () => {
-      const mockDocument = {
-        title: 'Test Document',
-      }
-
-      // @ts-expect-error: mockDocument type is simplified for test
-      const { container } = render(<DocumentContent document={mockDocument} />)
+      const { container } = renderComponent()
       const permalinkElement = container.querySelector('[data-testid="permalink-format"]')
-      expect(permalinkElement?.textContent).toBe('/docs/{{slug}}')
+      expect(permalinkElement).toHaveTextContent('/docs/{{slug}}')
     })
 
     it('カスタムコンポーネントが設定されている', () => {
-      const mockDocument = {
-        title: 'Test Document',
-      }
-
-      // @ts-expect-error: mockDocument type is simplified for test
-      const { container } = render(<DocumentContent document={mockDocument} />)
+      const { container } = renderComponent()
       const componentsCountElement = container.querySelector('[data-testid="components-count"]')
-      expect(componentsCountElement?.textContent).toBe('12')
+      expect(componentsCountElement).toHaveTextContent('12')
     })
   })
 
   describe('型チェック', () => {
-    it('document prop を受け け取ることができる', () => {
-      const mockDocument = {
-        title: 'Type Test',
-        content: 'Test content',
-      }
-
-      // @ts-expect-error: mockDocument type is simplified for test
-      const { container } = render(<DocumentContent document={mockDocument} />)
+    it('document prop を受け取ることができる', () => {
+      const { container } = renderComponent({ content: 'Custom test content' })
       expect(container.querySelector('[data-testid="document-content"]')).toBeInTheDocument()
     })
   })

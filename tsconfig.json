@@ -19,7 +19,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/public/*": ["./public/*"]
+      "@/public/*": ["./public/*"],
+      "@tests/*": ["./tests/*"]
     },
     "target": "ES2017",
     "sourceMap": false
