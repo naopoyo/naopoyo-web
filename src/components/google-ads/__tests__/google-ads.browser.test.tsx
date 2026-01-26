@@ -114,18 +114,4 @@ describe('GoogleAds', () => {
       expect(style.display).toBe('block')
     })
   })
-
-  describe('スキップ条件', () => {
-    it('GOOGLE_ADS_CLIENTが設定されていない場合はnullを返す', () => {
-      // このテストは現在のモック設定では実行できないため、スキップ条件を確認するために
-      // 別のテスト戦略が必要です
-      expect(true).toBe(true)
-    })
-
-    it('本番環境でない場合はnullを返す', () => {
-      // このテストは現在のモック設定では実行できないため、スキップ条件を確認するために
-      // 別のテスト戦略が必要です
-      expect(true).toBe(true)
-    })
-  })
 })
