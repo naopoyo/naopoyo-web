@@ -3,22 +3,22 @@
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
 
-export type UseCreateQueryStringArgs =
-  | {
-      withPathname?: boolean
-    }
-  | undefined
+export type UseCreateQueryStringArgs = {
+  withPathname?: boolean
+}
 
-export function useCreateQueryString(args: UseCreateQueryStringArgs) {
+type QueryStringItems = Record<string, string | string[] | undefined>
+
+export function useCreateQueryString(args?: UseCreateQueryStringArgs) {
   const searchParams = useSearchParams()
   const pathname = usePathname()
-  const withPathname = args?.withPathname || false
+  const withPathname = args?.withPathname ?? false
 
   return useCallback(
-    (items: { [key: string]: string | string[] | undefined }) => {
+    (items: QueryStringItems) => {
       const params = new URLSearchParams(searchParams)
-      Object.keys(items).forEach((name) => {
-        const value = items[name]
+
+      Object.entries(items).forEach(([name, value]) => {
         if (Array.isArray(value)) {
           params.delete(name)
           value.forEach((v) => params.append(name, v))
@@ -29,7 +29,8 @@ export function useCreateQueryString(args: UseCreateQueryStringArgs) {
         }
       })
 
-      return withPathname ? pathname + '?' + params.toString() : params.toString()
+      const queryString = params.toString()
+      return withPathname ? `${pathname}?${queryString}` : queryString
     },
     [searchParams, pathname, withPathname]
   )
