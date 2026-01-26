@@ -149,13 +149,10 @@ export const documentFactory = Factory.define<Document>(() => {
     draft: faker.datatype.boolean({ probability: 0.2 }),
     publishedAt: faker.date.past({ years: 1 }).toISOString(),
     modifiedAt: faker.date.recent().toISOString(),
-    tags: Array.from(
-      { length: faker.number.int({ min: 0, max: 3 }) },
-      () => ({
-        id: faker.string.uuid(),
-        name: faker.lorem.word(),
-      })
-    ),
+    tags: Array.from({ length: faker.number.int({ min: 0, max: 3 }) }, () => ({
+      id: faker.string.uuid(),
+      name: faker.lorem.word(),
+    })),
   }
 })
 ```
