@@ -5,7 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   optimizeDeps: {
-    include: ['fishery'],
+    include: ['fishery', '@faker-js/faker'],
   },
   test: {
     projects: [
