@@ -1,6 +1,7 @@
 import { render, cleanup } from '@testing-library/react'
-import { documentFactory } from '@tests/factories/document'
 import { afterEach, describe, expect, it, vi } from 'vitest'
+
+import { documentFactory } from '@tests/factories/document'
 
 import { DocumentContent } from '../document-content'
 
