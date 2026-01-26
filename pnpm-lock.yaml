@@ -15,8 +15,8 @@ importers:
         specifier: 0.1.0-alpha.25
         version: 0.1.0-alpha.25(@types/react@19.2.9)(next@16.1.4(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.97.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@hackersheet/next-document-content-kifu':
-        specifier: 0.1.0-alpha.14
-        version: 0.1.0-alpha.14(@types/react@19.2.9)(next@16.1.4(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.97.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 0.1.0-alpha.15
+        version: 0.1.0-alpha.15(@types/react@19.2.9)(next@16.1.4(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.97.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@hackersheet/react-document-content':
         specifier: 0.1.0-alpha.13
         version: 0.1.0-alpha.13(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -549,8 +549,8 @@ packages:
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.14':
-    resolution: {integrity: sha512-XgscGbYzFO3bkdoGhPhO8dYBGF39nQfxp6UHevuDUwqrTw+IXStYAg/VFBauJHBfD6tLy18VxrQ11Tk+tldCTQ==}
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.15':
+    resolution: {integrity: sha512-fAl0v/YDjijx2qtEWpV1ldtPfyFCuX/eH5rfDPY4QVGNAC2MPRIrX2IJlcV8ZxGEeHUMFprcKsaws3D2or43Mw==}
     peerDependencies:
       next: ^15.0.0 || ^16.0.0
       react: ^19.0.0
@@ -4920,7 +4920,7 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.14(@types/react@19.2.9)(next@16.1.4(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.97.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.15(@types/react@19.2.9)(next@16.1.4(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.97.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.11
       '@hackersheet/react-document-content': 0.1.0-alpha.13(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
