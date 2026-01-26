@@ -21,6 +21,7 @@ describe('useCreateQueryString', () => {
   describe('基本的なクエリ文字列の作成', () => {
     it('URLSearchParams から基本的なクエリ文字列を作成する', () => {
       const mockParams = new URLSearchParams('foo=bar')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path')
 
@@ -33,6 +34,7 @@ describe('useCreateQueryString', () => {
 
     it('既存パラメータを保持しながら新しいパラメータを追加する', () => {
       const mockParams = new URLSearchParams('existing=value')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path')
 
@@ -47,6 +49,7 @@ describe('useCreateQueryString', () => {
   describe('パラメータの追加と更新', () => {
     it('既存のパラメータを更新する', () => {
       const mockParams = new URLSearchParams('key=oldValue')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path')
 
@@ -59,6 +62,7 @@ describe('useCreateQueryString', () => {
 
     it('複数のパラメータを同時に更新する', () => {
       const mockParams = new URLSearchParams('a=1&b=2')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path')
 
@@ -74,6 +78,7 @@ describe('useCreateQueryString', () => {
   describe('配列値の処理', () => {
     it('配列値を複数のパラメータに展開する', () => {
       const mockParams = new URLSearchParams()
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path')
 
@@ -87,6 +92,7 @@ describe('useCreateQueryString', () => {
 
     it('既存の配列パラメータを置き換える', () => {
       const mockParams = new URLSearchParams('tags=old&tags=values')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path')
 
@@ -101,6 +107,7 @@ describe('useCreateQueryString', () => {
 
     it('空の配列でパラメータを削除する', () => {
       const mockParams = new URLSearchParams('tags=value&keep=this')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path')
 
@@ -115,6 +122,7 @@ describe('useCreateQueryString', () => {
   describe('パラメータの削除', () => {
     it('undefined 値でパラメータを削除する', () => {
       const mockParams = new URLSearchParams('remove=me&keep=this')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path')
 
@@ -127,6 +135,7 @@ describe('useCreateQueryString', () => {
 
     it('複数のパラメータを同時に削除する', () => {
       const mockParams = new URLSearchParams('a=1&b=2&c=3')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path')
 
@@ -142,6 +151,7 @@ describe('useCreateQueryString', () => {
   describe('pathname オプション', () => {
     it('withPathname が false の場合、クエリ文字列のみ返す', () => {
       const mockParams = new URLSearchParams()
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path/to/page')
 
@@ -154,6 +164,7 @@ describe('useCreateQueryString', () => {
 
     it('withPathname が true の場合、pathname を含める', () => {
       const mockParams = new URLSearchParams()
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path/to/page')
 
@@ -165,6 +176,7 @@ describe('useCreateQueryString', () => {
 
     it('デフォルトでは pathname を含めない', () => {
       const mockParams = new URLSearchParams()
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/path/to/page')
 
@@ -177,6 +189,7 @@ describe('useCreateQueryString', () => {
 
     it('pathname が含まれる場合、? で区切られている', () => {
       const mockParams = new URLSearchParams()
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/products')
 
@@ -190,6 +203,7 @@ describe('useCreateQueryString', () => {
   describe('複合シナリオ', () => {
     it('複数の操作を同時に実行する', () => {
       const mockParams = new URLSearchParams('existing=value&remove=this')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/search')
 
@@ -211,6 +225,7 @@ describe('useCreateQueryString', () => {
 
     it('クエリ文字列が空の場合、パス + ? のみ返す', () => {
       const mockParams = new URLSearchParams()
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/page')
 
@@ -222,6 +237,7 @@ describe('useCreateQueryString', () => {
 
     it('複数回呼び出しで独立した結果を返す', () => {
       const mockParams = new URLSearchParams('initial=value')
+      // @ts-expect-error: URLSearchParams is assignable to ReadonlyURLSearchParams
       mockUseSearchParams.mockReturnValue(mockParams)
       mockUsePathname.mockReturnValue('/page')
 

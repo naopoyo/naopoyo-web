@@ -11,14 +11,23 @@ interface MockDocumentProps {
 }
 
 vi.mock('@hackersheet/react-document-content', () => ({
-  DocumentContent: ({ document, style, permaLinkFormat, components }: MockDocumentProps) => (
-    <div data-testid="document-content">
-      <div data-testid="document-title">{document?.title || 'No title'}</div>
-      <div data-testid="style">{style ? 'Style loaded' : 'No style'}</div>
-      <div data-testid="permalink-format">{permaLinkFormat}</div>
-      <div data-testid="components-count">{Object.keys(components).length}</div>
-    </div>
-  ),
+  DocumentContent: function MockDocumentContent({
+    document,
+    style,
+    permaLinkFormat,
+    components,
+  }: MockDocumentProps) {
+    const doc = document as Record<string, unknown> | null | undefined
+    const title = (doc?.title as string) || 'No title'
+    return (
+      <div data-testid="document-content">
+        <div data-testid="document-title">{title}</div>
+        <div data-testid="style">{style ? 'Style loaded' : 'No style'}</div>
+        <div data-testid="permalink-format">{permaLinkFormat}</div>
+        <div data-testid="components-count">{Object.keys(components).length}</div>
+      </div>
+    )
+  },
 }))
 
 vi.mock('@hackersheet/next-document-content-components', () => ({
@@ -54,7 +63,8 @@ describe('DocumentContent', () => {
         title: 'Test Document',
       }
 
-      const { container } = render(<DocumentContent document={mockDocument as unknown} />)
+      // @ts-expect-error: mockDocument type is simplified for test
+      const { container } = render(<DocumentContent document={mockDocument} />)
       expect(container.querySelector('[data-testid="document-content"]')).toBeInTheDocument()
     })
 
@@ -63,7 +73,8 @@ describe('DocumentContent', () => {
         title: 'Test Document Title',
       }
 
-      const { container } = render(<DocumentContent document={mockDocument as unknown} />)
+      // @ts-expect-error: mockDocument type is simplified for test
+      const { container } = render(<DocumentContent document={mockDocument} />)
       const titleElement = container.querySelector('[data-testid="document-title"]')
       expect(titleElement?.textContent).toBe('Test Document Title')
     })
@@ -73,7 +84,8 @@ describe('DocumentContent', () => {
         title: 'Test Document',
       }
 
-      const { container } = render(<DocumentContent document={mockDocument as unknown} />)
+      // @ts-expect-error: mockDocument type is simplified for test
+      const { container } = render(<DocumentContent document={mockDocument} />)
       const styleElement = container.querySelector('[data-testid="style"]')
       expect(styleElement?.textContent).toBe('Style loaded')
     })
@@ -85,7 +97,8 @@ describe('DocumentContent', () => {
         title: 'Test Document',
       }
 
-      const { container } = render(<DocumentContent document={mockDocument as unknown} />)
+      // @ts-expect-error: mockDocument type is simplified for test
+      const { container } = render(<DocumentContent document={mockDocument} />)
       const permalinkElement = container.querySelector('[data-testid="permalink-format"]')
       expect(permalinkElement?.textContent).toBe('/docs/{{slug}}')
     })
@@ -95,7 +108,8 @@ describe('DocumentContent', () => {
         title: 'Test Document',
       }
 
-      const { container } = render(<DocumentContent document={mockDocument as unknown} />)
+      // @ts-expect-error: mockDocument type is simplified for test
+      const { container } = render(<DocumentContent document={mockDocument} />)
       const componentsCountElement = container.querySelector('[data-testid="components-count"]')
       expect(componentsCountElement?.textContent).toBe('12')
     })
@@ -108,7 +122,8 @@ describe('DocumentContent', () => {
         content: 'Test content',
       }
 
-      const { container } = render(<DocumentContent document={mockDocument as unknown} />)
+      // @ts-expect-error: mockDocument type is simplified for test
+      const { container } = render(<DocumentContent document={mockDocument} />)
       expect(container.querySelector('[data-testid="document-content"]')).toBeInTheDocument()
     })
   })

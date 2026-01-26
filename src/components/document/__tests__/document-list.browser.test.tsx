@@ -36,7 +36,7 @@ vi.mock('@/utils', () => ({
 describe('DocumentList', () => {
   afterEach(() => cleanup())
 
-  const mockDocuments: DocumentListType = [
+  const mockDocuments = [
     {
       id: '1',
       title: 'Document 1',
@@ -45,8 +45,8 @@ describe('DocumentList', () => {
       path: 'doc-1.md',
       description: 'Description 1',
       content: 'Content 1',
-      publishedAt: new Date('2024-01-01'),
-      modifiedAt: new Date('2024-01-01'),
+      publishedAt: '2024-01-01T00:00:00Z',
+      modifiedAt: '2024-01-01T00:00:00Z',
       preview: null,
       tags: [],
     },
@@ -58,12 +58,12 @@ describe('DocumentList', () => {
       path: 'doc-2.md',
       description: 'Description 2',
       content: 'Content 2',
-      publishedAt: new Date('2024-01-02'),
-      modifiedAt: new Date('2024-01-02'),
+      publishedAt: '2024-01-02T00:00:00Z',
+      modifiedAt: '2024-01-02T00:00:00Z',
       preview: null,
       tags: [{ id: '1', name: 'React' }],
     },
-  ]
+  ] as unknown as DocumentListType
 
   describe('基本動作', () => {
     it('グリッドコンテナが表示される', () => {

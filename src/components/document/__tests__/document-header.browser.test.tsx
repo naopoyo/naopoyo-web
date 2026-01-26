@@ -38,9 +38,9 @@ vi.mock('@/utils', () => ({
 describe('DocumentHeader', () => {
   afterEach(() => cleanup())
 
-  const publishedDate = new Date('2024-01-01')
+  const publishedDateStr = '2024-01-01T00:00:00Z'
 
-  const mockDocument: Document = {
+  const mockDocument = {
     id: '1',
     title: 'Test Document',
     emoji: '😀',
@@ -48,11 +48,11 @@ describe('DocumentHeader', () => {
     path: 'test-document.md',
     description: 'Test description',
     content: 'Test content',
-    publishedAt: publishedDate,
-    modifiedAt: publishedDate,
+    publishedAt: publishedDateStr,
+    modifiedAt: publishedDateStr,
     preview: null,
     tags: [],
-  }
+  } as unknown as Document
 
   describe('基本動作', () => {
     it('ドキュメントのタイトルを表示する', () => {
@@ -80,14 +80,14 @@ describe('DocumentHeader', () => {
 
   describe('更新日の表示', () => {
     it('更新日が公開日と異なる場合は更新日を表示する', () => {
-      const publishedDate = new Date('2024-01-01')
-      const modifiedDate = new Date('2024-01-15')
+      const publishedDateStr = '2024-01-01T00:00:00Z'
+      const modifiedDateStr = '2024-01-15T00:00:00Z'
 
-      const docWithModified: Document = {
+      const docWithModified = {
         ...mockDocument,
-        publishedAt: publishedDate,
-        modifiedAt: modifiedDate,
-      }
+        publishedAt: publishedDateStr,
+        modifiedAt: modifiedDateStr,
+      } as unknown as Document
 
       const { container } = render(<DocumentHeader document={docWithModified} />)
       const allText = container.textContent || ''
@@ -96,13 +96,13 @@ describe('DocumentHeader', () => {
     })
 
     it('更新日が公開日と同じ場合は更新日を表示しない', () => {
-      const sameDate = new Date('2024-01-01')
+      const sameDateStr = '2024-01-01T00:00:00Z'
 
-      const docWithoutModified: Document = {
+      const docWithoutModified = {
         ...mockDocument,
-        publishedAt: sameDate,
-        modifiedAt: sameDate,
-      }
+        publishedAt: sameDateStr,
+        modifiedAt: sameDateStr,
+      } as unknown as Document
 
       const { container } = render(<DocumentHeader document={docWithoutModified} />)
       const allText = container.textContent || ''
@@ -113,13 +113,13 @@ describe('DocumentHeader', () => {
 
   describe('タグの表示', () => {
     it('タグがある場合はタグを表示する', () => {
-      const docWithTags: Document = {
+      const docWithTags = {
         ...mockDocument,
         tags: [
           { id: '1', name: 'JavaScript' },
           { id: '2', name: 'React' },
         ],
-      }
+      } as unknown as Document
 
       const { container } = render(<DocumentHeader document={docWithTags} />)
       const tags = container.querySelectorAll('[data-testid="tag"]')
@@ -160,11 +160,12 @@ describe('DocumentHeader', () => {
       const docWithPreview: Document = {
         ...mockDocument,
         preview: {
+          id: 'preview-1',
           fileUrl: 'https://example.com/preview.jpg',
           width: 800,
           height: 600,
         },
-      }
+      } as Document
 
       const { container } = render(<DocumentHeader document={docWithPreview} />)
       const img = container.querySelector('img')
