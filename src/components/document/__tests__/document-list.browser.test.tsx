@@ -1,22 +1,31 @@
 import { render, cleanup } from '@testing-library/react'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 
+import {
+  documentListItemFactory,
+  documentListItemWithTagsFactory,
+} from '@/../tests/factories/document'
+
 import DocumentList from '../document-list'
 
-import type { DocumentList as DocumentListType } from '@/lib/hackersheet'
+// ============================================================================
+// Mocks
+// ============================================================================
 
 vi.mock('../document-emoji', () => ({
   default: ({ emoji }: { emoji: string }) => <div data-testid="emoji">{emoji}</div>,
 }))
 
-interface NextLinkProps {
-  children?: React.ReactNode
-  href?: string
-  className?: string
-}
-
 vi.mock('@/components/link', () => ({
-  NextLink: ({ children, href, className }: NextLinkProps) => (
+  NextLink: ({
+    children,
+    href,
+    className,
+  }: {
+    children?: React.ReactNode
+    href?: string
+    className?: string
+  }) => (
     <a href={href} className={className} data-testid="doc-link">
       {children}
     </a>
@@ -33,34 +42,29 @@ vi.mock('@/utils', () => ({
   },
 }))
 
+// ============================================================================
+// Test Data
+// ============================================================================
+
 const mockDocuments = [
-  {
+  documentListItemFactory.build({
     id: '1',
     title: 'Document 1',
     emoji: '😀',
     slug: 'doc-1',
-    path: 'doc-1.md',
-    description: 'Description 1',
-    content: 'Content 1',
-    publishedAt: '2024-01-01T00:00:00Z',
-    modifiedAt: '2024-01-01T00:00:00Z',
-    preview: null,
-    tags: [],
-  },
-  {
+  }),
+  documentListItemWithTagsFactory.build({
     id: '2',
     title: 'Document 2',
     emoji: '🎉',
     slug: 'doc-2',
-    path: 'doc-2.md',
-    description: 'Description 2',
-    content: 'Content 2',
-    publishedAt: '2024-01-02T00:00:00Z',
-    modifiedAt: '2024-01-02T00:00:00Z',
-    preview: null,
     tags: [{ id: '1', name: 'React' }],
-  },
-] as unknown as DocumentListType
+  }),
+]
+
+// ============================================================================
+// Helpers
+// ============================================================================
 
 const renderComponent = (documents = mockDocuments) => {
   return render(<DocumentList documents={documents} />)
@@ -75,42 +79,35 @@ describe('DocumentList', () => {
   describe('基本動作', () => {
     it('グリッドコンテナが表示される', () => {
       const { container } = renderComponent()
-      const grid = container.querySelector('div.grid')
-
-      expect(grid).toBeInTheDocument()
+      expect(container.querySelector('div.grid')).toBeInTheDocument()
     })
 
     it('各ドキュメントがカードとして表示される', () => {
       const { container } = renderComponent()
       const links = container.querySelectorAll('[data-testid="doc-link"]')
-
-      expect(links.length).toBe(2)
+      expect(links).toHaveLength(2)
     })
   })
 
   describe('ドキュメント情報の表示', () => {
     it('ドキュメントのタイトルが表示される', () => {
-      const { container } = renderComponent()
-      const text = container.textContent
-
-      expect(text).toContain('Document 1')
-      expect(text).toContain('Document 2')
+      renderComponent()
+      expect(document.body).toHaveTextContent('Document 1')
+      expect(document.body).toHaveTextContent('Document 2')
     })
 
     it('ドキュメントの絵文字が表示される', () => {
       const { container } = renderComponent()
       const emojis = container.querySelectorAll('[data-testid="emoji"]')
 
-      expect(emojis.length).toBe(2)
-      expect(emojis[0].textContent).toBe('😀')
-      expect(emojis[1].textContent).toBe('🎉')
+      expect(emojis).toHaveLength(2)
+      expect(emojis[0]).toHaveTextContent('😀')
+      expect(emojis[1]).toHaveTextContent('🎉')
     })
 
     it('タグがある場合は表示される', () => {
-      const { container } = renderComponent()
-      const text = container.textContent
-
-      expect(text).toContain('React')
+      renderComponent()
+      expect(document.body).toHaveTextContent('React')
     })
   })
 
@@ -127,9 +124,7 @@ describe('DocumentList', () => {
   describe('空の配列', () => {
     it('ドキュメント配列が空の場合は何も表示しない', () => {
       const { container } = renderComponent([])
-      const links = container.querySelectorAll('[data-testid="doc-link"]')
-
-      expect(links.length).toBe(0)
+      expect(container.querySelectorAll('[data-testid="doc-link"]')).toHaveLength(0)
     })
   })
 })
