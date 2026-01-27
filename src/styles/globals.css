@@ -85,6 +85,34 @@
   }
 }
 
+/* Elegant wind animation - starts subtle, builds up gradually */
+@keyframes wind {
+  0% {
+    transform: translateX(0) scaleX(0.8);
+    opacity: 0;
+  }
+  15% {
+    transform: translateX(5px) scaleX(0.9);
+    opacity: 0.3;
+  }
+  30% {
+    transform: translateX(10px) scaleX(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(25px) scaleX(1.15);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(15px) scaleX(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0) scaleX(0.8);
+    opacity: 0;
+  }
+}
+
 /* shadcn ui theme */
 :root {
   --radius: 0.65rem;
