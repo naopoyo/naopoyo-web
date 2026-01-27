@@ -1,5 +1,5 @@
-import { render, screen, cleanup, fireEvent, waitFor } from '@testing-library/react'
-import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import ThemeSwitcher from '../theme-switcher'
 
@@ -11,7 +11,18 @@ vi.mock('next-themes', () => ({
   useTheme: () => mockUseTheme(),
 }))
 
-const THEMES = ['dark', 'light', 'system'] as const
+/**
+ * テーマ名と対応するaria-labelのマッピング
+ */
+const THEME_LABELS = {
+  dark: 'ダークモード',
+  system: 'システム設定',
+  light: 'ライトモード',
+} as const
+
+type Theme = keyof typeof THEME_LABELS
+
+const THEMES: Theme[] = ['dark', 'light', 'system']
 
 const setupMockTheme = (theme: string) => {
   mockUseTheme.mockReturnValue({
@@ -20,8 +31,8 @@ const setupMockTheme = (theme: string) => {
   })
 }
 
-const getThemeButton = (theme: string) => {
-  return screen.getByRole('radio', { name: new RegExp(`Toggle ${theme}`, 'i') })
+const getThemeButton = (theme: Theme) => {
+  return screen.getByRole('radio', { name: THEME_LABELS[theme] })
 }
 
 const waitForThemeButtons = async () => {
@@ -72,13 +83,13 @@ describe('ThemeSwitcher', () => {
 
       await waitFor(() => {
         const darkButton = getThemeButton('dark')
-        expect(darkButton).toHaveAttribute('data-state', 'on')
+        expect(darkButton).toHaveAttribute('aria-checked', 'true')
       })
     })
   })
 
   describe('テーマ変更', () => {
-    const testThemeClick = async (fromTheme: string, toTheme: string) => {
+    const testThemeClick = async (fromTheme: Theme, toTheme: Theme) => {
       setupMockTheme(fromTheme)
 
       renderComponent()
