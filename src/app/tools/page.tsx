@@ -69,8 +69,8 @@ function ToolCard({ tool }: { tool: Tool }) {
       <article
         className={`
           relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-border/50
-          bg-card/80 p-6 shadow-lg backdrop-blur-sm transition-all duration-300
-          hover:border-foreground/15 hover:shadow-xl hover:shadow-foreground/5
+          bg-card/80 p-6 backdrop-blur-sm transition-all duration-300
+          hover:border-foreground/15
         `}
       >
         {/* グラデーション背景エフェクト */}
@@ -88,7 +88,7 @@ function ToolCard({ tool }: { tool: Tool }) {
         <div
           className={`
             relative flex size-14 items-center justify-center rounded-xl border border-border/30
-            bg-background/50 text-3xl shadow-sm transition-transform duration-300
+            bg-background/50 text-3xl transition-transform duration-300
             group-hover:scale-110
           `}
         >
