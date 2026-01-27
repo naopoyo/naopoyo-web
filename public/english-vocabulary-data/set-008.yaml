@@ -1,0 +1,112 @@
+id: set-008
+title: 上級単語セット2
+questions:
+  - word: mitigate
+    answer: 軽減する、和らげる
+    choices:
+      - 軽減する、和らげる
+      - 悪化させる
+      - 無視する
+      - 増加させる
+    explanation: |
+      The company took steps to mitigate the risk of data breaches.
+      （会社はデータ漏洩のリスクを軽減するための措置を講じました。）
+
+  - word: pursuant to
+    answer: 〜に従って
+    choices:
+      - 〜に従って
+      - 〜に反して
+      - 〜の前に
+      - 〜の代わりに
+    explanation: |
+      Pursuant to company policy, all employees must wear ID badges.
+      （会社の方針に従って、全従業員はIDバッジを着用しなければなりません。）
+
+  - word: proprietary
+    answer: 所有権のある、独自の
+    choices:
+      - 所有権のある、独自の
+      - 公開の
+      - 無料の
+      - 一般的な
+    explanation: |
+      This software uses proprietary technology.
+      （このソフトウェアは独自の技術を使用しています。）
+
+  - word: stipulate
+    answer: 規定する、明記する
+    choices:
+      - 規定する、明記する
+      - 提案する
+      - 拒否する
+      - 無視する
+    explanation: |
+      The contract stipulates that payment must be made within 30 days.
+      （契約書には30日以内に支払いを行う必要があると規定されています。）
+
+  - word: ubiquitous
+    answer: どこにでもある、遍在する
+    choices:
+      - どこにでもある、遍在する
+      - まれな
+      - 限定された
+      - 消滅した
+    explanation: |
+      Smartphones have become ubiquitous in modern society.
+      （スマートフォンは現代社会でどこにでもあるものになりました。）
+
+  - word: acquiesce
+    answer: 黙認する、従う
+    choices:
+      - 黙認する、従う
+      - 強く反対する
+      - 交渉する
+      - 無視する
+    explanation: |
+      The board eventually acquiesced to the shareholders' demands.
+      （取締役会は最終的に株主の要求に従いました。）
+
+  - word: circumvent
+    answer: 回避する、迂回する
+    choices:
+      - 回避する、迂回する
+      - 直面する
+      - 解決する
+      - 悪化させる
+    explanation: |
+      The company found a way to circumvent the new regulations.
+      （会社は新しい規制を回避する方法を見つけました。）
+
+  - word: concomitant
+    answer: 付随する、同時に起こる
+    choices:
+      - 付随する、同時に起こる
+      - 無関係な
+      - 反対の
+      - 遅れた
+    explanation: |
+      The expansion comes with concomitant increases in operating costs.
+      （拡張には運営コストの付随的な増加が伴います。）
+
+  - word: rescind
+    answer: 撤回する、取り消す
+    choices:
+      - 撤回する、取り消す
+      - 承認する
+      - 延長する
+      - 変更する
+    explanation: |
+      The company decided to rescind the offer due to budget constraints.
+      （会社は予算の制約によりオファーを撤回することを決定しました。）
+
+  - word: discretionary
+    answer: 自由裁量の、任意の
+    choices:
+      - 自由裁量の、任意の
+      - 義務的な
+      - 固定の
+      - 禁止された
+    explanation: |
+      Managers have discretionary authority over small purchases.
+      （管理者は少額の購入について自由裁量の権限を持っています。）

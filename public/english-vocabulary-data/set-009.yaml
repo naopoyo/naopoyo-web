@@ -1,0 +1,112 @@
+id: set-009
+title: 上級単語セット3
+questions:
+  - word: preclude
+    answer: 妨げる、排除する
+    choices:
+      - 妨げる、排除する
+      - 許可する
+      - 促進する
+      - 奨励する
+    explanation: |
+      The bad weather precluded us from holding the outdoor event.
+      （悪天候のため、屋外イベントを開催することができませんでした。）
+
+  - word: albeit
+    answer: 〜ではあるが
+    choices:
+      - 〜ではあるが
+      - 〜なので
+      - 〜の結果
+      - 〜の代わりに
+    explanation: |
+      The project was successful, albeit over budget.
+      （プロジェクトは予算超過ではあったが、成功しました。）
+
+  - word: exacerbate
+    answer: 悪化させる
+    choices:
+      - 悪化させる
+      - 改善する
+      - 維持する
+      - 解決する
+    explanation: |
+      The delay will only exacerbate the current problems.
+      （遅延は現在の問題を悪化させるだけです。）
+
+  - word: delineate
+    answer: 描写する、明確にする
+    choices:
+      - 描写する、明確にする
+      - 隠す
+      - 混乱させる
+      - 単純化する
+    explanation: |
+      The report clearly delineates the responsibilities of each department.
+      （報告書は各部門の責任を明確に描写しています。）
+
+  - word: juxtapose
+    answer: 並置する、対比する
+    choices:
+      - 並置する、対比する
+      - 分離する
+      - 統合する
+      - 無視する
+    explanation: |
+      The presentation juxtaposed the old and new marketing strategies.
+      （プレゼンテーションは旧来と新しいマーケティング戦略を対比しました。）
+
+  - word: tantamount
+    answer: 〜と同等の、等しい
+    choices:
+      - 〜と同等の、等しい
+      - 〜より劣る
+      - 〜と無関係な
+      - 〜と反対の
+    explanation: |
+      Ignoring safety protocols is tantamount to negligence.
+      （安全プロトコルを無視することは怠慢と同等です。）
+
+  - word: predicated on
+    answer: 〜に基づいて
+    choices:
+      - 〜に基づいて
+      - 〜に反して
+      - 〜を無視して
+      - 〜から独立して
+    explanation: |
+      Our strategy is predicated on continued market growth.
+      （我々の戦略は継続的な市場成長に基づいています。）
+
+  - word: corroborate
+    answer: 裏付ける、確認する
+    choices:
+      - 裏付ける、確認する
+      - 否定する
+      - 疑う
+      - 無視する
+    explanation: |
+      The witness testimony corroborated the evidence.
+      （証人の証言は証拠を裏付けました。）
+
+  - word: efficacious
+    answer: 効果的な、有効な
+    choices:
+      - 効果的な、有効な
+      - 無効な
+      - 有害な
+      - 中立な
+    explanation: |
+      The new treatment proved to be highly efficacious.
+      （新しい治療法は非常に効果的であることが証明されました。）
+
+  - word: obviate
+    answer: 取り除く、未然に防ぐ
+    choices:
+      - 取り除く、未然に防ぐ
+      - 引き起こす
+      - 悪化させる
+      - 無視する
+    explanation: |
+      The new system will obviate the need for manual data entry.
+      （新しいシステムにより手動でのデータ入力の必要がなくなります。）

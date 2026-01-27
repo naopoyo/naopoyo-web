@@ -1,0 +1,112 @@
+id: set-001
+title: TOEIC上級単語セット1
+questions:
+  - word: expedite
+    answer: 促進する、迅速に処理する
+    choices:
+      - 促進する、迅速に処理する
+      - 延期する
+      - 中止する
+      - 検討する
+    explanation: |
+      We need to expedite the shipping process to meet the deadline.
+      （締め切りに間に合わせるため、出荷プロセスを迅速に処理する必要があります。）
+
+  - word: contingency
+    answer: 不測の事態、緊急事態
+    choices:
+      - 不測の事態、緊急事態
+      - 継続性
+      - 一貫性
+      - 競争力
+    explanation: |
+      The company has a contingency plan in case of a natural disaster.
+      （会社は自然災害に備えた緊急時対応計画を持っています。）
+
+  - word: commensurate
+    answer: 釣り合った、相応の
+    choices:
+      - 釣り合った、相応の
+      - 過剰な
+      - 不十分な
+      - 無関係な
+    explanation: |
+      Your salary will be commensurate with your experience.
+      （給与はあなたの経験に相応のものになります。）
+
+  - word: disseminate
+    answer: 広める、普及させる
+    choices:
+      - 広める、普及させる
+      - 隠す
+      - 収集する
+      - 分析する
+    explanation: |
+      The marketing team will disseminate the new product information.
+      （マーケティングチームが新製品情報を広めます。）
+
+  - word: pursuant to
+    answer: 〜に従って、〜に基づいて
+    choices:
+      - 〜に従って、〜に基づいて
+      - 〜に反して
+      - 〜にもかかわらず
+      - 〜の代わりに
+    explanation: |
+      Pursuant to the new regulations, all employees must complete safety training.
+      （新しい規則に従って、全従業員は安全研修を修了しなければなりません。）
+
+  - word: remuneration
+    answer: 報酬、給与
+    choices:
+      - 報酬、給与
+      - 罰則
+      - 辞任
+      - 休暇
+    explanation: |
+      The remuneration package includes a base salary and performance bonuses.
+      （報酬パッケージには基本給と業績ボーナスが含まれます。）
+
+  - word: stringent
+    answer: 厳格な、厳しい
+    choices:
+      - 厳格な、厳しい
+      - 柔軟な
+      - 曖昧な
+      - 寛大な
+    explanation: |
+      The company implemented stringent quality control measures.
+      （会社は厳格な品質管理措置を実施しました。）
+
+  - word: amenable
+    answer: 従順な、応じやすい
+    choices:
+      - 従順な、応じやすい
+      - 反抗的な
+      - 無関心な
+      - 攻撃的な
+    explanation: |
+      The client was amenable to our proposed changes.
+      （クライアントは私たちの提案した変更に応じてくれました。）
+
+  - word: notwithstanding
+    answer: 〜にもかかわらず
+    choices:
+      - 〜にもかかわらず
+      - 〜のおかげで
+      - 〜に加えて
+      - 〜の結果として
+    explanation: |
+      Notwithstanding the economic downturn, the company maintained profitability.
+      （経済の低迷にもかかわらず、会社は収益性を維持しました。）
+
+  - word: unprecedented
+    answer: 前例のない、かつてない
+    choices:
+      - 前例のない、かつてない
+      - 予測可能な
+      - 一般的な
+      - 繰り返される
+    explanation: |
+      The company achieved unprecedented growth in the Asian market.
+      （会社はアジア市場で前例のない成長を達成しました。）

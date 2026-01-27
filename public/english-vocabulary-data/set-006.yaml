@@ -1,0 +1,112 @@
+id: set-006
+title: 中級単語セット2
+questions:
+  - word: perspective
+    answer: 視点、見方
+    choices:
+      - 視点、見方
+      - 結果
+      - 問題
+      - 解決策
+    explanation: |
+      Let's look at this issue from a different perspective.
+      （この問題を別の視点から見てみましょう。）
+
+  - word: allocate
+    answer: 割り当てる、配分する
+    choices:
+      - 割り当てる、配分する
+      - 削減する
+      - 集める
+      - 使い果たす
+    explanation: |
+      We need to allocate more resources to this project.
+      （このプロジェクトにもっと多くの資源を割り当てる必要があります。）
+
+  - word: comprehensive
+    answer: 包括的な、総合的な
+    choices:
+      - 包括的な、総合的な
+      - 部分的な
+      - 簡単な
+      - 不完全な
+    explanation: |
+      The report provides a comprehensive analysis of the market.
+      （その報告書は市場の包括的な分析を提供しています。）
+
+  - word: preliminary
+    answer: 予備の、準備段階の
+    choices:
+      - 予備の、準備段階の
+      - 最終の
+      - 公式の
+      - 確定した
+    explanation: |
+      These are just preliminary results.
+      （これらは予備的な結果にすぎません。）
+
+  - word: initiative
+    answer: 取り組み、主導権
+    choices:
+      - 取り組み、主導権
+      - 問題
+      - 障害
+      - 失敗
+    explanation: |
+      The company launched a new environmental initiative.
+      （会社は新しい環境への取り組みを開始しました。）
+
+  - word: fluctuate
+    answer: 変動する
+    choices:
+      - 変動する
+      - 安定する
+      - 増加する
+      - 減少する
+    explanation: |
+      Stock prices fluctuate daily.
+      （株価は日々変動します。）
+
+  - word: proficiency
+    answer: 熟達、習熟度
+    choices:
+      - 熟達、習熟度
+      - 初心者レベル
+      - 無知
+      - 失敗
+    explanation: |
+      The job requires proficiency in English.
+      （この仕事には英語の熟達が必要です。）
+
+  - word: prospective
+    answer: 見込みのある、将来の
+    choices:
+      - 見込みのある、将来の
+      - 過去の
+      - 現在の
+      - 失われた
+    explanation: |
+      We interviewed several prospective candidates.
+      （数名の見込みのある候補者を面接しました。）
+
+  - word: subsequent
+    answer: その後の、続いて起こる
+    choices:
+      - その後の、続いて起こる
+      - 以前の
+      - 同時の
+      - 無関係の
+    explanation: |
+      Subsequent meetings will be held monthly.
+      （その後の会議は毎月開催されます。）
+
+  - word: facilitate
+    answer: 促進する、容易にする
+    choices:
+      - 促進する、容易にする
+      - 妨げる
+      - 複雑にする
+      - 遅らせる
+    explanation: |
+      The new software will facilitate communication between teams.
+      （新しいソフトウェアはチーム間のコミュニケーションを促進します。）

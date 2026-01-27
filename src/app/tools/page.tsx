@@ -26,6 +26,9 @@ export default async function ToolsPage() {
         <li>
           <Link href="/tools/rem-px-converter">rem / px 変換</Link>
         </li>
+        <li>
+          <Link href="/tools/english-vocabulary">英単語クイズ</Link>
+        </li>
       </ul>
     </Container>
   )

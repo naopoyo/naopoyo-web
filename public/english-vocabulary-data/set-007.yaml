@@ -1,0 +1,112 @@
+id: set-007
+title: 中級単語セット3
+questions:
+  - word: feasible
+    answer: 実行可能な
+    choices:
+      - 実行可能な
+      - 不可能な
+      - 危険な
+      - 違法な
+    explanation: |
+      Is this plan feasible within our budget?
+      （この計画は予算内で実行可能ですか？）
+
+  - word: proficient
+    answer: 堪能な、熟練した
+    choices:
+      - 堪能な、熟練した
+      - 未熟な
+      - 無能な
+      - 経験のない
+    explanation: |
+      She is proficient in three languages.
+      （彼女は3つの言語に堪能です。）
+
+  - word: in lieu of
+    answer: 〜の代わりに
+    choices:
+      - 〜の代わりに
+      - 〜に加えて
+      - 〜のおかげで
+      - 〜にもかかわらず
+    explanation: |
+      You may receive a gift card in lieu of a refund.
+      （返金の代わりにギフトカードを受け取ることができます。）
+
+  - word: tenure
+    answer: 在職期間、保有
+    choices:
+      - 在職期間、保有
+      - 退職
+      - 昇進
+      - 解雇
+    explanation: |
+      During his tenure as CEO, the company doubled its revenue.
+      （彼のCEO在任中、会社は収益を倍増させました。）
+
+  - word: solicit
+    answer: 求める、勧誘する
+    choices:
+      - 求める、勧誘する
+      - 拒否する
+      - 無視する
+      - 禁止する
+    explanation: |
+      The company solicited feedback from customers.
+      （会社は顧客からフィードバックを求めました。）
+
+  - word: curtail
+    answer: 削減する、短縮する
+    choices:
+      - 削減する、短縮する
+      - 拡大する
+      - 維持する
+      - 開始する
+    explanation: |
+      We need to curtail expenses to stay within budget.
+      （予算内に収めるために経費を削減する必要があります。）
+
+  - word: inadvertently
+    answer: うっかり、不注意に
+    choices:
+      - うっかり、不注意に
+      - 意図的に
+      - 慎重に
+      - 積極的に
+    explanation: |
+      I inadvertently deleted the important file.
+      （うっかり重要なファイルを削除してしまいました。）
+
+  - word: imperative
+    answer: 必須の、緊急の
+    choices:
+      - 必須の、緊急の
+      - 任意の
+      - 不要な
+      - 些細な
+    explanation: |
+      It is imperative that we meet the deadline.
+      （締め切りを守ることは必須です。）
+
+  - word: deteriorate
+    answer: 悪化する
+    choices:
+      - 悪化する
+      - 改善する
+      - 安定する
+      - 回復する
+    explanation: |
+      The building's condition has deteriorated over the years.
+      （その建物の状態は年月とともに悪化しています。）
+
+  - word: rationale
+    answer: 理論的根拠、理由
+    choices:
+      - 理論的根拠、理由
+      - 結果
+      - 問題
+      - 解決策
+    explanation: |
+      What is the rationale behind this decision?
+      （この決定の背後にある理論的根拠は何ですか？）

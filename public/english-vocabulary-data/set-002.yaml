@@ -1,0 +1,112 @@
+id: set-002
+title: 初級単語セット1
+questions:
+  - word: schedule
+    answer: 予定、スケジュール
+    choices:
+      - 予定、スケジュール
+      - 場所
+      - 金額
+      - 人数
+    explanation: |
+      Please check the meeting schedule for next week.
+      （来週の会議の予定を確認してください。）
+
+  - word: available
+    answer: 利用可能な、空いている
+    choices:
+      - 利用可能な、空いている
+      - 忙しい
+      - 閉鎖中の
+      - 予約済みの
+    explanation: |
+      The conference room is available from 2 PM.
+      （会議室は午後2時から空いています。）
+
+  - word: confirm
+    answer: 確認する
+    choices:
+      - 確認する
+      - 取り消す
+      - 変更する
+      - 延期する
+    explanation: |
+      Could you confirm your reservation by email?
+      （メールでご予約を確認していただけますか？）
+
+  - word: appointment
+    answer: 予約、約束
+    choices:
+      - 予約、約束
+      - 支払い
+      - 問題
+      - 質問
+    explanation: |
+      I have an appointment with the doctor at 3 PM.
+      （午後3時に医者との予約があります。）
+
+  - word: receive
+    answer: 受け取る
+    choices:
+      - 受け取る
+      - 送る
+      - 捨てる
+      - 作る
+    explanation: |
+      Did you receive my email yesterday?
+      （昨日私のメールを受け取りましたか？）
+
+  - word: attend
+    answer: 出席する
+    choices:
+      - 出席する
+      - 欠席する
+      - 主催する
+      - 中止する
+    explanation: |
+      All employees must attend the safety training.
+      （全従業員は安全研修に出席しなければなりません。）
+
+  - word: recently
+    answer: 最近
+    choices:
+      - 最近
+      - 将来
+      - 昔
+      - 常に
+    explanation: |
+      The company recently opened a new branch in Tokyo.
+      （会社は最近東京に新しい支店を開設しました。）
+
+  - word: convenient
+    answer: 便利な、都合の良い
+    choices:
+      - 便利な、都合の良い
+      - 不便な
+      - 高価な
+      - 複雑な
+    explanation: |
+      What time is convenient for you?
+      （何時がご都合よろしいですか？）
+
+  - word: require
+    answer: 必要とする、要求する
+    choices:
+      - 必要とする、要求する
+      - 提供する
+      - 拒否する
+      - 無視する
+    explanation: |
+      This job requires good communication skills.
+      （この仕事には良いコミュニケーション能力が必要です。）
+
+  - word: immediately
+    answer: すぐに、直ちに
+    choices:
+      - すぐに、直ちに
+      - ゆっくり
+      - 後で
+      - たまに
+    explanation: |
+      Please contact the customer immediately.
+      （すぐにお客様に連絡してください。）

@@ -1,0 +1,112 @@
+id: set-005
+title: 中級単語セット1
+questions:
+  - word: accommodate
+    answer: 収容する、対応する
+    choices:
+      - 収容する、対応する
+      - 拒否する
+      - 制限する
+      - 無視する
+    explanation: |
+      The hotel can accommodate up to 200 guests.
+      （そのホテルは最大200名の宿泊客を収容できます。）
+
+  - word: implement
+    answer: 実施する、導入する
+    choices:
+      - 実施する、導入する
+      - 中止する
+      - 延期する
+      - 検討する
+    explanation: |
+      We will implement the new system next month.
+      （来月新しいシステムを導入します。）
+
+  - word: comply with
+    answer: 〜に従う、準拠する
+    choices:
+      - 〜に従う、準拠する
+      - 〜に反対する
+      - 〜を無視する
+      - 〜を変更する
+    explanation: |
+      All products must comply with safety regulations.
+      （すべての製品は安全規制に準拠しなければなりません。）
+
+  - word: substantially
+    answer: かなり、大幅に
+    choices:
+      - かなり、大幅に
+      - わずかに
+      - 全く
+      - 時々
+    explanation: |
+      Sales have increased substantially this quarter.
+      （今四半期、売上が大幅に増加しました。）
+
+  - word: mandatory
+    answer: 義務的な、必須の
+    choices:
+      - 義務的な、必須の
+      - 任意の
+      - 推奨の
+      - 禁止の
+    explanation: |
+      Attendance at the training session is mandatory.
+      （研修への参加は必須です。）
+
+  - word: designate
+    answer: 指定する、任命する
+    choices:
+      - 指定する、任命する
+      - 解任する
+      - 拒否する
+      - 無視する
+    explanation: |
+      Please park in the designated area.
+      （指定されたエリアに駐車してください。）
+
+  - word: adjacent
+    answer: 隣接した
+    choices:
+      - 隣接した
+      - 離れた
+      - 反対側の
+      - 中心の
+    explanation: |
+      The parking lot is adjacent to the main building.
+      （駐車場は本館に隣接しています。）
+
+  - word: reimburse
+    answer: 払い戻す、返金する
+    choices:
+      - 払い戻す、返金する
+      - 請求する
+      - 借りる
+      - 投資する
+    explanation: |
+      The company will reimburse you for travel expenses.
+      （会社が旅費を払い戻します。）
+
+  - word: eligible
+    answer: 資格がある
+    choices:
+      - 資格がある
+      - 資格がない
+      - 義務がある
+      - 禁止されている
+    explanation: |
+      Employees who have worked here for 5 years are eligible for the bonus.
+      （5年勤務した従業員はボーナスを受ける資格があります。）
+
+  - word: revise
+    answer: 修正する、改訂する
+    choices:
+      - 修正する、改訂する
+      - 削除する
+      - 承認する
+      - 拒否する
+    explanation: |
+      Please revise the report and submit it again.
+      （報告書を修正して再提出してください。）

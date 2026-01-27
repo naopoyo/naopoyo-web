@@ -1,0 +1,112 @@
+id: set-010
+title: 上級単語セット4
+questions:
+  - word: tenable
+    answer: 維持できる、妥当な
+    choices:
+      - 維持できる、妥当な
+      - 不可能な
+      - 非論理的な
+      - 危険な
+    explanation: |
+      Given the new evidence, our original position is no longer tenable.
+      （新しい証拠を考慮すると、我々の当初の立場はもはや維持できません。）
+
+  - word: replete with
+    answer: 〜に満ちた、〜が豊富な
+    choices:
+      - 〜に満ちた、〜が豊富な
+      - 〜が欠けた
+      - 〜と無関係な
+      - 〜に反する
+    explanation: |
+      The annual report is replete with detailed financial data.
+      （年次報告書は詳細な財務データに満ちています。）
+
+  - word: germane
+    answer: 関連のある、適切な
+    choices:
+      - 関連のある、適切な
+      - 無関係な
+      - 不適切な
+      - 曖昧な
+    explanation: |
+      Please keep your comments germane to the topic at hand.
+      （当面の議題に関連したコメントをお願いします。）
+
+  - word: promulgate
+    answer: 公布する、広める
+    choices:
+      - 公布する、広める
+      - 隠す
+      - 撤回する
+      - 無視する
+    explanation: |
+      The government promulgated new regulations on data privacy.
+      （政府はデータプライバシーに関する新しい規制を公布しました。）
+
+  - word: unequivocal
+    answer: 明確な、疑いのない
+    choices:
+      - 明確な、疑いのない
+      - 曖昧な
+      - 矛盾した
+      - 疑わしい
+    explanation: |
+      The CEO gave an unequivocal statement supporting the merger.
+      （CEOは合併を支持する明確な声明を出しました。）
+
+  - word: ostensibly
+    answer: 表面上は、見たところでは
+    choices:
+      - 表面上は、見たところでは
+      - 実際には
+      - 確実に
+      - 秘密裏に
+    explanation: |
+      The meeting was ostensibly about budget planning.
+      （会議は表面上は予算計画に関するものでした。）
+
+  - word: ameliorate
+    answer: 改善する、良くする
+    choices:
+      - 改善する、良くする
+      - 悪化させる
+      - 維持する
+      - 無視する
+    explanation: |
+      New policies were introduced to ameliorate working conditions.
+      （労働条件を改善するために新しい方針が導入されました。）
+
+  - word: peremptory
+    answer: 有無を言わせない、断固とした
+    choices:
+      - 有無を言わせない、断固とした
+      - 柔軟な
+      - 穏やかな
+      - 曖昧な
+    explanation: |
+      The manager issued a peremptory order to halt all operations.
+      （マネージャーはすべての業務を停止するよう断固とした命令を出しました。）
+
+  - word: superfluous
+    answer: 余分な、不必要な
+    choices:
+      - 余分な、不必要な
+      - 必要な
+      - 重要な
+      - 有益な
+    explanation: |
+      Please remove any superfluous information from the report.
+      （報告書から余分な情報を削除してください。）
+
+  - word: predisposed to
+    answer: 〜しがちな、〜の傾向がある
+    choices:
+      - 〜しがちな、〜の傾向がある
+      - 〜を避ける
+      - 〜に反対する
+      - 〜と無関係な
+    explanation: |
+      The team is predisposed to accept innovative solutions.
+      （そのチームは革新的な解決策を受け入れる傾向があります。）

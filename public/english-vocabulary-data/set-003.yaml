@@ -1,0 +1,112 @@
+id: set-003
+title: 初級単語セット2
+questions:
+  - word: purchase
+    answer: 購入する、購入
+    choices:
+      - 購入する、購入
+      - 販売する
+      - 返品する
+      - 修理する
+    explanation: |
+      You can purchase tickets online.
+      （チケットはオンラインで購入できます。）
+
+  - word: employee
+    answer: 従業員
+    choices:
+      - 従業員
+      - 顧客
+      - 競合他社
+      - 株主
+    explanation: |
+      The company has over 500 employees.
+      （その会社には500人以上の従業員がいます。）
+
+  - word: deadline
+    answer: 締め切り
+    choices:
+      - 締め切り
+      - 開始日
+      - 休日
+      - 給料日
+    explanation: |
+      The deadline for the project is next Friday.
+      （プロジェクトの締め切りは来週の金曜日です。）
+
+  - word: discuss
+    answer: 話し合う、議論する
+    choices:
+      - 話し合う、議論する
+      - 決定する
+      - 中止する
+      - 発表する
+    explanation: |
+      Let's discuss this matter in the meeting.
+      （この件について会議で話し合いましょう。）
+
+  - word: temporary
+    answer: 一時的な
+    choices:
+      - 一時的な
+      - 永続的な
+      - 定期的な
+      - 不規則な
+    explanation: |
+      This is only a temporary solution.
+      （これは一時的な解決策にすぎません。）
+
+  - word: inform
+    answer: 知らせる、通知する
+    choices:
+      - 知らせる、通知する
+      - 隠す
+      - 忘れる
+      - 無視する
+    explanation: |
+      Please inform us of any changes to your address.
+      （住所の変更があればお知らせください。）
+
+  - word: improve
+    answer: 改善する、向上する
+    choices:
+      - 改善する、向上する
+      - 悪化する
+      - 維持する
+      - 変更する
+    explanation: |
+      We need to improve our customer service.
+      （私たちは顧客サービスを改善する必要があります。）
+
+  - word: apologize
+    answer: 謝罪する
+    choices:
+      - 謝罪する
+      - 感謝する
+      - 要求する
+      - 拒否する
+    explanation: |
+      We apologize for any inconvenience caused.
+      （ご不便をおかけして申し訳ございません。）
+
+  - word: additional
+    answer: 追加の
+    choices:
+      - 追加の
+      - 基本の
+      - 最終の
+      - 不要な
+    explanation: |
+      Are there any additional questions?
+      （追加の質問はありますか？）
+
+  - word: forward
+    answer: 転送する
+    choices:
+      - 転送する
+      - 削除する
+      - 印刷する
+      - 保存する
+    explanation: |
+      Could you forward this email to the sales team?
+      （このメールを営業チームに転送していただけますか？）

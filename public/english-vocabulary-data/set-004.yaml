@@ -1,0 +1,112 @@
+id: set-004
+title: 初級単語セット3
+questions:
+  - word: arrange
+    answer: 手配する、準備する
+    choices:
+      - 手配する、準備する
+      - 取り消す
+      - 遅らせる
+      - 忘れる
+    explanation: |
+      I will arrange a taxi for you.
+      （タクシーを手配いたします。）
+
+  - word: expect
+    answer: 期待する、予期する
+    choices:
+      - 期待する、予期する
+      - 無視する
+      - 拒否する
+      - 忘れる
+    explanation: |
+      We expect the shipment to arrive tomorrow.
+      （出荷品は明日届く予定です。）
+
+  - word: delay
+    answer: 遅れ、遅延
+    choices:
+      - 遅れ、遅延
+      - 早着
+      - 中止
+      - 変更
+    explanation: |
+      We apologize for the delay in delivery.
+      （配達の遅れをお詫び申し上げます。）
+
+  - word: include
+    answer: 含む
+    choices:
+      - 含む
+      - 除外する
+      - 減らす
+      - 分ける
+    explanation: |
+      The price includes tax and shipping.
+      （価格には税金と送料が含まれています。）
+
+  - word: register
+    answer: 登録する
+    choices:
+      - 登録する
+      - 削除する
+      - 検索する
+      - 印刷する
+    explanation: |
+      Please register on our website to receive updates.
+      （最新情報を受け取るには、ウェブサイトでご登録ください。）
+
+  - word: opportunity
+    answer: 機会
+    choices:
+      - 機会
+      - 問題
+      - 障害
+      - 義務
+    explanation: |
+      This is a great opportunity to expand our business.
+      （これは事業を拡大する絶好の機会です。）
+
+  - word: policy
+    answer: 方針、ポリシー
+    choices:
+      - 方針、ポリシー
+      - 製品
+      - 価格
+      - 場所
+    explanation: |
+      Our company has a strict refund policy.
+      （当社には厳格な返金ポリシーがあります。）
+
+  - word: previous
+    answer: 以前の、前の
+    choices:
+      - 以前の、前の
+      - 次の
+      - 現在の
+      - 最後の
+    explanation: |
+      Please refer to the previous email for details.
+      （詳細は以前のメールをご参照ください。）
+
+  - word: response
+    answer: 返答、応答
+    choices:
+      - 返答、応答
+      - 質問
+      - 要求
+      - 問題
+    explanation: |
+      Thank you for your prompt response.
+      （迅速なご返答ありがとうございます。）
+
+  - word: successful
+    answer: 成功した
+    choices:
+      - 成功した
+      - 失敗した
+      - 普通の
+      - 困難な
+    explanation: |
+      The product launch was very successful.
+      （製品の発売はとても成功しました。）
