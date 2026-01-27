@@ -1,3 +1,5 @@
+import { HoverShimmer } from '@/components/effects'
+
 /**
  * SpeechBubble の Props
  */
@@ -55,7 +57,9 @@ export default function SpeechBubble({ children }: SpeechBubbleProps) {
       />
 
       {/* 吹き出し本体 */}
-      <div className="rounded-2xl border border-border bg-background p-6">{children}</div>
+      <HoverShimmer className="rounded-2xl border border-border bg-background p-6">
+        {children}
+      </HoverShimmer>
     </div>
   )
 }

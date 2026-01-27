@@ -85,6 +85,24 @@
   }
 }
 
+/* Shimmer animation - sparkling light sweep effect */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
 /* Emoji spin animation - playful rotation with overshoot */
 @keyframes emoji-spin {
   0% {
