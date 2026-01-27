@@ -27,7 +27,7 @@ describe('BookmarkFilter', () => {
       const input = container.querySelector('input[type="search"]')
       expect(input).toBeInTheDocument()
       expect(input).toHaveAttribute('name', 'keyword')
-      expect(input).toHaveAttribute('placeholder', 'キーワードを入力して検索')
+      expect(input).toHaveAttribute('placeholder', 'ブックマークを検索...')
       expect(input).toHaveClass('text-base')
     })
   })
