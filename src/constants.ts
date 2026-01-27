@@ -14,7 +14,7 @@ export const GOOGLE_ADS_SLOT_BANNER = process.env.NEXT_PUBLIC_GOOGLE_ADS_SLOT_BA
 export const SITE_NAME = 'naopoyo.com'
 
 export const SITE_DESC =
-  '個人でWEBサービスを開発しています。このサイトでは個人開発で学んだ内容を公開しています。'
+  '個人開発をしています。このサイトには、学んだことを忘れないように記録しています。'
 
 export const RECENT_DOCS_COUNT = 6
 
