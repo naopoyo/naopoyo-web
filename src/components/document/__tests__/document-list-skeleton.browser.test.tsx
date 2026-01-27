@@ -13,6 +13,9 @@ const renderComponent = (length: number) => {
   return render(<DocumentListSkeleton length={length} />)
 }
 
+/** 各スケルトンカード内の Skeleton 要素数 */
+const SKELETONS_PER_CARD = 6
+
 describe('DocumentListSkeleton', () => {
   afterEach(() => {
     cleanup()
@@ -27,31 +30,39 @@ describe('DocumentListSkeleton', () => {
       expect(grid).toBeInTheDocument()
     })
 
-    it('指定された数のスケルトンが表示される', () => {
+    it('指定された数のスケルトンカードが表示される', () => {
       const { container } = renderComponent(3)
-      const skeletons = container.querySelectorAll('[data-testid="skeleton"]')
+      const cards = container.querySelectorAll('[class*="row-span-3"]')
 
-      expect(skeletons.length).toBe(3)
+      expect(cards.length).toBe(3)
     })
 
-    it('異なる数のスケルトンが表示される', () => {
+    it('異なる数のスケルトンカードが表示される', () => {
       const { container, rerender } = renderComponent(5)
-      let skeletons = container.querySelectorAll('[data-testid="skeleton"]')
-      expect(skeletons.length).toBe(5)
+      let cards = container.querySelectorAll('[class*="row-span-3"]')
+      expect(cards.length).toBe(5)
 
       rerender(<DocumentListSkeleton length={10} />)
-      skeletons = container.querySelectorAll('[data-testid="skeleton"]')
-      expect(skeletons.length).toBe(10)
+      cards = container.querySelectorAll('[class*="row-span-3"]')
+      expect(cards.length).toBe(10)
     })
   })
 
-  describe('スケルトンの高さ', () => {
-    it('各スケルトンに h-75 クラスが設定されている', () => {
+  describe('スケルトンカードの構造', () => {
+    it('各カードにプレビュー・タイトル・メタデータのスケルトンが含まれる', () => {
       const { container } = renderComponent(2)
       const skeletons = container.querySelectorAll('[data-testid="skeleton"]')
 
-      expect(skeletons[0].className).toContain('h-75')
-      expect(skeletons[1].className).toContain('h-75')
+      // 各カードに 6 つの Skeleton 要素（プレビュー1 + タイトル2 + メタデータ3）
+      expect(skeletons.length).toBe(2 * SKELETONS_PER_CARD)
+    })
+
+    it('プレビューエリアに h-32 クラスが設定されている', () => {
+      const { container } = renderComponent(1)
+      const skeletons = container.querySelectorAll('[data-testid="skeleton"]')
+      const previewSkeleton = skeletons[0]
+
+      expect(previewSkeleton.className).toContain('h-32')
     })
   })
 
@@ -68,16 +79,16 @@ describe('DocumentListSkeleton', () => {
   describe('エッジケース', () => {
     it('length が 0 の場合は何も表示しない', () => {
       const { container } = renderComponent(0)
-      const skeletons = container.querySelectorAll('[data-testid="skeleton"]')
+      const cards = container.querySelectorAll('[class*="row-span-3"]')
 
-      expect(skeletons.length).toBe(0)
+      expect(cards.length).toBe(0)
     })
 
     it('length が大きい場合は対応する', () => {
       const { container } = renderComponent(100)
-      const skeletons = container.querySelectorAll('[data-testid="skeleton"]')
+      const cards = container.querySelectorAll('[class*="row-span-3"]')
 
-      expect(skeletons.length).toBe(100)
+      expect(cards.length).toBe(100)
     })
   })
 })
