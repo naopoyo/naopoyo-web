@@ -1,5 +1,6 @@
 'use client'
 
+import { ArrowUpDown } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
@@ -9,7 +10,6 @@ import {
   SelectGroup,
   SelectItem,
   SelectValue,
-  SelectLabel,
   SelectTrigger,
 } from '@/components/ui/select'
 import { useCreateQueryString } from '@/hooks'
@@ -27,8 +27,8 @@ export type SortBySelectProps = {
  * @internal
  */
 const SORT_OPTIONS = [
-  { value: 'published_at', label: '最近公開された' },
-  { value: 'modified_at', label: '最近更新された' },
+  { value: 'published_at', label: '公開日順' },
+  { value: 'modified_at', label: '更新日順' },
 ] as const
 
 /**
@@ -52,14 +52,30 @@ export default function SortBySelect({ sortBy }: SortBySelectProps) {
 
   return (
     <Select value={sortBy} onValueChange={handleValueChange}>
-      <SelectTrigger className="w-45">
+      <SelectTrigger
+        className={`
+          w-36 gap-2 border-border/50 bg-muted/30 transition-all duration-200
+          hover:border-border hover:bg-muted/50
+          focus:border-primary/50 focus:bg-background
+          data-[state=open]:border-primary/50 data-[state=open]:bg-background
+        `}
+      >
+        <ArrowUpDown className="size-3.5 text-muted-foreground" aria-hidden="true" />
         <SelectValue placeholder="並び順" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent
+        className={`border-border/50 bg-popover/95 shadow-lg backdrop-blur-sm`}
+      >
         <SelectGroup>
-          <SelectLabel>並び順</SelectLabel>
           {SORT_OPTIONS.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
+            <SelectItem
+              key={option.value}
+              value={option.value}
+              className={`
+                cursor-pointer transition-colors duration-150
+                focus:bg-primary/10 focus:text-foreground
+              `}
+            >
               {option.label}
             </SelectItem>
           ))}

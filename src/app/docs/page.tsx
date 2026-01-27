@@ -37,10 +37,10 @@ export default async function DocsPage(props: DocsPageProps) {
       <div
         className={`
           flex flex-col items-center justify-center gap-4
-          md:flex-row
+          sm:flex-row
         `}
       >
-        <Suspense fallback={<Skeleton className="size-8" />}>
+        <Suspense fallback={<Skeleton className="h-7 w-20 rounded-full" />}>
           <DocumentTotalCount keyword={keyword} sortBy={sortBy} />
         </Suspense>
         <DocumentFilter keyword={keyword} sortBy={sortBy} />

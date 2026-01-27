@@ -1,3 +1,5 @@
+import { FileText } from 'lucide-react'
+
 import { getDocuments } from '@/actions'
 
 /**
@@ -25,5 +27,16 @@ export type DocumentTotalCountProps = {
 export default async function DocumentTotalCount({ keyword, sortBy }: DocumentTotalCountProps) {
   const { totalCount } = await getDocuments({ keyword, sortBy })
 
-  return <div className="text-sm text-nowrap text-muted-foreground">全 {totalCount} 件</div>
+  return (
+    <div
+      className={`
+        inline-flex items-center gap-1.5 rounded-full bg-muted/50 px-3 py-1 text-sm font-medium
+        text-muted-foreground
+      `}
+    >
+      <FileText className="size-3.5" aria-hidden="true" />
+      <span className="tabular-nums">{totalCount}</span>
+      <span>件</span>
+    </div>
+  )
 }
