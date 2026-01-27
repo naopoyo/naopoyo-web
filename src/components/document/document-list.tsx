@@ -37,6 +37,7 @@ const CARD_CLASS = `
   group relative row-span-3 grid grid-rows-subgrid gap-y-4 overflow-hidden rounded-xl border bg-card
   p-6 transition-all duration-300 ease-out
   hover:border-foreground/10 hover:shadow-md
+  active:scale-[0.98] active:bg-muted/50
 `
 
 /**
