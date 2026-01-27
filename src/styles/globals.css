@@ -85,6 +85,35 @@
   }
 }
 
+/* Emoji spin animation - playful rotation with overshoot */
+@keyframes emoji-spin {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.8) rotate(180deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+/* Emoji bounce animation - subtle pop effect */
+@keyframes emoji-bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* Elegant wind animation - starts subtle, builds up gradually */
 @keyframes wind {
   0% {
