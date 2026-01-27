@@ -1,3 +1,4 @@
+import { stringToColorWithFrame } from '@/lib/string-to-color-with-frame'
 import { createDateFormat, timeAgo } from '@/utils'
 
 import DocumentEmoji from './document-emoji'
@@ -92,7 +93,15 @@ const TAG_LIST_CLASS = `flex flex-wrap justify-end gap-1.5`
  * タグの CSS クラス
  * @internal
  */
-const TAG_CLASS = `rounded-md bg-secondary px-2 py-0.5 text-xs text-secondary-foreground`
+const TAG_CLASS = `
+  flex items-center gap-1.5 rounded-md bg-secondary px-2 py-0.5 text-xs text-secondary-foreground
+`
+
+/**
+ * タグの色付きドットの CSS クラス
+ * @internal
+ */
+const TAG_DOT_CLASS = `size-1.5 shrink-0 rounded-full`
 
 /**
  * DocumentList コンポーネント - ドキュメントカードのグリッドを表示します
@@ -145,11 +154,22 @@ export default function DocumentList({ documents }: DocumentListProps) {
 
               {document.tags.length > 0 && (
                 <ul className={TAG_LIST_CLASS}>
-                  {document.tags.map((tag) => (
-                    <li key={tag.id} className={TAG_CLASS}>
-                      {tag.name}
-                    </li>
-                  ))}
+                  {document.tags.map((tag) => {
+                    const [color, borderColor] = stringToColorWithFrame(tag.name)
+                    return (
+                      <li key={tag.id} className={TAG_CLASS}>
+                        <span
+                          className={TAG_DOT_CLASS}
+                          style={{
+                            backgroundColor: color,
+                            boxShadow: `0 0 0 0.5px ${borderColor}`,
+                          }}
+                          aria-hidden="true"
+                        />
+                        <span>{tag.name}</span>
+                      </li>
+                    )
+                  })}
                 </ul>
               )}
             </div>
