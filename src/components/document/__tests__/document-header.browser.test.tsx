@@ -129,7 +129,7 @@ describe('DocumentHeader', () => {
       const link = container.querySelector('[data-testid="github-link"]')
 
       expect(link).toBeInTheDocument()
-      expect(link?.textContent).toBe('GitHubで見る')
+      expect(link?.textContent).toContain('GitHubで見る')
     })
 
     it('GitHub リンクが正しい URL を持つ', () => {

@@ -1,4 +1,7 @@
+import { CalendarIcon, ClockIcon, GitCommitHorizontalIcon, TagIcon } from 'lucide-react'
+
 import { DocumentEmoji } from '@/components/document'
+import { FlowingGlow } from '@/components/effects'
 import { Link } from '@/components/link'
 import { SmallTag } from '@/components/tag'
 import { HACKERSHEET_GITHUB_REPO_URL } from '@/constants'
@@ -57,6 +60,50 @@ function generateHistoryUrl(document: Document): string | undefined {
 }
 
 /**
+ * MetaItem コンポーネント - メタ情報を表示するアイテム
+ *
+ * @internal
+ */
+function MetaItem({
+  icon: Icon,
+  label,
+  value,
+  subValue,
+  href,
+}: {
+  icon: React.ComponentType<{ className?: string; size?: number }>
+  label: string
+  value: React.ReactNode
+  subValue?: string
+  href?: string
+}) {
+  return (
+    <div className="flex items-center gap-2.5">
+      <Icon className="text-muted-foreground/40" size={14} />
+      <div className="flex items-baseline gap-2">
+        <span className="text-xs text-muted-foreground">{label}</span>
+        {href ? (
+          <Link
+            href={href}
+            className={`
+              text-sm text-foreground/80 no-underline transition-all duration-200
+              hover:text-foreground hover:no-underline
+            `}
+          >
+            {value}
+          </Link>
+        ) : (
+          <span className="text-sm text-foreground">{value}</span>
+        )}
+        {subValue && (
+          <span className="text-xs text-muted-foreground/50 tabular-nums">{subValue}</span>
+        )}
+      </div>
+    </div>
+  )
+}
+
+/**
  * DocumentHeader コンポーネント - ドキュメントのタイトルと基本情報を表示します
  *
  * ドキュメントのタイトル、絵文字、公開日、更新日、タグなどのメタデータを表示します。
@@ -71,53 +118,72 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
   const historyUrl = generateHistoryUrl(document)
 
   return (
-    <div className="flex flex-col gap-10">
-      <div className="flex w-full flex-col gap-16">
-        <div className="text-7xl">
-          <DocumentEmoji emoji={document.emoji} />
-        </div>
-        <h1 className="auto-phrase text-3xl/relaxed font-semibold">{document.title}</h1>
+    <header className="flex flex-col gap-8">
+      {/* Emoji & Title Section with flowing glow effect */}
+      <FlowingGlow className="relative">
         <div className="flex flex-col gap-4">
-          <div
+          <span className="text-7xl">
+            <DocumentEmoji emoji={document.emoji} />
+          </span>
+          <h1
             className={`
-              flex gap-8 text-xs
-              md:gap-16
+              auto-phrase text-3xl/snug font-bold tracking-tight text-foreground
+              md:text-4xl/snug
             `}
           >
-            <div className="flex flex-col gap-1">
-              <div className="text-muted-foreground">公開日</div>
-              <div>{timeAgo(document.publishedAt)}</div>
-              <div className="text-muted-foreground">{DATE_FORMAT(document.publishedAt)}</div>
-            </div>
-            {showModified && (
-              <div className="flex flex-col gap-1">
-                <div className="text-muted-foreground">更新日</div>
-                <div>{timeAgo(document.modifiedAt)}</div>
-                <div className="text-muted-foreground">{DATE_FORMAT(document.modifiedAt)}</div>
-              </div>
-            )}
-            {historyUrl && (
-              <div className="flex flex-col gap-1">
-                <div className="text-muted-foreground">更新履歴</div>
-                <div>
-                  <Link href={historyUrl} icon="external" iconSize={12}>
-                    GitHubで見る
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-          {showTags && (
-            <ul className="flex flex-row gap-4">
-              {document.tags.map((tag) => (
-                <li key={tag.id}>
-                  <SmallTag tagName={tag.name} />
-                </li>
-              ))}
-            </ul>
-          )}
+            {document.title}
+          </h1>
         </div>
+      </FlowingGlow>
+
+      {/* Meta Information */}
+      <div
+        className={`
+          flex flex-col gap-2.5
+          md:flex-row md:flex-wrap md:items-center md:gap-x-6 md:gap-y-2
+        `}
+      >
+        <MetaItem
+          icon={CalendarIcon}
+          label="公開日"
+          value={timeAgo(document.publishedAt)}
+          subValue={DATE_FORMAT(document.publishedAt)}
+        />
+
+        {showModified && (
+          <MetaItem
+            icon={ClockIcon}
+            label="更新日"
+            value={timeAgo(document.modifiedAt)}
+            subValue={DATE_FORMAT(document.modifiedAt)}
+          />
+        )}
+
+        {historyUrl && (
+          <MetaItem
+            icon={GitCommitHorizontalIcon}
+            label="履歴"
+            value="GitHubで見る"
+            href={historyUrl}
+          />
+        )}
       </div>
+
+      {/* Tags Section */}
+      {showTags && (
+        <div className="flex items-center gap-2.5">
+          <TagIcon className="text-muted-foreground/40" size={14} />
+          <ul className="flex flex-wrap gap-2">
+            {document.tags.map((tag) => (
+              <li key={tag.id}>
+                <SmallTag tagName={tag.name} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Preview Image */}
       {document.preview && (
         <picture className="-mx-4">
           <img
@@ -129,6 +195,6 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
           />
         </picture>
       )}
-    </div>
+    </header>
   )
 }
