@@ -41,13 +41,13 @@ describe('NavBarMenu', () => {
   })
 
   describe('レンダリング', () => {
-    it('メニューアイテムを5個表示する', () => {
+    it('メニューアイテムを5個表示する（ホバーインジケーター含め6個）', () => {
       mockUseSelectedLayoutSegment.mockReturnValue(null)
 
       const { container } = renderComponent()
       const items = container.querySelectorAll('li')
-
-      expect(items).toHaveLength(5)
+      // 5つのメニューアイテム + 1つのホバーインジケーター
+      expect(items).toHaveLength(6)
     })
 
     it('正しいメニューラベルを表示する', () => {
@@ -72,63 +72,66 @@ describe('NavBarMenu', () => {
   })
 
   describe('アクティブ状態', () => {
-    it('アクティブなセグメント下部に下線を表示する', () => {
+    it('アクティブなセグメントでインジケーターが表示される', () => {
       mockUseSelectedLayoutSegment.mockReturnValue('docs')
 
       const { container } = renderComponent()
-      const items = container.querySelectorAll('li')
-      const firstItem = items[0]
+      // ホバーインジケーター（index 0）をスキップして、メニューアイテムを取得
+      const menuItems = container.querySelectorAll('li:not([aria-hidden="true"])')
+      const firstItem = menuItems[0]
 
-      const underline = firstItem?.querySelector('div.border-b')
-      expect(underline).toBeInTheDocument()
+      // アクティブインジケーター（span.bg-link）が表示されている（scale-x-100）
+      const indicator = firstItem?.querySelector('span.bg-link')
+      expect(indicator).toBeInTheDocument()
+      expect(indicator).toHaveClass('scale-x-100')
     })
 
-    it('非アクティブなセグメント下部には下線を表示しない', () => {
+    it('非アクティブなセグメントではインジケーターが非表示', () => {
       mockUseSelectedLayoutSegment.mockReturnValue('docs')
 
       const { container } = renderComponent()
-      const items = container.querySelectorAll('li')
+      const menuItems = container.querySelectorAll('li:not([aria-hidden="true"])')
 
-      // Docsはアクティブ、他は非アクティブ
-      for (let i = 1; i < items.length; i++) {
-        const underline = items[i]?.querySelector('div.border-b')
-        expect(underline).not.toBeInTheDocument()
+      // Docsはアクティブ、他は非アクティブ（scale-x-0）
+      for (let i = 1; i < menuItems.length; i++) {
+        const indicator = menuItems[i]?.querySelector('span.bg-link')
+        expect(indicator).toHaveClass('scale-x-0')
       }
     })
 
-    it('異なるセグメントに切り替えると下線が移動する', () => {
+    it('異なるセグメントに切り替えるとインジケーターが移動する', () => {
       mockUseSelectedLayoutSegment.mockReturnValue('docs')
       const { container, rerender } = renderComponent()
 
-      let items = container.querySelectorAll('li')
-      expect(items[0]?.querySelector('div.border-b')).toBeInTheDocument()
-      expect(items[1]?.querySelector('div.border-b')).not.toBeInTheDocument()
+      let menuItems = container.querySelectorAll('li:not([aria-hidden="true"])')
+      expect(menuItems[0]?.querySelector('span.bg-link')).toHaveClass('scale-x-100')
+      expect(menuItems[1]?.querySelector('span.bg-link')).toHaveClass('scale-x-0')
 
       // セグメントを'tags'に切り替え
       mockUseSelectedLayoutSegment.mockReturnValue('tags')
       rerender(<NavBarMenu />)
 
-      items = container.querySelectorAll('li')
-      expect(items[0]?.querySelector('div.border-b')).not.toBeInTheDocument()
-      expect(items[1]?.querySelector('div.border-b')).toBeInTheDocument()
+      menuItems = container.querySelectorAll('li:not([aria-hidden="true"])')
+      expect(menuItems[0]?.querySelector('span.bg-link')).toHaveClass('scale-x-0')
+      expect(menuItems[1]?.querySelector('span.bg-link')).toHaveClass('scale-x-100')
     })
 
-    it('セグメントが null の場合、下線を表示しない', () => {
+    it('セグメントが null の場合、全てのインジケーターが非表示', () => {
       mockUseSelectedLayoutSegment.mockReturnValue(null)
 
       const { container } = renderComponent()
-      const underlines = container.querySelectorAll('div.border-b')
+      const activeIndicators = container.querySelectorAll('span.bg-link.scale-x-100')
 
-      expect(underlines).toHaveLength(0)
+      expect(activeIndicators).toHaveLength(0)
     })
 
-    it('存在しないセグメントの場合、下線を表示しない', () => {
+    it('存在しないセグメントの場合、全てのインジケーターが非表示', () => {
       mockUseSelectedLayoutSegment.mockReturnValue('nonexistent')
 
       const { container } = renderComponent()
-      const underlines = container.querySelectorAll('div.border-b')
+      const activeIndicators = container.querySelectorAll('span.bg-link.scale-x-100')
 
-      expect(underlines).toHaveLength(0)
+      expect(activeIndicators).toHaveLength(0)
     })
   })
 
@@ -161,9 +164,9 @@ describe('NavBarMenu', () => {
 
       links.forEach((link) => {
         expect(link).toHaveClass('inline-block')
-        expect(link).toHaveClass('rounded-sm')
         expect(link).toHaveClass('px-4')
         expect(link).toHaveClass('py-2')
+        expect(link).toHaveClass('z-10')
       })
     })
   })
