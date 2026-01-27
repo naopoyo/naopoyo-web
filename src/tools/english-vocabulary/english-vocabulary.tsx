@@ -103,7 +103,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         }
         return {
           ...state,
-          totalScore: Math.max(0, state.totalScore - 1),
+          totalScore: state.totalScore - 1,
           questionStates: newQuestionStates,
         }
       }
