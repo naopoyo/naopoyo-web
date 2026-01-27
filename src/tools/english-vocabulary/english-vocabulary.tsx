@@ -156,7 +156,7 @@ async function getRandomQuestionSet(): Promise<QuestionSet> {
 
 // スタイル定数
 const CARD_CLASS = `
-  min-h-[580px] rounded-2xl border border-border/50 bg-card/80 p-8 shadow-lg backdrop-blur-sm
+  min-h-145 rounded-2xl border border-border/50 bg-card/80 p-8 shadow-lg backdrop-blur-sm
 `
 
 const CHOICE_BUTTON_CLASS = `
