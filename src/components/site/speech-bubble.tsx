@@ -20,10 +20,10 @@ export type SpeechBubbleProps = {
 export default function SpeechBubble({ children }: SpeechBubbleProps) {
   return (
     <div className="relative flex-1">
-      {/* 吹き出しのしっぽ（モバイル：上向き） */}
+      {/* 吹き出しのしっぽ（モバイル：上向き） - 底辺なしの三角形 */}
       <div
         className={`
-          absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full border-x-8 border-b-8
+          absolute top-0 left-1/2 z-10 -translate-x-1/2 -translate-y-full border-x-8 border-b-8
           border-x-transparent border-b-border
           md:hidden
         `}
@@ -31,25 +31,25 @@ export default function SpeechBubble({ children }: SpeechBubbleProps) {
       />
       <div
         className={`
-          absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[calc(100%-1px)] border-x-8
-          border-b-8 border-x-transparent border-b-background
+          absolute top-px left-1/2 z-10 -translate-x-1/2 -translate-y-full border-x-8 border-b-8
+          border-x-transparent border-b-background
           md:hidden
         `}
         aria-hidden="true"
       />
 
-      {/* 吹き出しのしっぽ（デスクトップ：左向き） */}
+      {/* 吹き出しのしっぽ（デスクトップ：左向き） - 底辺なしの三角形 */}
       <div
         className={`
-          absolute top-8 left-0 hidden -translate-x-full border-y-8 border-r-8 border-y-transparent
-          border-r-border
+          absolute top-8 left-0 z-10 hidden -translate-x-full border-y-8 border-r-8
+          border-y-transparent border-r-border
           md:block
         `}
         aria-hidden="true"
       />
       <div
         className={`
-          absolute top-8 left-0 hidden -translate-x-[calc(100%-1px)] border-y-8 border-r-8
+          absolute top-8 left-px z-10 hidden -translate-x-full border-y-8 border-r-8
           border-y-transparent border-r-background
           md:block
         `}
