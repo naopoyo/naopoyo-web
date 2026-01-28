@@ -48,7 +48,7 @@ export default function HoverShimmer({ children, className }: HoverShimmerProps)
         >
           <div
             className="
-              h-full w-1/2 bg-linear-to-r from-transparent via-white/60 to-transparent
+              h-full w-1/2 bg-linear-to-r from-transparent via-black/15 to-transparent
               dark:via-white/30
             "
           />
