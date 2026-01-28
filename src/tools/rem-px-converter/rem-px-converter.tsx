@@ -221,18 +221,23 @@ export default function RemPxConverter() {
               value={pxValue}
               onChange={handlePxChange}
               placeholder="16"
-              className={cn(INPUT_FIELD_CLASS, `
-                w-full
-                lg:w-64
-              `)}
+              className={cn(
+                INPUT_FIELD_CLASS,
+                `
+                  w-full
+                  lg:w-64
+                `
+              )}
             />
           </section>
 
           {/* 矢印インジケーター */}
-          <div className="
-            flex items-center justify-center py-2
-            lg:py-0
-          ">
+          <div
+            className="
+              flex items-center justify-center py-2
+              lg:py-0
+            "
+          >
             <div className={ARROW_CONTAINER_CLASS}>
               <ArrowLeftRightIcon
                 size={20}
@@ -281,10 +286,13 @@ export default function RemPxConverter() {
               value={remValue}
               onChange={handleRemChange}
               placeholder="1"
-              className={cn(INPUT_FIELD_CLASS, `
-                w-full
-                lg:w-64
-              `)}
+              className={cn(
+                INPUT_FIELD_CLASS,
+                `
+                  w-full
+                  lg:w-64
+                `
+              )}
             />
           </section>
         </div>

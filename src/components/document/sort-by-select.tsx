@@ -63,9 +63,7 @@ export default function SortBySelect({ sortBy }: SortBySelectProps) {
         <ArrowUpDown className="size-3.5 text-muted-foreground" aria-hidden="true" />
         <SelectValue placeholder="並び順" />
       </SelectTrigger>
-      <SelectContent
-        className={`border-border/50 bg-popover/95 shadow-lg backdrop-blur-sm`}
-      >
+      <SelectContent className={`border-border/50 bg-popover/95 shadow-lg backdrop-blur-sm`}>
         <SelectGroup>
           {SORT_OPTIONS.map((option) => (
             <SelectItem
