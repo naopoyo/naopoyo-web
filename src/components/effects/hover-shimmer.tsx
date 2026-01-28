@@ -46,10 +46,12 @@ export default function HoverShimmer({ children, className }: HoverShimmerProps)
           aria-hidden="true"
           onAnimationEnd={() => setIsShimmering(false)}
         >
-          <div className="
-            h-full w-1/2 bg-linear-to-r from-transparent via-white/60 to-transparent
-            dark:via-white/30
-          " />
+          <div
+            className="
+              h-full w-1/2 bg-linear-to-r from-transparent via-white/60 to-transparent
+              dark:via-white/30
+            "
+          />
         </div>
       )}
       {children}
