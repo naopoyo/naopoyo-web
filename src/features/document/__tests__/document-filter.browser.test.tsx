@@ -1,37 +1,20 @@
 import { render, cleanup } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { NuqsTestingAdapter } from 'nuqs/adapters/testing'
 import { describe, it, expect, afterEach, vi } from 'vitest'
 
 import DocumentFilter from '../document-filter'
 
 vi.mock('../sort-by-select', () => ({
-  default: ({ sortBy }: { sortBy?: string }) => (
-    <div data-testid="sort-by-select">{sortBy || 'default'}</div>
-  ),
+  default: () => <div data-testid="sort-by-select">sort</div>,
 }))
 
-interface InputProps {
-  type?: string
-  name?: string
-  placeholder?: string
-  defaultValue?: string
-  className?: string
-}
-
-vi.mock('@/components/ui/input', () => ({
-  Input: ({ type, name, placeholder, defaultValue, className }: InputProps) => (
-    <input
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      defaultValue={defaultValue}
-      className={className}
-      data-testid={name}
-    />
-  ),
-}))
-
-const renderComponent = (props = {}) => {
-  return render(<DocumentFilter {...props} />)
+const renderComponent = (searchParams: Record<string, string> = {}) => {
+  return render(
+    <NuqsTestingAdapter searchParams={searchParams}>
+      <DocumentFilter />
+    </NuqsTestingAdapter>
+  )
 }
 
 describe('DocumentFilter', () => {
@@ -41,11 +24,11 @@ describe('DocumentFilter', () => {
   })
 
   describe('基本動作', () => {
-    it('フィルターフォームが表示される', () => {
+    it('フィルターコンテナが表示される', () => {
       const { container } = renderComponent()
-      const form = container.querySelector('form')
+      const filterContainer = container.querySelector('div')
 
-      expect(form).toBeInTheDocument()
+      expect(filterContainer).toBeInTheDocument()
     })
 
     it('検索入力フィールドが表示される', () => {
@@ -63,29 +46,30 @@ describe('DocumentFilter', () => {
     })
   })
 
-  describe('Props の設定', () => {
+  describe('URL状態', () => {
+    it('keywordが提供されていない場合、入力フィールドは空である', () => {
+      const { container } = renderComponent()
+      const input = container.querySelector('input[type="search"]') as HTMLInputElement
+
+      expect(input).toBeInTheDocument()
+      expect(input.value).toBe('')
+    })
+
     it('キーワードが設定されている場合は入力フィールドに反映される', () => {
       const { container } = renderComponent({ keyword: 'test' })
       const input = container.querySelector('input[type="search"]') as HTMLInputElement
 
-      expect(input?.defaultValue).toBe('test')
-    })
-
-    it('sortBy が設定されている場合は hidden フィールドに設定される', () => {
-      const { container } = renderComponent({ sortBy: 'modified_at' })
-      const hiddenInput = container.querySelector('input[type="hidden"]')
-
-      expect(hiddenInput?.getAttribute('value')).toBe('modified_at')
+      expect(input.value).toBe('test')
     })
   })
 
-  describe('フォーム属性', () => {
-    it('フォームが /docs に GET リクエストを送信する', () => {
+  describe('レイアウト', () => {
+    it('レスポンシブレイアウトのクラスが設定されている', () => {
       const { container } = renderComponent()
-      const form = container.querySelector('form')
+      const wrapper = container.querySelector('div')
 
-      expect(form?.getAttribute('action')).toBe('/docs')
-      expect(form?.getAttribute('method')).toBe('get')
+      expect(wrapper).toHaveClass('flex')
+      expect(wrapper).toHaveClass('flex-col')
     })
   })
 })

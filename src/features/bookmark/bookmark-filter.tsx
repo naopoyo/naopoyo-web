@@ -1,31 +1,38 @@
-import { SearchInput } from '@/components/forms/search-input'
+'use client'
 
-/**
- * BookmarkFilter コンポーネントの Props
- */
-export type BookmarkFilterProps = {
-  /** 検索キーワード */
-  keyword?: string
-}
+import { parseAsString, useQueryState } from 'nuqs'
+import { useTransition } from 'react'
+
+import { SearchInput } from '@/components/forms/search-input'
 
 /**
  * BookmarkFilter コンポーネント - ブックマーク一覧の検索機能を提供します
  *
  * キーワード検索を行えるフィルター機能を提供します。
- * 検索は GET フォームで /bookmarks エンドポイントに送信されます。
+ * nuqs を使用してURL状態を管理し、リアルタイムで検索結果を更新します。
  *
- * @param props - BookmarkFilterProps
- * @returns 検索入力を含むフィルターフォーム要素
+ * @returns 検索入力を含むフィルター要素
  */
-export default function BookmarkFilter({ keyword }: BookmarkFilterProps) {
+export default function BookmarkFilter() {
+  const [isPending, startTransition] = useTransition()
+  const [keyword, setKeyword] = useQueryState(
+    'keyword',
+    parseAsString.withDefault('').withOptions({
+      shallow: false,
+      history: 'push',
+      throttleMs: 800,
+      startTransition,
+    })
+  )
+
   return (
-    <form action="/bookmarks" method="get" className="w-full">
-      <SearchInput
-        name="keyword"
-        defaultValue={keyword}
-        placeholder="ブックマークを検索..."
-        aria-label="ブックマーク検索キーワード"
-      />
-    </form>
+    <SearchInput
+      className="w-full"
+      value={keyword}
+      onChange={(e) => setKeyword(e.target.value || null)}
+      placeholder="ブックマークを検索..."
+      aria-label="ブックマーク検索キーワード"
+      aria-busy={isPending}
+    />
   )
 }

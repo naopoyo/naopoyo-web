@@ -1,8 +1,8 @@
 'use client'
 
 import { ArrowUpDown } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { useCallback } from 'react'
+import { parseAsString, useQueryState } from 'nuqs'
+import { useTransition } from 'react'
 
 import {
   Select,
@@ -12,15 +12,6 @@ import {
   SelectValue,
   SelectTrigger,
 } from '@/components/ui/select'
-import { useCreateQueryString } from '@/hooks'
-
-/**
- * SortBySelect コンポーネントの Props
- */
-export type SortBySelectProps = {
-  /** 現在選択されているソート順（'published_at' または 'modified_at'） */
-  sortBy?: string
-}
 
 /**
  * ドキュメントの並び順オプション
@@ -35,23 +26,26 @@ const SORT_OPTIONS = [
  * SortBySelect コンポーネント - ドキュメントのソート順を選択するセレクトボックスです
  *
  * ドキュメント一覧のソート順を変更でき、選択すると URL クエリパラメータを更新して
- * ドキュメント一覧を再取得します。
+ * ドキュメント一覧を再取得します。nuqs を使用してURL状態を管理します。
  *
- * @param props - SortBySelectProps
  * @returns ソート順選択用のセレクトボックス要素
  */
-export default function SortBySelect({ sortBy }: SortBySelectProps) {
-  const router = useRouter()
-  const createQueryString = useCreateQueryString({ withPathname: true })
-  const handleValueChange = useCallback(
-    (value: string) => {
-      router.push(createQueryString({ by: value }))
-    },
-    [router, createQueryString]
+export default function SortBySelect() {
+  const [isPending, startTransition] = useTransition()
+  const [sortBy, setSortBy] = useQueryState(
+    'by',
+    parseAsString.withDefault('').withOptions({
+      shallow: false,
+      history: 'push',
+      startTransition,
+    })
   )
 
+  // デフォルト値を modified_at として扱う
+  const currentValue = sortBy || 'modified_at'
+
   return (
-    <Select value={sortBy} onValueChange={handleValueChange}>
+    <Select value={currentValue} onValueChange={setSortBy} disabled={isPending}>
       <SelectTrigger
         className={`
           w-36 gap-2 border-border/50 bg-muted/30 transition-all duration-200
@@ -59,6 +53,7 @@ export default function SortBySelect({ sortBy }: SortBySelectProps) {
           focus:border-primary/50 focus:bg-background
           data-[state=open]:border-primary/50 data-[state=open]:bg-background
         `}
+        aria-busy={isPending}
       >
         <ArrowUpDown className="size-3.5 text-muted-foreground" aria-hidden="true" />
         <SelectValue placeholder="並び順" />

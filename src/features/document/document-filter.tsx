@@ -1,30 +1,32 @@
+'use client'
+
+import { parseAsString, useQueryState } from 'nuqs'
+import { useTransition } from 'react'
 
 import { SearchInput } from '@/components/forms/search-input'
-import { Input } from '@/components/ui/input'
 
 import SortBySelect from './sort-by-select'
-
-
-/**
- * DocumentFilter コンポーネントの Props
- */
-export type DocumentFilterProps = {
-  /** 検索キーワード */
-  keyword?: string
-  /** ドキュメントのソート順（'published_at' または 'modified_at'） */
-  sortBy?: string
-}
 
 /**
  * DocumentFilter コンポーネント - ドキュメント一覧の検索とソート機能を提供します
  *
  * キーワード検索とソート順の変更を行えるフィルター機能を提供します。
- * 検索とソート順の変更は GET フォームで /docs エンドポイントに送信されます。
+ * nuqs を使用してURL状態を管理し、リアルタイムで検索結果を更新します。
  *
- * @param props - DocumentFilterProps
- * @returns 検索入力とソート順選択を含むフィルターフォーム要素
+ * @returns 検索入力とソート順選択を含むフィルター要素
  */
-export default function DocumentFilter({ keyword, sortBy }: DocumentFilterProps) {
+export default function DocumentFilter() {
+  const [isPending, startTransition] = useTransition()
+  const [keyword, setKeyword] = useQueryState(
+    'keyword',
+    parseAsString.withDefault('').withOptions({
+      shallow: false,
+      history: 'push',
+      throttleMs: 800,
+      startTransition,
+    })
+  )
+
   return (
     <div
       className={`
@@ -32,16 +34,14 @@ export default function DocumentFilter({ keyword, sortBy }: DocumentFilterProps)
         sm:flex-row sm:items-center
       `}
     >
-      <SortBySelect sortBy={sortBy} />
-      <form action="/docs" method="get" className="flex-1">
-        {sortBy && <Input type="hidden" name="by" defaultValue={sortBy} />}
-        <SearchInput
-          className="min-w-64"
-          name="keyword"
-          defaultValue={keyword}
-          placeholder="記事を検索..."
-        />
-      </form>
+      <SortBySelect />
+      <SearchInput
+        className="min-w-64"
+        value={keyword}
+        onChange={(e) => setKeyword(e.target.value || null)}
+        placeholder="記事を検索..."
+        aria-busy={isPending}
+      />
     </div>
   )
 }

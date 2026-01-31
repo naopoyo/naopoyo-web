@@ -48,7 +48,7 @@ export default async function BookmarksPage(props: BookmarksPageProps) {
       <PageHeader title={title} description={description} />
 
       <div className="w-87">
-        <BookmarkFilter keyword={keyword} />
+        <BookmarkFilter />
       </div>
 
       <section className={`mx-auto flex w-full max-w-(--breakpoint-md) flex-col gap-4`}>
