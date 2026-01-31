@@ -1,7 +1,8 @@
-import { SearchInput } from '@/components/search-input'
 
 import SortBySelect from './sort-by-select'
 import { Input } from '../ui/input'
+
+import { SearchInput } from '@/components/search-input'
 
 /**
  * DocumentFilter コンポーネントの Props

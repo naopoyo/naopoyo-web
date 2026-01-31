@@ -1,7 +1,8 @@
-import { MutedMessage } from '@/components/message'
 import { client } from '@/lib/hackersheet'
 
 import DocumentList from './document-list'
+
+import { MutedMessage } from '@/components/message'
 
 /**
  * PickupDocumentList コンポーネント - ピックアップされたドキュメントを表示します

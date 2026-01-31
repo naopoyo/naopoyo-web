@@ -1,9 +1,10 @@
 import { getPicupSlugs } from '@/actions'
-import { MutedMessage } from '@/components/message'
 import { RECENT_DOCS_COUNT } from '@/constants'
 import { client } from '@/lib/hackersheet'
 
 import DocumentList from './document-list'
+
+import { MutedMessage } from '@/components/message'
 
 /**
  * RecentDocumentList コンポーネントの Props

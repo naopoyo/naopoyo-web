@@ -1,7 +1,9 @@
 import { getDocuments } from '@/actions'
-import { MutedMessage } from '@/components/message'
 
 import DocumentList from './document-list'
+
+import { MutedMessage } from '@/components/message'
+
 
 /**
  * AllDocumentList コンポーネントの Props

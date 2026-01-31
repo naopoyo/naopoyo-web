@@ -1,10 +1,11 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
+import { makeWebsiteQuery } from '@/lib/hackersheet'
+
 import { BookmarkFilter, BookmarkList, BookmarkListSkeleton } from '@/components/bookmark'
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
-import { makeWebsiteQuery } from '@/lib/hackersheet'
 
 const title = 'Bookmarks'
 const description = 'naopoyo.comの記事からリンクされているウェブサイトの一覧ページです。'

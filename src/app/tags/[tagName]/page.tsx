@@ -1,12 +1,13 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { client } from '@/lib/hackersheet'
+
 import { DocumentList } from '@/components/document'
 import { Container } from '@/components/layout'
 import { PageHeader } from '@/components/layout'
 import { MutedMessage } from '@/components/message'
 import { ColorCircle, SmallTag } from '@/components/tag'
-import { client } from '@/lib/hackersheet'
 
 interface TagPageProps {
   params: Promise<{ tagName: string }>

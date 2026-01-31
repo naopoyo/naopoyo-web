@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
+import { GOOGLE_ADS_SLOT_BANNER } from '@/constants'
+import { client, DocumentContent } from '@/lib/hackersheet'
+
 import {
   DocumentDropdownToc,
   DocumentHeader,
@@ -12,8 +15,6 @@ import {
 } from '@/components/document'
 import { GoogleAds } from '@/components/google-ads'
 import { Container } from '@/components/layout'
-import { GOOGLE_ADS_SLOT_BANNER } from '@/constants'
-import { client, DocumentContent } from '@/lib/hackersheet'
 
 type DocumentPageProps = {
   params: Promise<{ documentSlug: string }>

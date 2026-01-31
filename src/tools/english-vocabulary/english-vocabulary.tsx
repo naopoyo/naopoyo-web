@@ -4,11 +4,12 @@ import { Check, Loader2, RotateCcw, X } from 'lucide-react'
 import { useCallback, useReducer, useState } from 'react'
 import { parse } from 'yaml'
 
-import { FlowingGlow } from '@/components/effects'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/shadcn-utils'
 
 import type { GameAction, GameState, QuestionSet } from './types'
+
+import { FlowingGlow } from '@/components/effects'
 
 /** 利用可能な問題集ファイル名 */
 const QUESTION_SET_FILES = [

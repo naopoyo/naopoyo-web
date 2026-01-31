@@ -1,8 +1,9 @@
-import { Link } from '@/components/link'
-import { Pagination } from '@/components/pagination'
 import { Skeleton } from '@/components/ui/skeleton'
 import { client, type WebsiteListeItem } from '@/lib/hackersheet'
 import { getFaviconUrl } from '@/utils'
+
+import { Link } from '@/components/link'
+import { Pagination } from '@/components/pagination'
 
 interface BookmarkListProps {
   first: number
