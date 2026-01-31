@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
+import { Container } from '@/components/layouts/containers'
+import { GoogleAds } from '@/components/misc/google-ads'
+import { GOOGLE_ADS_SLOT_BANNER } from '@/constants'
 import {
   DocumentDropdownToc,
   DocumentHeader,
@@ -9,10 +12,7 @@ import {
   DocumentListSkeleton,
   DocumentToc,
   RecentDocumentList,
-} from '@/components/document'
-import { GoogleAds } from '@/components/google-ads'
-import { Container } from '@/components/layout'
-import { GOOGLE_ADS_SLOT_BANNER } from '@/constants'
+} from '@/features/document'
 import { client, DocumentContent } from '@/lib/hackersheet'
 
 type DocumentPageProps = {
@@ -66,7 +66,7 @@ export default async function DocumentPage(props: DocumentPageProps) {
         </div>
         <aside
           className={`
-            hidden w-[300px]
+            hidden w-75
             md:inline-block
           `}
         >

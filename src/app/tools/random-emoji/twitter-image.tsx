@@ -1,4 +1,4 @@
-import { DocumentOpengraphImage } from '@/components/opengraph-image'
+import { DocumentOpengraphImage } from '@/components/brands/opengraph-image'
 
 export const runtime = 'edge'
 export const alt = 'naopoyo'

@@ -1,7 +1,9 @@
 import { Metadata } from 'next'
 
-import { Container, PageHeader } from '@/components/layout'
+import { Container } from '@/components/layouts/containers'
+import { PageHeader } from '@/components/layouts/page-headers'
 import { RandomEmoji } from '@/tools/random-emoji'
+
 
 const title = 'ランダム絵文字コピー'
 
