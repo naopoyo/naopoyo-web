@@ -1,4 +1,10 @@
-import { CalendarIcon, ClockIcon, GitCommitHorizontalIcon, TagIcon } from 'lucide-react'
+import {
+  CalendarIcon,
+  ClockIcon,
+  FileTextIcon,
+  GitCommitHorizontalIcon,
+  TagIcon,
+} from 'lucide-react'
 
 import { FlowingGlow } from '@/components/decorations/effects'
 import { Link } from '@/components/navigations/link'
@@ -8,8 +14,6 @@ import { SmallTag } from '@/features/tag'
 import { createDateFormat, timeAgo } from '@/utils'
 
 import type { Document } from '@/lib/hackersheet'
-
-
 
 /**
  * DocumentHeader コンポーネントの Props
@@ -59,6 +63,17 @@ function generateHistoryUrl(document: Document): string | undefined {
     return undefined
   }
   return `${HACKERSHEET_GITHUB_REPO_URL}/commits/main/${document.path}`
+}
+
+/**
+ * マークダウンページの URL を生成します。
+ *
+ * @param document - ドキュメント
+ * @returns マークダウンページの URL
+ * @internal
+ */
+function generateMarkdownUrl(document: Document): string {
+  return `/docs/${document.slug}.md`
 }
 
 /**
@@ -118,6 +133,7 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
   const showModified = shouldShowModifiedDate(document)
   const showTags = shouldShowTags(document)
   const historyUrl = generateHistoryUrl(document)
+  const markdownUrl = generateMarkdownUrl(document)
 
   return (
     <header className="flex flex-col gap-8">
@@ -169,6 +185,8 @@ export default function DocumentHeader({ document }: DocumentHeaderProps) {
             href={historyUrl}
           />
         )}
+
+        <MetaItem icon={FileTextIcon} label="Markdown" value="Raw Content" href={markdownUrl} />
       </div>
 
       {/* Tags Section */}
