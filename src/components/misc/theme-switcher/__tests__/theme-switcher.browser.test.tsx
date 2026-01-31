@@ -1,6 +1,18 @@
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
+// @/constants をモック化（process.env を使用しているためブラウザテスト環境でエラーになる）
+vi.mock('@/constants', () => ({
+  SITE_NAME: 'naopoyo.com',
+  TOCBOT_BASE_OPTIONS: {
+    headingSelector: 'h2, h3, h4, h5, h6',
+    scrollSmooth: false,
+    headingsOffset: 81,
+    throttleTimeout: 0,
+    scrollHandlerType: 'throttle',
+  },
+}))
+
 import ThemeSwitcher from '../theme-switcher'
 
 // next-themesをモック
