@@ -1,16 +1,12 @@
 'use client'
 
-import { useCallback, useEffect } from 'react'
-import tocbot from 'tocbot'
-
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { TOCBOT_BASE_OPTIONS } from '@/constants'
-import { documentContentStyle } from '@/lib/hackersheet/style'
+import { useTocbot } from '@/hooks'
 import tocStyles from '@/styles/document-toc.module.scss'
 
 /**
@@ -18,12 +14,6 @@ import tocStyles from '@/styles/document-toc.module.scss'
  * @internal
  */
 const TOC_SELECTOR = `.${tocStyles['dropdown']}`
-
-/**
- * ドキュメントコンテンツ用の DOM セレクタ
- * @internal
- */
-const CONTENT_SELECTOR = `.${documentContentStyle.main}`
 
 /**
  * DocumentDropdownToc コンポーネント - ドキュメントの目次をドロップダウンメニューで表示します
@@ -53,28 +43,12 @@ export default function DocumentDropdownToc() {
  *
  * tocbot ライブラリを初期化して、ドキュメントのヘッディング構造から目次を自動生成します。
  * ウィンドウのリサイズイベントに対応して、目次の位置を更新します。
+ * MutationObserver でコンテンツの変更を監視し、Suspense ストリーミング後も正しく動作します。
  *
  * @returns 目次用の nav 要素
  */
 function Toc() {
-  const initTocbot = useCallback(() => {
-    tocbot.init({
-      ...TOCBOT_BASE_OPTIONS,
-      tocSelector: TOC_SELECTOR,
-      contentSelector: CONTENT_SELECTOR,
-    })
-  }, [])
-
-  useEffect(() => {
-    initTocbot()
-
-    window.addEventListener('resize', initTocbot)
-
-    return () => {
-      window.removeEventListener('resize', initTocbot)
-      tocbot.destroy()
-    }
-  }, [initTocbot])
+  useTocbot({ tocSelector: TOC_SELECTOR })
 
   return <nav className={tocStyles['dropdown']} />
 }

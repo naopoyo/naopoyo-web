@@ -3,17 +3,16 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
 import { Container } from '@/components/layouts/containers'
-import { GoogleAds } from '@/components/misc/google-ads'
-import { GOOGLE_ADS_SLOT_BANNER } from '@/constants'
 import {
+  DocumentArticle,
+  DocumentArticleSkeleton,
   DocumentDropdownToc,
-  DocumentHeader,
-  DocumentList,
   DocumentListSkeleton,
   DocumentToc,
-  RecentDocumentList,
+  InboundLinkDocumentList,
+  RecentDocumentListSection,
 } from '@/features/document'
-import { client, DocumentContent } from '@/lib/hackersheet'
+import { client } from '@/lib/hackersheet'
 
 type DocumentPageProps = {
   params: Promise<{ documentSlug: string }>
@@ -38,38 +37,26 @@ export async function generateMetadata(props: DocumentPageProps): Promise<Metada
 
 export default async function DocumentPage(props: DocumentPageProps) {
   const params = await props.params
-
   const { documentSlug } = params
-
-  const { document } = await client.getDocument({ slug: documentSlug })
-
-  if (!document || document.draft) {
-    return notFound()
-  }
-
-  const showInboundLinkDocuments = document.inboundLinkDocuments.length > 0
 
   return (
     <Container className="flex flex-col gap-24 px-4 pt-10">
       <div className="mx-auto flex max-w-full gap-14">
-        <div
-          className={`
-            flex w-full flex-col gap-14
-            md:w-3xl
-          `}
-        >
-          <DocumentHeader document={document} />
-          <main className="space-y-20">
-            <DocumentContent document={document} />
-            <GoogleAds slot={GOOGLE_ADS_SLOT_BANNER} />
-          </main>
+        {/* メインコンテンツ - Suspense でストリーミング */}
+        <div className="
+          flex w-full flex-col gap-14
+          md:w-3xl
+        ">
+          <Suspense fallback={<DocumentArticleSkeleton />}>
+            <DocumentArticle documentSlug={documentSlug} />
+          </Suspense>
         </div>
-        <aside
-          className={`
-            hidden w-75
-            md:inline-block
-          `}
-        >
+
+        {/* サイドバー - 静的に表示 */}
+        <aside className="
+          hidden w-75
+          md:inline-block
+        ">
           <h2 className="mb-2 font-bold text-muted-foreground">目次</h2>
           <div className="sticky top-16">
             <DocumentToc />
@@ -77,26 +64,21 @@ export default async function DocumentPage(props: DocumentPageProps) {
         </aside>
       </div>
 
-      {showInboundLinkDocuments && (
-        <div className="flex flex-col gap-5">
-          <h2 className="text-center text-xl font-bold">この記事にリンクしている記事</h2>
-          <DocumentList documents={document.inboundLinkDocuments} />
-        </div>
-      )}
+      {/* 関連記事 - Suspense でストリーミング */}
+      <Suspense fallback={<DocumentListSkeleton length={3} />}>
+        <InboundLinkDocumentList documentSlug={documentSlug} />
+      </Suspense>
 
-      <div className="flex flex-col gap-5">
-        <h2 className="text-center text-xl font-bold">最近更新された記事</h2>
-        <Suspense fallback={<DocumentListSkeleton length={3} />}>
-          <RecentDocumentList first={3} excludeSlugs={[document.slug]} />
-        </Suspense>
-      </div>
+      {/* 最近の記事 - Suspense でストリーミング */}
+      <Suspense fallback={<DocumentListSkeleton length={3} />}>
+        <RecentDocumentListSection documentSlug={documentSlug} />
+      </Suspense>
 
-      <div
-        className={`
-          fixed right-4 bottom-4
-          md:hidden
-        `}
-      >
+      {/* モバイル用TOC */}
+      <div className="
+        fixed right-4 bottom-4
+        md:hidden
+      ">
         <DocumentDropdownToc />
       </div>
     </Container>
