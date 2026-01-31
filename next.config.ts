@@ -22,10 +22,6 @@ const nextConfig: NextConfig = {
       fallback: [],
     }
   },
-  transpilePackages: [
-    '@hackersheet/next-document-content-components',
-    '@hackersheet/next-document-content-kifu',
-  ],
   images: {
     formats: ['image/webp'],
     remotePatterns: [
