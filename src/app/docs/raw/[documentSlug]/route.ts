@@ -21,7 +21,9 @@ export async function GET(request: Request, { params }: RouteParams) {
     return new NextResponse('Not Found', { status: 404 })
   }
 
-  return new NextResponse(document.content, {
+  const markdown = `# ${document.title}\n\n${document.content}`
+
+  return new NextResponse(markdown, {
     headers: {
       'Content-Type': 'text/markdown; charset=utf-8',
     },
