@@ -1,4 +1,4 @@
-import { Heading } from '@/components/typography'
+import { Heading } from '@/components/typography/headings'
 import { cn } from '@/lib/shadcn-utils'
 
 export type SectionProps = {

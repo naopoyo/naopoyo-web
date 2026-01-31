@@ -1,6 +1,7 @@
 import { SpeechBubble } from '@/components/decorations/speech-bubbles'
 import { Link } from '@/components/navigations/link'
-import { Heading, Paragraph as P } from '@/components/typography'
+import { Heading } from '@/components/typography/headings'
+import { Paragraph as P } from '@/components/typography/paragraphs'
 import { SITE_DESC } from '@/constants'
 
 import Avatar from './avatar'
