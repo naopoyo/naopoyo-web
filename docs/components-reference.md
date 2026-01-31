@@ -13,37 +13,40 @@ src/components/
 ├── brands/
 │   └── opengraph-image/       # OGP画像生成
 ├── controls/
-│   ├── pagination/             # ページネーション制御
-│   └── search-controls/        # 検索コントロール
+│   └── pagination/            # ページネーション制御
 ├── decorations/
-│   ├── motion-effects/         # モーション・視覚効果
-│   └── scroll-shadow/          # スクロールシャドウ
-├── displays/
-│   ├── document-details/       # ドキュメント詳細表示
-│   └── document-list/          # ドキュメントリスト表示
+│   ├── effects/               # モーション・視覚効果
+│   └── scroll-shadow/         # スクロールシャドウ
+├── displays/                  # 将来用（データ表示コンポーネント）
 ├── feedback/
-│   └── messages/               # メッセージ表示
+│   └── message/               # メッセージ表示
 ├── forms/
-│   ├── document-controls/      # ドキュメント操作フォーム
-│   └── search-controls/        # 検索入力フォーム
+│   └── search-input/          # 検索入力フォーム
 ├── layouts/
-│   ├── app-bars/               # グローバルナビゲーションバー
-│   ├── containers/             # ページコンテナ
-│   ├── footers/                # フッター
-│   └── page-headers/           # ページヘッダー
+│   ├── nav-bar/               # グローバルナビゲーションバー
+│   └── page-header/           # 将来用
+│   # 以下は直下に配置（サブディレクトリ化予定）
+│   ├── container.tsx          # 基本コンテナ
+│   ├── footer.tsx             # フッター
+│   ├── page-header.tsx        # ページヘッダー
+│   └── section.tsx            # セクションコンテナ
 ├── misc/
-│   ├── google-analytics/       # Google広告・アナリティクス
-│   └── theme-switcher/         # テーマ切り替え
-├── navigation/
-│   └── links/                  # リンク関連コンポーネント
-├── prefabs/
-│   ├── bookmark-lists/         # ブックマークリスト
-│   ├── site-profiles/          # サイトプロフィール
-│   └── tags/                   # タグコンポーネント
+│   ├── google-ads/            # Google広告・アナリティクス
+│   └── theme-switcher/        # テーマ切り替え
+├── navigations/
+│   └── link/                  # リンク関連コンポーネント
+├── prefabs/                   # 将来用（特定用途向けパターン）
+├── site/                      # サイト固有コンポーネント（移動予定）
+│   ├── avatar.tsx
+│   ├── full-profile.tsx
+│   ├── profile.tsx
+│   ├── sns-list.tsx
+│   └── speech-bubble.tsx
 ├── typography/
-│   ├── headings/               # 見出し
-│   └── paragraphs/             # 段落
-└── ui/                         # shadcn/ui ベースの基本 UI パーツ（直下にファイルを配置）
+│   # 以下は直下に配置（サブディレクトリ化予定）
+│   ├── heading.tsx            # 見出し
+│   └── paragraph.tsx          # 段落
+└── ui/                        # shadcn/ui ベースの基本 UI パーツ（直下にファイルを配置）
     ├── button.tsx
     ├── input.tsx
     ├── select.tsx
@@ -59,7 +62,6 @@ src/components/
 ```tsx
 // ✅ Good: 機能グループから直接インポート
 import { Pagination } from '@/components/controls/pagination'
-import { DocumentList } from '@/components/displays/document-list'
 import { ThemeSwitcher } from '@/components/misc/theme-switcher'
 
 // ❌ Bad: カテゴリからインポート（カテゴリ直下に index.ts を置かない）
@@ -86,8 +88,9 @@ import { Pagination } from '@/components/controls'
 | `forms`       | フィルタ、ソート、検索入力など、ユーザー入力を受け付ける UI                            |
 | `layouts`     | ナビゲーションバー、コンテナ、フッターなど、ページの骨格・構造を定義するコンポーネント |
 | `misc`        | Google Analytics、テーマ切替など、特定カテゴリに属さないサイト機能                     |
-| `navigation`  | リンク、ナビゲーションなど、ページ間・ページ内の移動を担う UI                          |
+| `navigations` | リンク、ナビゲーションなど、ページ間・ページ内の移動を担う UI                          |
 | `prefabs`     | ブックマークリスト、タグ、サイトプロフィールなど、特定用途向けに構成した再利用パターン |
+| `site`        | サイト固有のプロフィール関連コンポーネント（将来的に `prefabs` へ移動予定）            |
 | `typography`  | 見出し、段落など、テキスト表示のためのコンポーネント                                   |
 | `ui`          | shadcn/ui ベースの基本 UI パーツ。他のコンポーネントの構成要素として使用               |
 
@@ -101,77 +104,131 @@ import { Pagination } from '@/components/controls'
 
 ## controls
 
-| ディレクトリ               | 説明                                                               |
-| -------------------------- | ------------------------------------------------------------------ |
-| `controls/pagination`      | ページネーション UI。`Pagination` を提供。ページ番号と件数を表示。 |
-| `controls/search-controls` | 検索コントロール。`SearchInput` を提供。                           |
+| ディレクトリ          | 説明                                                               |
+| --------------------- | ------------------------------------------------------------------ |
+| `controls/pagination` | ページネーション UI。`Pagination` を提供。ページ番号と件数を表示。 |
 
 ## decorations
 
-| ディレクトリ                 | 説明                                                                                                              |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `decorations/motion-effects` | モーション・視覚効果コンポーネント。`FlowingGlow`（流れるグロー効果）、`HoverShimmer`（ホバーシマー効果）を提供。 |
-| `decorations/scroll-shadow`  | スクロール可能領域にグラデーション影を表示しスクロール方向を視覚化。主なエクスポート: `ScrollShadow`              |
+| ディレクトリ                | 説明                                                                                                              |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `decorations/effects`       | モーション・視覚効果コンポーネント。`FlowingGlow`（流れるグロー効果）、`HoverShimmer`（ホバーシマー効果）を提供。 |
+| `decorations/scroll-shadow` | スクロール可能領域にグラデーション影を表示しスクロール方向を視覚化。主なエクスポート: `ScrollShadow`              |
 
 ## displays
 
-| ディレクトリ                | 説明                                                                                                                                                                                                                                  |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `displays/document-details` | ドキュメント詳細表示。`DocumentHeader`（ドキュメントヘッダー）、`DocumentToc`（目次）、`DocumentDropdownToc`（ドロップダウン目次）、`DocumentEmoji`（絵文字表示）、`DocumentTotalCount`（件数表示）で構成。                           |
-| `displays/document-list`    | ドキュメントリスト表示。`DocumentList`（通常リスト）、`AllDocumentList`（全ドキュメント）、`RecentDocumentList`（最近のドキュメント）、`PickupDocumentList`（ピックアップドキュメント）、`DocumentListSkeleton`（スケルトン）で構成。 |
+| ディレクトリ | 説明                                                                   |
+| ------------ | ---------------------------------------------------------------------- |
+| `displays/`  | 将来用のカテゴリ。データ表示系コンポーネントを配置予定。現在は空です。 |
 
 ## feedback
 
-| ディレクトリ        | 説明                                                                                           |
-| ------------------- | ---------------------------------------------------------------------------------------------- |
-| `feedback/messages` | メッセージ表示。`NotFoundMessage`（未検出メッセージ）を提供。データ0件時の状態フィードバック。 |
+| ディレクトリ       | 説明                                                                                           |
+| ------------------ | ---------------------------------------------------------------------------------------------- |
+| `feedback/message` | メッセージ表示。`NotFoundMessage`（未検出メッセージ）を提供。データ0件時の状態フィードバック。 |
 
 ## forms
 
-| ディレクトリ              | 説明                                                                                                                                   |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `forms/document-controls` | ドキュメント操作フォーム。`DocumentFilter`（フィルタ）、`SortBySelect`（ソート選択）、`BookmarkFilter`（ブックマークフィルタ）を提供。 |
-| `forms/search-controls`   | 検索入力フォーム。`SearchInput`（検索入力フィールド）を提供。                                                                          |
+| ディレクトリ         | 説明                                                          |
+| -------------------- | ------------------------------------------------------------- |
+| `forms/search-input` | 検索入力フォーム。`SearchInput`（検索入力フィールド）を提供。 |
 
 ## layouts
 
-| ディレクトリ           | 説明                                                                                                                                                               |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `layouts/app-bars`     | グローバルナビゲーションバー。`NavBar`（メインナビゲーション）、`NavBarMenu`（メニュー）、`NavBarMenuFallback`（フォールバック）を含む。主なエクスポート: `NavBar` |
-| `layouts/containers`   | ページレイアウト用コンテナ集。`Container`（基本コンテナ）、`Section`（セクションコンテナ）を提供。                                                                 |
-| `layouts/footers`      | フッターコンポーネント。`Footer` を提供。                                                                                                                          |
-| `layouts/page-headers` | ページヘッダー。`PageHeader` を提供。                                                                                                                              |
+| ディレクトリ      | 説明                                                                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `layouts/nav-bar` | グローバルナビゲーションバー。`NavBar`（メインナビゲーション）、`NavBarMenu`（メニュー）、`NavBarMenuFallback`（フォールバック）を含む。主なエクスポート: `NavBar` |
+| `layouts/` 直下   | `Container`（基本コンテナ）、`Footer`（フッター）、`PageHeader`（ページヘッダー）、`Section`（セクションコンテナ）を提供。将来的にサブディレクトリ化予定。         |
 
 ## misc
 
-| ディレクトリ            | 説明                                                                 |
-| ----------------------- | -------------------------------------------------------------------- |
-| `misc/google-analytics` | Google 広告・アナリティクス。`GoogleAds`、`GoogleAdsScript` を提供。 |
-| `misc/theme-switcher`   | テーマ切り替え UI（dark/system/light）。`ThemeSwitcher` を提供。     |
+| ディレクトリ          | 説明                                                                 |
+| --------------------- | -------------------------------------------------------------------- |
+| `misc/google-ads`     | Google 広告・アナリティクス。`GoogleAds`、`GoogleAdsScript` を提供。 |
+| `misc/theme-switcher` | テーマ切り替え UI（dark/system/light）。`ThemeSwitcher` を提供。     |
 
-## navigation
+## navigations
 
 | ディレクトリ       | 説明                                                                                                      |
 | ------------------ | --------------------------------------------------------------------------------------------------------- |
-| `navigation/links` | リンク関連コンポーネント。`Link`（Next.js Link ラッパー）、`NextLink`（シンプルな Link ラッパー）を提供。 |
+| `navigations/link` | リンク関連コンポーネント。`Link`（Next.js Link ラッパー）、`NextLink`（シンプルな Link ラッパー）を提供。 |
 
 ## prefabs
 
-| ディレクトリ             | 説明                                                                                                                                                                   |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `prefabs/bookmark-lists` | ブックマークリスト。`BookmarkList`、`BookmarkFilter` で構成。ブックマーク機能の再利用パターン。                                                                        |
-| `prefabs/site-profiles`  | サイトプロフィール関連。`Avatar`（アバター）、`Profile`（プロフィール）、`FullProfile`（フルプロフィール）、`SnsList`（SNSリンク）、`SpeechBubble`（吹き出し）で構成。 |
-| `prefabs/tags`           | タグコンポーネント集。`SmallTag`（小タグ）、`TagList`（タグリスト）、`ColorCircle`（色サークル）で構成。                                                               |
+| ディレクトリ | 説明                                                                                                               |
+| ------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `prefabs/`   | 将来用のカテゴリ。特定用途向けに構成した再利用パターン（複数コンポーネントの組み合わせ）を配置予定。現在は空です。 |
+
+## site
+
+| ディレクトリ | 説明                                                                                                                                                 |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `site/`      | サイト固有のプロフィール関連コンポーネント。`Avatar`、`FullProfile`、`Profile`、`SnsList`、`SpeechBubble` を提供。将来的に適切なカテゴリへ移動予定。 |
 
 ## typography
 
-| ディレクトリ            | 説明                                                              |
-| ----------------------- | ----------------------------------------------------------------- |
-| `typography/headings`   | 見出しコンポーネント。`Heading` を提供。h1/h2/h3 バリアント対応。 |
-| `typography/paragraphs` | テキスト段落。`Paragraph` を提供。                                |
+| ディレクトリ  | 説明                                                                                          |
+| ------------- | --------------------------------------------------------------------------------------------- |
+| `typography/` | テキスト表示コンポーネント。`Heading`（h1/h2/h3 バリアント対応）、`Paragraph`（段落）を提供。 |
 
 ## ui
 
 | ディレクトリ | 説明                                                                                                                                                                                    |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ui`         | shadcn/ui ベースの基本 UI コンポーネント集。`Button`、`Input`、`Select`、`Skeleton`、`Spinner`、`Pagination`、`ToggleGroup`、`Toggle`、`Tooltip`、`DropdownMenu` など基本パーツを提供。 |
+| `ui/`        | shadcn/ui ベースの基本 UI コンポーネント集。`Button`、`Input`、`Select`、`Skeleton`、`Spinner`、`Pagination`、`ToggleGroup`、`Toggle`、`Tooltip`、`DropdownMenu` など基本パーツを提供。 |
+
+---
+
+# Features リファレンス
+
+`src/features` 以下には、このプロジェクト専用の機能に関するコンポーネントを配置します。
+汎用的な UI コンポーネントではなく、特定のビジネスロジックやドメイン知識に依存するコンポーネント群です。
+
+## ディレクトリ構造
+
+```text
+src/features/
+├── bookmark/                  # ブックマーク機能
+│   ├── bookmark-filter.tsx
+│   ├── bookmark-list.tsx
+│   └── index.ts
+├── document/                  # ドキュメント機能
+│   ├── all-document-list.tsx
+│   ├── document-dropdown-toc.tsx
+│   ├── document-emoji.tsx
+│   ├── document-filter.tsx
+│   ├── document-header.tsx
+│   ├── document-list-skeleton.tsx
+│   ├── document-list.tsx
+│   ├── document-toc.tsx
+│   ├── document-total-count.tsx
+│   ├── pickup-document-list.tsx
+│   ├── recent-document-list.tsx
+│   ├── sort-by-select.tsx
+│   └── index.ts
+└── tag/                       # タグ機能
+    ├── color-circle.tsx
+    ├── small-tag.tsx
+    ├── tag-list.tsx
+    └── index.ts
+```
+
+## 機能一覧
+
+| ディレクトリ | 説明                                                                                                                                                                                                                                                                                                                                    |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bookmark/`  | ブックマーク機能。`BookmarkFilter`（フィルタ UI）、`BookmarkList`（ブックマーク一覧）を提供。                                                                                                                                                                                                                                           |
+| `document/`  | ドキュメント機能。`DocumentList`（通常リスト）、`AllDocumentList`（全ドキュメント）、`RecentDocumentList`（最近のドキュメント）、`PickupDocumentList`（ピックアップ）、`DocumentHeader`、`DocumentToc`、`DocumentDropdownToc`、`DocumentEmoji`、`DocumentFilter`、`SortBySelect`、`DocumentTotalCount`、`DocumentListSkeleton` を提供。 |
+| `tag/`       | タグ機能。`SmallTag`（小タグ）、`TagList`（タグ一覧）、`ColorCircle`（色サークル）を提供。                                                                                                                                                                                                                                              |
+
+## components と features の使い分け
+
+| 配置先       | 基準                                                                                   |
+| ------------ | -------------------------------------------------------------------------------------- |
+| `components` | 汎用的で再利用可能な UI コンポーネント。特定のビジネスロジックに依存しない。           |
+| `features`   | プロジェクト固有の機能コンポーネント。特定のドメイン知識やビジネスロジックに依存する。 |
+
+例えば：
+
+- `Button`、`Input`、`Pagination` → `components/ui/` に配置
+- `DocumentList`、`BookmarkFilter` → `features/` に配置（ドキュメントやブックマークというドメイン知識に依存）
