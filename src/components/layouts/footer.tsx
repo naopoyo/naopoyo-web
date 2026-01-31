@@ -1,6 +1,6 @@
+import { ThemeSwitcher } from '@/components/misc/theme-switcher'
 import { SnsList } from '@/components/site'
 
-import { ThemeSwitcher } from '@/components/theme-switcher'
 
 /**
  * Footer コンポーネント - サイト下部のフッターを表示します。

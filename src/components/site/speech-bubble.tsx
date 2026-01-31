@@ -1,4 +1,4 @@
-import { HoverShimmer } from '@/components/effects'
+import { HoverShimmer } from '@/components/decorations/effects'
 
 /**
  * SpeechBubble の Props

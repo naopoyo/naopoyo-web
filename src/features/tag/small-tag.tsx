@@ -1,6 +1,6 @@
+import { NextLink } from '@/components/navigations/link'
 import { cn } from '@/lib/shadcn-utils'
 
-import { NextLink } from '../link'
 import ColorCircle from './color-circle'
 
 /**

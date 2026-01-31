@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
+import { Container, PageHeader } from '@/components/layouts'
 import { FullProfile } from '@/components/site'
 
-import { Container, PageHeader } from '@/components/layout'
 
 const title = 'About'
 const description = 'naopoyo.comについて説明しているページです。'

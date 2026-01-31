@@ -3,11 +3,11 @@
 import { ArrowLeftRightIcon, CheckIcon, ClipboardCopyIcon, SettingsIcon } from 'lucide-react'
 import { useCallback, useState } from 'react'
 
+import { FlowingGlow } from '@/components/decorations/effects'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/shadcn-utils'
 
-import { FlowingGlow } from '@/components/effects'
 
 /**
  * デフォルトのベースピクセル値

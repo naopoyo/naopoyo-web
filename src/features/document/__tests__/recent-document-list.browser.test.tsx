@@ -10,7 +10,7 @@ vi.mock('@/actions', () => ({
   ),
 }))
 
-vi.mock('@/components/message', () => ({
+vi.mock('@/components/feedback/message', () => ({
   MutedMessage: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="muted-message">{children}</div>
   ),

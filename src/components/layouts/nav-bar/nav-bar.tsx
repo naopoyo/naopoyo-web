@@ -1,10 +1,10 @@
 import { Suspense } from 'react'
 
+import { NextLink } from '@/components/navigations/link'
 import { SITE_NAME } from '@/constants'
 
 import NavBarMenu from './nav-bar-menu'
 import NavBarMenuFallback from './nav-bar-menu-fallback'
-import { NextLink } from '../link'
 
 const HEADER_CLASS = `
   container mx-auto flex h-16 flex-row justify-center px-4 backdrop-blur-xl

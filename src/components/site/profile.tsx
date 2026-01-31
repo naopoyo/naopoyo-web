@@ -1,8 +1,8 @@
+import { Link } from '@/components/navigations/link'
 import { Avatar, SpeechBubble } from '@/components/site'
 import { Paragraph as P } from '@/components/typography'
 import { SITE_DESC } from '@/constants'
 
-import { Link } from '@/components/link'
 
 /**
  * Profile コンポーネント - サイトオーナーの簡易プロフィールを表示

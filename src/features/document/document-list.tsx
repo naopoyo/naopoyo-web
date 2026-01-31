@@ -1,8 +1,8 @@
+import { NextLink } from '@/components/navigations/link'
 import { stringToColorWithFrame } from '@/lib/string-to-color-with-frame'
 import { createDateFormat, timeAgo } from '@/utils'
 
 import DocumentEmoji from './document-emoji'
-import { NextLink } from '../link'
 
 import type { DocumentList as DocumentListType } from '@/lib/hackersheet'
 

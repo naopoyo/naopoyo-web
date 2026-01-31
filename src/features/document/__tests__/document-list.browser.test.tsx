@@ -16,7 +16,7 @@ vi.mock('../document-emoji', () => ({
   default: ({ emoji }: { emoji: string }) => <div data-testid="emoji">{emoji}</div>,
 }))
 
-vi.mock('@/components/link', () => ({
+vi.mock('@/components/navigations/link', () => ({
   NextLink: ({
     children,
     href,

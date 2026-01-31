@@ -9,7 +9,7 @@ vi.mock('@/components/site', () => ({
   },
 }))
 
-vi.mock('@/components/theme-switcher', () => ({
+vi.mock('@/components/misc/theme-switcher', () => ({
   ThemeSwitcher: () => {
     return <div data-testid="mock-theme-switcher">theme-switcher</div>
   },

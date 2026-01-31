@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
+import { Container, PageHeader } from '@/components/layouts'
 import { EnglishVocabulary } from '@/tools/english-vocabulary'
 
-import { Container, PageHeader } from '@/components/layout'
 
 const title = '英単語クイズ'
 

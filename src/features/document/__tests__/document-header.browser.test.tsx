@@ -12,11 +12,11 @@ import DocumentHeader from '../document-header'
 
 import type { Document } from '@/lib/hackersheet'
 
-vi.mock('@/components/document', () => ({
+vi.mock('@/features/document', () => ({
   DocumentEmoji: ({ emoji }: { emoji: string }) => <div data-testid="emoji">{emoji}</div>,
 }))
 
-vi.mock('@/components/link', () => ({
+vi.mock('@/components/navigations/link', () => ({
   Link: ({ children, href }: { children: React.ReactNode; href: string }) => (
     <a href={href} data-testid="github-link">
       {children}
@@ -24,7 +24,7 @@ vi.mock('@/components/link', () => ({
   ),
 }))
 
-vi.mock('@/components/tag', () => ({
+vi.mock('@/features/tag', () => ({
   SmallTag: ({ tagName }: { tagName: string }) => <span data-testid="tag">{tagName}</span>,
 }))
 

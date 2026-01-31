@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 
+import { DocumentOpengraphImage } from '@/components/brands/opengraph-image'
 import { client } from '@/lib/hackersheet/client'
 
-import { DocumentOpengraphImage } from '@/components/opengraph-image'
 
 export const runtime = 'edge'
 export const alt = 'naopoyo'

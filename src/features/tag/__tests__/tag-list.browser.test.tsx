@@ -11,7 +11,7 @@ import type { TagList as TagListType } from '@/lib/hackersheet'
 // Mocks
 // ============================================================================
 
-vi.mock('@/components/link', () => ({
+vi.mock('@/components/navigations/link', () => ({
   NextLink: ({
     children,
     href,

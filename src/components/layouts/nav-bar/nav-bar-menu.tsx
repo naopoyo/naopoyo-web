@@ -3,10 +3,10 @@
 import { useSelectedLayoutSegment } from 'next/navigation'
 import { useCallback, useRef, useState } from 'react'
 
+import { NextLink } from '@/components/navigations/link'
 import { useClientOnly } from '@/hooks'
 import { cn } from '@/lib/shadcn-utils'
 
-import { NextLink } from '../link'
 
 const MENU_ITEMS = [
   {

@@ -1,4 +1,5 @@
-import { NextLink } from '../link'
+import { NextLink } from '@/components/navigations/link'
+
 import ColorCircle from './color-circle'
 
 import type { TagList } from '@/lib/hackersheet'

@@ -2,9 +2,9 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
+import { Container } from '@/components/layouts'
+import { GoogleAds } from '@/components/misc/google-ads'
 import { GOOGLE_ADS_SLOT_BANNER } from '@/constants'
-import { client, DocumentContent } from '@/lib/hackersheet'
-
 import {
   DocumentDropdownToc,
   DocumentHeader,
@@ -12,9 +12,9 @@ import {
   DocumentListSkeleton,
   DocumentToc,
   RecentDocumentList,
-} from '@/components/document'
-import { GoogleAds } from '@/components/google-ads'
-import { Container } from '@/components/layout'
+} from '@/features/document'
+import { client, DocumentContent } from '@/lib/hackersheet'
+
 
 type DocumentPageProps = {
   params: Promise<{ documentSlug: string }>

@@ -1,16 +1,15 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
+import { Container } from '@/components/layouts'
+import { PageHeader } from '@/components/layouts'
 import { Skeleton } from '@/components/ui/skeleton'
-
 import {
   AllDocumentList,
   DocumentFilter,
   DocumentTotalCount,
   DocumentListSkeleton,
-} from '@/components/document'
-import { Container } from '@/components/layout'
-import { PageHeader } from '@/components/layout'
+} from '@/features/document'
 
 const title = 'Docs'
 const description = 'naopoyo.comのすべての記事の一覧ページです。'

@@ -1,8 +1,8 @@
+import { Link } from '@/components/navigations/link'
 import { Avatar, SnsList, SpeechBubble } from '@/components/site'
 import { Heading, Paragraph as P } from '@/components/typography'
 import { SITE_DESC } from '@/constants'
 
-import { Link } from '@/components/link'
 
 /**
  * ProfileSection の Props

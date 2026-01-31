@@ -1,9 +1,9 @@
 import { Search } from 'lucide-react'
 import * as React from 'react'
 
+import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/shadcn-utils'
 
-import { Input } from '../ui/input'
 
 /**
  * SearchInput コンポーネントの Props

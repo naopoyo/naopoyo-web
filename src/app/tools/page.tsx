@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 
-import { Container, PageHeader } from '@/components/layout'
+import { Container, PageHeader } from '@/components/layouts'
 
 const title = 'Tools'
 const description = '便利ツールをまとめた一覧ページです。'

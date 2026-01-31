@@ -1,8 +1,8 @@
 import { getDocuments } from '@/actions'
+import { MutedMessage } from '@/components/feedback/message'
 
 import DocumentList from './document-list'
 
-import { MutedMessage } from '@/components/message'
 
 
 /**

@@ -7,7 +7,7 @@ import SmallTag from '../small-tag'
 // Mocks
 // ============================================================================
 
-vi.mock('@/components/link', () => ({
+vi.mock('@/components/navigations/link', () => ({
   NextLink: ({
     children,
     href,

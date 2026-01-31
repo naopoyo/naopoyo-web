@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
 
-import { client } from '@/lib/hackersheet'
 
-import { Container } from '@/components/layout'
-import { PageHeader } from '@/components/layout'
-import { MutedMessage } from '@/components/message'
-import { TagList } from '@/components/tag'
+import { MutedMessage } from '@/components/feedback/message'
+import { Container } from '@/components/layouts'
+import { PageHeader } from '@/components/layouts'
+import { TagList } from '@/features/tag'
+import { client } from '@/lib/hackersheet'
 
 const title = 'Tags'
 const description = 'naopoyo.comの記事につけられているタグの一覧ページです。'

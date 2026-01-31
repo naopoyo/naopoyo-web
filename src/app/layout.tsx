@@ -2,6 +2,9 @@ import '@/styles/globals.css'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 
+import { Footer } from '@/components/layouts'
+import { NavBar } from '@/components/layouts/nav-bar'
+import { GoogleAdsScript } from '@/components/misc/google-ads'
 import { BASE_URL, GTM_ID, isProduction } from '@/constants'
 import { inter, sourceCodePro } from '@/fonts'
 import { cn } from '@/lib/shadcn-utils'
@@ -9,9 +12,6 @@ import { Providers } from '@/providers'
 
 import type { Metadata } from 'next'
 
-import { GoogleAdsScript } from '@/components/google-ads'
-import { Footer } from '@/components/layout'
-import { NavBar } from '@/components/nav-bar'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

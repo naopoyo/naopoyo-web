@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach, vi } from 'vitest'
 
-vi.mock('@/components/message', () => ({
+vi.mock('@/components/feedback/message', () => ({
   MutedMessage: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="muted-message">{children}</div>
   ),
