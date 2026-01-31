@@ -23,13 +23,11 @@ src/components/
 ├── forms/
 │   └── search-input/          # 検索入力フォーム
 ├── layouts/
+│   ├── containers/            # 基本コンテナ
+│   ├── footers/               # フッター
 │   ├── nav-bar/               # グローバルナビゲーションバー
-│   └── page-header/           # 将来用
-│   # 以下は直下に配置（サブディレクトリ化予定）
-│   ├── container.tsx          # 基本コンテナ
-│   ├── footer.tsx             # フッター
-│   ├── page-header.tsx        # ページヘッダー
-│   └── section.tsx            # セクションコンテナ
+│   ├── page-headers/          # ページヘッダー
+│   └── sections/              # セクションコンテナ
 ├── misc/
 │   ├── google-ads/            # Google広告・アナリティクス
 │   └── theme-switcher/        # テーマ切り替え
@@ -135,10 +133,13 @@ import { Pagination } from '@/components/controls'
 
 ## layouts
 
-| ディレクトリ      | 説明                                                                                                                                                               |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `layouts/nav-bar` | グローバルナビゲーションバー。`NavBar`（メインナビゲーション）、`NavBarMenu`（メニュー）、`NavBarMenuFallback`（フォールバック）を含む。主なエクスポート: `NavBar` |
-| `layouts/` 直下   | `Container`（基本コンテナ）、`Footer`（フッター）、`PageHeader`（ページヘッダー）、`Section`（セクションコンテナ）を提供。将来的にサブディレクトリ化予定。         |
+| ディレクトリ           | 説明                                                                                                                                                               |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `layouts/containers`   | ページレイアウト用コンテナ。`Container` を提供。                                                                                                                   |
+| `layouts/footers`      | フッターコンポーネント。`Footer` を提供。SNSリンクとテーマ切替を含む。                                                                                             |
+| `layouts/nav-bar`      | グローバルナビゲーションバー。`NavBar`（メインナビゲーション）、`NavBarMenu`（メニュー）、`NavBarMenuFallback`（フォールバック）を含む。主なエクスポート: `NavBar` |
+| `layouts/page-headers` | ページヘッダー。`PageHeader` を提供。タイトル、サブタイトル、説明を表示。                                                                                          |
+| `layouts/sections`     | セクションコンテナ。`Section` を提供。見出し付きのセクションラッパー。                                                                                             |
 
 ## misc
 

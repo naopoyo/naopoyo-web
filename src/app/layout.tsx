@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 
-import { Footer } from '@/components/layouts'
+import { Footer } from '@/components/layouts/footers'
 import { NavBar } from '@/components/layouts/nav-bar'
 import { GoogleAdsScript } from '@/components/misc/google-ads'
 import { BASE_URL, GTM_ID, isProduction } from '@/constants'

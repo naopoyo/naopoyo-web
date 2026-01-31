@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 
 
 import { MutedMessage } from '@/components/feedback/message'
-import { Container } from '@/components/layouts'
-import { PageHeader } from '@/components/layouts'
+import { Container } from '@/components/layouts/containers'
+import { PageHeader } from '@/components/layouts/page-headers'
 import { TagList } from '@/features/tag'
 import { client } from '@/lib/hackersheet'
 

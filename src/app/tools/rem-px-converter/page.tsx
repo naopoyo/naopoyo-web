@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
-import { Container, PageHeader } from '@/components/layouts'
+import { Container } from '@/components/layouts/containers'
+import { PageHeader } from '@/components/layouts/page-headers'
 import { RemPxConverter } from '@/tools/rem-px-converter'
 
 

@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
-import { Container } from '@/components/layouts'
+import { Container } from '@/components/layouts/containers'
 import { GoogleAds } from '@/components/misc/google-ads'
 import { GOOGLE_ADS_SLOT_BANNER } from '@/constants'
 import {
