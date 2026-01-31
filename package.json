@@ -96,5 +96,14 @@
   "volta": {
     "node": "24.13.0",
     "pnpm": "10.28.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "msw",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
