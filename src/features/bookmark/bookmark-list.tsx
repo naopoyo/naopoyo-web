@@ -1,17 +1,25 @@
-import { Pagination } from '@/components/controls/pagination'
 import { Link } from '@/components/navigations/link'
 import { Skeleton } from '@/components/ui/skeleton'
 import { client, type WebsiteListeItem } from '@/lib/hackersheet'
 import { getFaviconUrl } from '@/utils'
 
-
-interface BookmarkListProps {
+/**
+ * BookmarkItems コンポーネントの Props
+ */
+interface BookmarkItemsProps {
+  /** 取得件数 */
   first: number
+  /** ページネーションカーソル */
   after: string
+  /** 検索キーワード */
   keyword?: string
 }
 
+/**
+ * BookmarkListItem コンポーネントの Props
+ */
 interface BookmarkListItemProps {
+  /** ウェブサイト情報 */
   website: WebsiteListeItem
 }
 
@@ -42,8 +50,14 @@ const BOOKMARK_OGIMAGE_CLASS = `
   sm:object-cover sm:object-center sm:p-0
 `
 
-export async function BookmarkList({ first, after, keyword }: BookmarkListProps) {
-  const { websites, totalCount } = await client.getWebsites({
+/**
+ * ブックマークアイテム一覧を表示するサーバーコンポーネント
+ *
+ * @param props コンポーネントのProps
+ * @returns ブックマークアイテムのリスト
+ */
+export async function BookmarkItems({ first, after, keyword }: BookmarkItemsProps) {
+  const { websites } = await client.getWebsites({
     first,
     after,
     filter: { keyword },
@@ -51,33 +65,30 @@ export async function BookmarkList({ first, after, keyword }: BookmarkListProps)
   })
 
   return (
-    <>
-      <Pagination totalItems={totalCount} pageSize={first} />
-
-      <ul className="flex flex-col gap-6">
-        {websites.length > 0 &&
-          websites.map((website) => (
-            <li key={website.id}>
-              <BookmarkListItem website={website} />
-            </li>
-          ))}
-      </ul>
-
-      <Pagination totalItems={totalCount} pageSize={first} />
-    </>
+    <ul className="flex flex-col gap-6">
+      {websites.length > 0 &&
+        websites.map((website) => (
+          <li key={website.id}>
+            <BookmarkListItem website={website} />
+          </li>
+        ))}
+    </ul>
   )
 }
 
-export function BookmarkListSkeleton() {
+/**
+ * ブックマークアイテム一覧のスケルトンローディング表示
+ *
+ * @returns スケルトンUI
+ */
+export function BookmarkItemsSkeleton() {
   return (
-    <div className="flex flex-col gap-4">
-      <Pagination totalItems={1} pageSize={1} />
+    <div className="flex flex-col gap-6">
       {Array.from({ length: 20 }).map((_, index) => (
-        <Skeleton key={`bookmark-list-skeleton-${index}`} className="w-full rounded-lg">
+        <Skeleton key={`bookmark-items-skeleton-${index}`} className="w-full rounded-lg">
           <div className="h-28 w-full rounded-lg"></div>
         </Skeleton>
       ))}
-      <Pagination totalItems={1} pageSize={1} />
     </div>
   )
 }

@@ -42,21 +42,38 @@ describe('makeWebsiteQuery', () => {
       const props = { page: 2, keyword: 'test' }
       const result1 = makeWebsiteQuery(props)
       const result2 = makeWebsiteQuery(props)
-      expect(result1.suspenseKey).toBe(result2.suspenseKey)
+      expect(result1.itemsSuspenseKey).toBe(result2.itemsSuspenseKey)
+      expect(result1.paginationSuspenseKey).toBe(result2.paginationSuspenseKey)
     })
 
-    it('異なる引数でクエリを構築すると異なるサスペンスキーが返される', () => {
+    it('異なるページでクエリを構築すると itemsSuspenseKey は異なるが paginationSuspenseKey は同じ', () => {
       const result1 = makeWebsiteQuery({ page: 1 })
       const result2 = makeWebsiteQuery({ page: 2 })
-      expect(result1.suspenseKey).not.toBe(result2.suspenseKey)
+      expect(result1.itemsSuspenseKey).not.toBe(result2.itemsSuspenseKey)
+      expect(result1.paginationSuspenseKey).toBe(result2.paginationSuspenseKey)
     })
 
-    it('サスペンスキーは JSON 形式の文字列である', () => {
+    it('異なるキーワードでクエリを構築すると両方のサスペンスキーが異なる', () => {
+      const result1 = makeWebsiteQuery({ keyword: 'foo' })
+      const result2 = makeWebsiteQuery({ keyword: 'bar' })
+      expect(result1.itemsSuspenseKey).not.toBe(result2.itemsSuspenseKey)
+      expect(result1.paginationSuspenseKey).not.toBe(result2.paginationSuspenseKey)
+    })
+
+    it('itemsSuspenseKey はページとキーワードを含む JSON 形式の文字列である', () => {
       const result = makeWebsiteQuery({ page: 2, keyword: 'test' })
-      expect(typeof result.suspenseKey).toBe('string')
-      const parsed = JSON.parse(result.suspenseKey)
+      expect(typeof result.itemsSuspenseKey).toBe('string')
+      const parsed = JSON.parse(result.itemsSuspenseKey)
       expect(parsed.page).toBe(2)
       expect(parsed.keyword).toBe('test')
+    })
+
+    it('paginationSuspenseKey はキーワードのみを含む JSON 形式の文字列である', () => {
+      const result = makeWebsiteQuery({ page: 2, keyword: 'test' })
+      expect(typeof result.paginationSuspenseKey).toBe('string')
+      const parsed = JSON.parse(result.paginationSuspenseKey)
+      expect(parsed.keyword).toBe('test')
+      expect(parsed.page).toBeUndefined()
     })
   })
 

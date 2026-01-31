@@ -4,9 +4,9 @@ import { useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import { ScrollShadow } from '@/components/decorations/scroll-shadow'
+import { NextLink } from '@/components/navigations/link'
 import { useClientOnly, useCreateQueryString } from '@/hooks'
 import { cn } from '@/lib/shadcn-utils'
-
 
 /**
  * ページネーション コンポーネントの Props
@@ -232,7 +232,7 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
                 }}
                 onMouseEnter={handleMouseEnter(pageItem.num)}
               >
-                <a
+                <NextLink
                   ref={active ? scrollAnchorRef : undefined}
                   href={pageItem.href}
                   aria-current={active ? 'page' : undefined}
@@ -242,7 +242,7 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
                   )}
                 >
                   {pageItem.num}
-                </a>
+                </NextLink>
               </li>
             )
           })}

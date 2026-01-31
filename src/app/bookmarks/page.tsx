@@ -1,10 +1,15 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
-
 import { Container } from '@/components/layouts/containers'
 import { PageHeader } from '@/components/layouts/page-headers'
-import { BookmarkFilter, BookmarkList, BookmarkListSkeleton } from '@/features/bookmark'
+import {
+  BookmarkFilter,
+  BookmarkItems,
+  BookmarkItemsSkeleton,
+  BookmarkPagination,
+  BookmarkPaginationSkeleton,
+} from '@/features/bookmark'
 import { makeWebsiteQuery } from '@/lib/hackersheet'
 
 const title = 'Bookmarks'
@@ -26,7 +31,7 @@ export const revalidate = 60
 
 export default async function BookmarksPage(props: BookmarksPageProps) {
   const searchParams = await props.searchParams
-  const { first, after, keyword, suspenseKey } = makeWebsiteQuery({
+  const { first, after, keyword, itemsSuspenseKey, paginationSuspenseKey } = makeWebsiteQuery({
     page: searchParams.page,
     keyword: searchParams.keyword,
   })
@@ -40,8 +45,16 @@ export default async function BookmarksPage(props: BookmarksPageProps) {
       </div>
 
       <section className={`mx-auto flex w-full max-w-(--breakpoint-md) flex-col gap-4`}>
-        <Suspense key={suspenseKey} fallback={<BookmarkListSkeleton />}>
-          <BookmarkList first={first} after={after} keyword={keyword} />
+        <Suspense key={`${paginationSuspenseKey}-top`} fallback={<BookmarkPaginationSkeleton />}>
+          <BookmarkPagination first={first} keyword={keyword} />
+        </Suspense>
+
+        <Suspense key={itemsSuspenseKey} fallback={<BookmarkItemsSkeleton />}>
+          <BookmarkItems first={first} after={after} keyword={keyword} />
+        </Suspense>
+
+        <Suspense key={`${paginationSuspenseKey}-bottom`} fallback={<BookmarkPaginationSkeleton />}>
+          <BookmarkPagination first={first} keyword={keyword} />
         </Suspense>
       </section>
     </Container>

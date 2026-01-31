@@ -28,7 +28,8 @@ export default function makeWebsiteQuery(props: MakeWebsiteQueryArgs) {
   const first = DEFAULT_PAGE_SIZE
   const after = makeAfterCursorFromPage(page, first) ?? ''
   const keyword = props.keyword
-  const suspenseKey = JSON.stringify(props)
+  const itemsSuspenseKey = JSON.stringify(props)
+  const paginationSuspenseKey = JSON.stringify({ keyword })
 
-  return { page, first, after, keyword, suspenseKey } as const
+  return { page, first, after, keyword, itemsSuspenseKey, paginationSuspenseKey } as const
 }

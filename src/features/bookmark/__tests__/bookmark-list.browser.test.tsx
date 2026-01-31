@@ -7,11 +7,6 @@ interface MockSkeletonProps {
   className?: string
 }
 
-interface MockPaginationProps {
-  totalItems: number
-  pageSize: number
-}
-
 // モック化されたコンポーネント
 const MockSkeleton = ({ children, className }: MockSkeletonProps) => (
   <div data-testid="skeleton" className={className}>
@@ -19,32 +14,24 @@ const MockSkeleton = ({ children, className }: MockSkeletonProps) => (
   </div>
 )
 
-const MockPagination = ({ totalItems, pageSize }: MockPaginationProps) => (
-  <div data-testid="pagination" data-total-items={totalItems} data-page-size={pageSize}>
-    Pagination
-  </div>
-)
-
-// BookmarkListSkeletonコンポーネントの実装
-const BookmarkListSkeleton = () => {
+// BookmarkItemsSkeletonコンポーネントの実装
+const BookmarkItemsSkeleton = () => {
   return (
-    <div className="flex flex-col gap-4">
-      <MockPagination totalItems={1} pageSize={1} />
+    <div className="flex flex-col gap-6">
       {Array.from({ length: 20 }).map((_, index) => (
-        <MockSkeleton key={`bookmark-list-skeleton-${index}`} className={`w-full rounded-lg`}>
+        <MockSkeleton key={`bookmark-items-skeleton-${index}`} className="w-full rounded-lg">
           <div className="h-28 w-full rounded-lg"></div>
         </MockSkeleton>
       ))}
-      <MockPagination totalItems={1} pageSize={1} />
     </div>
   )
 }
 
 const renderComponent = () => {
-  return render(<BookmarkListSkeleton />)
+  return render(<BookmarkItemsSkeleton />)
 }
 
-describe('BookmarkListSkeleton', () => {
+describe('BookmarkItemsSkeleton', () => {
   afterEach(() => {
     cleanup()
   })
@@ -54,12 +41,6 @@ describe('BookmarkListSkeleton', () => {
       const { container } = renderComponent()
       const wrapper = container.querySelector('div')
       expect(wrapper).toBeInTheDocument()
-    })
-
-    it('Paginationコンポーネントを2つレンダリングする', () => {
-      const { container } = renderComponent()
-      const paginationElements = container.querySelectorAll('[data-testid="pagination"]')
-      expect(paginationElements.length).toBe(2)
     })
 
     it('20個のスケルトンプレースホルダーを持つ', () => {
@@ -77,10 +58,10 @@ describe('BookmarkListSkeleton', () => {
       expect(wrapper).toHaveClass('flex-col')
     })
 
-    it('gap-4クラスを持つ', () => {
+    it('gap-6クラスを持つ', () => {
       const { container } = renderComponent()
       const wrapper = container.querySelector('div')
-      expect(wrapper).toHaveClass('gap-4')
+      expect(wrapper).toHaveClass('gap-6')
     })
 
     it('各スケルトンアイテムがrounded-lgクラスを持つ', () => {
