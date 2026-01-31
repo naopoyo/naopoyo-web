@@ -1,11 +1,10 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { parseAsInteger, useQueryState } from 'nuqs'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, useTransition } from 'react'
 
 import { ScrollShadow } from '@/components/decorations/scroll-shadow'
-import { NextLink } from '@/components/navigations/link'
-import { useClientOnly, useCreateQueryString } from '@/hooks'
+import { useClientOnly } from '@/hooks'
 import { cn } from '@/lib/shadcn-utils'
 
 /**
@@ -51,30 +50,30 @@ const INDICATOR_CLASS = `
 `
 
 /**
- * ページリンクの基本 CSS クラス
+ * ページボタンの基本 CSS クラス
  * @internal
  */
-const PAGE_LINK_BASE_CLASS = `
-  relative z-10 flex size-9 items-center justify-center rounded-lg text-sm font-medium
-  transition-colors duration-200 ease-out
+const PAGE_BUTTON_BASE_CLASS = `
+  relative z-10 flex size-9 cursor-pointer items-center justify-center rounded-lg text-sm
+  font-medium transition-colors duration-200 ease-out
   focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none
 `
 
 /**
- * 非アクティブなページリンクの CSS クラス
+ * 非アクティブなページボタンの CSS クラス
  * @internal
  */
-const PAGE_LINK_INACTIVE_CLASS = `
+const PAGE_BUTTON_INACTIVE_CLASS = `
   text-muted-foreground/70
   hover:text-foreground
   active:scale-[0.94]
 `
 
 /**
- * インジケーター上のページリンクの CSS クラス（白文字）
+ * インジケーター上のページボタンの CSS クラス（白文字）
  * @internal
  */
-const PAGE_LINK_ON_INDICATOR_CLASS = `text-background`
+const PAGE_BUTTON_ON_INDICATOR_CLASS = `text-background`
 
 /**
  * アイテム件数表示の CSS クラス
@@ -103,13 +102,19 @@ const COUNT_HIGHLIGHT_CLASS = `font-semibold text-foreground/80 tabular-nums`
  */
 export default function Pagination({ totalItems, pageSize }: PaginationProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const scrollAnchorRef = useRef<HTMLAnchorElement>(null)
+  const scrollAnchorRef = useRef<HTMLButtonElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
   const itemRefs = useRef<Map<number, HTMLLIElement>>(new Map())
   const totalPages = Math.ceil(totalItems / pageSize)
-  const createQueryString = useCreateQueryString({ withPathname: true })
-  const searchParams = useSearchParams()
-  const page = Number(searchParams.get('page') ?? 1)
+  const [isPending, startTransition] = useTransition()
+  const [page, setPage] = useQueryState(
+    'page',
+    parseAsInteger.withDefault(1).withOptions({
+      shallow: false,
+      history: 'push',
+      startTransition,
+    })
+  )
   const { mounted } = useClientOnly()
 
   const [indicatorStyle, setIndicatorStyle] = useState<IndicatorStyle>({
@@ -126,7 +131,6 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
 
   const pageItems = Array.from({ length: totalPages }).map((_, index) => ({
     num: index + 1,
-    href: createQueryString({ page: (index + 1).toString() }),
   }))
 
   const isActive = (value: number) => value === page
@@ -232,17 +236,21 @@ export default function Pagination({ totalItems, pageSize }: PaginationProps) {
                 }}
                 onMouseEnter={handleMouseEnter(pageItem.num)}
               >
-                <NextLink
+                <button
                   ref={active ? scrollAnchorRef : undefined}
-                  href={pageItem.href}
+                  type="button"
+                  disabled={isPending}
                   aria-current={active ? 'page' : undefined}
+                  aria-busy={isPending}
                   className={cn(
-                    PAGE_LINK_BASE_CLASS,
-                    hasIndicator ? PAGE_LINK_ON_INDICATOR_CLASS : PAGE_LINK_INACTIVE_CLASS
+                    PAGE_BUTTON_BASE_CLASS,
+                    hasIndicator ? PAGE_BUTTON_ON_INDICATOR_CLASS : PAGE_BUTTON_INACTIVE_CLASS,
+                    isPending && 'cursor-wait opacity-70'
                   )}
+                  onClick={() => setPage(pageItem.num)}
                 >
                   {pageItem.num}
-                </NextLink>
+                </button>
               </li>
             )
           })}

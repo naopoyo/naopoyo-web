@@ -11,6 +11,7 @@ import {
   BookmarkPaginationSkeleton,
 } from '@/features/bookmark'
 import { makeWebsiteQuery } from '@/lib/hackersheet'
+import { bookmarkSearchParamsCache } from '@/nuqs/bookmark'
 
 const title = 'Bookmarks'
 const description = 'naopoyo.comの記事からリンクされているウェブサイトの一覧ページです。'
@@ -20,20 +21,26 @@ export const metadata: Metadata = {
   description: description,
 }
 
+/**
+ * BookmarksPage の Props
+ */
 export interface BookmarksPageProps {
-  searchParams: Promise<{
-    page?: number
-    keyword?: string
-  }>
+  searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
 export const revalidate = 60
 
+/**
+ * ブックマーク一覧ページ
+ *
+ * ウェブサイトのブックマーク一覧を表示します。
+ * ページネーションと検索機能をサポートしています。
+ */
 export default async function BookmarksPage(props: BookmarksPageProps) {
-  const searchParams = await props.searchParams
-  const { first, after, keyword, itemsSuspenseKey, paginationSuspenseKey } = makeWebsiteQuery({
-    page: searchParams.page,
-    keyword: searchParams.keyword,
+  const { page, keyword } = await bookmarkSearchParamsCache.parse(props.searchParams)
+  const { first, after, itemsSuspenseKey, paginationSuspenseKey } = makeWebsiteQuery({
+    page,
+    keyword,
   })
 
   return (
