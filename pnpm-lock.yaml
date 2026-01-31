@@ -12,8 +12,8 @@ importers:
         specifier: 0.1.0-alpha.12
         version: 0.1.0-alpha.12
       '@hackersheet/next-document-content-components':
-        specifier: 0.1.0-alpha.29
-        version: 0.1.0-alpha.29(@types/react@19.2.10)(next-themes@0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 0.1.0-alpha.30
+        version: 0.1.0-alpha.30(@types/react@19.2.10)(next-themes@0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@hackersheet/next-document-content-kifu':
         specifier: 0.1.0-alpha.17
         version: 0.1.0-alpha.17(@types/react@19.2.10)(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -555,8 +555,8 @@ packages:
   '@hackersheet/core@0.1.0-alpha.12':
     resolution: {integrity: sha512-iNNRhWVrvCbsQ9Sk0J/5bhYeY8KYiwkR5ztW0PDLaVQtvhM5yJ3NG6Gh2YTQhw7A1UYOciqchdx9rDYvjpoifg==}
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.29':
-    resolution: {integrity: sha512-wRDZOYxDs39a46zNVhn3+f5lErEORh9kgUi9yxKVS6ad9nidgy2RmOZfi+zRs2VbKMeLtgyde9tRx/jmAk4yvw==}
+  '@hackersheet/next-document-content-components@0.1.0-alpha.30':
+    resolution: {integrity: sha512-9GznKPRA+tun8L0aRfu6Y8jqmE6VmiBIyGLrbP12LuZlk1ln3WTMy8KxedbZdoWnTLfUIMJ204OI3KrGaGgGCg==}
     peerDependencies:
       next: ^15.0.0 || ^16.0.0
       next-themes: ^0.4.0
@@ -5004,7 +5004,7 @@ snapshots:
       '@urql/core': 6.0.1(graphql@16.12.0)
       graphql: 16.12.0
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.29(@types/react@19.2.10)(next-themes@0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@hackersheet/next-document-content-components@0.1.0-alpha.30(@types/react@19.2.10)(next-themes@0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@hackersheet/core': 0.1.0-alpha.12
       '@hackersheet/react-document-content': 0.1.0-alpha.14(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
