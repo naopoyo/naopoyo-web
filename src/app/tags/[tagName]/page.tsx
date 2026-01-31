@@ -1,11 +1,12 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import { DocumentList } from '@/components/document'
-import { Container } from '@/components/layout'
-import { PageHeader } from '@/components/layout'
-import { MutedMessage } from '@/components/message'
-import { ColorCircle, SmallTag } from '@/components/tag'
+
+import { MutedMessage } from '@/components/feedback/message'
+import { Container } from '@/components/layouts/containers'
+import { PageHeader } from '@/components/layouts/page-headers'
+import { DocumentList } from '@/features/document'
+import { ColorCircle, SmallTag } from '@/features/tag'
 import { client } from '@/lib/hackersheet'
 
 interface TagPageProps {

@@ -1,5 +1,6 @@
-import { Container } from '@/components/layout'
+import { Container } from '@/components/layouts/containers'
 import { Skeleton } from '@/components/ui/skeleton'
+
 
 export default function DocumentPageLoading() {
   return (

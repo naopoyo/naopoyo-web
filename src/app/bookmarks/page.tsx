@@ -1,9 +1,10 @@
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
-import { BookmarkFilter, BookmarkList, BookmarkListSkeleton } from '@/components/bookmark'
-import { Container } from '@/components/layout'
-import { PageHeader } from '@/components/layout'
+
+import { Container } from '@/components/layouts/containers'
+import { PageHeader } from '@/components/layouts/page-headers'
+import { BookmarkFilter, BookmarkList, BookmarkListSkeleton } from '@/features/bookmark'
 import { makeWebsiteQuery } from '@/lib/hackersheet'
 
 const title = 'Bookmarks'

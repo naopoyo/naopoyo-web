@@ -3,7 +3,7 @@
 import { ClipboardCopyIcon, ClipboardListIcon, HistoryIcon, SparklesIcon } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
 
-import { FlowingGlow } from '@/components/effects'
+import { FlowingGlow } from '@/components/decorations/effects'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/shadcn-utils'
 

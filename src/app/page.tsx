@@ -2,11 +2,12 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { getPicupSlugs } from '@/actions'
-import { DocumentListSkeleton, PickupDocumentList, RecentDocumentList } from '@/components/document'
-import { Container, Section } from '@/components/layout'
-import { Link } from '@/components/link'
-import { Profile } from '@/components/site'
+import { Profile } from '@/components/brands/profiles'
+import { Container } from '@/components/layouts/containers'
+import { Section } from '@/components/layouts/sections'
+import { Link } from '@/components/navigations/link'
 import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
+import { DocumentListSkeleton, PickupDocumentList, RecentDocumentList } from '@/features/document'
 
 export const metadata: Metadata = {
   title: SITE_NAME,
