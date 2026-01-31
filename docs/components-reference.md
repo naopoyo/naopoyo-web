@@ -3,49 +3,10 @@
 このドキュメントは `src/components` 以下に存在する共通 React コンポーネントの一覧です。
 新しいコンポーネントを作成する前に、既存の実装がないか確認してください。
 
-## Components ディレクトリ構造
+## ディレクトリ構造
 
 コンポーネントは**カテゴリ/機能グループ**の 2 階層で配置します。
 機能グループは単一のコンポーネントではなく、関連するコンポーネントをまとめた意味のある単位です。
-
-```text
-src/components/
-├── brands/
-│   ├── opengraph-image/       # OGP画像生成
-│   └── profiles/              # サイトプロフィール
-├── controls/
-│   └── pagination/            # ページネーション制御
-├── decorations/
-│   ├── effects/               # モーション・視覚効果
-│   ├── scroll-shadow/         # スクロールシャドウ
-│   └── speech-bubbles/        # 吹き出し
-├── displays/                  # 将来用（データ表示コンポーネント）
-├── feedback/
-│   └── message/               # メッセージ表示
-├── forms/
-│   └── search-input/          # 検索入力フォーム
-├── layouts/
-│   ├── containers/            # 基本コンテナ
-│   ├── footers/               # フッター
-│   ├── nav-bar/               # グローバルナビゲーションバー
-│   ├── page-headers/          # ページヘッダー
-│   └── sections/              # セクションコンテナ
-├── misc/
-│   ├── google-ads/            # Google広告・アナリティクス
-│   └── theme-switcher/        # テーマ切り替え
-├── navigations/
-│   └── link/                  # リンク関連コンポーネント
-├── prefabs/                   # 将来用（特定用途向けパターン）
-├── typography/
-│   # 以下は直下に配置（サブディレクトリ化予定）
-│   ├── heading.tsx            # 見出し
-│   └── paragraph.tsx          # 段落
-└── ui/                        # shadcn/ui ベースの基本 UI パーツ（直下にファイルを配置）
-    ├── button.tsx
-    ├── input.tsx
-    ├── select.tsx
-    └── ...
-```
 
 ### index.ts の配置ルール
 
@@ -176,36 +137,7 @@ import { Pagination } from '@/components/controls'
 `src/features` 以下には、このプロジェクト専用の機能に関するコンポーネントを配置します。
 汎用的な UI コンポーネントではなく、特定のビジネスロジックやドメイン知識に依存するコンポーネント群です。
 
-### Features ディレクトリ構造
-
-```text
-src/features/
-├── bookmark/                  # ブックマーク機能
-│   ├── bookmark-filter.tsx
-│   ├── bookmark-list.tsx
-│   └── index.ts
-├── document/                  # ドキュメント機能
-│   ├── all-document-list.tsx
-│   ├── document-dropdown-toc.tsx
-│   ├── document-emoji.tsx
-│   ├── document-filter.tsx
-│   ├── document-header.tsx
-│   ├── document-list-skeleton.tsx
-│   ├── document-list.tsx
-│   ├── document-toc.tsx
-│   ├── document-total-count.tsx
-│   ├── pickup-document-list.tsx
-│   ├── recent-document-list.tsx
-│   ├── sort-by-select.tsx
-│   └── index.ts
-└── tag/                       # タグ機能
-    ├── color-circle.tsx
-    ├── small-tag.tsx
-    ├── tag-list.tsx
-    └── index.ts
-```
-
-### Features 機能一覧
+### 機能一覧
 
 | ディレクトリ | 説明                                                                                                                                                                                                                                                                                                                                    |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
