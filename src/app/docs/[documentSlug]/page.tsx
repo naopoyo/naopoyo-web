@@ -15,7 +15,6 @@ import {
 } from '@/features/document'
 import { client, DocumentContent } from '@/lib/hackersheet'
 
-
 type DocumentPageProps = {
   params: Promise<{ documentSlug: string }>
 }
@@ -67,7 +66,7 @@ export default async function DocumentPage(props: DocumentPageProps) {
         </div>
         <aside
           className={`
-            hidden w-[300px]
+            hidden w-75
             md:inline-block
           `}
         >
