@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
+import { FullProfile } from '@/components/brands/profiles'
 import { Container } from '@/components/layouts/containers'
 import { PageHeader } from '@/components/layouts/page-headers'
-import { FullProfile } from '@/components/site'
 
 
 const title = 'About'

@@ -1,7 +1,9 @@
+import { SpeechBubble } from '@/components/decorations/speech-bubbles'
 import { Link } from '@/components/navigations/link'
-import { Avatar, SpeechBubble } from '@/components/site'
 import { Paragraph as P } from '@/components/typography'
 import { SITE_DESC } from '@/constants'
+
+import Avatar from './avatar'
 
 
 /**

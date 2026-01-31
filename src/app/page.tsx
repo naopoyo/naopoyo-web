@@ -2,10 +2,10 @@ import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import { getPicupSlugs } from '@/actions'
+import { Profile } from '@/components/brands/profiles'
 import { Container } from '@/components/layouts/containers'
 import { Section } from '@/components/layouts/sections'
 import { Link } from '@/components/navigations/link'
-import { Profile } from '@/components/site'
 import { SITE_DESC, SITE_NAME, RECENT_DOCS_COUNT } from '@/constants'
 import { DocumentListSkeleton, PickupDocumentList, RecentDocumentList } from '@/features/document'
 

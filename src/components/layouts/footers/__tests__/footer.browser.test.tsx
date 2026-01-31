@@ -3,7 +3,7 @@ import { describe, it, expect, vi, afterEach } from 'vitest'
 
 import Footer from '../footer'
 
-vi.mock('@/components/site', () => ({
+vi.mock('@/components/brands/profiles', () => ({
   SnsList: () => {
     return <div data-testid="mock-sns-list">sns-list</div>
   },

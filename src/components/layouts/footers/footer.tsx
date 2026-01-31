@@ -1,5 +1,5 @@
+import { SnsList } from '@/components/brands/profiles'
 import { ThemeSwitcher } from '@/components/misc/theme-switcher'
-import { SnsList } from '@/components/site'
 
 
 /**
