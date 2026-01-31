@@ -10,6 +10,18 @@ const withBundleAnalyzer = NextBundleAnalyzer({
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/docs/:slug.md',
+          destination: '/docs/raw/:slug',
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    }
+  },
   transpilePackages: [
     '@hackersheet/next-document-content-components',
     '@hackersheet/next-document-content-kifu',
