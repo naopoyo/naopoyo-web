@@ -23,10 +23,10 @@
     "test:run": "vitest run"
   },
   "dependencies": {
-    "@hackersheet/core": "0.1.0-alpha.11",
-    "@hackersheet/next-document-content-components": "0.1.0-alpha.25",
-    "@hackersheet/next-document-content-kifu": "0.1.0-alpha.16",
-    "@hackersheet/react-document-content": "0.1.0-alpha.13",
+    "@hackersheet/core": "0.1.0-alpha.12",
+    "@hackersheet/next-document-content-components": "0.1.0-alpha.27",
+    "@hackersheet/next-document-content-kifu": "0.1.0-alpha.17",
+    "@hackersheet/react-document-content": "0.1.0-alpha.14",
     "@hackersheet/react-document-content-styles": "0.1.0-alpha.14",
     "@next/third-parties": "16.1.6",
     "@radix-ui/react-dropdown-menu": "2.1.16",

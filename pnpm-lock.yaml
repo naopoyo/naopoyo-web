@@ -9,17 +9,17 @@ importers:
   .:
     dependencies:
       '@hackersheet/core':
-        specifier: 0.1.0-alpha.11
-        version: 0.1.0-alpha.11
+        specifier: 0.1.0-alpha.12
+        version: 0.1.0-alpha.12
       '@hackersheet/next-document-content-components':
-        specifier: 0.1.0-alpha.25
-        version: 0.1.0-alpha.25(@types/react@19.2.10)(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 0.1.0-alpha.27
+        version: 0.1.0-alpha.27(@types/react@19.2.10)(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@hackersheet/next-document-content-kifu':
-        specifier: 0.1.0-alpha.16
-        version: 0.1.0-alpha.16(@types/react@19.2.10)(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 0.1.0-alpha.17
+        version: 0.1.0-alpha.17(@types/react@19.2.10)(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@hackersheet/react-document-content':
-        specifier: 0.1.0-alpha.13
-        version: 0.1.0-alpha.13(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 0.1.0-alpha.14
+        version: 0.1.0-alpha.14(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@hackersheet/react-document-content-styles':
         specifier: 0.1.0-alpha.14
         version: 0.1.0-alpha.14
@@ -545,31 +545,28 @@ packages:
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
 
-  '@hackersheet/core@0.1.0-alpha.11':
-    resolution: {integrity: sha512-58OQnddta3wKCP3butrJXLG4T4nVL272Ue4vVwLHYREU5FDvrJ2pZexRAh9T6k8v36jU1fYF2XiSCAuCvYy7Cw==}
+  '@hackersheet/core@0.1.0-alpha.12':
+    resolution: {integrity: sha512-iNNRhWVrvCbsQ9Sk0J/5bhYeY8KYiwkR5ztW0PDLaVQtvhM5yJ3NG6Gh2YTQhw7A1UYOciqchdx9rDYvjpoifg==}
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.25':
-    resolution: {integrity: sha512-ouMSoSx9KbtzB8OTRI1a4g1tDGl8acxMkFs6dh3ScTInsQZUgSdhZntoCGc9B4sno3aPUactsAjV1pk7e5XGCg==}
+  '@hackersheet/next-document-content-components@0.1.0-alpha.27':
+    resolution: {integrity: sha512-d86KLEQy1hiNenHHxcULjW6DKZC5dfslg1xgD9vkm+Y/yfGYqEsMbZfm6CP/UaCGaslJh0ARi16lt1bCB7gUBA==}
     peerDependencies:
       next: ^15.0.0 || ^16.0.0
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.16':
-    resolution: {integrity: sha512-o7eHzewQXZX+UAG142NF7Oujz641gl67xOhUj2Dr6FC3plhURVs6ekoIUdMFsBp7N2Ho90JqwEivQcljx/ofCA==}
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.17':
+    resolution: {integrity: sha512-V3haU+gC+SShndHrITINm9M7dCo5qS3eATZwOe15pR5TF1l2nE7wUxlM+caZRSQ00heklUgwiEO3y+xpZOdm/w==}
     peerDependencies:
       next: ^15.0.0 || ^16.0.0
       react: ^19.0.0
       react-dom: ^19.0.0
-
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.13':
-    resolution: {integrity: sha512-9cRHp8eNj7/fSiLmTMNm9Fsxhd8xw9eYQljTO43JfM7Kgka8Kx16QstKun8u+DDlc9X6ftmdZONfwmyUsgg8hg==}
 
   '@hackersheet/react-document-content-styles@0.1.0-alpha.14':
     resolution: {integrity: sha512-rrWtUZwZHKAwAbTtyyf70Ai60MSntrTx0vD4CEOcTIMe4/LvGHMCWJkxMR5QJO5pyMY8AWErlTxulc5Qv1nK2g==}
 
-  '@hackersheet/react-document-content@0.1.0-alpha.13':
-    resolution: {integrity: sha512-ZC1c0Rscr2rl9ZK7umQ1nv5wxaijjGZMilpKzpjQd9i4/gYfmfjgsO3GIAHUBjAluv0AH96Az96c5Ntd48R68g==}
+  '@hackersheet/react-document-content@0.1.0-alpha.14':
+    resolution: {integrity: sha512-ezpCB3+pKgJ4rO7k64RUxAnH+Pb3PDHq2X5kSSXOeexIO8dVqKa5SBrvbNtmIG4lkWByMfZYwiKOtJ6ERmpHjg==}
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
@@ -4990,16 +4987,16 @@ snapshots:
     dependencies:
       graphql: 16.12.0
 
-  '@hackersheet/core@0.1.0-alpha.11':
+  '@hackersheet/core@0.1.0-alpha.12':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.12.0)
       '@urql/core': 6.0.1(graphql@16.12.0)
       graphql: 16.12.0
 
-  '@hackersheet/next-document-content-components@0.1.0-alpha.25(@types/react@19.2.10)(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@hackersheet/next-document-content-components@0.1.0-alpha.27(@types/react@19.2.10)(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
-      '@hackersheet/core': 0.1.0-alpha.11
-      '@hackersheet/react-document-content': 0.1.0-alpha.13(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@hackersheet/core': 0.1.0-alpha.12
+      '@hackersheet/react-document-content': 0.1.0-alpha.14(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@next/third-parties': 16.1.6(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react@19.2.4)
       '@shikijs/langs': 3.13.0
       '@shikijs/themes': 3.13.0
@@ -5016,10 +5013,10 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@hackersheet/next-document-content-kifu@0.1.0-alpha.16(@types/react@19.2.10)(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@hackersheet/next-document-content-kifu@0.1.0-alpha.17(@types/react@19.2.10)(next@16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
-      '@hackersheet/core': 0.1.0-alpha.11
-      '@hackersheet/react-document-content': 0.1.0-alpha.13(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@hackersheet/core': 0.1.0-alpha.12
+      '@hackersheet/react-document-content': 0.1.0-alpha.14(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       json-kifu-format: 5.5.0
       next: 16.1.6(@babel/core@7.28.6)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(sass@1.97.3)
       react: 19.2.4
@@ -5029,14 +5026,12 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@hackersheet/react-document-content-styles@0.1.0-alpha.13': {}
-
   '@hackersheet/react-document-content-styles@0.1.0-alpha.14': {}
 
-  '@hackersheet/react-document-content@0.1.0-alpha.13(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@hackersheet/react-document-content@0.1.0-alpha.14(@types/react@19.2.10)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
-      '@hackersheet/core': 0.1.0-alpha.11
-      '@hackersheet/react-document-content-styles': 0.1.0-alpha.13
+      '@hackersheet/core': 0.1.0-alpha.12
+      '@hackersheet/react-document-content-styles': 0.1.0-alpha.14
       deepmerge: 4.3.1
       mustache: 4.2.0
       path: 0.12.7
