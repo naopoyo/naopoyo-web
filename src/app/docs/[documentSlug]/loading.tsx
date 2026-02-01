@@ -1,7 +1,6 @@
 import { Container } from '@/components/layouts/containers'
 import { Skeleton } from '@/components/ui/skeleton'
 
-
 export default function DocumentPageLoading() {
   return (
     <Container className="flex flex-col gap-24 px-4 pt-10">

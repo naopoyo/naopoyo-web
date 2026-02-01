@@ -43,20 +43,24 @@ export default async function DocumentPage(props: DocumentPageProps) {
     <Container className="flex flex-col gap-24 px-4 pt-10">
       <div className="mx-auto flex max-w-full gap-14">
         {/* メインコンテンツ - Suspense でストリーミング */}
-        <div className="
-          flex w-full flex-col gap-14
-          md:w-3xl
-        ">
+        <div
+          className="
+            flex w-full flex-col gap-14
+            md:w-3xl
+          "
+        >
           <Suspense fallback={<DocumentArticleSkeleton />}>
             <DocumentArticle documentSlug={documentSlug} />
           </Suspense>
         </div>
 
         {/* サイドバー - 静的に表示 */}
-        <aside className="
-          hidden w-75
-          md:inline-block
-        ">
+        <aside
+          className="
+            hidden w-75
+            md:inline-block
+          "
+        >
           <h2 className="mb-2 font-bold text-muted-foreground">目次</h2>
           <div className="sticky top-16">
             <DocumentToc />
@@ -75,10 +79,12 @@ export default async function DocumentPage(props: DocumentPageProps) {
       </Suspense>
 
       {/* モバイル用TOC */}
-      <div className="
-        fixed right-4 bottom-4
-        md:hidden
-      ">
+      <div
+        className="
+          fixed right-4 bottom-4
+          md:hidden
+        "
+      >
         <DocumentDropdownToc />
       </div>
     </Container>

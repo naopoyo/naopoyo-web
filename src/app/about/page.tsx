@@ -4,7 +4,6 @@ import { FullProfile } from '@/components/brands/profiles'
 import { Container } from '@/components/layouts/containers'
 import { PageHeader } from '@/components/layouts/page-headers'
 
-
 const title = 'About'
 const description = 'naopoyo.comについて説明しているページです。'
 

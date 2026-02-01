@@ -3,8 +3,6 @@ import { MutedMessage } from '@/components/feedback/message'
 
 import DocumentList from './document-list'
 
-
-
 /**
  * AllDocumentList コンポーネントの Props
  *

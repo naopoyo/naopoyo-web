@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 
-
 import { MutedMessage } from '@/components/feedback/message'
 import { Container } from '@/components/layouts/containers'
 import { PageHeader } from '@/components/layouts/page-headers'

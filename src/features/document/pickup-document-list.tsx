@@ -3,7 +3,6 @@ import { client } from '@/lib/hackersheet'
 
 import DocumentList from './document-list'
 
-
 /**
  * PickupDocumentList コンポーネント - ピックアップされたドキュメントを表示します
  *

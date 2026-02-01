@@ -1,7 +1,6 @@
 import { SnsList } from '@/components/brands/profiles'
 import { ThemeSwitcher } from '@/components/misc/theme-switcher'
 
-
 /**
  * Footer コンポーネント - サイト下部のフッターを表示します。
  *

@@ -7,7 +7,6 @@ import { SITE_DESC } from '@/constants'
 import Avatar from './avatar'
 import SnsList from './sns-list'
 
-
 /**
  * ProfileSection の Props
  */

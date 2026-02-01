@@ -5,7 +5,6 @@ import { client } from '@/lib/hackersheet'
 
 import DocumentList from './document-list'
 
-
 /**
  * RecentDocumentList コンポーネントの Props
  *

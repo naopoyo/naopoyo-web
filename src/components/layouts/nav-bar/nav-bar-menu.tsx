@@ -7,7 +7,6 @@ import { NextLink } from '@/components/navigations/link'
 import { useClientOnly } from '@/hooks'
 import { cn } from '@/lib/shadcn-utils'
 
-
 const MENU_ITEMS = [
   {
     label: 'Docs',

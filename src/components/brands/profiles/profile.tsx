@@ -5,7 +5,6 @@ import { SITE_DESC } from '@/constants'
 
 import Avatar from './avatar'
 
-
 /**
  * Profile コンポーネント - サイトオーナーの簡易プロフィールを表示
  *

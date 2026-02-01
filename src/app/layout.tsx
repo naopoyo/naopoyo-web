@@ -12,7 +12,6 @@ import { Providers } from '@/providers'
 
 import type { Metadata } from 'next'
 
-
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   robots: {
