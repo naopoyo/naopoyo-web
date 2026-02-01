@@ -30,9 +30,13 @@ type IndicatorStyle = {
 
 /**
  * ナビゲーションコンテナの CSS クラス
+ * スマホ時は縦方向（件数が上、ページボタンが下）、デスクトップ時は横方向
  * @internal
  */
-const NAV_CONTAINER_CLASS = `flex flex-row items-center gap-3`
+const NAV_CONTAINER_CLASS = `
+  flex flex-col-reverse gap-2
+  sm:flex-row sm:items-center sm:gap-3
+`
 
 /**
  * ページリストの CSS クラス
@@ -77,11 +81,13 @@ const PAGE_BUTTON_ON_INDICATOR_CLASS = `text-background`
 
 /**
  * アイテム件数表示の CSS クラス
+ * スマホ時は右寄せ
  * @internal
  */
 const ITEM_COUNT_CLASS = `
-  flex shrink-0 items-center gap-1.5 rounded-lg border bg-card/50 px-3 py-1.5 text-xs
+  flex shrink-0 items-center gap-1.5 self-end rounded-lg border bg-card/50 px-3 py-1.5 text-xs
   text-muted-foreground
+  sm:self-auto
 `
 
 /**
