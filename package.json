@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@hackersheet/core": "0.1.0-alpha.13",
-    "@hackersheet/next-document-content-components": "0.1.0-alpha.32",
+    "@hackersheet/next-document-content-components": "0.1.0-alpha.33",
     "@hackersheet/next-document-content-kifu": "0.1.0-alpha.18",
     "@hackersheet/react-document-content": "0.1.0-alpha.15",
     "@hackersheet/react-document-content-styles": "0.1.0-alpha.15",
