@@ -1,106 +1,138 @@
 ---
 name: vitest-test-creator
-description: Vitest を使用したテストコード作成・リファクタリング・デバッグ。ユニットテスト(.unit.test.ts)、Reactコンポーネント・Hooksテスト(.browser.test.tsx)に対応。「テストを書いて」「テストケースを追加して」「テストをリファクタリングして」「このテストをガイドラインに沿って修正して」などのリクエストで使用。.test.ts/.test.tsx ファイルの作成・編集・改善が必要な場合に活用。
+description: Vitest テストの作成・リファクタリング・デバッグ支援。ユニットテスト、React コンポーネントテスト、Hooks テストに対応。「テストを書いて」「テストケースを追加して」「テストをリファクタリングして」などのリクエストで使用。
 ---
 
 # Vitest Test Creator
 
-## 🚀 クイックスタート
+Vitest 固有のパターンと、よくあるハマりどころを解説するスキル。
 
-### ユニットテスト（純粋な関数）
+## ブラウザテスト（Vitest Browser Mode）
 
-```typescript
-// src/utils/__tests__/sum.unit.test.ts
-import { describe, it, expect } from 'vitest'
-import { sum } from '../sum'
+Vitest Browser Mode を使用している場合の注意点。
 
-describe('sum', () => {
-  it('2つの数を足す', () => {
-    expect(sum(2, 3)).toBe(5)
-  })
-})
-```
+### cleanup() は必須
 
-### ブラウザテスト（Reactコンポーネント）
+Vitest Browser Mode では自動 cleanup が効かない場合がある。必ず `afterEach` で呼び出す：
 
 ```typescript
-// src/components/__tests__/Button.browser.test.tsx
-import { render, cleanup } from '@testing-library/react'
-import { describe, it, expect, afterEach } from 'vitest'
-import { Button } from '../Button'
+import { cleanup } from '@testing-library/react'
+import { afterEach } from 'vitest'
 
-describe('Button', () => {
+describe('Component', () => {
   afterEach(() => cleanup())
 
-  it('ボタンが表示される', () => {
-    const { container } = render(<Button>Click</Button>)
-    expect(container.querySelector('button')).toBeInTheDocument()
+  it('test', () => {
+    render(<Component />)
   })
 })
 ```
 
-テストタイプの詳細は [file-layout.md](references/file-layout.md) を参照。
+### container.querySelector() を優先
 
----
+`screen.getByRole()` は複数要素で失敗しやすい。`container.querySelector()` で明確に指定：
 
-## テスト実行コマンド
+```typescript
+// ✅ 推奨
+const { container } = render(<Component />)
+const input = container.querySelector('input[type="search"]')
 
-| 用途                 | コマンド                                                         |
-| -------------------- | ---------------------------------------------------------------- |
-| **特定ファイル実行** | `pnpm test:run src/components/__tests__/Button.browser.test.tsx` |
-| **パターンマッチ**   | `pnpm test:run bookmark`                                         |
-| **全テスト実行**     | `pnpm test:run`                                                  |
-| **カバレッジ付き**   | `pnpm test:coverage`                                             |
+// ❌ 複数要素があるとエラー
+const input = screen.getByRole('searchbox')
+```
 
-詳細は [workflow.md](references/workflow.md) を参照。
+### userEvent は必ず setup() から
 
----
+```typescript
+const user = userEvent.setup()
+await user.click(button)
+await user.type(input, 'text')
+```
 
-## よくあるトラブル（TOP 3）
+## カスタム Hooks のテスト
 
-### ❌ jest-dom マッチャーが見つからない
+Hooks は DOM 操作を含むためブラウザテストを使用：
 
-**エラー:** `Property 'toBeInTheDocument' does not exist`
+```typescript
+import { renderHook, act } from '@testing-library/react'
 
-**解決:**
+describe('useCounter', () => {
+  it('increment', () => {
+    const { result } = renderHook(() => useCounter())
+    act(() => result.current.increment())
+    expect(result.current.count).toBe(1)
+  })
+})
+```
 
-- テストファイルが `.browser.test.tsx` 拡張子か確認
-- `vitest.setup.ts` に `import '@testing-library/jest-dom/vitest'` があるか確認
+## Next.js モック
 
-### ❌ `screen.getByRole()` で複数要素エラー
+### next/link
 
-**エラー:** `Found multiple elements with role "searchbox"`
+```typescript
+vi.mock('next/link', () => ({
+  default: ({ children, href }: { children: React.ReactNode; href: string }) => (
+    <a href={href}>{children}</a>
+  ),
+}))
+```
 
-**解決:** `container.querySelector()` を使用するか、`afterEach(() => cleanup())` を追加
+### next/navigation
 
-### ❌ テストがタイムアウト
+```typescript
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ push: vi.fn(), back: vi.fn() }),
+  usePathname: () => '/current-path',
+  useSearchParams: () => new URLSearchParams(),
+}))
+```
 
-**エラー:** `Timeout of XXXX ms`
+## テストデータファクトリー
 
-**解決:**
+fishery + @faker-js/faker で再利用可能なテストデータを生成。
+詳細は [test-data-factories.md](references/test-data-factories.md) を参照。
 
-- 非同期テストに `await` があるか確認
-- `vi.useFakeTimers()` を使用している場合は `vi.runAllTimers()` を追加
+```typescript
+import { Factory } from 'fishery'
+import { faker } from '@faker-js/faker'
 
-すべてのトラブルシューティング → [troubleshooting.md](references/troubleshooting.md)
+export const userFactory = Factory.define<User>(() => ({
+  id: faker.string.uuid(),
+  name: faker.person.fullName(),
+  email: faker.internet.email(),
+}))
 
----
+// 使用
+const user = userFactory.build()
+const users = userFactory.buildList(3)
+const customUser = userFactory.build({ name: 'Test User' })
+```
 
-## 次のステップ
+## トラブルシューティング
 
-**テスト作成・編集:**
+### jest-dom マッチャーが見つからない
 
-- [unit-testing.md](references/unit-testing.md) - ユニットテストの基本構造、パターン、ベストプラクティス
-- [browser-testing.md](references/browser-testing.md) - ブラウザテストの基本構造、例、ベストプラクティス
-- [file-layout.md](references/file-layout.md) - テストファイル配置・命名規則
+```
+Property 'toBeInTheDocument' does not exist
+```
 
-**テストデータ・モック:**
+→ セットアップファイルで `import '@testing-library/jest-dom/vitest'` が必要。
+→ ブラウザテスト用の設定で `setupFiles` を指定しているか確認。
 
-- [test-data-factories.md](references/test-data-factories.md) - テストデータ生成（fishery、@faker-js/faker）
-- [mocking.md](references/mocking.md) - 関数モック、モジュールモック、Next.js モック
+### act() 警告
 
-**リファレンス:**
+```
+Warning: An update to [Component] inside a test was not wrapped in act(...)
+```
 
-- [jest-dom-matchers.md](references/jest-dom-matchers.md) - jest-dom マッチャー完全リスト
-- [workflow.md](references/workflow.md) - テスト実行ワークフロー、開発フロー、トラブルシューティング手順
-- [troubleshooting.md](references/troubleshooting.md) - エラー別トラブルシューティング完全ガイド
+→ `userEvent.setup()` を使用しているか確認（自動で act ラップされる）。
+→ 非同期更新は `await vi.waitFor()` で待つ。
+
+### テストがタイムアウト
+
+→ `async` テストに `await` があるか確認。
+→ `vi.useFakeTimers()` 使用時は `vi.runAllTimers()` を呼ぶ。
+
+## リファレンス
+
+- [test-data-factories.md](references/test-data-factories.md) - fishery/faker によるファクトリーパターン
