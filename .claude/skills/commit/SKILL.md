@@ -7,16 +7,12 @@ description: プロジェクトのコミットメッセージルールに従っ�
 
 ## 実行フロー
 
-1. `git status` で変更ファイルを確認
-2. `git diff --staged` でステージされた変更を確認（ステージされていない場合は `git diff`）
-3. `git log --oneline -5` で最近のコミットスタイルを確認
-4. [commit-rules.md](references/commit-rules.md) を読み、ルールに従ってコミットメッセージを作成
-5. 必要に応じて `git add` で追加のファイルをステージ
-6. `git commit` でコミットを実行
-7. `git status` で成功を確認
+1. `git status` と `git diff --staged`（ステージされていない場合は `git diff`）で変更内容を確認する
+2. 変更が複数のスコープにまたがる場合はコミットを分割する
+3. [commit-rules.md](references/commit-rules.md) を読み、ルールに従ってコミットメッセージを作成する
+4. 必要に応じて `git add` でファイルをステージし、`git commit` を実行する
 
 ## 注意事項
 
-- **Co-Authored-By は付けない**
-- **本文は原則必須** - 省略条件は [commit-rules.md](references/commit-rules.md) を参照
-- **スコープは一つに** - 複数のスコープが必要な場合はコミットを分ける
+- 過去のコミット履歴ではなく、常に commit-rules.md のルールに従う
+- Co-Authored-By は付けない
