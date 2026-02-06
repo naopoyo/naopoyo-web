@@ -24,6 +24,8 @@
 - 共通コンポーネント・ユーティリティは以下を参照し、既存のものを使用する
   - @docs/components-reference.md
   - @docs/lib-utils-reference.md
+- テストファイルの命名・配置は以下を参照
+  - @docs/testing-conventions.md
 
 ## デザインコンセプト: Refined Minimalism
 
