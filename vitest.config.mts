@@ -9,7 +9,7 @@ export default defineConfig({
   },
   test: {
     coverage: {
-      exclude: ['tests/**'],
+      exclude: ['tests/**', '**/index.ts', '**/*.module.scss', '**/style.ts'],
     },
     projects: [
       defineProject({
