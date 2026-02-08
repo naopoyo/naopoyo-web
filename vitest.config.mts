@@ -8,6 +8,9 @@ export default defineConfig({
     include: ['fishery', '@faker-js/faker'],
   },
   test: {
+    coverage: {
+      exclude: ['tests/**'],
+    },
     projects: [
       defineProject({
         test: {
