@@ -3,18 +3,6 @@ import { useSelectedLayoutSegment } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 
-// @/constants をモック化（process.env を使用しているためブラウザテスト環境でエラーになる）
-vi.mock('@/constants', () => ({
-  SITE_NAME: 'naopoyo.com',
-  TOCBOT_BASE_OPTIONS: {
-    headingSelector: 'h2, h3, h4, h5, h6',
-    scrollSmooth: false,
-    headingsOffset: 81,
-    throttleTimeout: 0,
-    scrollHandlerType: 'throttle',
-  },
-}))
-
 import NavBarMenu from '../nav-bar-menu'
 
 interface MockLinkProps extends PropsWithChildren {

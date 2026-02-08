@@ -1,21 +1,10 @@
 import { render, cleanup } from '@testing-library/react'
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest'
 
-// 定数をモック
-vi.mock('@/constants', () => ({
+// 環境変数定数をモック
+vi.mock('@/env', () => ({
   isProduction: true,
   GOOGLE_ADS_CLIENT: 'pub-test-client-id',
-  BASE_URL: 'http://localhost:3000',
-  GTM_ID: '',
-  GOOGLE_ADS_SLOT_BANNER: '',
-  SITE_NAME: 'test',
-  SITE_DESC: 'test',
-  RECENT_DOCS_COUNT: 6,
-  HACKERSHEET_API_ENDPOINT: '',
-  HACKERSHEET_API_ACCESS_KEY: '',
-  HACKERSHEET_GITHUB_REPO_FULL_NAME: '',
-  HACKERSHEET_GITHUB_REPO_URL: '',
-  TOCBOT_BASE_OPTIONS: {},
 }))
 
 // next/navigation をモック

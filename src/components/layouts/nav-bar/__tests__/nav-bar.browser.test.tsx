@@ -8,18 +8,6 @@ interface MockLinkProps extends PropsWithChildren {
   className?: string
 }
 
-// @/constants をモック化（process.env を使用しているためブラウザテスト環境でエラーになる）
-vi.mock('@/constants', () => ({
-  SITE_NAME: 'naopoyo.com',
-  TOCBOT_BASE_OPTIONS: {
-    headingSelector: 'h2, h3, h4, h5, h6',
-    scrollSmooth: false,
-    headingsOffset: 81,
-    throttleTimeout: 0,
-    scrollHandlerType: 'throttle',
-  },
-}))
-
 // next/link をモック化 - シンプルな a タグに置き換え
 vi.mock('next/link', () => ({
   __esModule: true,

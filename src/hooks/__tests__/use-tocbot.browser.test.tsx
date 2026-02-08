@@ -9,16 +9,6 @@ vi.mock('tocbot', () => ({
   },
 }))
 
-vi.mock('@/constants', () => ({
-  TOCBOT_BASE_OPTIONS: {
-    headingSelector: 'h2, h3, h4, h5, h6',
-    scrollSmooth: false,
-    headingsOffset: 81,
-    throttleTimeout: 0,
-    scrollHandlerType: 'throttle',
-  },
-}))
-
 vi.mock('@/lib/hackersheet/style', () => ({
   documentContentStyle: {
     main: 'content-main',

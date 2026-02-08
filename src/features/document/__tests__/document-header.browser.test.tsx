@@ -28,7 +28,7 @@ vi.mock('@/features/tag', () => ({
   SmallTag: ({ tagName }: { tagName: string }) => <span data-testid="tag">{tagName}</span>,
 }))
 
-vi.mock('@/constants', () => ({
+vi.mock('@/env', () => ({
   HACKERSHEET_GITHUB_REPO_URL: 'https://github.com/example/repo',
 }))
 

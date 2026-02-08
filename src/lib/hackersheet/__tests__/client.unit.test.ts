@@ -9,7 +9,7 @@ vi.mock('@hackersheet/core', () => ({
   createClient: vi.fn(() => ({})),
 }))
 
-vi.mock('@/constants', () => ({
+vi.mock('@/env', () => ({
   HACKERSHEET_API_ACCESS_KEY: 'test-access-key',
   HACKERSHEET_API_ENDPOINT: 'https://test.example.com',
 }))
