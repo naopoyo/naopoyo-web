@@ -1,9 +1,18 @@
 # テスト規約
 
-## ファイル命名・配置
+テスト対象と同階層の `__tests__/` に配置。ファクトリーのみ `tests/factories/`。
 
-| 種別 | 拡張子 | 配置 |
-|------|--------|------|
-| ユニットテスト | `.unit.test.ts` | `src/<module>/__tests__/` |
-| ブラウザテスト | `.browser.test.tsx` | `src/<module>/__tests__/` |
-| ファクトリー | `.ts` | `tests/factories/` |
+| 種別 | 命名 | 用途 |
+|------|------|------|
+| ユニット | `<name>.unit.test.ts` | ロジック中心。Node 環境 |
+| ブラウザ | `<name>.browser.test.tsx` | コンポーネント・Hooks。Playwright 環境 |
+| ファクトリー | `<name>.ts` | テストデータ生成 |
+
+```text
+src/actions/
+  get-picup-slugs.ts
+  __tests__/get-picup-slugs.unit.test.ts
+src/hooks/
+  use-tocbot.ts
+  __tests__/use-tocbot.browser.test.tsx
+```
