@@ -24,7 +24,7 @@ export function useCreateQueryString(args?: UseCreateQueryStringArgs) {
           value.forEach((v) => params.append(name, v))
         } else if (typeof value === 'string') {
           params.set(name, value)
-        } else if (value === undefined) {
+        } else {
           params.delete(name)
         }
       })
