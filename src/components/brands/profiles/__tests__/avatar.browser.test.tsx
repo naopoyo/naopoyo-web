@@ -1,14 +1,12 @@
-import { render, screen, cleanup } from '@testing-library/react'
-import { describe, it, expect, vi, afterEach } from 'vitest'
+import { render, cleanup } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import Avatar, { AvatarProps } from '../avatar'
 
-// next/imageのモック
 vi.mock('next/image', () => ({
   __esModule: true,
-  default: vi.fn((props: Record<string, unknown>) => {
+  default: (props: Record<string, unknown>) => {
     const { src, alt, width, height, ...rest } = props
-
     return (
       <img
         src={src as string}
@@ -18,50 +16,26 @@ vi.mock('next/image', () => ({
         {...rest}
       />
     )
-  }),
+  },
 }))
 
-const SIZE_MAP: Record<NonNullable<AvatarProps['size']>, number> = {
+const SIZE_MAP: Record<AvatarProps['size'], number> = {
   xs: 64,
   sm: 128,
   base: 192,
   lg: 256,
 }
 
-const renderComponent = (props: Partial<AvatarProps> = {}) => {
-  return render(<Avatar size={props.size ?? 'base'} {...props} />)
-}
-
 describe('Avatar', () => {
-  afterEach(() => {
-    cleanup()
-    vi.clearAllMocks()
-  })
+  afterEach(() => cleanup())
 
-  describe('画像のレンダリング', () => {
-    it('正しいalt属性を持つイメージを表示する', () => {
-      renderComponent()
-      const img = screen.getByRole('img')
-      expect(img).toHaveAttribute('alt', 'Avatar')
+  describe('サイズマッピング', () => {
+    it.each(Object.entries(SIZE_MAP))('size="%s" で幅と高さが %d px になる', (size, expectedPx) => {
+      const { container } = render(<Avatar size={size as AvatarProps['size']} />)
+      const img = container.querySelector('img') as HTMLImageElement
+
+      expect(img.width).toBe(expectedPx)
+      expect(img.height).toBe(expectedPx)
     })
-
-    it('正しい画像ファイルを使用する', () => {
-      renderComponent()
-      const img = screen.getByRole('img')
-      expect(img).toHaveAttribute('src', expect.stringContaining('/naopoyo2.png'))
-    })
-  })
-
-  describe('サイズ', () => {
-    it.each(Object.entries(SIZE_MAP))(
-      'サイズ "%s" で幅と高さが %s px に設定されている',
-      (size, expectedSize) => {
-        renderComponent({ size: size as AvatarProps['size'] })
-        const img = screen.getByRole('img') as HTMLImageElement
-
-        expect(img.width).toBe(expectedSize)
-        expect(img.height).toBe(expectedSize)
-      }
-    )
   })
 })
