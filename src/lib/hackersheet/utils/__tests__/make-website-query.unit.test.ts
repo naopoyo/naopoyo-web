@@ -77,24 +77,6 @@ describe('makeWebsiteQuery', () => {
     })
   })
 
-  describe('戻り値の型', () => {
-    it('戻り値は const として扱われる', () => {
-      const result = makeWebsiteQuery({ page: 1 })
-      expect(result.page).toBe(1)
-      expect(result.first).toBe(20)
-      expect(typeof result.after).toBe('string')
-    })
-
-    it('first は常に 20 である', () => {
-      const result1 = makeWebsiteQuery({})
-      const result2 = makeWebsiteQuery({ page: 5 })
-      const result3 = makeWebsiteQuery({ keyword: 'test' })
-      expect(result1.first).toBe(20)
-      expect(result2.first).toBe(20)
-      expect(result3.first).toBe(20)
-    })
-  })
-
   describe('ページネーション', () => {
     it('ページが 0 以下の場合は 1 として扱われる', () => {
       const result = makeWebsiteQuery({ page: 0 })

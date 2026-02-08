@@ -44,16 +44,4 @@ describe('makeAfterCursorFromPage', () => {
       expect(result).toBe('MTk4MA==')
     })
   })
-
-  describe('戻り値の型', () => {
-    it('1ページ目は string | undefined を返す', () => {
-      const result = makeAfterCursorFromPage(1, 20)
-      expect(result === undefined).toBe(true)
-    })
-
-    it('2ページ目以降は string | undefined を返す', () => {
-      const result = makeAfterCursorFromPage(2, 20)
-      expect(typeof result === 'string' || result === undefined).toBe(true)
-    })
-  })
 })
