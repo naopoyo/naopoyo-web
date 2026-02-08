@@ -1,5 +1,17 @@
 # プロジェクトルール
 
+## プロジェクト構成
+
+Next.js (App Router) + React + Tailwind CSS のブログ/ドキュメントサイト。
+
+- `src/app/` - ページとレイアウト（`/docs`, `/bookmarks`, `/tags`, `/tools` 等）
+- `src/components/` - 共有コンポーネント（`ui/`, `navigations/`, `layouts/`, `displays/` 等）
+- `src/features/` - ドメイン別機能モジュール（`document/`, `bookmark/`, `tag/`）
+- `src/lib/` - ユーティリティと外部ライブラリのラッパー（`hackersheet/` 等）
+- `src/hooks/` - カスタムフック
+- `src/actions/` - Server Actions
+- `src/providers/` - Context Providers
+
 ## コード変更後の検証
 
 プロダクトコード・テストコード（ドキュメント除く）を変更した場合、以下を実行:
