@@ -1,6 +1,6 @@
 import Script from 'next/script'
 
-import { GOOGLE_ADS_CLIENT, isProduction } from '@/constants'
+import { GOOGLE_ADS_CLIENT, isProduction } from '@/env'
 
 import type { ReactElement } from 'react'
 

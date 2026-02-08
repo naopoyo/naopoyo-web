@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-import { BASE_URL } from '@/constants'
+import { BASE_URL } from '@/env'
 import { client } from '@/lib/hackersheet'
 
 type Route = {

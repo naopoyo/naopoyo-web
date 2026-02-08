@@ -8,7 +8,7 @@ import {
 
 import { FlowingGlow } from '@/components/decorations/effects'
 import { Link } from '@/components/navigations/link'
-import { HACKERSHEET_GITHUB_REPO_URL } from '@/constants'
+import { HACKERSHEET_GITHUB_REPO_URL } from '@/env'
 import { DocumentEmoji } from '@/features/document'
 import { SmallTag } from '@/features/tag'
 import { createDateFormat, timeAgo } from '@/utils'

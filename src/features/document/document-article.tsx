@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import { GoogleAds } from '@/components/misc/google-ads'
-import { GOOGLE_ADS_SLOT_BANNER } from '@/constants'
+import { GOOGLE_ADS_SLOT_BANNER } from '@/env'
 import { DocumentHeader } from '@/features/document'
 import { client, DocumentContent } from '@/lib/hackersheet'
 

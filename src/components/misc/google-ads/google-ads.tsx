@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
-import { GOOGLE_ADS_CLIENT, isProduction } from '@/constants'
+import { GOOGLE_ADS_CLIENT, isProduction } from '@/env'
 import { useClientOnly } from '@/hooks'
 
 declare global {
