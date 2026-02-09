@@ -9,6 +9,7 @@ export default defineConfig({
   },
   test: {
     coverage: {
+      reporter: ['text', 'html', 'clover', 'json', 'json-summary'],
       exclude: ['tests/**', '**/index.ts', '**/*.module.scss', '**/style.ts'],
     },
     projects: [
