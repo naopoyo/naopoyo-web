@@ -17,6 +17,14 @@ src/hooks/
   __tests__/use-tocbot.browser.test.tsx
 ```
 
+## カバレッジ対象ファイルの一覧取得
+
+`scripts/testing/extract-covered-files.sh` を使用する。
+
+```sh
+scripts/testing/extract-covered-files.sh
+```
+
 ## `@/constants` / `@/env` モック
 
 `@/constants` には静的な値のみ（`SITE_NAME`, `SITE_DESC`, `RECENT_DOCS_COUNT`, `TOCBOT_BASE_OPTIONS`）が含まれ、`process.env` を参照しない。そのためブラウザテストでも基本的にモック不要。
