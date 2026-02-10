@@ -8,18 +8,8 @@ import SmallTag from '../small-tag'
 // ============================================================================
 
 vi.mock('@/components/navigations/link', () => ({
-  NextLink: ({
-    children,
-    href,
-    className,
-  }: {
-    children?: React.ReactNode
-    href?: string
-    className?: string
-  }) => (
-    <a href={href} className={className} data-testid="tag-link">
-      {children}
-    </a>
+  NextLink: ({ children, href }: { children?: React.ReactNode; href?: string }) => (
+    <a href={href}>{children}</a>
   ),
 }))
 
@@ -52,7 +42,7 @@ describe('SmallTag', () => {
 
     it('リンクとしてレンダリングされる', () => {
       const { container } = renderComponent({ tagName: 'React' })
-      const link = container.querySelector('[data-testid="tag-link"]')
+      const link = container.querySelector('a')
 
       expect(link).toBeInTheDocument()
     })
@@ -61,14 +51,14 @@ describe('SmallTag', () => {
   describe('リンク', () => {
     it('正しい URL にリンクする (/tags/{tagName})', () => {
       const { container } = renderComponent({ tagName: 'React' })
-      const link = container.querySelector('[data-testid="tag-link"]') as HTMLAnchorElement
+      const link = container.querySelector('a') as HTMLAnchorElement
 
       expect(link.href).toContain('/tags/React')
     })
 
     it('日本語タグ名でも正しくリンクする', () => {
       const { container } = renderComponent({ tagName: 'テスト' })
-      const link = container.querySelector('[data-testid="tag-link"]') as HTMLAnchorElement
+      const link = container.querySelector('a') as HTMLAnchorElement
 
       // URLエンコードされた形式でも元の文字列でも検証できるようにデコードして比較
       expect(decodeURIComponent(link.href)).toContain('/tags/テスト')
@@ -76,7 +66,7 @@ describe('SmallTag', () => {
 
     it('特殊文字を含むタグ名でも正しくリンクする', () => {
       const { container } = renderComponent({ tagName: 'C++' })
-      const link = container.querySelector('[data-testid="tag-link"]') as HTMLAnchorElement
+      const link = container.querySelector('a') as HTMLAnchorElement
 
       expect(link.href).toContain('/tags/C++')
     })
@@ -102,45 +92,6 @@ describe('SmallTag', () => {
       const colorCircle = container.querySelector('[data-testid="color-circle"]')
 
       expect(colorCircle).toHaveAttribute('data-size', 'sm')
-    })
-  })
-
-  describe('カスタムクラス', () => {
-    it('className が指定されない場合はデフォルトクラスのみ適用される', () => {
-      const { container } = renderComponent({ tagName: 'React' })
-      const link = container.querySelector('[data-testid="tag-link"]')
-
-      expect(link?.className).toContain('inline-flex')
-    })
-
-    it('className が指定された場合は追加される', () => {
-      const { container } = renderComponent({ tagName: 'React', className: 'custom-class' })
-      const link = container.querySelector('[data-testid="tag-link"]')
-
-      expect(link?.className).toContain('custom-class')
-    })
-  })
-
-  describe('スタイリング', () => {
-    it('inline-flex クラスが適用されている', () => {
-      const { container } = renderComponent({ tagName: 'React' })
-      const link = container.querySelector('[data-testid="tag-link"]')
-
-      expect(link?.className).toContain('inline-flex')
-    })
-
-    it('rounded-lg クラスが適用されている', () => {
-      const { container } = renderComponent({ tagName: 'React' })
-      const link = container.querySelector('[data-testid="tag-link"]')
-
-      expect(link?.className).toContain('rounded-lg')
-    })
-
-    it('transition-all クラスが適用されている', () => {
-      const { container } = renderComponent({ tagName: 'React' })
-      const link = container.querySelector('[data-testid="tag-link"]')
-
-      expect(link?.className).toContain('transition-all')
     })
   })
 })

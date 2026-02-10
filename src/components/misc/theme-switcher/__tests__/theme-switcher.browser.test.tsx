@@ -131,14 +131,4 @@ describe('ThemeSwitcher', () => {
       expect(mockSetTheme).toHaveBeenNthCalledWith(2, 'system')
     })
   })
-
-  describe('アイコン表示', () => {
-    it('各ボタンに正しいアイコンが表示される', async () => {
-      setupMockTheme('light')
-
-      renderComponent()
-
-      await waitForThemeButtons()
-    })
-  })
 })

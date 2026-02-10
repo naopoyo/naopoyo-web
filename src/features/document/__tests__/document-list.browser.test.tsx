@@ -17,18 +17,8 @@ vi.mock('../document-emoji', () => ({
 }))
 
 vi.mock('@/components/navigations/link', () => ({
-  NextLink: ({
-    children,
-    href,
-    className,
-  }: {
-    children?: React.ReactNode
-    href?: string
-    className?: string
-  }) => (
-    <a href={href} className={className} data-testid="doc-link">
-      {children}
-    </a>
+  NextLink: ({ children, href }: { children?: React.ReactNode; href?: string }) => (
+    <a href={href}>{children}</a>
   ),
 }))
 
@@ -84,7 +74,7 @@ describe('DocumentList', () => {
 
     it('各ドキュメントがカードとして表示される', () => {
       const { container } = renderComponent()
-      const links = container.querySelectorAll('[data-testid="doc-link"]')
+      const links = container.querySelectorAll('a[href]')
       expect(links).toHaveLength(2)
     })
   })
@@ -114,7 +104,7 @@ describe('DocumentList', () => {
   describe('リンク', () => {
     it('各ドキュメントは正しい URL にリンクする', () => {
       const { container } = renderComponent()
-      const links = container.querySelectorAll('[data-testid="doc-link"]')
+      const links = container.querySelectorAll('a[href]')
 
       expect((links[0] as HTMLAnchorElement).href).toContain('/docs/doc-1')
       expect((links[1] as HTMLAnchorElement).href).toContain('/docs/doc-2')
@@ -124,7 +114,7 @@ describe('DocumentList', () => {
   describe('空の配列', () => {
     it('ドキュメント配列が空の場合は何も表示しない', () => {
       const { container } = renderComponent([])
-      expect(container.querySelectorAll('[data-testid="doc-link"]')).toHaveLength(0)
+      expect(container.querySelectorAll('a[href]')).toHaveLength(0)
     })
   })
 })

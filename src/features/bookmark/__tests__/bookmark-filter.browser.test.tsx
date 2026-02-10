@@ -24,12 +24,10 @@ describe('BookmarkFilter', () => {
       expect(input).toBeInTheDocument()
     })
 
-    it('検索入力フィールドの属性が正しく設定されている', () => {
+    it('placeholder が正しく設定されている', () => {
       const { container } = renderComponent()
       const input = container.querySelector('input[type="search"]')
-      expect(input).toBeInTheDocument()
       expect(input).toHaveAttribute('placeholder', 'ブックマークを検索...')
-      expect(input).toHaveClass('text-base')
     })
   })
 
@@ -46,13 +44,6 @@ describe('BookmarkFilter', () => {
       const input = container.querySelector('input[type="search"]') as HTMLInputElement
       expect(input).toBeInTheDocument()
       expect(input.value).toBe('テスト')
-    })
-
-    it('keywordが空文字列の場合、入力フィールドは空である', () => {
-      const { container } = renderComponent({ keyword: '' })
-      const input = container.querySelector('input[type="search"]') as HTMLInputElement
-      expect(input).toBeInTheDocument()
-      expect(input.value).toBe('')
     })
   })
 

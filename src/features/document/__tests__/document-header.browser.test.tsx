@@ -17,10 +17,8 @@ vi.mock('@/features/document', () => ({
 }))
 
 vi.mock('@/components/navigations/link', () => ({
-  Link: ({ children, href }: { children: React.ReactNode; href: string }) => (
-    <a href={href} data-testid="github-link">
-      {children}
-    </a>
+  Link: ({ children, href }: { children?: React.ReactNode; href?: string }) => (
+    <a href={href}>{children}</a>
   ),
 }))
 
@@ -126,7 +124,7 @@ describe('DocumentHeader', () => {
   describe('GitHub リンク', () => {
     it('GitHub リンクを表示する', () => {
       const { container } = renderComponent()
-      const link = container.querySelector('[data-testid="github-link"]')
+      const link = container.querySelector('a[href*="github.com"]')
 
       expect(link).toBeInTheDocument()
       expect(link?.textContent).toContain('GitHubで見る')
@@ -135,7 +133,7 @@ describe('DocumentHeader', () => {
     it('GitHub リンクが正しい URL を持つ', () => {
       const path = 'test-document.md'
       const { container } = renderComponent(documentFactory.build({ path }))
-      const link = container.querySelector('[data-testid="github-link"]') as HTMLAnchorElement
+      const link = container.querySelector('a[href*="github.com"]') as HTMLAnchorElement
 
       expect(link?.href).toContain('https://github.com/example/repo')
       expect(link?.href).toContain(path)

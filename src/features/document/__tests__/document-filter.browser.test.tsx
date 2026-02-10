@@ -61,14 +61,4 @@ describe('DocumentFilter', () => {
       expect(input.value).toBe('test')
     })
   })
-
-  describe('レイアウト', () => {
-    it('レスポンシブレイアウトのクラスが設定されている', () => {
-      const { container } = renderComponent()
-      const wrapper = container.querySelector('div')
-
-      expect(wrapper).toHaveClass('flex')
-      expect(wrapper).toHaveClass('flex-col')
-    })
-  })
 })

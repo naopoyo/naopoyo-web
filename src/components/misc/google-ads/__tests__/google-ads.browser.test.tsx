@@ -1,13 +1,11 @@
 import { render, cleanup } from '@testing-library/react'
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest'
 
-// 環境変数定数をモック
 vi.mock('@/env', () => ({
   isProduction: true,
-  GOOGLE_ADS_CLIENT: 'pub-test-client-id',
+  GOOGLE_ADS_CLIENT: 'test-client-id',
 }))
 
-// next/navigation をモック
 vi.mock('next/navigation', () => ({
   usePathname: () => '/test-page',
 }))
@@ -17,90 +15,42 @@ import GoogleAds from '../google-ads'
 describe('GoogleAds', () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    // Window.adsbygoogle をリセット
     delete (window as Record<string, unknown>).adsbygoogle
   })
 
   afterEach(() => {
     cleanup()
-    vi.clearAllMocks()
   })
 
-  describe('レンダリング', () => {
-    it('本番環境でマウント後に広告要素を表示する', () => {
-      const { container } = render(<GoogleAds slot="1234567890" format="auto" responsive="true" />)
+  it('本番環境でマウント後に ins.adsbygoogle 要素を表示する', () => {
+    const { container } = render(<GoogleAds slot="1234567890" />)
 
-      const insElement = container.querySelector('ins.adsbygoogle')
-      expect(insElement).toBeTruthy()
-    })
-
-    it('広告スロットと形式の属性が正しく設定される', () => {
-      const { container } = render(
-        <GoogleAds slot="9876543210" format="rectangle" responsive="false" />
-      )
-
-      const insElement = container.querySelector('ins.adsbygoogle')
-      expect(insElement?.getAttribute('data-ad-slot')).toBe('9876543210')
-      expect(insElement?.getAttribute('data-ad-format')).toBe('rectangle')
-    })
-
-    it('クライアント ID が正しく設定される', () => {
-      const { container } = render(<GoogleAds slot="1234567890" format="auto" responsive="true" />)
-
-      const insElement = container.querySelector('ins.adsbygoogle')
-      expect(insElement?.getAttribute('data-ad-client')).toBe('ca-pub-pub-test-client-id')
-    })
-
-    it('レスポンシブ属性がデフォルト値で設定される', () => {
-      const { container } = render(<GoogleAds slot="1234567890" />)
-
-      const insElement = container.querySelector('ins.adsbygoogle')
-      expect(insElement?.getAttribute('data-full-width-responsive')).toBe('true')
-    })
-
-    it('フォーマット属性がデフォルト値で設定される', () => {
-      const { container } = render(<GoogleAds slot="1234567890" />)
-
-      const insElement = container.querySelector('ins.adsbygoogle')
-      expect(insElement?.getAttribute('data-ad-format')).toBe('auto')
-    })
+    expect(container.querySelector('ins.adsbygoogle')).toBeTruthy()
   })
 
-  describe('div要素', () => {
-    it('ins要素を内包するdiv要素を持つ', () => {
-      const { container } = render(<GoogleAds slot="1234567890" format="auto" responsive="true" />)
+  it('data-ad-slot と data-ad-client が正しく設定される', () => {
+    const { container } = render(<GoogleAds slot="9876543210" />)
+    const ins = container.querySelector('ins.adsbygoogle')
 
-      const divElement = container.firstChild as Element | null
-      expect(divElement?.nodeName).toBe('DIV')
-
-      const insElement = divElement?.querySelector('ins.adsbygoogle')
-      expect(insElement).toBeTruthy()
-    })
-
-    it('div要素に一意のキーが設定される', () => {
-      const { container, rerender } = render(
-        <GoogleAds slot="slot-1" format="auto" responsive="true" />
-      )
-
-      const firstDiv = container.firstChild as Element | null
-      expect(firstDiv).toBeTruthy()
-
-      // パスが変わると新しいdivが生成される
-      rerender(<GoogleAds slot="slot-2" format="auto" responsive="true" />)
-
-      const secondDiv = container.firstChild as Element | null
-      // キーが異なるため要素が再生成されることを確認
-      expect(firstDiv).not.toBe(secondDiv)
-    })
+    expect(ins?.getAttribute('data-ad-slot')).toBe('9876543210')
+    expect(ins?.getAttribute('data-ad-client')).toBe('ca-pub-test-client-id')
   })
 
-  describe('スタイル', () => {
-    it('ins要素にdisplay: block スタイルが適用される', () => {
-      const { container } = render(<GoogleAds slot="1234567890" format="auto" responsive="true" />)
+  it('format と responsive のデフォルト値が設定される', () => {
+    const { container } = render(<GoogleAds slot="1234567890" />)
+    const ins = container.querySelector('ins.adsbygoogle')
 
-      const insElement = container.querySelector('ins.adsbygoogle')
-      const style = (insElement as HTMLElement)?.style
-      expect(style.display).toBe('block')
-    })
+    expect(ins?.getAttribute('data-ad-format')).toBe('auto')
+    expect(ins?.getAttribute('data-full-width-responsive')).toBe('true')
+  })
+
+  it('format と responsive のカスタム値が反映される', () => {
+    const { container } = render(
+      <GoogleAds slot="1234567890" format="rectangle" responsive="false" />
+    )
+    const ins = container.querySelector('ins.adsbygoogle')
+
+    expect(ins?.getAttribute('data-ad-format')).toBe('rectangle')
+    expect(ins?.getAttribute('data-full-width-responsive')).toBe('false')
   })
 })

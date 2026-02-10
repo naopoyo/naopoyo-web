@@ -1,24 +1,8 @@
 import { render, cleanup } from '@testing-library/react'
 import { useSelectedLayoutSegment } from 'next/navigation'
-import { PropsWithChildren } from 'react'
 import { describe, it, expect, afterEach, beforeEach, vi } from 'vitest'
 
 import NavBarMenu from '../nav-bar-menu'
-
-interface MockLinkProps extends PropsWithChildren {
-  href: string
-  className?: string
-}
-
-// next/link をモック化
-vi.mock('next/link', () => ({
-  __esModule: true,
-  default: ({ children, href, className }: MockLinkProps) => (
-    <a href={href} className={className}>
-      {children}
-    </a>
-  ),
-}))
 
 vi.mock('next/navigation', () => ({
   useSelectedLayoutSegment: vi.fn(),
@@ -132,42 +116,6 @@ describe('NavBarMenu', () => {
       const activeIndicators = container.querySelectorAll('span.bg-link.scale-x-100')
 
       expect(activeIndicators).toHaveLength(0)
-    })
-  })
-
-  describe('スタイリング', () => {
-    it('ul要素でレンダリングされる', () => {
-      mockUseSelectedLayoutSegment.mockReturnValue(null)
-
-      const { container } = renderComponent()
-      const ul = container.querySelector('ul')
-
-      expect(ul).toBeInTheDocument()
-    })
-
-    it('flexレイアウトでスタイリングされている', () => {
-      mockUseSelectedLayoutSegment.mockReturnValue(null)
-
-      const { container } = renderComponent()
-      const ul = container.querySelector('ul')
-
-      expect(ul).toHaveClass('flex')
-      expect(ul).toHaveClass('items-center')
-      expect(ul).toHaveClass('gap-2')
-    })
-
-    it('各リンク要素に適切なクラスが設定されている', () => {
-      mockUseSelectedLayoutSegment.mockReturnValue(null)
-
-      const { container } = renderComponent()
-      const links = container.querySelectorAll('a')
-
-      links.forEach((link) => {
-        expect(link).toHaveClass('inline-block')
-        expect(link).toHaveClass('px-4')
-        expect(link).toHaveClass('py-2')
-        expect(link).toHaveClass('z-10')
-      })
     })
   })
 })

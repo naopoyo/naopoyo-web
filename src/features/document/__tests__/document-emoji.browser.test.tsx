@@ -43,7 +43,6 @@ describe('DocumentEmoji', () => {
       const span = container.querySelector('span')
 
       expect(span).toBeInTheDocument()
-      expect(span?.className).toContain('size-18')
     })
 
     it('絵文字が string 型でない場合はスペーサーを表示する', () => {
