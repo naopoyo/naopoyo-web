@@ -41,12 +41,14 @@ describe('Component', () => {
 
 ### container.querySelector() を優先
 
-`screen.getByRole()` は複数要素で失敗しやすい。`container.querySelector()` で明確に指定：
+`screen.getByRole()` は複数要素で失敗しやすい。`container.querySelector()` で明確に指定。
+セレクタは HTML セマンティクス（`a[href]`, `input[type]`）を使い、モックに `data-testid` を埋め込まない：
 
 ```typescript
 // ✅ 推奨
 const { container } = render(<Component />)
 const input = container.querySelector('input[type="search"]')
+const link = container.querySelector('a[href*="github.com"]')
 
 // ❌ 複数要素があるとエラー
 const input = screen.getByRole('searchbox')
@@ -76,17 +78,33 @@ describe('useCounter', () => {
 })
 ```
 
-## Next.js モック
+## モック共通化
 
-### next/link
+同一実装が 3 箇所以上あり、かつモック対象の API 変更で複数修正が必要な場合に共通化する。
+値やエクスポートがテストごとに異なるモック（`@/env` 等）はインラインのまま残す。
+
+### サードパーティライブラリ → `setupFiles` でグローバル登録
+
+`vitest.setup.tsx` に定義。全ブラウザテストに自動適用されるため、テストファイルでの `vi.mock` は不要：
 
 ```typescript
-vi.mock('next/link', () => ({
-  default: ({ children, href }: { children: React.ReactNode; href: string }) => (
+// vitest.setup.tsx に next/link モックを定義済み
+// テストファイルでは何も書かなくてよい
+```
+
+### ソースモジュール → 短縮インラインモック
+
+パスエイリアス（`@/`）では `__mocks__` ディレクトリが解決されない（Vitest の既知の制限）。ファクトリ付きで記述：
+
+```typescript
+vi.mock('@/components/navigations/link', () => ({
+  NextLink: ({ children, href }: { children?: React.ReactNode; href?: string }) => (
     <a href={href}>{children}</a>
   ),
 }))
 ```
+
+## Next.js モック
 
 ### next/navigation
 
