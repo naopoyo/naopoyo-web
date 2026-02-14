@@ -43,3 +43,5 @@ next-env.d.ts
 /.vscode
 /.serena
 /.claude/settings.local.json
+
+docs/tmp/*
