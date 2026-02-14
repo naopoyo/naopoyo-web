@@ -25,7 +25,7 @@ import { calculateEstimate, formatEstimateMarkdown, roundToOneDecimal } from './
  * 不確実性要因を選択すると、現実的な工数見積もりを算出します。
  */
 export default function EffortEstimator() {
-  const [baseDays, setBaseDays] = useState('')
+  const [baseDays, setBaseDays] = useState('1')
   const [checkedPhases, setCheckedPhases] = useState<string[]>(() =>
     PHASE_ITEMS.filter((item) => item.defaultChecked).map((item) => item.id)
   )
