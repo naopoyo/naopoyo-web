@@ -42,6 +42,16 @@ next-env.d.ts
 
 /.vscode
 /.serena
-/.claude/settings.local.json
+/.claude/*
+!/.claude/CLAUDE.md
+!/.claude/skills/
+/.claude/skills/*
+!/.claude/skills/commit/
+!/.claude/skills/frontend-design/
+!/.claude/skills/next-best-practices/
+!/.claude/skills/pr-create/
+!/.claude/skills/skill-creator/
+!/.claude/skills/vercel-react-best-practices/
+!/.claude/skills/vitest-test-creator/
 
 docs/tmp/*
