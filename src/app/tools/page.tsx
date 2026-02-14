@@ -56,6 +56,13 @@ const tools: Tool[] = [
     emoji: '📚',
     accentColor: 'emerald',
   },
+  {
+    href: '/tools/effort-estimator',
+    title: '工数見積もりくん',
+    description: '直感的な実装工数からチェックリストで現実的な見積もりを算出',
+    emoji: '🧮',
+    accentColor: 'amber',
+  },
 ]
 
 /**
